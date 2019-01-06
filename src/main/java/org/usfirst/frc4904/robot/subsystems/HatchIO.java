@@ -46,7 +46,7 @@ public class HatchIO {
 		
 		@Override
 		protected void initDefaultCommand() {
-			setDefaultCommand(new IndexerVelcroTapeUnVelcroed());
+			setDefaultCommand(new IndexerVelcroTapeVelcroed());
 		}
         
         
