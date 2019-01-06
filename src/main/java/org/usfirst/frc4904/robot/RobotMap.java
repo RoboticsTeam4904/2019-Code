@@ -1,6 +1,7 @@
 package org.usfirst.frc4904.robot;
 
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
+import org.usfirst.frc4904.robot.subsystems.HatchIO;
 
 
 public class RobotMap {
@@ -18,6 +19,9 @@ public class RobotMap {
     public static class Metrics{}
     public static class Component {
         public static CustomXbox driverXbox;
+        public static HatchIO hatchIO;
+        public static HatchIO.VelcroTape hatchIOVelcroTape;
+        public static Motor roller;
     }
     public static class HumanInput {
         public static class Driver {
