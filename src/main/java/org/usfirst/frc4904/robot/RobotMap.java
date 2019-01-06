@@ -22,6 +22,7 @@ public class RobotMap {
         public static HatchIO hatchIO;
         public static HatchIO.VelcroTape hatchIOVelcroTape;
         public static Motor roller;
+        public static HatchIO.VelcroTurn hatchIOVelcroTurn;
     }
     public static class HumanInput {
         public static class Driver {

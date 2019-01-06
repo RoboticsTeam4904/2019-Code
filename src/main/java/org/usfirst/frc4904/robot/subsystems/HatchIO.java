@@ -1,3 +1,4 @@
+
 package org.usfirst.frc4904.robot.subsystems;
 
 
@@ -42,7 +43,6 @@ public class HatchIO {
 			}
 		}
 
-		//Testing Override
 		
 		@Override
 		protected void initDefaultCommand() {
@@ -50,5 +50,35 @@ public class HatchIO {
 		}
         
         
-    }
+	}
+	
+    public static class VelcroTurn extends Subsystem {
+		public static final DoubleSolenoid.Value TURNED = DoubleSolenoid.Value.kForward;
+        public static final DoubleSolenoid.Value UNTURNED = DoubleSolenoid.Value.kReverse;
+        protected final DoubleSolenoid velcroTurn;
+
+        public VelcroTurn(DoubleSolenoid velcroTurn) {
+			super("HatchIO VelcroTurn");
+            this.velcroTurn = velcroTurn;
+            
+        }
+        
+        public boolean isTurned() {
+			return this.velcroTurned.get() == TURNED;
+		}
+
+		public void set(boolean turned) {
+			if (turned) {
+				this.velcroTurned.set(TURNED);
+			} else {
+				this.velcroTurned.set(UNTURNED);
+			}
+		}
+
+		@Override
+		protected void initDefaultCommand() {
+			setDefaultCommand(new IndexerVelcroTurnUnTurned());
+		}
+        
+	}
 }
