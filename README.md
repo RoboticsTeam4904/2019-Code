@@ -2,5 +2,5 @@
 
 To install this repository, go to terminal, cd into the directory you want to clone into, and type
 ```
-git clone --recursive https://github.com/RoboticsTeam4904/2017-Code.git
+git clone --recursive https://github.com/RoboticsTeam4904/2019-Code.git
 ```
