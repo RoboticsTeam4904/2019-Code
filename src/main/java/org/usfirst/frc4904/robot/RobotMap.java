@@ -3,7 +3,7 @@ package org.usfirst.frc4904.robot;
 import org.usfirst.frc4904.robot.subsystems.VelcroPlate;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
-// TODO: Import PCMPort, etc. and uncomment lines.
+// TODO: Import PCMPort, etc. and uncomment lines. CANTalon, NavX must be installed.
 
 
 public class RobotMap {
