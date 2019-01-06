@@ -3,7 +3,7 @@ package org.usfirst.frc4904.robot;
 import org.usfirst.frc4904.robot.subsystems.VelcroPlate;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
-// TODO: Import PCMPort, etc. and uncomment lines. CANTalon, NavX must be installed.
+import org.usfirst.frc4904.standard.custom.motioncontrollers.CANTalonSRX;
 
 
 public class RobotMap {
@@ -38,8 +38,8 @@ public class RobotMap {
     public RobotMap() {
         Component.driverXbox = new CustomXbox(Port.HumanInput.xboxController);
         Component.driverXbox.setDeadZone(0.1);
-        //Component.velcroPlateMotor = new Motor("VelcroPlateMotor", new CANTalonSRX(Port.CANMotor.velcroPlateMotor));
-        //Component.velcroPlatePistonGroup = new VelcroPlate.PistonGroup(Port.Pneumatics.velcroPlatePistonGroup.buildDoubleSolenoid());
-        //Component.velcroPlate = new VelcroPlate(Component.velcroPlateMotor, Component.velcroPlatePistonGroup);
+        Component.velcroPlateMotor = new Motor("VelcroPlateMotor", new CANTalonSRX(Port.CANMotor.velcroPlateMotor));
+        Component.velcroPlatePistonGroup = new VelcroPlate.PistonGroup(Port.Pneumatics.velcroPlatePistonGroup.buildDoubleSolenoid());
+        Component.velcroPlate = new VelcroPlate(Component.velcroPlateMotor, Component.velcroPlatePistonGroup);
     }
 }
