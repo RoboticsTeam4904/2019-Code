@@ -40,7 +40,14 @@ public class HatchIO {
 			} else {
 				this.velcroTape.set(UNVELCROED);
 			}
-        }
+		}
+
+		//Testing Override
+		
+		@Override
+		protected void initDefaultCommand() {
+			setDefaultCommand(new IndexerVelcroTapeUnVelcroed());
+		}
         
         
     }
