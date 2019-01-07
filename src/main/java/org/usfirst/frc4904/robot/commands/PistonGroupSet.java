@@ -21,16 +21,4 @@ public class PistonGroupSet extends Command {
 		System.out.println("The command has initialized!");
 		RobotMap.Component.velcroPlate.pistonGroup.set(this.clasped);
 	}
-
-	// Make this return true when this Command no longer needs to run execute()
-	@Override
-	protected boolean isFinished() {
-		return false;
-	}
-
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
-	@Override
-	protected void interrupted() {
-	}
 }

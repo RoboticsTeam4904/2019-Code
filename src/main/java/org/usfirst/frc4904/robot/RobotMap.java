@@ -18,7 +18,7 @@ public class RobotMap {
         public static class PWM {}
         public static class CAN {}
         public static class Pneumatics {
-            //public static final PCMPort velcroPlatePistonGroup = new PCMPort(0, 0, 0);
+            //public static final PCMPort velcroPlatePistonGroup = new PCMPort(0, 0, 0); // TODO: Set values for PCMPort.
         }
     }
     
