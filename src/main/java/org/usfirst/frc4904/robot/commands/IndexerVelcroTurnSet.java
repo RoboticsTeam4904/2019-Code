@@ -15,7 +15,7 @@ public class IndexerVelcroTurnSet extends Command {
 
 	@Override
 	protected void initialize() {
-		RobotMap.Component.hatchIO.velcroTurn.set(turned);
+		RobotMap.Component.hatchIO.flipper.set(turned);
 	}
 
 	@Override

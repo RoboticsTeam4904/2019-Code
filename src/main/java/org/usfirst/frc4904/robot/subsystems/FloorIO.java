@@ -2,8 +2,8 @@
 package org.usfirst.frc4904.robot.subsystems;
 
 
-import org.usfirst.frc4904.robot.commands.IndexerGrabberClasp;
-import org.usfirst.frc4904.standard.subsystems.motor.Motor;
+// import org.usfirst.frc4904.robot.commands.IndexerGrabberClasp;
+import org.usfirst.frc4904.robot.subsystems.motor.Motor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -14,33 +14,37 @@ public class FloorIO {
 
 	public final Motor hatcherRollerIntake;
 	public final Motor cargoRollerIntake;
-	public final VelcroTape velcroTape;
+	public final HatchHolder hatchHolder;
+	public final Flipper flipper;
 
-	public FloorIO (Motor roller, VelcroTape velcroTape) {
-		this.roller = roller;
-		this.velcroTape = velcroTape;
+
+	public FloorIO (Motor hatcherRollerIntake, Motor cargoRollerIntake, HatchHolder hatchHolder, Flipper flipper) {
+		this.hatcherRollerIntake = hatcherRollerIntake;
+		this.hatchHolder = hatchHolder;
+		this.flipper = flipper
+
     }
     
-    public static class VelcroTape extends Subsystem {
-        public static final DoubleSolenoid.Value VELCROED = DoubleSolenoid.Value.kForward;
-        public static final DoubleSolenoid.Value UNVELCROED = DoubleSolenoid.Value.kReverse;
-        protected final DoubleSolenoid velcroTape;
+    public static class HatchHolder extends Subsystem {
+        public static final DoubleSolenoid.Value HELD = DoubleSolenoid.Value.kForward;
+        public static final DoubleSolenoid.Value RELEASED = DoubleSolenoid.Value.kReverse;
+        protected final DoubleSolenoid hatchHolder;
 
-        public VelcroTape(DoubleSolenoid velcroTape) {
+        public HatchHolder(DoubleSolenoid hatchHolder) {
 			super("FloorIO Velcro");
-            this.velcroTape = velcroTape;
+            this.hatchHolder = hatchHolder;
             
         }
         
-        public boolean isVelcroed() {
-			return this.velcroTape.get() == VELCROED;
+        public boolean isHeld() {
+			return this.hatchHolder.get() == HELD;
 		}
 
-		public void set(boolean velcroed) {
-			if (velcroed) {
-				this.velcroTape.set(VELCROED);
+		public void set(boolean held) {
+			if (held) {
+				this.hatchHolder.set(HELD);
 			} else {
-				this.velcroTape.set(UNVELCROED);
+				this.hatchHolder.set(RELEASED);
 			}
 		}
 
@@ -53,26 +57,26 @@ public class FloorIO {
         
 	}
 	
-    public static class VelcroTurn extends Subsystem {
-		public static final DoubleSolenoid.Value TURNED = DoubleSolenoid.Value.kForward;
-        public static final DoubleSolenoid.Value UNTURNED = DoubleSolenoid.Value.kReverse;
-        protected final DoubleSolenoid velcroTurn;
+    public static class Flipper extends Subsystem {
+		public static final DoubleSolenoid.Value UP = DoubleSolenoid.Value.kForward;
+        public static final DoubleSolenoid.Value DOWN = DoubleSolenoid.Value.kReverse;
+        protected final DoubleSolenoid flipper;
 
-        public VelcroTurn(DoubleSolenoid velcroTurn) {
-			super("FloorIO VelcroTurn");
-            this.velcroTurn = velcroTurn;
+        public Flipper(DoubleSolenoid flipper) {
+			super("FloorIO Flipper");
+            this.flipper = flipper;
             
         }
         
         public boolean isTurned() {
-			return this.velcroTurned.get() == TURNED;
+			return this.flipperTurned.get() == UP;
 		}
 
 		public void set(boolean turned) {
 			if (turned) {
-				this.velcroTurned.set(TURNED);
+				this.velcroTurned.set(UP);
 			} else {
-				this.velcroTurned.set(UNTURNED);
+				this.velcroTurned.set(DOWN);
 			}
 		}
 

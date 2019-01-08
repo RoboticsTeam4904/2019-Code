@@ -20,9 +20,9 @@ public class RobotMap {
     public static class Component {
         public static CustomXbox driverXbox;
         public static HatchIO hatchIO;
-        public static HatchIO.VelcroTape hatchIOVelcroTape;
+        public static HatchIO.HatchHolder hatchIOVelcroTape;
         public static Motor roller;
-        public static HatchIO.VelcroTurn hatchIOVelcroTurn;
+        public static HatchIO.Flipper hatchIOVelcroTurn;
     }
     public static class HumanInput {
         public static class Driver {
