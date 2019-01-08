@@ -12,7 +12,7 @@ public class ProngIO {
 	public static final double EXPANSION_SPEED = 0.5;
 	public static final double CONTRACTION_SPEED = -0.5;
 	public final Motor expander;
-    public final Pusher pusher;
+	public final Pusher pusher;
 
 
 	public ProngIO(Motor expander, Pusher pusher) {
@@ -22,7 +22,7 @@ public class ProngIO {
 
 	public static class Pusher extends Subsystem {
 		public static final DoubleSolenoid.Value FIRED = DoubleSolenoid.Value.kForward;
-		public static final DoubleSolenoid.Value INSIDE = DoubleSolenoid.Value.kReverse;
+		public static final DoubleSolenoid.Value RETRACTED = DoubleSolenoid.Value.kReverse;
 		protected final DoubleSolenoid pusher;
 
 		public Pusher(DoubleSolenoid pusher) {
@@ -31,8 +31,12 @@ public class ProngIO {
 		}
 
 		public void set(boolean fired) {
-			if (fired) this.pusher.set(FIRED);
-			else this.pusher.set(INSIDE);
+			if (fired){ 
+				this.pusher.set(FIRED);
+			}
+			else {
+				this.pusher.set(RETRACTED);
+			}
 		}
 
 		@Override
