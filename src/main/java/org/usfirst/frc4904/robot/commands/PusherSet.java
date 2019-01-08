@@ -6,7 +6,7 @@ public class PusherSet extends Command {
 	protected final boolean fired;
 
 	public PusherSet(boolean fired) {
-		super(fired ? "PusherFire" : "PusherInside");
+		super(fired ? "PusherFire" : "PusherRetract");
 		requires(RobotMap.Component.prongIO.pusher);
 		this.fired = fired;
 	}

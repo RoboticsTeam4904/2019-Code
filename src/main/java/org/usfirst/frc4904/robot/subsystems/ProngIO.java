@@ -1,7 +1,7 @@
 package org.usfirst.frc4904.robot.subsystems;
 
 
-import org.usfirst.frc4904.robot.commands.PusherInside;
+import org.usfirst.frc4904.robot.commands.PusherRetract;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -37,7 +37,7 @@ public class ProngIO {
 
 		@Override
 		protected void initDefaultCommand() {
-			setDefaultCommand(new PusherInside());
+			setDefaultCommand(new PusherRetract());
 		}
 	}
 }
