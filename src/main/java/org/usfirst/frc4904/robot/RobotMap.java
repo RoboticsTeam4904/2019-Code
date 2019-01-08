@@ -1,6 +1,8 @@
 package org.usfirst.frc4904.robot;
 
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
+import org.usfirst.frc4904.standard.custom.motioncontrollers.CustomPIDController;
+import org.usfirst.frc4904.standard.custom.sensors.NavX;
 
 
 public class RobotMap {
@@ -44,6 +46,8 @@ public class RobotMap {
     }
     public static class Component {
         public static CustomXbox driverXbox;
+        public static CustomPIDController chassisTurnMC;
+        public static NavX navx;
     }
     public static class HumanInput {
         public static class Driver {
@@ -54,5 +58,6 @@ public class RobotMap {
     public RobotMap() {
         Component.driverXbox = new CustomXbox(Port.HumanInput.xboxController);
         Component.driverXbox.setDeadZone(0.1);
+        Component.chassisTurnMC = new CustomPIDController(PID.Turn.P, PID.Turn.I, PID.Turn.D, PID.Turn.F, Component.navx);
     }
 }
