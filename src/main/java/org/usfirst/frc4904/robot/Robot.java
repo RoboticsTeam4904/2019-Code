@@ -22,6 +22,16 @@ public class Robot extends CommandRobotBase {
 	public void initialize() {
 		// driverChooser.addDefault(object);
 		// operatorChooser.addDefault();
+		SmartDashboard.putBoolean("ShouldResetArmEncoder", false);
+		SmartDashboard.putNumber("drivePID/P", RobotMap.Component.drivePID.getP());
+		SmartDashboard.putNumber("drivePID/I", RobotMap.Component.drivePID.getI());
+		SmartDashboard.putNumber("drivePID/D", RobotMap.Component.drivePID.getD());
+		SmartDashboard.putNumber("drivePID/F", RobotMap.Component.drivePID.getF());
+		SmartDashboard.putNumber("turnPID/P", RobotMap.Component.chassisTurnMC.getP());
+		SmartDashboard.putNumber("turnPID/I", RobotMap.Component.chassisTurnMC.getI());
+		SmartDashboard.putNumber("turnPID/D", RobotMap.Component.chassisTurnMC.getD());
+		SmartDashboard.putNumber("turnPID/F", RobotMap.Component.chassisTurnMC.getF());
+		SmartDashboard.putNumber("turn_correction", RobotMap.Component.chassis.turn_correction);
 	}
 
 	@Override
