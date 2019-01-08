@@ -7,15 +7,16 @@ import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class HatchIO {
+public class FloorIO {
 
     public static final double INTAKE_SPEED = 0.5;
 	public static final double OUTTAKE_SPEED = -0.5;
 
-	public final Motor roller;
+	public final Motor hatcherRollerIntake;
+	public final Motor cargoRollerIntake;
 	public final VelcroTape velcroTape;
 
-	public HatchIO(Motor roller, VelcroTape velcroTape) {
+	public FloorIO (Motor roller, VelcroTape velcroTape) {
 		this.roller = roller;
 		this.velcroTape = velcroTape;
     }
@@ -26,7 +27,7 @@ public class HatchIO {
         protected final DoubleSolenoid velcroTape;
 
         public VelcroTape(DoubleSolenoid velcroTape) {
-			super("HatchIO Velcro");
+			super("FloorIO Velcro");
             this.velcroTape = velcroTape;
             
         }
@@ -58,7 +59,7 @@ public class HatchIO {
         protected final DoubleSolenoid velcroTurn;
 
         public VelcroTurn(DoubleSolenoid velcroTurn) {
-			super("HatchIO VelcroTurn");
+			super("FloorIO VelcroTurn");
             this.velcroTurn = velcroTurn;
             
         }
