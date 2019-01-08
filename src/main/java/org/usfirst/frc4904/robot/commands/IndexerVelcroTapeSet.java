@@ -15,7 +15,7 @@ public class IndexerVelcroTapeSet extends Command {
 
 	@Override
 	protected void initialize() {
-		RobotMap.Component.hatchIO.velcroTape.set(velcroed);
+		RobotMap.Component.hatchIO.hatchHolder.set(velcroed);
 	}
 
 	@Override

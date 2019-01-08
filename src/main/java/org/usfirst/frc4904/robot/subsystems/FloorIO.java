@@ -20,8 +20,9 @@ public class FloorIO {
 
 	public FloorIO (Motor hatcherRollerIntake, Motor cargoRollerIntake, HatchHolder hatchHolder, Flipper flipper) {
 		this.hatcherRollerIntake = hatcherRollerIntake;
+		this.cargoRollerIntake = cargoRollerIntake;
 		this.hatchHolder = hatchHolder;
-		this.flipper = flipper
+		this.flipper = flipper;
 
     }
     
@@ -69,7 +70,7 @@ public class FloorIO {
         }
         
         public boolean isTurned() {
-			return this.flipperTurned.get() == UP;
+			return this.flipper.get() == UP;
 		}
 
 		public void set(boolean turned) {
