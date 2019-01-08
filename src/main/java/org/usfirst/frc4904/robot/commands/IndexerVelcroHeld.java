@@ -1,8 +1,8 @@
 package org.usfirst.frc4904.robot.commands;
 
 
-public class IndexerVelcroTapeVelcroed extends IndexerVelcroTapeSet {
-	public IndexerVelcroTapeVelcroed() {
+public class IndexerVelcroHeld extends IndexerVelcroTapeSet {
+	public IndexerVelcroHeld() {
 		super(true);
 	}
 }

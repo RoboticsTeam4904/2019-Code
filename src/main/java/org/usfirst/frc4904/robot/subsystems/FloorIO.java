@@ -52,7 +52,7 @@ public class FloorIO {
 		
 		@Override
 		protected void initDefaultCommand() {
-			setDefaultCommand(new IndexerVelcroTapeVelcroed());
+			setDefaultCommand(new IndexerVelcroHeld());
 		}
         
         
@@ -69,21 +69,21 @@ public class FloorIO {
             
         }
         
-        public boolean isTurned() {
+        public boolean isUp() {
 			return this.flipper.get() == UP;
 		}
 
-		public void set(boolean turned) {
-			if (turned) {
-				this.velcroTurned.set(UP);
+		public void set(boolean up) {
+			if (up) {
+				this.flipper.set(UP);
 			} else {
-				this.velcroTurned.set(DOWN);
+				this.flipper.set(DOWN);
 			}
 		}
 
 		@Override
 		protected void initDefaultCommand() {
-			setDefaultCommand(new IndexerVelcroTurnUnTurned());
+			setDefaultCommand(new IndexerVelcroReleased());
 		}
         
 	}
