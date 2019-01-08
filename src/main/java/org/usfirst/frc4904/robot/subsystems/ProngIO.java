@@ -22,7 +22,7 @@ public class ProngIO {
 
 	public static class Pusher extends Subsystem {
 		public static final DoubleSolenoid.Value FIRED = DoubleSolenoid.Value.kForward;
-		public static final DoubleSolenoid.Value RETRACTED = DoubleSolenoid.Value.kReverse;
+		public static final DoubleSolenoid.Value RETRACTED = DoubleSolenoid.Value.kReverse; //TODO: Change based on solenoid diretions.
 		protected final DoubleSolenoid pusher;
 
 		public Pusher(DoubleSolenoid pusher) {
