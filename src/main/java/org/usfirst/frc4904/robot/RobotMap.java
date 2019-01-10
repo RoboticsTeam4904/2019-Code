@@ -3,6 +3,13 @@ package org.usfirst.frc4904.robot;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CustomPIDController;
 import org.usfirst.frc4904.standard.custom.sensors.NavX;
+import org.usfirst.frc4904.standard.subsystems.chassis.TankDriveShifting;
+import org.usfirst.frc4904.standard.subsystems.motor.speedmodifiers.EnableableModifier;
+import org.usfirst.frc4904.standard.custom.sensors.CANEncoder;
+import org.usfirst.frc4904.standard.custom.sensors.CANSensor;
+import org.usfirst.frc4904.standard.custom.sensors.EncoderPair;
+import org.usfirst.frc4904.standard.subsystems.motor.Motor;
+import org.usfirst.frc4904.standard.subsystems.motor.speedmodifiers.AccelerationCap;
 
 
 public class RobotMap {
@@ -46,8 +53,15 @@ public class RobotMap {
     }
     public static class Component {
         public static CustomXbox driverXbox;
+        public static TankDriveShifting chassis;
         public static CustomPIDController chassisTurnMC;
+        public static CustomPIDController drivePID;
         public static NavX navx;
+        public static EnableableModifier rightWheelAccelerationCap;
+		public static EnableableModifier leftWheelAccelerationCap;
+		public static CANEncoder leftWheelEncoder;
+		public static CANEncoder rightWheelEncoder;
+		public static EncoderPair chassisEncoders;
     }
     public static class HumanInput {
         public static class Driver {
@@ -59,5 +73,12 @@ public class RobotMap {
         Component.driverXbox = new CustomXbox(Port.HumanInput.xboxController);
         Component.driverXbox.setDeadZone(0.1);
         Component.chassisTurnMC = new CustomPIDController(PID.Turn.P, PID.Turn.I, PID.Turn.D, PID.Turn.F, Component.navx);
+        Component.chassisTurnMC.setMinimumNominalOutput(0.24);
+		Component.chassisTurnMC.setInputRange(-180, 180);
+		Component.chassisTurnMC.setContinuous(true);
+		Component.chassisTurnMC.setAbsoluteTolerance(PID.Turn.tolerance);
+        Component.chassisTurnMC.setDerivativeTolerance(PID.Turn.dTolerance);
+        Component.drivePID = new CustomPIDController(PID.Drive.P, PID.Drive.I, PID.Drive.D, PID.Drive.F,
+        Component.rightWheelEncoder);
     }
 }

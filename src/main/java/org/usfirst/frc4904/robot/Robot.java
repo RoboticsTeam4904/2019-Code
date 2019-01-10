@@ -31,7 +31,6 @@ public class Robot extends CommandRobotBase {
 		SmartDashboard.putNumber("turnPID/I", RobotMap.Component.chassisTurnMC.getI());
 		SmartDashboard.putNumber("turnPID/D", RobotMap.Component.chassisTurnMC.getD());
 		SmartDashboard.putNumber("turnPID/F", RobotMap.Component.chassisTurnMC.getF());
-		SmartDashboard.putNumber("turn_correction", RobotMap.Component.chassis.turn_correction);
 	}
 
 	@Override
