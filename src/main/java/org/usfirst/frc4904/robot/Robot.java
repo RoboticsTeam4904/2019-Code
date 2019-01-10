@@ -14,6 +14,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc4904.standard.CommandRobotBase;
 import org.usfirst.frc4904.standard.commands.chassis.ChassisMove;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardLayout;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardComponent;
 
 public class Robot extends CommandRobotBase {
 	private RobotMap map = new RobotMap();
@@ -22,15 +25,8 @@ public class Robot extends CommandRobotBase {
 	public void initialize() {
 		// driverChooser.addDefault(object);
 		// operatorChooser.addDefault();
-		SmartDashboard.putBoolean("ShouldResetArmEncoder", false);
-		SmartDashboard.putNumber("drivePID/P", RobotMap.Component.drivePID.getP());
-		SmartDashboard.putNumber("drivePID/I", RobotMap.Component.drivePID.getI());
-		SmartDashboard.putNumber("drivePID/D", RobotMap.Component.drivePID.getD());
-		SmartDashboard.putNumber("drivePID/F", RobotMap.Component.drivePID.getF());
-		SmartDashboard.putNumber("turnPID/P", RobotMap.Component.chassisTurnMC.getP());
-		SmartDashboard.putNumber("turnPID/I", RobotMap.Component.chassisTurnMC.getI());
-		SmartDashboard.putNumber("turnPID/D", RobotMap.Component.chassisTurnMC.getD());
-		SmartDashboard.putNumber("turnPID/F", RobotMap.Component.chassisTurnMC.getF());
+		Shuffleboard.startRecording();
+		Shuffleboard.enableActuatorWidgets();
 	}
 
 	@Override
@@ -61,5 +57,7 @@ public class Robot extends CommandRobotBase {
 	public void testExecute() {}
 
 	@Override
-	public void alwaysExecute() {}
+	public void alwaysExecute() {
+		Shuffleboard.update();
+	}
 }
