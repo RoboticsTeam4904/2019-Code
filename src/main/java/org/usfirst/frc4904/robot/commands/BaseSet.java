@@ -21,8 +21,12 @@ public class BaseSet extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
+<<<<<<< HEAD
 		System.out.println("The command has initialized!");
 		RobotMap.Component.base.frontLift.set(Base.LOWERED);
+=======
+		RobotMap.Component.base.set(lowered);
+>>>>>>> 786b5fe05b4441b0624da22f98a34e0b6e8055ba
 	}
 
 	// Called repeatedly when this Command is scheduled to run
