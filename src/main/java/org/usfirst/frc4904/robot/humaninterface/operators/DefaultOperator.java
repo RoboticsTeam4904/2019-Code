@@ -24,7 +24,6 @@ public class DefaultOperator extends Operator {
 	public void bindCommands() {
 		RobotMap.HumanInput.Operator.joystick.button1.onlyWhileHeld(new IndexerVelcroHeld());
 		RobotMap.HumanInput.Operator.joystick.button2.onlyWhileHeld(new IndexerVelcroRelease());
-
 		RobotMap.HumanInput.Operator.joystick.button3.onlyWhileHeld(new IndexerVelcroUp());
 		RobotMap.HumanInput.Operator.joystick.button4.onlyWhileHeld(new IndexerVelcroDown());
 

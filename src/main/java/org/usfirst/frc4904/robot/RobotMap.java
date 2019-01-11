@@ -16,15 +16,15 @@ public class RobotMap {
 
         }
         public static class CANMotor {
-            public static final int hatcherRollerIntake = 1;
-            public static final int cargoRollerIntake = 2;
+            public static final int hatcherRollerIntake = 1; //Adjust port numbers
+            public static final int cargoRollerIntake = 2; //Adjust port numbers
         }
         public static class PWM {}
         public static class CAN {}
         public static class Pneumatics {
 
-           public static final PCMPort hatchHolder = new PCMPort(1, 1, 1);
-           public static final PCMPort flipper = new PCMPort(2, 2, 2);
+           public static final PCMPort hatchHolder = new PCMPort(1, 1, 1); //Adjust port numbers
+           public static final PCMPort flipper = new PCMPort(2, 2, 2); //Adjust port numbers
 
         }
     }
