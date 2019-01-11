@@ -1,9 +1,12 @@
 package org.usfirst.frc4904.robot.subsystems;
 
-import org.usfirst.frc4904.standard.subsystems.motor.Motor;
-import org.usfirst.frc4904.robot.commands.PistonGroupRelease;
+//import org.usfirst.frc4904.standard.subsystems.motor.Motor;
+import org.usfirst.frc4904.robot.commands.VelcroPlateDefault;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+
+//import org.usfirst.frc4904.standard.custom.sensors.CANEncoder;
+//import org.usfirst.frc4904.standard.subsystems.motor.PositionSensorMotor;
 
 /*
  * The default position of the pistons is in its "RELEASED" state,
@@ -18,42 +21,51 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * (5) Release pistons to reset the process.
  */
 
-public class VelcroPlate {
-	public final Motor motor;
-	public final PistonGroup pistonGroup;
-	public static final double MOTOR_SPEED = 0.7;
+ //TODO: Create a command using MotorPositionConstant to set the motor to a position.
 
-	public VelcroPlate(Motor motor, PistonGroup pistonGroup) {
-		this.motor = motor;
-		this.pistonGroup = pistonGroup;
+public class VelcroPlate extends Subsystem {
+	public final DoubleSolenoid placeSolenoid;
+	public final DoubleSolenoid pickupSolenoid;
+	public static final DoubleSolenoid.Value PICKUP_CLASPED = DoubleSolenoid.Value.kForward;
+	public static final DoubleSolenoid.Value PICKUP_RELEASED = DoubleSolenoid.Value.kReverse;
+	public static final DoubleSolenoid.Value PLACE_CLASPED = DoubleSolenoid.Value.kForward;
+	public static final DoubleSolenoid.Value PLACE_RELEASED = DoubleSolenoid.Value.kReverse;
+
+
+	public VelcroPlate(DoubleSolenoid pickupSolenoid, DoubleSolenoid placeSolenoid) {
+		this.placeSolenoid = pickupSolenoid;
+		this.pickupSolenoid = placeSolenoid;
 	}
 
-	public class PistonGroup extends Subsystem {
-		public static final DoubleSolenoid.Value CLASPED = DoubleSolenoid.Value.kForward;
-		public static final DoubleSolenoid.Value RELEASED = DoubleSolenoid.Value.kReverse;
-		public final DoubleSolenoid solenoid;
-
-		public PistonGroup(DoubleSolenoid solenoid) {
-			super("PistonGroup");
-			this.solenoid = solenoid;
+	public void setPlaceSolenoid(boolean clasped) {
+		if(getPickupSolenoid() && clasped) return; // Fail if the other solenoid is already clasped.
+		if(clasped){
+			this.placeSolenoid.set(PLACE_CLASPED);
+		} else {
+			this.placeSolenoid.set(PLACE_RELEASED);
 		}
+		return;
+	}
 
-		public boolean isClasped() {
-			return this.solenoid.get() == CLASPED;
+	public void setPickupSolenoid(boolean clasped) {
+		if(getPlaceSolenoid() && clasped) return; // Fail if the other solenoid is already clasped.
+		if(clasped){
+			this.pickupSolenoid.set(PICKUP_CLASPED);
+		} else {
+			this.pickupSolenoid.set(PICKUP_RELEASED);
 		}
+		return;
+	}
 
-		public void set(boolean clasped){
-			if(clasped) {
-				this.solenoid.set(CLASPED);
-			} else {
-				this.solenoid.set(RELEASED);
-			}
-		}
+	public boolean getPickupSolenoid() {
+		return this.pickupSolenoid.get() == PICKUP_CLASPED;
+	}
 
-		public void initDefaultCommand() {
-			// Set the default command for a subsystem here.
-			// setDefaultCommand(new MySpecialCommand());
-			setDefaultCommand(new PistonGroupRelease());
-		}
+	public boolean getPlaceSolenoid() {
+		return this.placeSolenoid.get() == PLACE_CLASPED;
+	}
+
+	public void initDefaultCommand() {
+		setDefaultCommand(new VelcroPlateDefault());
 	}
 }
