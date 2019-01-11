@@ -4,6 +4,7 @@ package org.usfirst.frc4904.robot.subsystems;
 // import org.usfirst.frc4904.robot.commands.IndexerGrabberClasp;
 import org.usfirst.frc4904.robot.commands.IndexerVelcroHeld;
 import org.usfirst.frc4904.robot.commands.IndexerVelcroDown;
+import org.usfirst.frc4904.standard.commands.Noop;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -53,7 +54,7 @@ public class FloorIO {
 		
 		@Override
 		protected void initDefaultCommand() {
-			setDefaultCommand(new IndexerVelcroHeld());
+			setDefaultCommand(new Noop());
 		}
         
         

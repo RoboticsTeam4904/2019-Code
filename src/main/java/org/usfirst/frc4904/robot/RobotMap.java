@@ -6,6 +6,7 @@ import org.usfirst.frc4904.robot.subsystems.FloorIO.HatchHolder;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import org.usfirst.frc4904.standard.custom.PCMPort;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CANTalonSRX;
+import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
 
 
 public class RobotMap {
@@ -44,7 +45,9 @@ public class RobotMap {
         public static class Driver {
             public static CustomXbox xbox;
         }
-        public static class Operator {}
+        public static class Operator {
+            public static CustomJoystick joystick;
+        }
     }
 
     public RobotMap() {

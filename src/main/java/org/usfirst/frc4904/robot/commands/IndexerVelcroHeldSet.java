@@ -9,7 +9,7 @@ public class IndexerVelcroHeldSet extends Command {
 
 	public IndexerVelcroHeldSet(boolean held) {
 		// IndexerVelcroHeldSet is code for the piston that holds the hatcher
-		super(held ? "IndexerVelcroTapeHeld" : "IndexerVelcroTapeReleased");
+		super(held ? "IndexerVelcroTapeHeld" : "IndexerVelcroTapeRelease");
 		requires(RobotMap.Component.Floorio.floorio.hatchHolder);
 		this.held = held;
 	}
