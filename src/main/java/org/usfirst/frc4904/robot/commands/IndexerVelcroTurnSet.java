@@ -1,4 +1,4 @@
-package main.java.org.usfirst.frc4904.robot.commands;
+package org.usfirst.frc4904.robot.commands;
 
 
 import org.usfirst.frc4904.robot.RobotMap;
@@ -8,18 +8,18 @@ public class IndexerVelcroTurnSet extends Command {
 	protected final boolean turned;
 
 	public IndexerVelcroTurnSet(boolean turned) {
-		super(turned ? "IndexerVelcroTurnTurned" : "IndexerVelcroTurnUnTurned");
-		requires(RobotMap.Component.HatchIO.velcroTurn);
+		super(turned ? "IndexerVelcroUp" : "IndexerVelcroDown");
+		requires(RobotMap.Component.Floorio.floorio.flipper);
 		this.turned = turned;
 	}
 
 	@Override
 	protected void initialize() {
-		RobotMap.Component.hatchIO.flipper.set(turned);
+		RobotMap.Component.Floorio.floorio.flipper.set(turned);
 	}
 
 	@Override
 	protected boolean isFinished() {
-		return false;
+		return true;
 	}
 }
