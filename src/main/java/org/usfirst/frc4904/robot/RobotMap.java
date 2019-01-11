@@ -18,16 +18,15 @@ public class RobotMap {
             public static final int ClawIORight = 1;
         }
         public static class PWM {}
-        public static class CAN { 
-        }
+        public static class CAN {}
         public static class Pneumatics {}
     }
     
     public static class Metrics{}
     public static class Component {
         public static CustomXbox driverXbox;
-        public static Motor ClawIOLeft;
-        public static Motor ClawIORight;
+        public static Motor clawIOLeft;
+        public static Motor clawIORight;
         public static ClawIO clawIO;
     }
     public static class HumanInput {
@@ -39,9 +38,9 @@ public class RobotMap {
     public RobotMap() {
         Component.driverXbox = new CustomXbox(Port.HumanInput.xboxController);
         Component.driverXbox.setDeadZone(0.1);
-        Component.ClawIOLeft = new Motor("ClawIOLeft", new CANTalonSRX(Port.CANMotor.ClawIOLeft));
-        Component.ClawIORight = new Motor("ClawIORight", new CANTalonSRX(Port.CANMotor.ClawIORight));
-        Component.clawIO = new ClawIO(Component.ClawIOLeft, Component.ClawIORight);
+        Component.clawIOLeft = new Motor("ClawIOLeft", new CANTalonSRX(Port.CANMotor.ClawIOLeft));
+        Component.clawIORight = new Motor("ClawIORight", new CANTalonSRX(Port.CANMotor.ClawIORight));
+        Component.clawIO = new ClawIO(Component.clawIOLeft, Component.clawIORight);
 
     }
 }
