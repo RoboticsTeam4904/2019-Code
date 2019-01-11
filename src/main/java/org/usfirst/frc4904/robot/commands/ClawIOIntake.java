@@ -14,9 +14,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class ClawIOIntake extends CommandGroup {
 	public ClawIOIntake() {
 		// Use requires() here to declare subsystem dependencies
-		requires(RobotMap.Component.ClawIOLeft);
-		requires(RobotMap.Component.ClawIORight);
-		addParallel(new MotorConstant(Component.ClawIOLeft, ClawIO.INTAKE_SPEED));
-		addParallel(new MotorConstant(Component.ClawIORight, ClawIO.INTAKE_SPEED));
+		requires(RobotMap.Component.clawIOLeft);
+		requires(RobotMap.Component.clawIORight);
+		addParallel(new MotorConstant(Component.clawIOLeft, ClawIO.INTAKE_SPEED));
+		addParallel(new MotorConstant(Component.clawIORight, ClawIO.INTAKE_SPEED));
 	}
 }
