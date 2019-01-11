@@ -1,6 +1,7 @@
 package org.usfirst.frc4904.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc4904.robot.commands.BaseLowered;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 /**
@@ -25,7 +26,6 @@ public class Base extends Subsystem {
 
 	@Override
 	public void initDefaultCommand() {
-		// Set the default command for a subsystem here.
-		// setDefaultCommand(new MySpecialCommand());
+		setDefaultCommand(new BaseLowered());
 	}
 }

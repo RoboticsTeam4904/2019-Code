@@ -3,6 +3,7 @@ package org.usfirst.frc4904.robot.commands;
 import org.usfirst.frc4904.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc4904.robot.subsystems.Base;
 
 /**
  *
@@ -21,7 +22,7 @@ public class BaseSet extends Command {
 	@Override
 	protected void initialize() {
 		System.out.println("The command has initialized!");
-		RobotMap.Component.base.set(lowered);
+		RobotMap.Component.base.frontLift.set(Base.LOWERED);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
