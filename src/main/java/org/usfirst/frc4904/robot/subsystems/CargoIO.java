@@ -4,7 +4,7 @@ package org.usfirst.frc4904.robot.subsystems;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 
 /**
- * RollerCargoIO is the subsystem of rollers
+ * CargoIO is the subsystem of rollers
  * in the front of the robot, allowing
  * it to intake/outtake cargo in front
  * of it.
@@ -16,7 +16,7 @@ public class CargoIO {
 	public final Motor rollerRight;
 
 	/**
-	 * Create a new CrateIO instance.
+	 * Create a new CargoIO instance.
 	 * 
 	 * @param rollerLeft
 	 *        The motor object corresponding
