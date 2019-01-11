@@ -30,10 +30,7 @@
               "content": {
                 "_type": "Gyro",
                 "_source0": "network_table:///SmartDashboard/Arm Angle",
-                "_title": "Arm Angle",
-                "majorTickSpace": 45.0,
-                "startAngle": 0.0,
-                "tickMarkRingVisible": true
+                "_title": "Arm Angle"
               }
             },
             "7,0": {
