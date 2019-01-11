@@ -20,7 +20,6 @@ public class BaseSet extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		System.out.println("The command has initialized!");
 		RobotMap.Component.base.set(lowered);
 	}
 
