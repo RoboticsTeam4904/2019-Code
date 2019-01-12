@@ -71,27 +71,33 @@ public class RobotMap {
 		public static NetworkTable table;
 
 		public static class Sensors {
-			public static NetworkTable table;
+            public static NetworkTable table;
 			public static NetworkTableEntry yawEntry;
 			public static NetworkTableEntry rightEncoderEntry;
 			public static NetworkTableEntry leftEncoderEntry;
 			public static NetworkTableEntry accelXEntry;
 			public static NetworkTableEntry accelYEntry;
-			public static NetworkTableEntry accelZEntry;
-		}
-
-		public static class Cubes {
-			public static NetworkTable table;
-			public static NetworkTableEntry angleEntry;
-			public static NetworkTableEntry distanceEntry;
-		}
-
-		public static class Localization {
-			public static NetworkTable table;
-			public static NetworkTableEntry distObstFrontEntry;
-			public static NetworkTableEntry ourXEntry;
-			public static NetworkTableEntry ourYEntry;
-		}
+            public static NetworkTableEntry accelZEntry;
+        }
+        
+        public static class PID {
+            public static NetworkTable table;
+            public static NetworkTableEntry driveP;
+            public static NetworkTableEntry driveI;
+            public static NetworkTableEntry driveD;
+            public static NetworkTableEntry driveF;
+            public static NetworkTableEntry driveError;
+            public static NetworkTableEntry turnP;
+            public static NetworkTableEntry turnI;
+            public static NetworkTableEntry turnD;
+            public static NetworkTableEntry turnF;
+            public static NetworkTableEntry turnError;
+            public static NetworkTableEntry elevP;
+            public static NetworkTableEntry elevI;
+            public static NetworkTableEntry elevD;
+            public static NetworkTableEntry elevF;
+            public static NetworkTableEntry elevError;
+        }
 	}
 
     public static class HumanInput {
@@ -113,21 +119,28 @@ public class RobotMap {
         Component.rightWheelEncoder);
         // Network Tables
         NetworkTables.inst = NetworkTableInstance.getDefault();
-		NetworkTables.table = NetworkTables.inst.getTable("vision");
-		NetworkTables.Sensors.table = NetworkTables.inst.getTable("sensorData");
+        NetworkTables.PID.table = NetworkTables.inst.getTable("PID");
+        NetworkTables.PID.driveP = NetworkTables.PID.table.getEntry("driveP");
+        NetworkTables.PID.driveI = NetworkTables.PID.table.getEntry("driveI");
+        NetworkTables.PID.driveD = NetworkTables.PID.table.getEntry("driveD");
+        NetworkTables.PID.driveF = NetworkTables.PID.table.getEntry("driveF");
+        NetworkTables.PID.driveError = NetworkTables.PID.table.getEntry("driveError");
+        NetworkTables.PID.turnP = NetworkTables.PID.table.getEntry("turnP");
+        NetworkTables.PID.turnI = NetworkTables.PID.table.getEntry("turnI");
+        NetworkTables.PID.turnD = NetworkTables.PID.table.getEntry("turnD");
+        NetworkTables.PID.turnF = NetworkTables.PID.table.getEntry("turnF");
+        NetworkTables.PID.turnError = NetworkTables.PID.table.getEntry("turnError");
+        NetworkTables.PID.elevP = NetworkTables.PID.table.getEntry("elevP");
+        NetworkTables.PID.elevI = NetworkTables.PID.table.getEntry("elevI");
+        NetworkTables.PID.elevD = NetworkTables.PID.table.getEntry("elevD");
+        NetworkTables.PID.elevF = NetworkTables.PID.table.getEntry("elevF");
+        NetworkTables.PID.elevError = NetworkTables.PID.table.getEntry("elevError");
+
 		NetworkTables.Sensors.yawEntry = NetworkTables.Sensors.table.getEntry("yaw");
 		NetworkTables.Sensors.rightEncoderEntry = NetworkTables.Sensors.table.getEntry("rightEncoder");
 		NetworkTables.Sensors.leftEncoderEntry = NetworkTables.Sensors.table.getEntry("leftEncoder");
 		NetworkTables.Sensors.accelXEntry = NetworkTables.Sensors.table.getEntry("accelX");
 		NetworkTables.Sensors.accelYEntry = NetworkTables.Sensors.table.getEntry("accelY");
 		NetworkTables.Sensors.accelZEntry = NetworkTables.Sensors.table.getEntry("accelZ");
-		NetworkTables.Cubes.table = NetworkTables.table.getSubTable("cubes");
-		NetworkTables.Cubes.angleEntry = NetworkTables.Cubes.table.getEntry("relangle");
-		NetworkTables.Cubes.distanceEntry = NetworkTables.Cubes.table.getEntry("distance");
-		NetworkTables.Localization.table = NetworkTables.table.getSubTable("localization");
-		NetworkTables.Localization.distObstFrontEntry = NetworkTables.Localization.table
-			.getEntry("frontObsticalDist");
-		NetworkTables.Localization.ourXEntry = NetworkTables.Localization.table.getEntry("x");
-		NetworkTables.Localization.ourYEntry = NetworkTables.Localization.table.getEntry("y");
     }
 }
