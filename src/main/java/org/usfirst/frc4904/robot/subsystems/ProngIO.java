@@ -26,7 +26,7 @@ public class ProngIO {
 		protected final DoubleSolenoid pusher;
 
 		public Pusher(DoubleSolenoid pusher) {
-			super("ProngIO Pusher");
+			super("ProngIO_Pusher");
 			this.pusher = pusher;
 		}
 

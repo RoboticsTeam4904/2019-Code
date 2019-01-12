@@ -13,7 +13,7 @@ public class RobotMap {
 
         }
         public static class CANMotor {
-            public static final int prongIOExpanderMotor=-1; //Define CANMotor.prongIOExpanderMotor with a correct port.
+            public static final int prongIOExpanderMotor = -1; //Define CANMotor.prongIOExpanderMotor with a correct port.
         }
         public static class PWM {}
         public static class CAN {}
