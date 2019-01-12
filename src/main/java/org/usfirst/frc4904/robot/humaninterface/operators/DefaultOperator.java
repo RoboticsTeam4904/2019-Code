@@ -1,7 +1,5 @@
 package org.usfirst.frc4904.robot.humaninterface.operators;
 
-
-import frc.robot.RobotMap;
 import org.usfirst.frc4904.standard.humaninput.Operator;
 
 public class DefaultOperator extends Operator {

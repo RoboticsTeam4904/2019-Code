@@ -1,7 +1,5 @@
 package org.usfirst.frc4904.robot.commands;
 
-import frc.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
