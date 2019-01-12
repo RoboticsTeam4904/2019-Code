@@ -10,6 +10,9 @@ import org.usfirst.frc4904.standard.custom.sensors.CANSensor;
 import org.usfirst.frc4904.standard.custom.sensors.EncoderPair;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import org.usfirst.frc4904.standard.subsystems.motor.speedmodifiers.AccelerationCap;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 
 
 public class RobotMap {
@@ -63,6 +66,34 @@ public class RobotMap {
 		public static CANEncoder rightWheelEncoder;
 		public static EncoderPair chassisEncoders;
     }
+    public static class NetworkTables {
+		public static NetworkTableInstance inst;
+		public static NetworkTable table;
+
+		public static class Sensors {
+			public static NetworkTable table;
+			public static NetworkTableEntry yawEntry;
+			public static NetworkTableEntry rightEncoderEntry;
+			public static NetworkTableEntry leftEncoderEntry;
+			public static NetworkTableEntry accelXEntry;
+			public static NetworkTableEntry accelYEntry;
+			public static NetworkTableEntry accelZEntry;
+		}
+
+		public static class Cubes {
+			public static NetworkTable table;
+			public static NetworkTableEntry angleEntry;
+			public static NetworkTableEntry distanceEntry;
+		}
+
+		public static class Localization {
+			public static NetworkTable table;
+			public static NetworkTableEntry distObstFrontEntry;
+			public static NetworkTableEntry ourXEntry;
+			public static NetworkTableEntry ourYEntry;
+		}
+	}
+
     public static class HumanInput {
         public static class Driver {
             public static CustomXbox xbox;
@@ -80,5 +111,23 @@ public class RobotMap {
         Component.chassisTurnMC.setDerivativeTolerance(PID.Turn.dTolerance);
         Component.drivePID = new CustomPIDController(PID.Drive.P, PID.Drive.I, PID.Drive.D, PID.Drive.F,
         Component.rightWheelEncoder);
+        // Network Tables
+        NetworkTables.inst = NetworkTableInstance.getDefault();
+		NetworkTables.table = NetworkTables.inst.getTable("vision");
+		NetworkTables.Sensors.table = NetworkTables.inst.getTable("sensorData");
+		NetworkTables.Sensors.yawEntry = NetworkTables.Sensors.table.getEntry("yaw");
+		NetworkTables.Sensors.rightEncoderEntry = NetworkTables.Sensors.table.getEntry("rightEncoder");
+		NetworkTables.Sensors.leftEncoderEntry = NetworkTables.Sensors.table.getEntry("leftEncoder");
+		NetworkTables.Sensors.accelXEntry = NetworkTables.Sensors.table.getEntry("accelX");
+		NetworkTables.Sensors.accelYEntry = NetworkTables.Sensors.table.getEntry("accelY");
+		NetworkTables.Sensors.accelZEntry = NetworkTables.Sensors.table.getEntry("accelZ");
+		NetworkTables.Cubes.table = NetworkTables.table.getSubTable("cubes");
+		NetworkTables.Cubes.angleEntry = NetworkTables.Cubes.table.getEntry("relangle");
+		NetworkTables.Cubes.distanceEntry = NetworkTables.Cubes.table.getEntry("distance");
+		NetworkTables.Localization.table = NetworkTables.table.getSubTable("localization");
+		NetworkTables.Localization.distObstFrontEntry = NetworkTables.Localization.table
+			.getEntry("frontObsticalDist");
+		NetworkTables.Localization.ourXEntry = NetworkTables.Localization.table.getEntry("x");
+		NetworkTables.Localization.ourYEntry = NetworkTables.Localization.table.getEntry("y");
     }
 }

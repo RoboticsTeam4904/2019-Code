@@ -1,154 +1,139 @@
 {
-    "dividerPosition": 0.004172461752433936,
-    "tabPane": [
-      {
-        "title": "Test",
-        "autoPopulate": false,
-        "autoPopulatePrefix": "",
-        "widgetPane": {
-          "gridSize": 128.0,
-          "showGrid": true,
-          "hgap": 16.0,
-          "vgap": 16.0,
-          "tiles": {
-            "8,2": {
-              "size": [
-                2,
-                1
-              ],
-              "content": {
-                "_type": "ComboBox Chooser",
-                "_source0": "network_table:///SmartDashboard/Auton Routine Selector",
-                "_title": "Auton Routine Selector"
-              }
-            },
-            "8,0": {
-              "size": [
-                2,
-                2
-              ],
-              "content": {
-                "_type": "Gyro",
-                "_source0": "network_table:///SmartDashboard/Arm Angle",
-                "_title": "Arm Angle"
-              }
-            },
-            "7,0": {
-              "size": [
-                1,
-                3
-              ],
-              "content": {
-                "_type": "List Layout",
-                "_title": "PID Controller",
-                "_children": [
-                  {
-                    "_type": "Text View",
-                    "_source0": "network_table:///SmartDashboard/P",
-                    "_title": "P"
-                  },
-                  {
-                    "_type": "Text View",
-                    "_source0": "network_table:///SmartDashboard/I",
-                    "_title": "I"
-                  },
-                  {
-                    "_type": "Text View",
-                    "_source0": "network_table:///SmartDashboard/D",
-                    "_title": "D"
-                  },
-                  {
-                    "_type": "Text View",
-                    "_source0": "network_table:///SmartDashboard/F",
-                    "_title": "F"
-                  }
-                ]
-              }
-            },
-            "7,3": {
-              "size": [
-                3,
-                2
-              ],
-              "content": {
-                "_type": "Text View",
-                "_source0": "network_table:///SmartDashboard/Subsystem Overview",
-                "_title": "System Overview"
-              }
-            },
-            "0,0": {
-              "size": [
-                7,
-                5
-              ],
-              "content": {
-                "_type": "Camera Stream",
-                "_source0": "camera_server://USB Camera 0",
-                "_title": "USB Camera 0"
-              }
+  "dividerPosition": 0.1995827538247566,
+  "tabPane": [
+    {
+      "title": "PID",
+      "autoPopulate": false,
+      "autoPopulatePrefix": "",
+      "widgetPane": {
+        "gridSize": 128.0,
+        "showGrid": true,
+        "hgap": 16.0,
+        "vgap": 16.0,
+        "tiles": {
+          "4,0": {
+            "size": [
+              1,
+              2
+            ],
+            "content": {
+              "_type": "PID Controller",
+              "_title": "Elevator PID"
             }
-          }
-        }
-      },
-      {
-        "title": "Competition",
-        "autoPopulate": false,
-        "autoPopulatePrefix": "",
-        "widgetPane": {
-          "gridSize": 128.0,
-          "showGrid": true,
-          "hgap": 16.0,
-          "vgap": 16.0,
-          "tiles": {
-            "8,4": {
-              "size": [
-                2,
-                1
-              ],
-              "content": {
-                "_type": "ComboBox Chooser",
-                "_source0": "network_table:///SmartDashboard/Auton Routine Selector",
-                "_title": "Auton Routine Selector"
-              }
-            },
-            "8,2": {
-              "size": [
-                2,
-                2
-              ],
-              "content": {
-                "_type": "Gyro",
-                "_source0": "network_table:///SmartDashboard/Arm Angle",
-                "_title": "Arm Angle",
-                "majorTickSpace": 45.0,
-                "startAngle": 0.0,
-                "tickMarkRingVisible": true
-              }
-            },
-            "8,0": {
-              "size": [
-                2,
-                2
-              ],
-              "content": {
-                "_type": "Text View",
-                "_source0": "network_table:///SmartDashboard/Subsystem Overview",
-                "_title": "System Overview"
-              }
-            },
-            "0,0": {
-              "size": [
-                8,
-                5
-              ],
-              "content": {
-                "_type": "Camera Stream",
-                "_source0": "camera_server://USB Camera 0",
-                "_title": "USB Camera 0"
-              }
+          },
+          "2,0": {
+            "size": [
+              1,
+              2
+            ],
+            "content": {
+              "_type": "PID Controller",
+              "_title": "Turn PID"
+            }
+          },
+          "0,0": {
+            "size": [
+              1,
+              2
+            ],
+            "content": {
+              "_type": "PID Controller",
+              "_title": "Drive PID"
+            }
+          },
+          "0,2": {
+            "size": [
+              2,
+              2
+            ],
+            "content": {
+              "_type": "Graph",
+              "_title": "Drive Error",
+              "Visible time": 30.0
+            }
+          },
+          "2,2": {
+            "size": [
+              2,
+              2
+            ],
+            "content": {
+              "_type": "Graph",
+              "_title": "Turn Error",
+              "Visible time": 30.0
+            }
+          },
+          "4,2": {
+            "size": [
+              2,
+              2
+            ],
+            "content": {
+              "_type": "Graph",
+              "_title": "Elevator Error",
+              "Visible time": 30.0
             }
           }
         }
       }
-    ]
-  }
+    },
+    {
+      "title": "Competition",
+      "autoPopulate": false,
+      "autoPopulatePrefix": "",
+      "widgetPane": {
+        "gridSize": 128.0,
+        "showGrid": true,
+        "hgap": 16.0,
+        "vgap": 16.0,
+        "tiles": {
+          "5,2": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "ComboBox Chooser",
+              "_source0": "network_table:///SmartDashboard/Auton Routine Selector",
+              "_title": "Auton Routine Selector"
+            }
+          },
+          "5,0": {
+            "size": [
+              1,
+              2
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Subsystem Overview",
+              "_title": "System Overview"
+            }
+          },
+          "0,0": {
+            "size": [
+              5,
+              4
+            ],
+            "content": {
+              "_type": "Camera Stream",
+              "_source0": "camera_server://USB Camera 0",
+              "_title": "USB Camera 0"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Tab 3",
+      "autoPopulate": false,
+      "autoPopulatePrefix": "",
+      "widgetPane": {
+        "gridSize": 128.0,
+        "showGrid": true,
+        "hgap": 16.0,
+        "vgap": 16.0,
+        "tiles": {}
+      }
+    }
+  ]
+}
