@@ -1,4 +1,4 @@
-package org.usfirst.frc4904.robot;
+package frc.robot;
 
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
 
