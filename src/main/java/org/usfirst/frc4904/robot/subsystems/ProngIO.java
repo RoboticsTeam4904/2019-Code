@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class ProngIO {
     //Will change speeds as needed.
-	public static final double EXPANSION_SPEED = 0.5;
+	public static final double EXPANSION_SPEED = 0.5; //Change positive/negative accordingly
 	public static final double CONTRACTION_SPEED = -0.5;
 	public final Motor expander;
 	public final Pusher pusher;

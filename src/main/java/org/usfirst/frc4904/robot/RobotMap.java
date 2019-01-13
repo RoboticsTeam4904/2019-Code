@@ -1,5 +1,6 @@
 package org.usfirst.frc4904.robot;
 
+import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CANTalonSRX;
 import org.usfirst.frc4904.robot.subsystems.ProngIO;
@@ -10,6 +11,7 @@ public class RobotMap {
     public static class Port {
         public static class HumanInput {
             public static final int xboxController = 1;
+            public static final int joystick = 0; //Change port later
 
         }
         public static class CANMotor {
@@ -33,11 +35,14 @@ public class RobotMap {
         public static class Driver {
             public static CustomXbox xbox;
         }
-        public static class Operator {}
+        public static class Operator {
+            public static CustomJoystick joystick;
+        }
     }
     public RobotMap() {
         Component.driverXbox = new CustomXbox(Port.HumanInput.xboxController);
         Component.driverXbox.setDeadZone(0.1);
+        HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
         Component.prongIOExpander = new Motor("ProngIOExpanderMotor",
 			new CANTalonSRX(Port.CANMotor.prongIOExpanderMotor));
         Component.prongIOPusher = new ProngIO.Pusher(Port.Pneumatics.prongIOPusher.buildDoubleSolenoid());

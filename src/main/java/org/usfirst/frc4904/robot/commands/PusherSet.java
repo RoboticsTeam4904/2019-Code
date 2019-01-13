@@ -18,6 +18,6 @@ public class PusherSet extends Command {
 
 	@Override
 	protected boolean isFinished() {
-		return true;
+		return false;
 	}
 }
