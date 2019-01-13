@@ -10,8 +10,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class FloorIO {
-
-    public static final double INTAKE_SPEED = 0.5;
+	public static final double INTAKE_SPEED = 0.5;
 	public static final double OUTTAKE_SPEED = -0.5;
 	public final Motor hatcherRollerIntake;
 	public final Motor cargoRollerIntake;
@@ -28,19 +27,18 @@ public class FloorIO {
     }
     
     public static class HatchHolder extends Subsystem {
-        public static final DoubleSolenoid.Value HELD = DoubleSolenoid.Value.kForward; // Holds the hatcher through the first piston
-		public static final DoubleSolenoid.Value RELEASED = DoubleSolenoid.Value.kReverse; // Releases/keeps the hatcher unheld 
-		
-        protected final DoubleSolenoid hatchHolder;
+	    public static final DoubleSolenoid.Value HELD = DoubleSolenoid.Value.kForward; // Holds the hatcher through the first piston
+	    public static final DoubleSolenoid.Value RELEASED = DoubleSolenoid.Value.kReverse; // Releases/keeps the hatcher unheld 
+	    protected final DoubleSolenoid hatchHolder;
 
         public HatchHolder(DoubleSolenoid hatchHolder) {
-			super("FloorIO HatchHolder");
-            this.hatchHolder = hatchHolder;
+		super("FloorIO HatchHolder");
+		this.hatchHolder = hatchHolder;
             
         }
         
         public boolean isHeld() {
-			return this.hatchHolder.get() == HELD;
+		return this.hatchHolder.get() == HELD;
 		} 
 
 		public void set(boolean held) {
@@ -61,18 +59,18 @@ public class FloorIO {
 	}
 	
     public static class Flipper extends Subsystem {
-		public static final DoubleSolenoid.Value UP = DoubleSolenoid.Value.kForward; // Piston moves the block that holds the hatcher 90 degrees upwards 
-        public static final DoubleSolenoid.Value DOWN = DoubleSolenoid.Value.kReverse; // Piston keeps the hatcher downwards 
-        protected final DoubleSolenoid flipper;
+	    public static final DoubleSolenoid.Value UP = DoubleSolenoid.Value.kForward; // Piston moves the block that holds the hatcher 90 degrees upwards 
+	    public static final DoubleSolenoid.Value DOWN = DoubleSolenoid.Value.kReverse; // Piston keeps the hatcher downwards 
+	    protected final DoubleSolenoid flipper;
 
         public Flipper(DoubleSolenoid flipper) {
-			super("FloorIO Flipper");
-            this.flipper = flipper;
+		super("FloorIO Flipper");
+		this.flipper = flipper;
             
         }
         
         public boolean isUp() {
-			return this.flipper.get() == UP;
+		return this.flipper.get() == UP;
 		}
 
 		public void set(boolean up) {
