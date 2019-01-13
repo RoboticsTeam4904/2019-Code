@@ -14,7 +14,7 @@ public class VelcroPlateDefault extends CommandGroup {
 
 	public VelcroPlateDefault() {
         super("VelcroPlateDefault");
-        addParallel(new ChassisConstant(RobotMap.Component.chassis, MOTOR_HALT_X, MOTOR_HALT_Y, MOTOR_TURN, 0.0));
+        // addParallel(new ChassisConstant(RobotMap.Component.chassis, MOTOR_HALT_X, MOTOR_HALT_Y, MOTOR_TURN, 0.0)); // See PR #11 comments
         addParallel(new PlaceSolenoidSet(false));
         addParallel(new PickupSolenoidSet(false));
 	}

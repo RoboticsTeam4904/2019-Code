@@ -14,7 +14,7 @@ public class PickupSolenoidSet extends Command {
 		this.clasped = clasped;
 	}
 
-	// Called just before this Command runs the first time
+	// Called just before this Command runs for the first time
    	@Override
 	protected void initialize() {
 		System.out.println("The command has initialized!");
