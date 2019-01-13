@@ -64,13 +64,13 @@ public class FloorIO {
 	    protected final DoubleSolenoid flipper;
 
         public Flipper(DoubleSolenoid flipper) {
-			super("FloorIO Flipper");
-			this.flipper = flipper;
+		super("FloorIO Flipper");
+		this.flipper = flipper;
             
         }
         
         public boolean isUp() {
-			return this.flipper.get() == UP;
+		return this.flipper.get() == UP;
 		}
 
 		public void set(boolean up) {
