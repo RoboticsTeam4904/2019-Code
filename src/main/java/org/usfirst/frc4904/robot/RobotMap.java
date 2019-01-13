@@ -12,8 +12,8 @@ public class RobotMap {
             public static final int xboxController = 1;
         }
         public static class CANMotor {
-			public static final int cargoIORollerMotorLeft = -1;
-			public static final int cargoIORollerMotorRight = -1;
+			public static final int cargoIORollerMotorTop = -1;
+			public static final int cargoIORollerMotorBottom = -1;
         }
         public static class PWM {}
         public static class CAN {}
@@ -24,8 +24,8 @@ public class RobotMap {
     public static class Component {
 		public static CustomXbox driverXbox;
 		public static CargoIO cargoIO;
-		public static Motor cargoIORollerLeft;
-		public static Motor cargoIORollerRight;
+		public static Motor cargoIORollerTop;
+		public static Motor cargoIORollerBottom;
     }
     public static class HumanInput {
         public static class Driver {
@@ -36,8 +36,8 @@ public class RobotMap {
     public RobotMap() {
 		Component.driverXbox = new CustomXbox(Port.HumanInput.xboxController);
 		Component.driverXbox.setDeadZone(0.1);
-		Component.cargoIORollerLeft = new Motor("CargoIORollerLeft", new CANTalonSRX(Port.CANMotor.cargoIORollerMotorLeft));
-		Component.cargoIORollerRight = new Motor("CargoIORollerRight", new CANTalonSRX(Port.CANMotor.cargoIORollerMotorRight));
-		Component.cargoIO = new CargoIO(Component.cargoIORollerLeft, Component.cargoIORollerRight);
+		Component.cargoIORollerTop = new Motor("CargoIORollerTop", new CANTalonSRX(Port.CANMotor.cargoIORollerMotorTop));
+		Component.cargoIORollerBottom = new Motor("CargoIORollerBottom", new CANTalonSRX(Port.CANMotor.cargoIORollerMotorBottom));
+		Component.cargoIO = new CargoIO(Component.cargoIORollerTop, Component.cargoIORollerBottom);
     }
 }

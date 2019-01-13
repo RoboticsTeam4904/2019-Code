@@ -1,7 +1,5 @@
 package org.usfirst.frc4904.robot.commands;
 
-
-import org.usfirst.frc4904.robot.RobotMap;
 import org.usfirst.frc4904.robot.subsystems.CargoIO;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 

@@ -1,7 +1,5 @@
 package org.usfirst.frc4904.robot.subsystems;
 
-
-import org.usfirst.frc4904.robot.commands.CargoIORollersSet;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 
 /**
@@ -13,8 +11,8 @@ import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 public class CargoIO {
 	public static final double INTAKE_SPEED = 0.5;
 	public static final double OUTTAKE_SPEED = -0.5;
-	public final Motor rollerLeft;
-	public final Motor rollerRight;
+	public final Motor rollerTop;
+	public final Motor rollerBottom;
 
 	/**
 	 * Create a new CargoIO instance.
@@ -28,9 +26,9 @@ public class CargoIO {
 	 *        to the right motors for intaking
 	 *        and outtaking cubes.
 	 */
-	public CargoIO(Motor rollerLeft, Motor rollerRight) {
-		this.rollerLeft = rollerLeft;
-		this.rollerRight = rollerRight;
+	public CargoIO(Motor rollerTop, Motor rollerBottom) {
+		this.rollerTop = rollerTop;
+		this.rollerBottom = rollerBottom;
 	}
 
 }

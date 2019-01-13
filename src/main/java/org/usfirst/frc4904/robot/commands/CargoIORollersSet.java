@@ -16,8 +16,8 @@ public class CargoIORollersSet extends CommandGroup {
 
 	public CargoIORollersSet(double speed) {
 		addParallel(
-			new MotorConstant(RobotMap.Component.cargoIORollerRight, speed));
+			new MotorConstant(RobotMap.Component.cargoIORollerBottom, speed));
 		addParallel(
-			new MotorConstant(RobotMap.Component.cargoIORollerLeft, speed));
+			new MotorConstant(RobotMap.Component.cargoIORollerTop, speed));
 	}
 }
