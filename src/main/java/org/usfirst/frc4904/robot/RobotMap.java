@@ -9,12 +9,11 @@ import org.usfirst.frc4904.standard.custom.motioncontrollers.CANTalonSRX;
 public class RobotMap {
     public static class Port {
         public static class HumanInput {
-			public static final int xboxController = 1;
-
+            public static final int xboxController = 1;
         }
         public static class CANMotor {
-			public static final int cargoIORollerMotorLeft = 1;
-			public static final int cargoIORollerMotorRight = 7;
+			public static final int cargoIORollerMotorLeft = -1;
+			public static final int cargoIORollerMotorRight = -1;
         }
         public static class PWM {}
         public static class CAN {}

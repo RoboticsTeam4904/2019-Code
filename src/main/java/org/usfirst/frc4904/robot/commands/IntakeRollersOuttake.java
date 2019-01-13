@@ -3,8 +3,7 @@ package org.usfirst.frc4904.robot.commands;
 
 import org.usfirst.frc4904.robot.RobotMap;
 import org.usfirst.frc4904.robot.subsystems.CargoIO;
-import org.usfirst.frc4904.standard.commands.motor.MotorConstant;
-import edu.wpi.first.wpilibj.command.CommandGroup;
+import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 
 
 /**
@@ -13,10 +12,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  * spin outwards to outtake the cargo
  */
 
-public class IntakeRollersOuttake extends CommandGroup {
-	public IntakeRollersOuttake() {
-		super("IntakeRollersOuttake");
-		addParallel(new MotorConstant(RobotMap.Component.cargoIO.rollerLeft, CargoIO.OUTTAKE_SPEED));
-		addParallel(new MotorConstant(RobotMap.Component.cargoIO.rollerRight, CargoIO.OUTTAKE_SPEED));
+public class IntakeRollersOuttake extends CargoIORollersSet {
+	public IntakeRollersOuttake(Motor... motors) {
+		super(CargoIO.OUTTAKE_SPEED);
+		for (Motor motor : motors) {
+			requires(motor);
+		}
 	}
 }
