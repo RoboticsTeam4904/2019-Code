@@ -19,6 +19,9 @@ import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardLayout;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardComponent;
 import edu.wpi.first.networktables.NetworkTable;
 import org.usfirst.frc4904.robot.RobotMap;
+import edu.wpi.first.cameraserver.CameraServer;
+
+
 
 public class Robot extends CommandRobotBase {
 	private RobotMap map = new RobotMap();
@@ -29,6 +32,14 @@ public class Robot extends CommandRobotBase {
 		// operatorChooser.addDefault();
 		Shuffleboard.startRecording();
 		Shuffleboard.enableActuatorWidgets();
+		/* 
+			works in shuffleboard with Logitech C270
+			any amount of compression, 30 FPS, 160 x 120
+			< 4 Mbps, often < 1
+		*/
+		CameraServer.getInstance().startAutomaticCapture();
+
+
 	}
 
 	@Override
