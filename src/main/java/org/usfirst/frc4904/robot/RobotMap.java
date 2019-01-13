@@ -30,26 +30,26 @@ public class RobotMap {
     public static class Metrics{}
     public static class PID{
         public static class Drive{
-            public static final double P = 0.00004904;
-			public static final double I = 0.0000000004904;
-			public static final double D = 0.4904;
-			public static final double F = 0.00004904;
+            public static final double P = 0.01;
+			public static final double I = 0.001;
+			public static final double D = 0.01;
+			public static final double F = 0.01;
 			public static final double tolerance = 4.904;
 			public static final double dTolerance = 4.904;
         }
         public static class Turn{
-            public static final double P = 0.00004904;
-			public static final double I = 0.0000000004904;
-			public static final double D = 0.4904;
-			public static final double F = 0.00004904;
+            public static final double P = 0.01;
+			public static final double I = 0.001;
+			public static final double D = 0.01;
+			public static final double F = 0.01;
 			public static final double tolerance = 4.904;
 			public static final double dTolerance = 4.904;
         }
         public static class Elevator{
-            public static final double P = 0.00004904;
-			public static final double I = 0.0000000004904;
-			public static final double D = 0.4904;
-			public static final double F = 0.00004904;
+            public static final double P = 0.01;
+			public static final double I = 0.001;
+			public static final double D = 0.01;
+			public static final double F = 0.01;
 			public static final double tolerance = 4.904;
 			public static final double dTolerance = 4.904;
         }
@@ -57,8 +57,8 @@ public class RobotMap {
     public static class Component {
         public static CustomXbox driverXbox;
         public static TankDriveShifting chassis;
-        public static CustomPIDController chassisTurnMC;
-        public static CustomPIDController drivePID;
+    //    public static CustomPIDController chassisTurnMC;
+    //   public static CustomPIDController drivePID;
         public static NavX navx;
         public static EnableableModifier rightWheelAccelerationCap;
 		public static EnableableModifier leftWheelAccelerationCap;
@@ -107,16 +107,16 @@ public class RobotMap {
         public static class Operator {}
     }
     public RobotMap() {
-        Component.driverXbox = new CustomXbox(Port.HumanInput.xboxController);
-        Component.driverXbox.setDeadZone(0.1);
-        Component.chassisTurnMC = new CustomPIDController(PID.Turn.P, PID.Turn.I, PID.Turn.D, PID.Turn.F, Component.navx);
-        Component.chassisTurnMC.setMinimumNominalOutput(0.24);
-		Component.chassisTurnMC.setInputRange(-180, 180);
-		Component.chassisTurnMC.setContinuous(true);
-		Component.chassisTurnMC.setAbsoluteTolerance(PID.Turn.tolerance);
-        Component.chassisTurnMC.setDerivativeTolerance(PID.Turn.dTolerance);
-        Component.drivePID = new CustomPIDController(PID.Drive.P, PID.Drive.I, PID.Drive.D, PID.Drive.F,
-        Component.rightWheelEncoder);
+        // Component.driverXbox = new CustomXbox(Port.HumanInput.xboxController);
+        // Component.driverXbox.setDeadZone(0.1);
+        // Component.chassisTurnMC = new CustomPIDController(PID.Turn.P, PID.Turn.I, PID.Turn.D, PID.Turn.F, Component.navx);
+        // Component.chassisTurnMC.setMinimumNominalOutput(0.24);
+		// Component.chassisTurnMC.setInputRange(-180, 180);
+		// Component.chassisTurnMC.setContinuous(true);
+		// Component.chassisTurnMC.setAbsoluteTolerance(PID.Turn.tolerance);
+        // Component.chassisTurnMC.setDerivativeTolerance(PID.Turn.dTolerance);
+    //     Component.drivePID = new CustomPIDController(PID.Drive.P, PID.Drive.I, PID.Drive.D, PID.Drive.F,
+    //    Component.rightWheelEncoder);
         // Network Tables
         NetworkTables.inst = NetworkTableInstance.getDefault();
         NetworkTables.PID.table = NetworkTables.inst.getTable("PID");
@@ -136,11 +136,11 @@ public class RobotMap {
         NetworkTables.PID.elevF = NetworkTables.PID.table.getEntry("elevF");
         NetworkTables.PID.elevError = NetworkTables.PID.table.getEntry("elevError");
 
-		NetworkTables.Sensors.yawEntry = NetworkTables.Sensors.table.getEntry("yaw");
-		NetworkTables.Sensors.rightEncoderEntry = NetworkTables.Sensors.table.getEntry("rightEncoder");
-		NetworkTables.Sensors.leftEncoderEntry = NetworkTables.Sensors.table.getEntry("leftEncoder");
-		NetworkTables.Sensors.accelXEntry = NetworkTables.Sensors.table.getEntry("accelX");
-		NetworkTables.Sensors.accelYEntry = NetworkTables.Sensors.table.getEntry("accelY");
-		NetworkTables.Sensors.accelZEntry = NetworkTables.Sensors.table.getEntry("accelZ");
+		// NetworkTables.Sensors.yawEntry = NetworkTables.Sensors.table.getEntry("yaw");
+		// NetworkTables.Sensors.rightEncoderEntry = NetworkTables.Sensors.table.getEntry("rightEncoder");
+		// NetworkTables.Sensors.leftEncoderEntry = NetworkTables.Sensors.table.getEntry("leftEncoder");
+		// NetworkTables.Sensors.accelXEntry = NetworkTables.Sensors.table.getEntry("accelX");
+		// NetworkTables.Sensors.accelYEntry = NetworkTables.Sensors.table.getEntry("accelY");
+		// NetworkTables.Sensors.accelZEntry = NetworkTables.Sensors.table.getEntry("accelZ");
     }
 }

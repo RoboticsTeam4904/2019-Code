@@ -11,67 +11,136 @@
         "hgap": 16.0,
         "vgap": 16.0,
         "tiles": {
-          "4,0": {
+          "0,0": {
             "size": [
               1,
-              2
+              1
             ],
             "content": {
-              "_type": "PID Controller",
-              "_title": "Elevator PID"
+              "_type": "Text View",
+              "_source0": "network_table:///PID/driveP",
+              "_title": "PID/driveP"
+            }
+          },
+          "1,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///PID/driveI",
+              "_title": "PID/driveI"
             }
           },
           "2,0": {
             "size": [
               1,
-              2
+              1
             ],
             "content": {
-              "_type": "PID Controller",
-              "_title": "Turn PID"
+              "_type": "Text View",
+              "_source0": "network_table:///PID/driveD",
+              "_title": "PID/driveD"
             }
           },
-          "0,0": {
+          "3,0": {
             "size": [
               1,
-              2
+              1
             ],
             "content": {
-              "_type": "PID Controller",
-              "_title": "Drive PID"
+              "_type": "Text View",
+              "_source0": "network_table:///PID/driveF",
+              "_title": "PID/driveF"
+            }
+          },
+          "0,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///PID/turnP",
+              "_title": "PID/turnP"
+            }
+          },
+          "1,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///PID/turnI",
+              "_title": "PID/turnI"
+            }
+          },
+          "2,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///PID/turnD",
+              "_title": "PID/turnD"
+            }
+          },
+          "3,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///PID/turnF",
+              "_title": "PID/turnF"
             }
           },
           "0,2": {
             "size": [
-              2,
-              2
+              1,
+              1
             ],
             "content": {
-              "_type": "Graph",
-              "_title": "Drive Error",
-              "Visible time": 30.0
+              "_type": "Text View",
+              "_source0": "network_table:///PID/elevP",
+              "_title": "PID/elevP"
+            }
+          },
+          "1,2": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///PID/elevI",
+              "_title": "PID/elevI"
             }
           },
           "2,2": {
             "size": [
-              2,
-              2
+              1,
+              1
             ],
             "content": {
-              "_type": "Graph",
-              "_title": "Turn Error",
-              "Visible time": 30.0
+              "_type": "Text View",
+              "_source0": "network_table:///PID/elevD",
+              "_title": "PID/elevD"
             }
           },
-          "4,2": {
+          "3,2": {
             "size": [
-              2,
-              2
+              1,
+              1
             ],
             "content": {
-              "_type": "Graph",
-              "_title": "Elevator Error",
-              "Visible time": 30.0
+              "_type": "Text View",
+              "_source0": "network_table:///PID/elevF",
+              "_title": "PID/elevF"
             }
           }
         }
@@ -121,18 +190,6 @@
             }
           }
         }
-      }
-    },
-    {
-      "title": "Tab 3",
-      "autoPopulate": false,
-      "autoPopulatePrefix": "",
-      "widgetPane": {
-        "gridSize": 128.0,
-        "showGrid": true,
-        "hgap": 16.0,
-        "vgap": 16.0,
-        "tiles": {}
       }
     }
   ]
