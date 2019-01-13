@@ -1,6 +1,7 @@
 package org.usfirst.frc4904.robot;
 
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
+import org.usfirst.frc4904.robot.subsystems.Tim;
 
 
 public class RobotMap {
@@ -18,6 +19,7 @@ public class RobotMap {
     public static class Metrics{}
     public static class Component {
         public static CustomXbox driverXbox;
+        public static Tim tim;
     }
     public static class HumanInput {
         public static class Driver {
@@ -25,6 +27,11 @@ public class RobotMap {
         }
         public static class Operator {}
     }
+    public static class Constant{
+        public static final double TIM_INTAKE_SPEED = 0.75;
+		public static final double TIM_OUTTAKE_SPEED = -0.75;
+    }
+    
     public RobotMap() {
         Component.driverXbox = new CustomXbox(Port.HumanInput.xboxController);
 		Component.driverXbox.setDeadZone(0.1);
