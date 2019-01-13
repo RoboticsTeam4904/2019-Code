@@ -52,14 +52,12 @@ public class RobotMap {
 
     public RobotMap() {
         Component.driverXbox = new CustomXbox(Port.HumanInput.xboxController);
+        
         Component.Floorio.cargoRollerIntake = new Motor("Cargo Rolller Intake", new CANTalonSRX(Port.CANMotor.cargoRollerIntake));
         Component.Floorio.hatcherRollerIntake = new Motor("Hatch Rolller Intake", new CANTalonSRX(Port.CANMotor.hatcherRollerIntake));
 
-
-
         Component.Floorio.flipper = new FloorIO.Flipper(Port.Pneumatics.flipper.buildDoubleSolenoid());
         Component.Floorio.hatchHolder = new FloorIO.HatchHolder(Port.Pneumatics.hatchHolder.buildDoubleSolenoid());
-
 
         Component.Floorio.floorio = new FloorIO(Component.Floorio.cargoRollerIntake,  Component.Floorio.hatcherRollerIntake, Component.Floorio.hatchHolder, Component.Floorio.flipper);        
 

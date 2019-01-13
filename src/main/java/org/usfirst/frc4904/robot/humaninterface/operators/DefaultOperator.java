@@ -7,7 +7,6 @@ import org.usfirst.frc4904.robot.commands.IndexerVelcroHeld;
 import org.usfirst.frc4904.robot.commands.IndexerVelcroRelease;
 import org.usfirst.frc4904.robot.commands.IndexerVelcroUp;
 import org.usfirst.frc4904.standard.humaninput.Operator;
-import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
 
 
 public class DefaultOperator extends Operator {
@@ -22,10 +21,10 @@ public class DefaultOperator extends Operator {
 
 	@Override
 	public void bindCommands() {
-		RobotMap.HumanInput.Operator.joystick.button1.onlyWhileHeld(new IndexerVelcroHeld());
-		RobotMap.HumanInput.Operator.joystick.button2.onlyWhileHeld(new IndexerVelcroRelease());
-		RobotMap.HumanInput.Operator.joystick.button3.onlyWhileHeld(new IndexerVelcroUp());
-		RobotMap.HumanInput.Operator.joystick.button4.onlyWhileHeld(new IndexerVelcroDown());
+		RobotMap.HumanInput.Operator.joystick.button1.whenPressed(new IndexerVelcroHeld());
+		RobotMap.HumanInput.Operator.joystick.button2.whenPressed(new IndexerVelcroRelease());
+		RobotMap.HumanInput.Operator.joystick.button3.whenPressed(new IndexerVelcroUp());
+		RobotMap.HumanInput.Operator.joystick.button4.whenPressed(new IndexerVelcroDown());
 
 
 	}
