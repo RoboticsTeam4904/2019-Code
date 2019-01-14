@@ -24,10 +24,10 @@ public class NathanGain extends Driver {
 
 	@Override
 	public void bindCommands() {
-		// RobotMap.Component.driverXbox.lb
-		// 	.whenPressed(new ChassisShift(RobotMap.Component.chassis.getShifter(), SolenoidShifters.ShiftState.DOWN));
-		// RobotMap.Component.driverXbox.rb
-		// 	.whenPressed(new ChassisShift(RobotMap.Component.chassis.getShifter(), SolenoidShifters.ShiftState.UP));
+		RobotMap.Component.driverXbox.lb
+			.whenPressed(new ChassisShift(RobotMap.Component.chassis.getShifter(), SolenoidShifters.ShiftState.DOWN));
+		RobotMap.Component.driverXbox.rb
+			.whenPressed(new ChassisShift(RobotMap.Component.chassis.getShifter(), SolenoidShifters.ShiftState.UP));
     }
     @Override
 	public double getX() {
