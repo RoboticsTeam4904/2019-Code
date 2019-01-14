@@ -11,9 +11,9 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class TimIntake extends MotorConstant {
-    protected Motor motor; // should be called in parallel, one with tim.intakeMotor, one with tim.indexMotor
+    // should be called in parallel, one with tim.intakeMotor, one with tim.indexMotor
     public TimIntake(Motor motor) {
-		super(motor, RobotMap.Constant.TIM_INTAKE_SPEED);
+		  super(motor, Tim.TIM_INTAKE_SPEED);
   }
 }
 
