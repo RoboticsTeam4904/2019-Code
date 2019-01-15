@@ -76,13 +76,16 @@ public class Robot extends CommandRobotBase {
 		RobotMap.NetworkTables.PID.driveI.setDouble(RobotMap.PID.Drive.I);
 		RobotMap.NetworkTables.PID.driveD.setDouble(RobotMap.PID.Drive.D);
 		RobotMap.NetworkTables.PID.driveF.setDouble(RobotMap.PID.Drive.F);
+		RobotMap.NetworkTables.PID.driveError.setDouble(RobotMap.PID.Drive.e);
 		RobotMap.NetworkTables.PID.turnP.setDouble(RobotMap.PID.Turn.P);
 		RobotMap.NetworkTables.PID.turnI.setDouble(RobotMap.PID.Turn.I);
 		RobotMap.NetworkTables.PID.turnD.setDouble(RobotMap.PID.Turn.D);
 		RobotMap.NetworkTables.PID.turnF.setDouble(RobotMap.PID.Turn.F);
+		RobotMap.NetworkTables.PID.turnError.setDouble(RobotMap.PID.Turn.e);
 		RobotMap.NetworkTables.PID.elevP.setDouble(RobotMap.PID.Elevator.P);
 		RobotMap.NetworkTables.PID.elevI.setDouble(RobotMap.PID.Elevator.I);
 		RobotMap.NetworkTables.PID.elevD.setDouble(RobotMap.PID.Elevator.D);
 		RobotMap.NetworkTables.PID.elevF.setDouble(RobotMap.PID.Elevator.F);
+		RobotMap.NetworkTables.PID.elevError.setDouble(RobotMap.PID.Elevator.e);
 	}
 }
