@@ -142,45 +142,34 @@
               "_source0": "network_table:///PID/elevF",
               "_title": "PID/elevF"
             }
+          },
+          "4,0": {
+            "size": [
+              3,
+              3
+            ],
+            "content": {
+              "_type": "Camera Stream",
+              "_source0": "camera_server://USB Camera 0",
+              "_title": "USB Camera 0"
+            }
           }
         }
       }
     },
     {
-      "title": "Competition",
+      "title": "Tab 2",
       "autoPopulate": false,
       "autoPopulatePrefix": "",
       "widgetPane": {
-        "gridSize": 128.0,
+        "gridSize": 64.0,
         "showGrid": true,
         "hgap": 16.0,
         "vgap": 16.0,
         "tiles": {
-          "5,2": {
-            "size": [
-              2,
-              1
-            ],
-            "content": {
-              "_type": "ComboBox Chooser",
-              "_source0": "network_table:///SmartDashboard/Auton Routine Selector",
-              "_title": "Auton Routine Selector"
-            }
-          },
-          "5,0": {
-            "size": [
-              1,
-              2
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Subsystem Overview",
-              "_title": "System Overview"
-            }
-          },
           "0,0": {
             "size": [
-              5,
+              4,
               4
             ],
             "content": {
