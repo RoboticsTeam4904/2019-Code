@@ -14,6 +14,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc4904.standard.CommandRobotBase;
 import org.usfirst.frc4904.standard.commands.chassis.ChassisMove;
+import edu.wpi.first.cameraserver.CameraServer;;
+
 
 public class Robot extends CommandRobotBase {
 	private RobotMap map = new RobotMap();
@@ -22,6 +24,13 @@ public class Robot extends CommandRobotBase {
 	public void initialize() {
 		// driverChooser.addDefault(object);
 		// operatorChooser.addDefault();
+		/* 
+			works in shuffleboard with Logitech C270
+			any amount of compression, 30 FPS, 160 x 120
+			< 4 Mbps, often < 1
+		*/
+		CameraServer.getInstance().startAutomaticCapture();
+
 	}
 
 	@Override
