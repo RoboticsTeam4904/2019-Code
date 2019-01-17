@@ -12,8 +12,8 @@ public class HatchOuttakePeg {
 	}
 
 	public static class Peg extends Subsystem {
-		public static final DoubleSolenoid.Value IN = DoubleSolenoid.Value.kForward;
-		public static final DoubleSolenoid.Value OUT = DoubleSolenoid.Value.kReverse;
+		public static final DoubleSolenoid.Value EXTENDED = DoubleSolenoid.Value.kForward;
+		public static final DoubleSolenoid.Value RETRACTED = DoubleSolenoid.Value.kReverse;
 		protected final DoubleSolenoid peg;
 
 		public Peg(DoubleSolenoid peg) {
@@ -21,15 +21,15 @@ public class HatchOuttakePeg {
 			this.peg = peg;
 		}
 
-		public boolean isClasped() {
-			return this.peg.get() == IN;
+		public boolean isExtended() {
+			return this.peg.get() == EXTENDED;
 		}
 
-		public void set(boolean clasped) {
-			if (clasped) {
-				this.peg.set(IN);
+		public void set(boolean extended) {
+			if (extended) {
+				this.peg.set(EXTENDED);
 			} else {
-				this.peg.set(OUT);
+				this.peg.set(RETRACTED);
 			}
 		}
 
