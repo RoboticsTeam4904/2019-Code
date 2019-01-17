@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 
 import javax.swing.text.html.HTMLDocument.HTMLReader.SpecialAction;
 
+import org.usfirst.frc4904.robot.RobotMap.PID.TimPID;
 import org.usfirst.frc4904.robot.subsystems.Tim;
 
 
@@ -47,7 +48,13 @@ public class RobotMap {
         }
         public static class Operator {}
     }
-
+    public static class PID {
+        public static class TimPID {
+            public static final double P = 1;
+            public static final double I =1;
+            public static final double D = 1;
+        }
+    }
     
     public RobotMap() {
         
@@ -55,7 +62,7 @@ public class RobotMap {
         Component.driverXbox.setDeadZone(0.1);
 
         Component.timEncoder = new CANEncoder("Tim Rotate Encoder", Port.CAN.timEncoder);
-        Component.timRotateController = new CustomPIDController(Tim.TIM_P, Tim.TIM_I, Tim.TIM_D, Component.timEncoder);
+        Component.timRotateController = new CustomPIDController(PID.TimPID.P, PID.TimPID.I, PID.TimPID.D, Component.timEncoder);
 		Component.timRotateController.setAbsoluteTolerance(Tim.TIM_ABSOLUTE_TOLERANCE);
 
         Component.tim = new Tim(Component.timEncoder, new CANTalonSRX(Port.CANMotor.timIntake), Component.timRotateController, new CANTalonSRX(Port.CANMotor.timIndex));

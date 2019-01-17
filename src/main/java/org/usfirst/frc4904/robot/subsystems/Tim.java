@@ -24,6 +24,7 @@ public class Tim extends Subsystem {
 	public static final double TIM_ABSOLUTE_TOLERANCE = 0.01;
 	public static final double TIM_INTAKE_SPEED = 0.75;
 	public static final double TIM_OUTTAKE_SPEED = -0.75;
+
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	public enum TimState {
