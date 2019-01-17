@@ -57,6 +57,7 @@ public class RobotMap {
         Component.elevMotor1 = new CANTalonSRX(Port.CANMotor.elevMotor1);
         Component.elevMotor2 = new CANTalonSRX(Port.CANMotor.elevMotor2);
         Component.elevCANEncoder = new CANEncoder(Port.CAN.elevCANEncoder);
+        Component.elevCANEncoder.setDistancePerPulse(Elevator.TICK_MULTIPLIER);
         Component.elevPID = new CustomPIDController(PID.Elevator.P, PID.Elevator.I, PID.Elevator.D, PID.Elevator.F, Component.elevCANEncoder);
         Component.elevator = new Elevator(Component.elevPID, Component.elevCANEncoder, Component.elevMotor1, Component.elevMotor2);
 

@@ -12,8 +12,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Elevator extends PositionSensorMotor {
 	public static final double UP_SPEED = 0.5;
 	public static final double DOWN_SPEED = -0.5;
-	public static final double ENCODER_TICKS = 1024; //todo: change to real thing
-	public static final double TICK_MULTIPLIER = 360/ENCODER_TICKS;
+	public static final double ENCODER_TICKS = 1024;
+	public static final double DISTANCE_PER_ROTATION = 0; //SET LATER
+	public static final double TICK_MULTIPLIER = DISTANCE_PER_ROTATION;
 	public final CANEncoder elevEncoder;
 
 	public enum ElevState {
@@ -28,7 +29,6 @@ public class Elevator extends PositionSensorMotor {
 	public Elevator (MotionController motionController, CANEncoder elevEncoder, SpeedController... speedControllers) {
 		super("Elevator", motionController, speedControllers);
 		this.elevEncoder = elevEncoder;
-		this.elevEncoder.setDistancePerPulse(TICK_MULTIPLIER);
 	}
 
 	public void setPosition (double position) {
