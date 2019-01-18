@@ -55,6 +55,16 @@ public class RobotMap {
 				/ Metrics.Wheel.TICKS_PER_REVOLUTION;
 		}
     }
+    public static class PID {
+		public static class Drive {
+			public static final double P = 0.04; //Tune PID
+			public static final double I = 0.0; //Tune PID
+			public static final double D = -0.006; //Tune PID
+			public static final double F = 0.01; //Tune PID
+			public static final double tolerance = 4.5; //Tune PID
+			public static final double dTolerance = 3.0; //Tune PID
+        }
+    }
     public static class Component {
         public static PDP pdp;
 
@@ -68,7 +78,8 @@ public class RobotMap {
 		public static CANEncoder leftWheelEncoder;
 		public static CANEncoder rightWheelEncoder;
 		public static EncoderPair chassisEncoders;
-		public static CustomPIDController chassisTurnMC;
+        public static CustomPIDController chassisTurnMC;
+		public static CustomPIDController drivePID;
 		public static NavX navx;
     }
     public static class HumanInput {
@@ -99,10 +110,13 @@ public class RobotMap {
 		Component.shifter = new SolenoidShifters(Port.Pneumatics.shifter.pcmID, Port.Pneumatics.shifter.forward,
             Port.Pneumatics.shifter.reverse);
         Component.chassisEncoders = new EncoderPair(Component.leftWheelEncoder, Component.rightWheelEncoder);
-        Component.chassis = new TankDriveShifting("2018-Chassis", Component.leftWheel, Component.rightWheel, Component.shifter);
+        Component.chassis = new TankDriveShifting("2019-Chassis", Component.leftWheel, Component.rightWheel, Component.shifter);
         HumanInput.Driver.xbox = new CustomXbox(Port.HumanInput.xboxController);
         HumanInput.Driver.xbox.setDeadZone(HumanInterfaceConfig.XBOX_DEADZONE);
         HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
         HumanInput.Operator.joystick.setDeadzone(HumanInterfaceConfig.STICK_LEFT_DEADZONE);
+        Component.drivePID = new CustomPIDController(PID.Drive.P, PID.Drive.I, PID.Drive.D, PID.Drive.F, Component.rightWheelEncoder);
+		Component.drivePID.setAbsoluteTolerance(PID.Drive.tolerance);
+		Component.drivePID.setDerivativeTolerance(PID.Drive.dTolerance);
     }
 }
