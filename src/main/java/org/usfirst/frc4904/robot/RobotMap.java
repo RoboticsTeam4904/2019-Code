@@ -27,15 +27,25 @@ public class RobotMap {
     public static class Metrics{}
     public static class Component {
         public static CustomXbox driverXbox;
+        public static Climber.FrontLift climberFrontLift;
+        public static Climber.BackLift climberBackLift;
+        public static Climber climber;
     }
     public static class HumanInput {
         public static class Driver {
             public static CustomXbox xbox;
         }
-        public static class Operator {}
+        public static class Operator {
+            public static CustomJoystick joystick;
+        }
     }
     public RobotMap() {
         Component.driverXbox = new CustomXbox(Port.HumanInput.xboxController);
-		Component.driverXbox.setDeadZone(0.1);
+        Component.driverXbox.setDeadZone(0.1);
+        HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
+        Component.climberFrontLift = new Climber.FrontLift(Port.Pneumatics.climberFrontLift.buildDoubleSolenoid());
+        Component.climberBackLift = new Climber.BackLift(Port.Pneumatics.climberBackLift.buildDoubleSolenoid());
+        Component.climber = new Climber(Component.climberFrontLift, Component.climberBackLift);
+
     }
 }
