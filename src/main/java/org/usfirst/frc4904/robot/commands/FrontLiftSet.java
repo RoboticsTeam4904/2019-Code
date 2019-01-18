@@ -5,17 +5,16 @@ import org.usfirst.frc4904.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class FrontLiftSet extends Command {
-	protected final boolean clasped;
+	protected final boolean extended;
 
-	public FrontLiftSet(boolean clasped) {
-		super(clasped ? "FrontLiftRetract" : "FrontLiftExtend");
-		requires(RobotMap.Component.climber.frontLift);
-		this.clasped = clasped;
+	public FrontLiftSet(boolean extended) {
+		super(extended ? "FrontLiftRetract" : "FrontLiftExtend", RobotMap.Component.climber.backLift);
+		this.extended = extended;
 	}
 
 	@Override
 	protected void initialize() {
-		RobotMap.Component.climber.frontLift.set(clasped);
+		RobotMap.Component.climber.frontLift.set(extended);
 	}
 
 	@Override

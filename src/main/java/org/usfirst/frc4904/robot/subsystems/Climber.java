@@ -28,8 +28,8 @@ public class Climber {
             this.frontLift = frontLift;
         }
 
-        public void set(boolean fired) {
-            if (fired){ 
+        public void set(boolean extended) {
+            if (extended){ 
                 this.frontLift.set(EXTENDED);
             }
             else {
