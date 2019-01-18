@@ -23,11 +23,11 @@ public class Climb extends CommandGroup {
 	public Climb() {
         super("Climb"); //Decide whether to do robot alignment on lvl 2, or back away from lvl 2 accurately
         addParallel(new FrontLiftExtend());
-		addSequential(new ChassisMoveDistance(Component.chassis, DISTANCE, ___));
+		addSequential(new ChassisMoveDistance(Component.chassis, FIRST_DISTANCE, Component.drivePID));
         addSequential(new FrontLiftRetract());
         addSequential(new BackLiftExtend());
-        addSequential(new ChassisMoveDistance(Component.chassis, ALMOST_WHEEL_DISTANCE, ___));
+        addSequential(new ChassisMoveDistance(Component.chassis, ALMOST_WHEEL_DISTANCE, Component.drivePID));
         addSequential(new BackLiftRetract());
-        addSequential(new ChassisMoveDistance(Component.chassis, FINAL_DISTANCE, ___));
+        addSequential(new ChassisMoveDistance(Component.chassis, FINAL_DISTANCE, Component.drivePID));
 	}
 }

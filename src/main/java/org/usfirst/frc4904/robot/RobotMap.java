@@ -55,6 +55,16 @@ public class RobotMap {
 				/ Metrics.Wheel.TICKS_PER_REVOLUTION;
 		}
     }
+    public static class PID {
+		public static class Drive {
+			public static final double P = 0.04; //Tune PID
+			public static final double I = 0.0; //Tune PID
+			public static final double D = -0.006; //Tune PID
+			public static final double F = 0.01; //Tune PID
+			public static final double tolerance = 4.5; //Tune PID
+			public static final double dTolerance = 3.0; //Tune PID
+        }
+    }
     public static class Component {
         public static CustomXbox driverXbox;
         public static Climber.FrontLift climberFrontLift;
@@ -72,7 +82,8 @@ public class RobotMap {
 		public static CANEncoder leftWheelEncoder;
 		public static CANEncoder rightWheelEncoder;
 		public static EncoderPair chassisEncoders;
-		public static CustomPIDController chassisTurnMC;
+        public static CustomPIDController chassisTurnMC;
+		public static CustomPIDController drivePID;
 		public static NavX navx;
     }
     public static class HumanInput {
@@ -111,5 +122,8 @@ public class RobotMap {
         Component.climberFrontLift = new Climber.FrontLift(Port.Pneumatics.climberFrontLift.buildDoubleSolenoid());
         Component.climberBackLift = new Climber.BackLift(Port.Pneumatics.climberBackLift.buildDoubleSolenoid());
         Component.climber = new Climber(Component.climberFrontLift, Component.climberBackLift);
+        Component.drivePID = new CustomPIDController(PID.Drive.P, PID.Drive.I, PID.Drive.D, PID.Drive.F, Component.rightWheelEncoder);
+		Component.drivePID.setAbsoluteTolerance(PID.Drive.tolerance);
+		Component.drivePID.setDerivativeTolerance(PID.Drive.dTolerance);
     }
 }
