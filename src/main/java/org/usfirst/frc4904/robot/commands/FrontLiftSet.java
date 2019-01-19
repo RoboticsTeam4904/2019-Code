@@ -8,7 +8,7 @@ public class FrontLiftSet extends Command {
 	protected final boolean extended;
 
 	public FrontLiftSet(boolean extended) {
-		super(extended ? "FrontLiftRetract" : "FrontLiftExtend", RobotMap.Component.climber.backLift);
+		super(extended ? "FrontLiftRetract" : "FrontLiftExtend", RobotMap.Component.climber.frontLift);
 		this.extended = extended;
 	}
 

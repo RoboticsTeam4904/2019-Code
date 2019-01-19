@@ -8,8 +8,7 @@ public class BackLiftSet extends Command {
 	protected final boolean extended;
 
 	public BackLiftSet(boolean extended) {
-		super(extended ? "BackLiftRetract" : "BackLiftExtend");
-		requires(RobotMap.Component.climber.backLift);
+		super(extended ? "BackLiftRetract" : "BackLiftExtend", RobotMap.Component.climber.backLift);
 		this.extended = extended;
 	}
 
