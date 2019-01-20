@@ -17,6 +17,6 @@ public class DefaultOperator extends Operator {
 
 	@Override
 	public void bindCommands() {
-		RobotMap.HumanInput.Operator.joystick.button1.onlyWhileHeld(new ClimbTime()); //Use climb with distance (ClimbDistance) or climb with time (ClimbTime)
+		RobotMap.HumanInput.Operator.joystick.button1.onlyWhileHeld(new ClimbTime()); //TODO: Use climb with distance (ClimbDistance) or climb with time (ClimbTime)
 	}
 }
