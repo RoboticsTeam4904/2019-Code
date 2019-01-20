@@ -2,30 +2,31 @@ package org.usfirst.frc4904.robot.subsystems;
 
 
 // import org.usfirst.frc4904.robot.commands.IndexerGrabberClasp;
-import org.usfirst.frc4904.robot.commands.IndexerVelcroHeld;
 import org.usfirst.frc4904.robot.commands.IndexerVelcroDown;
-import org.usfirst.frc4904.standard.commands.Noop;
+//import org.usfirst.frc4904.standard.commands.Noop;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc4904.robot.subsystems.VelcroPlate;
 
 public class FloorIO {
 	public static final double INTAKE_SPEED = 0.5;
 	public static final double OUTTAKE_SPEED = -0.5;
 	public final Motor hatcherRollerIntake;
 	public final Motor cargoRollerIntake;
-	public final HatchHolder hatchHolder;
 	public final Flipper flipper;
+	public final VelcroPlate hatchPlate;
 
 
-	public FloorIO (Motor hatcherRollerIntake, Motor cargoRollerIntake, HatchHolder hatchHolder, Flipper flipper) {
+	public FloorIO (Motor hatcherRollerIntake, Motor cargoRollerIntake, VelcroPlate hatchPlate, Flipper flipper) {
 		this.hatcherRollerIntake = hatcherRollerIntake;
 		this.cargoRollerIntake = cargoRollerIntake;
-		this.hatchHolder = hatchHolder;
 		this.flipper = flipper;
+		this.hatchPlate = hatchPlate;
 
     }
-    
+	
+	/*
     public static class HatchHolder extends Subsystem {
 	    public static final DoubleSolenoid.Value HELD = DoubleSolenoid.Value.kForward; // Holds the hatcher through the first piston
 	    public static final DoubleSolenoid.Value RELEASED = DoubleSolenoid.Value.kReverse; // Releases/keeps the hatcher unheld 
@@ -54,9 +55,9 @@ public class FloorIO {
 		protected void initDefaultCommand() {
 			setDefaultCommand(new Noop());
 		}
-        
-        
+         
 	}
+	*/
 	
     public static class Flipper extends Subsystem {
 	    public static final DoubleSolenoid.Value UP = DoubleSolenoid.Value.kForward; // Piston moves the block that holds the hatcher 90 degrees upwards 
