@@ -12,6 +12,7 @@ import org.usfirst.frc4904.standard.custom.sensors.PDP;
 import org.usfirst.frc4904.standard.custom.PCMPort;
 import org.usfirst.frc4904.standard.custom.sensors.CANEncoder;
 import org.usfirst.frc4904.standard.custom.sensors.EncoderPair;
+import org.usfirst.frc4904.standard.custom.motioncontrollers.CANTalonSRX;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CustomPIDController;
 import org.usfirst.frc4904.standard.custom.sensors.NavX;
 import org.usfirst.frc4904.robot.subsystems.Climber;
@@ -107,9 +108,9 @@ public class RobotMap {
 		Component.rightWheelAccelerationCap = new EnableableModifier(new AccelerationCap(Component.pdp));
 		Component.rightWheelAccelerationCap.enable();
         Component.leftWheel = new Motor("LeftWheel", Component.leftWheelAccelerationCap,
-			new VictorSP(Port.PWM.leftDriveA), new VictorSP(Port.PWM.leftDriveB));
+			new VictorSP(Port.PWM.leftDriveA), new CANTalonSRX(Port.PWM.leftDriveB));
 		Component.rightWheel = new Motor("RightWheel", Component.rightWheelAccelerationCap,
-            new VictorSP(Port.PWM.rightDriveA), new VictorSP(Port.PWM.rightDriveB));
+            new VictorSP(Port.PWM.rightDriveA), new CANTalonSRX(Port.PWM.rightDriveB));
 		// Chassis
 		Component.shifter = new SolenoidShifters(Port.Pneumatics.shifter.pcmID, Port.Pneumatics.shifter.forward,
             Port.Pneumatics.shifter.reverse);

@@ -25,11 +25,11 @@ public class ClimbTime extends CommandGroup {
 	public ClimbTime() {
         super("ClimbTime"); //Decide whether to do robot alignment on lvl 2, or back away from lvl 2 accurately
         addParallel(new FrontLiftExtend());
-        addSequential(new ChassisConstant(Component.chassis, 0, CHASSIS_SPEED, 0, FIRST_TIME));
+        addSequential(new ChassisConstant(Component.chassis, 0, CHASSIS_SPEED, 0, BACK_WHEEL_TIME));
         addSequential(new BackLiftExtend());
         addSequential(new FrontLiftRetract());
-        addSequential(new ChassisConstant(Component.chassis, 0, CHASSIS_SPEED, 0, SECOND_TIME));
+        addSequential(new ChassisConstant(Component.chassis, 0, CHASSIS_SPEED, 0, FRONT_WHEEL_TIME));
         addSequential(new BackLiftRetract());
-        addSequential(new ChassisConstant(Component.chassis, 0, CHASSIS_SPEED, 0, THIRD_TIME));
+        addSequential(new ChassisConstant(Component.chassis, 0, CHASSIS_SPEED, 0, BOTH_WHEEL_TIME));
 	}
 }
