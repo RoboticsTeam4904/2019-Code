@@ -37,7 +37,7 @@ public class RobotMap {
             public static final int rightEncoder = 0x603;
         }
         public static class Pneumatics {
-            public static final PCMPort shifter = new PCMPort(1, 0, 1);
+            // public static final PCMPort shifter = new PCMPort(1, 0, 1);
         }
     }
     
@@ -89,7 +89,7 @@ public class RobotMap {
 		}
     }
     public RobotMap() {
-        Component.pdp = new PDP();
+        // Component.pdp = new PDP();
 
         // Wheels
         //Component.leftWheelEncoder = new CANEncoder("LeftEncoder", Port.CAN.leftEncoder);
@@ -101,7 +101,8 @@ public class RobotMap {
 		// Component.rightWheelAccelerationCap = new EnableableModifier(new AccelerationCap(Component.pdp));
 		// Component.rightWheelAccelerationCap.enable();
         Component.leftWheel = new Motor("LeftWheel", 
-			new VictorSP(Port.CANMotor.leftDriveA), new VictorSP(Port.CANMotor.leftDriveB));
+            new VictorSP(Port.CANMotor.leftDriveA), new VictorSP(Port.CANMotor.leftDriveB));
+        Component.leftWheel.setInverted(true);
 		Component.rightWheel = new Motor("RightWheel", 
             new VictorSP(Port.CANMotor.rightDriveA), new VictorSP(Port.CANMotor.rightDriveB));
 		// Chassis
@@ -109,10 +110,10 @@ public class RobotMap {
         Component.chassis = new TankDrive("2019-Chassis", Component.leftWheel, Component.rightWheel);
         HumanInput.Driver.xbox = new CustomXbox(Port.HumanInput.xboxController);
         HumanInput.Driver.xbox.setDeadZone(HumanInterfaceConfig.XBOX_DEADZONE);
-        HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
-        HumanInput.Operator.joystick.setDeadzone(HumanInterfaceConfig.STICK_LEFT_DEADZONE);
-        Component.drivePID = new CustomPIDController(PID.Drive.P, PID.Drive.I, PID.Drive.D, PID.Drive.F, Component.rightWheelEncoder);
-		Component.drivePID.setAbsoluteTolerance(PID.Drive.tolerance);
-		Component.drivePID.setDerivativeTolerance(PID.Drive.dTolerance);
+        // HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
+        // HumanInput.Operator.joystick.setDeadzone(HumanInterfaceConfig.STICK_LEFT_DEADZONE);
+        // Component.drivePID = new CustomPIDController(PID.Drive.P, PID.Drive.I, PID.Drive.D, PID.Drive.F, Component.rightWheelEncoder);
+		// Component.drivePID.setAbsoluteTolerance(PID.Drive.tolerance);
+		// Component.drivePID.setDerivativeTolerance(PID.Drive.dTolerance);
     }
 }
