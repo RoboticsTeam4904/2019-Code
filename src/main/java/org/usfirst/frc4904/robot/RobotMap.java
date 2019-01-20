@@ -115,7 +115,7 @@ public class RobotMap {
         HumanInput.Driver.xbox = new CustomXbox(Port.HumanInput.xboxController);
         HumanInput.Driver.xbox.setDeadZone(HumanInterfaceConfig.XBOX_DEADZONE);
         HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
-        HumanInput.Operator.joystick.setDeadzone(HumanInterfaceConfig.STICK_LEFT_DEADZONE);
+        HumanInput.Operator.joystick.setDeadzone(HumanInterfaceConfig.JOYSTICK_DEADZONE);
         Component.drivePID = new CustomPIDController(PID.Drive.P, PID.Drive.I, PID.Drive.D, PID.Drive.F, Component.rightWheelEncoder);
 		Component.drivePID.setAbsoluteTolerance(PID.Drive.tolerance);
 		Component.drivePID.setDerivativeTolerance(PID.Drive.dTolerance);
