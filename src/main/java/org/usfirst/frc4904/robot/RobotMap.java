@@ -108,9 +108,9 @@ public class RobotMap {
 		Component.rightWheelAccelerationCap = new EnableableModifier(new AccelerationCap(Component.pdp));
 		Component.rightWheelAccelerationCap.enable();
         Component.leftWheel = new Motor("LeftWheel", Component.leftWheelAccelerationCap,
-			new VictorSP(Port.PWM.leftDriveA), new CANTalonSRX(Port.PWM.leftDriveB));
+			new CANTalonSRX(Port.PWM.leftDriveA), new CANTalonSRX(Port.PWM.leftDriveB));
 		Component.rightWheel = new Motor("RightWheel", Component.rightWheelAccelerationCap,
-            new VictorSP(Port.PWM.rightDriveA), new CANTalonSRX(Port.PWM.rightDriveB));
+            new CANTalonSRX(Port.PWM.rightDriveA), new CANTalonSRX(Port.PWM.rightDriveB));
 		// Chassis
 		Component.shifter = new SolenoidShifters(Port.Pneumatics.shifter.pcmID, Port.Pneumatics.shifter.forward,
             Port.Pneumatics.shifter.reverse);
