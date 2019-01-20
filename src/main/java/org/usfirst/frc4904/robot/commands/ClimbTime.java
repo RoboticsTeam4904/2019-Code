@@ -18,10 +18,10 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 
 
 public class ClimbTime extends CommandGroup {
-    public static final double FIRST_TIME = 2; //Change time as needed
-    public static final double SECOND_TIME = 2; //Change time as needed
-    public static final double THIRD_TIME = 2; //Change time as needed
-    public static final double CHASSIS_SPEED = 2; //Change speed as needed
+    public static final double BACK_WHEEL_TIME = -1; //Change time as needed
+    public static final double FRONT_WHEEL_TIME = -1; //Change time as needed
+    public static final double BOTH_WHEEL_TIME = -1; //Change time as needed
+    public static final double CHASSIS_SPEED = -1; //Change speed as needed
 	public ClimbTime() {
         super("ClimbTime"); //Decide whether to do robot alignment on lvl 2, or back away from lvl 2 accurately
         addParallel(new FrontLiftExtend());
