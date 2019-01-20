@@ -51,8 +51,8 @@ public class Climber {
             this.backLift = backLift;
         }
 
-        public void set(boolean fired) {
-            if (fired){ 
+        public void set(boolean extended) {
+            if (extended){ 
                 this.backLift.set(EXTENDED);
             }
             else {
