@@ -17,7 +17,6 @@ import org.usfirst.frc4904.standard.custom.motioncontrollers.CANTalonSRX;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CustomPIDController;
 import org.usfirst.frc4904.standard.custom.sensors.NavX;
 
-import edu.wpi.first.wpilibj.VictorSP;
 
 
 public class RobotMap {
