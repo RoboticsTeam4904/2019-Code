@@ -12,8 +12,12 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc4904.robot.commands.ExampleCommand;
 import org.usfirst.frc4904.standard.CommandRobotBase;
+import org.usfirst.frc4904.standard.commands.SingleOp;
+import org.usfirst.frc4904.standard.commands.chassis.ChassisConstant;
 import org.usfirst.frc4904.standard.commands.chassis.ChassisMove;
+import org.usfirst.frc4904.standard.commands.motor.MotorConstant;
 import edu.wpi.first.cameraserver.CameraServer;;
 
 
@@ -35,8 +39,9 @@ public class Robot extends CommandRobotBase {
 
 	@Override
 	public void teleopInitialize() {
-		// teleopCommand = new ChassisMove(RobotMap.Component.chassis, driverChooser.getSelected());
-		// teleopCommand.start();
+		// teleopCommand = new MotorConstant(RobotMap.Component.motor1, 0.5);
+		teleopCommand = new ChassisConstant(RobotMap.Component.chassis, 0, 0.5, 0, 0);
+		teleopCommand.start();
 	}
 
 	@Override
