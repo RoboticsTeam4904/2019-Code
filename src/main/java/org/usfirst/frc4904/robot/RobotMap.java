@@ -28,17 +28,17 @@ public class RobotMap {
         }
         public static class CANMotor {}
         public static class PWM {
-            public static final int leftDriveA = 2; // Not real ports, change these
-			public static final int leftDriveB = 3;
-			public static final int rightDriveA = 0;
-			public static final int rightDriveB = 1;
+            public static final int leftDriveA = -1; // TODO: Change ports
+			public static final int leftDriveB = -1;
+			public static final int rightDriveA = -1;
+			public static final int rightDriveB = -1;
         }
         public static class CAN {
-            public static final int leftEncoder = -1; // Not real ports, change these
+            public static final int leftEncoder = -1; // TODO: Change ports
 			public static final int rightEncoder = -1;
         }
         public static class Pneumatics {
-            public static final PCMPort shifter = new PCMPort(1, 0, 1);
+            public static final PCMPort shifter = new PCMPort(-1, -1, -1); // TODO: Change ports
         }
     }
     
