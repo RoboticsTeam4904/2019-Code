@@ -26,7 +26,7 @@ public class RobotMap {
         public static class PWM {}
         public static class CAN {}
         public static class Pneumatics {
-            public static final PCMPort port = new PCMPort(0, 0, 0);
+            public static final PCMPort port = new PCMPort(0, 1, 0);
         }
     }
     
@@ -51,6 +51,7 @@ public class RobotMap {
         Component.driverXbox = new CustomXbox(Port.HumanInput.xboxController);
         Component.driverXbox.setDeadZone(0.1);
         Component.solenoid = Port.Pneumatics.port.buildDoubleSolenoid();
+
         Component.leftMotorA = new Motor("LeftMotorA", new Spark(Port.CANMotor.leftMotorA, MotorType.kBrushed));
         Component.leftMotorB = new Motor("LeftMotorB", true, new Spark(Port.CANMotor.leftMotorB, MotorType.kBrushed));
         Component.rightMotorA = new Motor("RightMotorA", true, new Spark(Port.CANMotor.rightMotorA, MotorType.kBrushed));

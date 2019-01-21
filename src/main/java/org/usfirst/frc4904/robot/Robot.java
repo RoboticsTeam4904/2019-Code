@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc4904.robot.commands.ExampleCommand;
+import org.usfirst.frc4904.robot.humaninterface.drivers.NathanGain;
 import org.usfirst.frc4904.standard.CommandRobotBase;
 import org.usfirst.frc4904.standard.commands.SingleOp;
 import org.usfirst.frc4904.standard.commands.chassis.ChassisConstant;
@@ -26,21 +27,20 @@ public class Robot extends CommandRobotBase {
 
 	@Override
 	public void initialize() {
-		// driverChooser.addDefault(object);
+		driverChooser.addDefault(new NathanGain());
 		// operatorChooser.addDefault();
 		/* 
 			works in shuffleboard with Logitech C270
 			any amount of compression, 30 FPS, 160 x 120
 			< 4 Mbps, often < 1
 		*/
-		CameraServer.getInstance().startAutomaticCapture();
+		// CameraServer.getInstance().startAutomaticCapture();
 
 	}
 
 	@Override
 	public void teleopInitialize() {
-		// teleopCommand = new MotorConstant(RobotMap.Component.motor1, 0.5);
-		teleopCommand = new ChassisConstant(RobotMap.Component.chassis, 0, 0.5, 0, 0);
+		teleopCommand = new ChassisMove(RobotMap.Component.chassis, driverChooser.getSelected());
 		teleopCommand.start();
 	}
 
