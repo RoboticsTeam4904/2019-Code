@@ -10,7 +10,7 @@ import org.usfirst.frc4904.standard.commands.motor.MotorPositionConstant;
  control elevator manually
  */
 public class ElevatorSetRelative extends MotorPositionConstant {
-    private double newposition = Elevator.ElevState.this.position; //what
+    double newposition = RobotMap.Component.elevator.state.position + 5; //this '5' is a placeholder for driver input
 	public ElevatorSetRelative(double newposition) {
 		super(RobotMap.Component.elevator, newposition);
 	}

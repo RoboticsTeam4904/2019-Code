@@ -16,6 +16,7 @@ public class Elevator extends PositionSensorMotor {
 	public static final double DISTANCE_PER_ROTATION = 0; //SET LATER
 	public static final double TICK_MULTIPLIER = DISTANCE_PER_ROTATION;
 	public final CANEncoder elevEncoder;
+	public ElevState state = ElevState.UP;
 
 	public enum ElevState {
 		UP(10), MIDDLE(5), DOWN(0); // TODO: NEED TO BE TWEAKED A LOOOOT, arbitrary numbers rn
@@ -37,9 +38,13 @@ public class Elevator extends PositionSensorMotor {
 
 	public void setPosition (ElevState state) {
 		setPosition(state.position);
+		this.state = state;
 	}
 
 	public void set (double speed) {
 		super.set(speed);
+	}
+	public double getPosition() {
+		return state.position;
 	}
 }
