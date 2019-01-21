@@ -18,9 +18,7 @@ public class DefaultOperator extends Operator {
 	}
 
 	@Override
-	public void bindCommands() {
-		//RobotMap.HumanInput.Operator.joystick.button1.whenPressed(new IndexerVelcroHeld()); // TODO: Replace with VelcroPlate routines.
-		//RobotMap.HumanInput.Operator.joystick.button2.whenPressed(new IndexerVelcroRelease()); // TODO: Replace with VelcroPlate routines.
+	public void bindCommands() { // TODO: Add VelcroPlate routines to button1 and button2.
 		RobotMap.HumanInput.Operator.joystick.button3.whenPressed(new IndexerVelcroUp());
 		RobotMap.HumanInput.Operator.joystick.button4.whenPressed(new IndexerVelcroDown());
 

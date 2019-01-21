@@ -10,14 +10,13 @@ public class PickupSolenoidSet extends Command {
 	protected final boolean clasped;
 
 	public PickupSolenoidSet(boolean clasped) {
+		super("PickupSolenoidSet");
 		requires(RobotMap.Component.Floorio.velcroPlate);
 		this.clasped = clasped;
 	}
 
-	// Called just before this Command runs for the first time
    	@Override
 	protected void initialize() {
-		System.out.println("The command has initialized!");
 		RobotMap.Component.Floorio.velcroPlate.setPickupSolenoid(this.clasped);
 	}
 
