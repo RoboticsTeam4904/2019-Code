@@ -2,9 +2,12 @@ package org.usfirst.frc4904.robot.humaninterface.drivers;
 
 
 import org.usfirst.frc4904.robot.RobotMap;
+import org.usfirst.frc4904.standard.commands.SingleOp;
 import org.usfirst.frc4904.standard.commands.chassis.ChassisShift;
 import org.usfirst.frc4904.standard.humaninput.Driver;
 import org.usfirst.frc4904.standard.subsystems.chassis.SolenoidShifters;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.command.Command;
 
 public class NathanGain extends Driver {
 	public static final double SPEED_GAIN = 1;
@@ -24,6 +27,22 @@ public class NathanGain extends Driver {
 
 	@Override
 	public void bindCommands() {
+		RobotMap.Component.driverXbox.b.whenPressed(new Command() {
+			public void initialize() {
+				RobotMap.Component.solenoid.set(DoubleSolenoid.Value.kForward);
+			}
+			public boolean isFinished() {
+				return false;
+			}
+		});
+		RobotMap.Component.driverXbox.b.whenReleased(new Command() {
+			public void initialize() {
+				RobotMap.Component.solenoid.set(DoubleSolenoid.Value.kReverse);
+			}
+			public boolean isFinished() {
+				return false;
+			}
+		});
 		// RobotMap.Component.driverXbox.lb
 		// 	.whenPressed(new ChassisShift(RobotMap.Component.chassis.getShifter(), SolenoidShifters.ShiftState.DOWN));
 		// RobotMap.Component.driverXbox.rb

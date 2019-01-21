@@ -2,9 +2,11 @@ package org.usfirst.frc4904.robot;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import org.usfirst.frc4904.standard.custom.PCMPort;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
 import org.usfirst.frc4904.standard.subsystems.chassis.TankDrive;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.Spark;
 
 
@@ -23,7 +25,9 @@ public class RobotMap {
         }
         public static class PWM {}
         public static class CAN {}
-        public static class Pneumatics {}
+        public static class Pneumatics {
+            public static final PCMPort port = new PCMPort(0, 0, 0);
+        }
     }
     
     public static class Metrics{}
@@ -33,6 +37,7 @@ public class RobotMap {
         public static Motor leftMotorB;
         public static Motor rightMotorA;
         public static Motor rightMotorB;
+        public static DoubleSolenoid solenoid;
 
         public static TankDrive chassis;
     }
@@ -45,7 +50,7 @@ public class RobotMap {
     public RobotMap() {
         Component.driverXbox = new CustomXbox(Port.HumanInput.xboxController);
         Component.driverXbox.setDeadZone(0.1);
-        // Component.motor1 = new CANSparkMax(Port.CANMotor.motor1, MotorType.kBrushed);
+        Component.solenoid = Port.Pneumatics.port.buildDoubleSolenoid();
         Component.leftMotorA = new Motor("LeftMotorA", new Spark(Port.CANMotor.leftMotorA, MotorType.kBrushed));
         Component.leftMotorB = new Motor("LeftMotorB", true, new Spark(Port.CANMotor.leftMotorB, MotorType.kBrushed));
         Component.rightMotorA = new Motor("RightMotorA", true, new Spark(Port.CANMotor.rightMotorA, MotorType.kBrushed));
