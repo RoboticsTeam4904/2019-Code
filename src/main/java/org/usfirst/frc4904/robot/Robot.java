@@ -13,6 +13,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc4904.robot.commands.ExampleCommand;
+import org.usfirst.frc4904.robot.commands.MonkeySee;
+import org.usfirst.frc4904.robot.commands.MonkeyDo;
 import org.usfirst.frc4904.robot.humaninterface.drivers.NathanGain;
 import org.usfirst.frc4904.standard.CommandRobotBase;
 import org.usfirst.frc4904.standard.commands.SingleOp;
@@ -24,6 +26,8 @@ import edu.wpi.first.cameraserver.CameraServer;;
 
 public class Robot extends CommandRobotBase {
 	private RobotMap map = new RobotMap();
+	private Command monkeySee;
+	private Command monkeyDo;
 
 	@Override
 	public void initialize() {
@@ -41,6 +45,8 @@ public class Robot extends CommandRobotBase {
 	@Override
 	public void teleopInitialize() {
 		teleopCommand = new ChassisMove(RobotMap.Component.chassis, driverChooser.getSelected());
+		monkeySee = new MonkeySee();
+		monkeySee.start();
 		teleopCommand.start();
 	}
 
@@ -48,7 +54,10 @@ public class Robot extends CommandRobotBase {
 	public void teleopExecute() {}
 
 	@Override
-	public void autonomousInitialize() {}
+	public void autonomousInitialize() {
+		monkeyDo = new MonkeyDo();
+		monkeyDo.start();
+	}
 
 	@Override
 	public void autonomousExecute() {}
