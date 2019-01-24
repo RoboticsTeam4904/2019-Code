@@ -9,12 +9,14 @@ import org.usfirst.frc4904.standard.custom.motioncontrollers.MotionController;
 import org.usfirst.frc4904.standard.custom.sensors.CANEncoder;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
 
 
 public class RobotMap {
     public static class Port {
         public static class HumanInput {
             public static final int xboxController = 1;
+            public static final int joystick = 2;
 
         }
         public static class CANMotor {
@@ -53,11 +55,14 @@ public class RobotMap {
         public static class Driver {
             public static CustomXbox xbox;
         }
-        public static class Operator {}
+        public static class Operator {
+            public static CustomJoystick joystick;
+        }
     }
     public RobotMap() {
         Component.driverXbox = new CustomXbox(Port.HumanInput.xboxController);
         Component.driverXbox.setDeadZone(0.1);
+        HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
         
         Component.elevMotor1 = new CANTalonSRX(Port.CANMotor.elevMotor1);
         Component.elevMotor2 = new CANTalonSRX(Port.CANMotor.elevMotor2);
