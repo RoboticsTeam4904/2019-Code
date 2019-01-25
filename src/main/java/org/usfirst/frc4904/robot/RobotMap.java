@@ -36,10 +36,12 @@ public class RobotMap {
         public static CustomXbox driverXbox;
 
         public static class Floorio {
-            public static DoubleSolenoid pickupSolenoid;
-            public static DoubleSolenoid placeSolenoid;
             public static FloorIO floorio;
             public static VelcroPlate velcroPlate;
+            public static DoubleSolenoid pickupSolenoid;
+            public static DoubleSolenoid placeSolenoid;
+            public static VelcroPlate.SolenoidWrapper pickupSolenoidWrapper;
+            public static VelcroPlate.SolenoidWrapper placeSolenoidWrapper;
             public static FloorIO.Flipper flipper;
             public static Motor cargoRollerIntake;
             public static Motor hatcherRollerIntake;
@@ -57,8 +59,8 @@ public class RobotMap {
     public RobotMap() {
         Component.driverXbox = new CustomXbox(Port.HumanInput.xboxController);
         
-        Component.Floorio.cargoRollerIntake = new Motor("Cargo Rolller Intake", new CANTalonSRX(Port.CANMotor.cargoRollerIntake));
-        Component.Floorio.hatcherRollerIntake = new Motor("Hatch Rolller Intake", new CANTalonSRX(Port.CANMotor.hatcherRollerIntake));
+        Component.Floorio.cargoRollerIntake = new Motor("Cargo Roller Intake", new CANTalonSRX(Port.CANMotor.cargoRollerIntake));
+        Component.Floorio.hatcherRollerIntake = new Motor("Hatch Roller Intake", new CANTalonSRX(Port.CANMotor.hatcherRollerIntake));
 
         Component.Floorio.flipper = new FloorIO.Flipper(Port.Pneumatics.flipper.buildDoubleSolenoid());
         Component.Floorio.velcroPlate = new VelcroPlate(Component.Floorio.pickupSolenoid, Component.Floorio.placeSolenoid);

@@ -11,13 +11,13 @@ public class PlaceSolenoidSet extends Command {
 
 	public PlaceSolenoidSet(boolean clasped) {
 		super("PlaceSolenoidSet");
-		requires(RobotMap.Component.Floorio.velcroPlate);
+		requires(RobotMap.Component.Floorio.velcroPlate.placeSolenoid);
 		this.clasped = clasped;
 	}
 
    	@Override
 	protected void initialize() {
-		RobotMap.Component.Floorio.velcroPlate.setPlaceSolenoid(this.clasped);
+		RobotMap.Component.Floorio.velcroPlate.placeSolenoid.set(this.clasped);
     }
     
     @Override

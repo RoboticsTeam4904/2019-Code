@@ -4,9 +4,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import org.usfirst.frc4904.robot.commands.PlaceSolenoidRelease;
 import org.usfirst.frc4904.robot.commands.PickupSolenoidRelease;
 
-public class VelcroPlateDefault extends CommandGroup {
-	public VelcroPlateDefault() {
-        super("VelcroPlateDefault");
+public class VelcroPlateRest extends CommandGroup {
+	public VelcroPlateRest() {
+        super("VelcroPlateRest");
         addParallel(new PlaceSolenoidRelease()); // Both are in released state.
         addParallel(new PickupSolenoidRelease());
 	}

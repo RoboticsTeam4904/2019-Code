@@ -35,7 +35,7 @@ public class FloorIO {
         }
         
         public boolean isUp() {
-		return this.flipper.get() == UP;
+			return this.flipper.get() == UP;
 		}
 
 		public void set(boolean up) {
