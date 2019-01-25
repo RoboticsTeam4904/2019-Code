@@ -8,6 +8,7 @@ import org.usfirst.frc4904.standard.subsystems.chassis.TankDrive;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.Spark;
+import org.usfirst.frc4904.standard.custom.sensors.PDP;
 
 
 public class RobotMap {
@@ -38,6 +39,7 @@ public class RobotMap {
         public static Motor rightMotorA;
         public static Motor rightMotorB;
         public static DoubleSolenoid solenoid;
+        public static PDP pdp;
 
         public static TankDrive chassis;
     }
@@ -48,6 +50,7 @@ public class RobotMap {
         public static class Operator {}
     }
     public RobotMap() {
+        Component.pdp = new PDP();
         Component.driverXbox = new CustomXbox(Port.HumanInput.xboxController);
         Component.driverXbox.setDeadZone(0.1);
         // Component.solenoid = Port.Pneumatics.port.buildDoubleSolenoid();
