@@ -11,13 +11,13 @@ public class PickupSolenoidSet extends Command {
 
 	public PickupSolenoidSet(boolean clasped) {
 		super("PickupSolenoidSet");
-		requires(RobotMap.Component.Floorio.velcroPlate);
+		requires(RobotMap.Component.Floorio.velcroPlate.pickupSolenoid);
 		this.clasped = clasped;
 	}
 
    	@Override
 	protected void initialize() {
-		RobotMap.Component.Floorio.velcroPlate.setPickupSolenoid(this.clasped);
+		RobotMap.Component.Floorio.velcroPlate.pickupSolenoid.set(this.clasped);
 	}
 
 	protected boolean isFinished() {
