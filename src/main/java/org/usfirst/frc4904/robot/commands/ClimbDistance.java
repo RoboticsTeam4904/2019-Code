@@ -23,10 +23,10 @@ public class ClimbDistance extends CommandGroup {
         super("ClimbDistance"); //Decide whether to do robot alignment on lvl 2, or back away from lvl 2 accurately
         addParallel(new FrontLiftExtend());
         addSequential(new ChassisMoveDistance(Component.chassis, BACK_WHEEL_DISTANCE, Component.drivePID));
-        addSequential(new BackLiftExtend());
-        addSequential(new FrontLiftRetract());
+        addParallel(new BackLiftExtend());
+        addParallel(new FrontLiftRetract());
         addSequential(new ChassisMoveDistance(Component.chassis, FRONT_WHEEL_DISTANCE, Component.drivePID));
-        addSequential(new BackLiftRetract());
+        addParallel(new BackLiftRetract());
         addSequential(new ChassisMoveDistance(Component.chassis, BOTH_WHEEL_DISTANCE, Component.drivePID));
 	}
 }
