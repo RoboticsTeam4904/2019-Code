@@ -25,6 +25,7 @@ public class MonkeySee extends Command {
     private BufferedOutputStream voltageOutputStream;
     private Timer timer;
     private SeeTask task;
+    private int counter;
     static final Motor[] MOTOR_LIST = new Motor[] {RobotMap.Component.leftMotorA, RobotMap.Component.leftMotorB,
             RobotMap.Component.rightMotorA, RobotMap.Component.rightMotorB};
 
@@ -37,6 +38,7 @@ public class MonkeySee extends Command {
 
     @Override
     protected void initialize() {
+        counter = 0;
         try {
             outputStream = new BufferedOutputStream(new FileOutputStream(recordFile));
             voltageOutputStream = new BufferedOutputStream(new FileOutputStream(recordVoltageFile));
@@ -67,20 +69,24 @@ public class MonkeySee extends Command {
     class SeeTask extends TimerTask {
         @Override
         public void run() {
-            String outString = Arrays.stream(MOTOR_LIST).map(Motor::get).map(Object::toString)
-                .collect(Collectors.joining(",", "", "\n"));
-            try {
-                String voltageString = RobotMap.Component.pdp.getVoltageSafely() + "\n";
+            ++counter;
+            if (counter >= 150) // 3 seconds
+            {
+                String outString = Arrays.stream(MOTOR_LIST).map(Motor::get).map(Object::toString)
+                    .collect(Collectors.joining(",", "", "\n"));
                 try {
-                    outputStream.write(outString.getBytes());
-                    voltageOutputStream.write(voltageString.getBytes());
+                    String voltageString = RobotMap.Component.pdp.getVoltageSafely() + "\n";
+                    try {
+                        outputStream.write(outString.getBytes());
+                        voltageOutputStream.write(voltageString.getBytes());
+                    }
+                    catch (IOException e) {
+                        LogKitten.e(e);
+                    }
                 }
-                catch (IOException e) {
+                catch (InvalidSensorException e) {
                     LogKitten.e(e);
                 }
-            }
-            catch (InvalidSensorException e) {
-                LogKitten.e(e);
             }
         }
     }
