@@ -11,8 +11,8 @@ import org.usfirst.frc4904.standard.subsystems.motor.speedmodifiers.Acceleration
 
 import org.usfirst.frc4904.standard.custom.sensors.PDP;
 import org.usfirst.frc4904.standard.custom.PCMPort;
-import org.usfirst.frc4904.standard.custom.sensors.CANEncoder;
-import org.usfirst.frc4904.standard.custom.sensors.EncoderPair;
+//import org.usfirst.frc4904.standard.custom.sensors.CANEncoder;
+//import org.usfirst.frc4904.standard.custom.sensors.EncoderPair;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CANTalonSRX;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CustomPIDController;
 import org.usfirst.frc4904.standard.custom.sensors.NavX;
@@ -34,8 +34,8 @@ public class RobotMap {
 			public static final int rightDriveB = -1;
         }
         public static class CAN {
-            public static final int leftEncoder = -1; // TODO: Change ports
-			public static final int rightEncoder = -1;
+            //public static final int leftEncoder = -1; // TODO: Change ports
+			//public static final int rightEncoder = -1;
         }
         public static class Pneumatics {
             public static final PCMPort shifter = new PCMPort(-1, -1, -1); // TODO: Change ports
@@ -75,9 +75,9 @@ public class RobotMap {
         public static EnableableModifier rightWheelAccelerationCap;
         public static EnableableModifier leftWheelAccelerationCap;
         
-		public static CANEncoder leftWheelEncoder;
-		public static CANEncoder rightWheelEncoder;
-		public static EncoderPair chassisEncoders;
+		//public static CANEncoder leftWheelEncoder;
+		//public static CANEncoder rightWheelEncoder;
+		//public static EncoderPair chassisEncoders;
         public static CustomPIDController chassisTurnMC;
 		public static CustomPIDController drivePID;
 		public static NavX navx;
@@ -94,10 +94,10 @@ public class RobotMap {
         Component.pdp = new PDP();
 
         // Wheels
-        Component.leftWheelEncoder = new CANEncoder("LeftEncoder", Port.CAN.leftEncoder);
-        Component.rightWheelEncoder = new CANEncoder("RightEncoder", Port.CAN.rightEncoder);
-        Component.leftWheelEncoder.setDistancePerPulse(Metrics.Wheel.INCHES_PER_TICK);
-        Component.rightWheelEncoder.setDistancePerPulse(Metrics.Wheel.INCHES_PER_TICK);
+        // Component.leftWheelEncoder = new CANEncoder("LeftEncoder", Port.CAN.leftEncoder);
+        // Component.rightWheelEncoder = new CANEncoder("RightEncoder", Port.CAN.rightEncoder);
+        // Component.leftWheelEncoder.setDistancePerPulse(Metrics.Wheel.INCHES_PER_TICK);
+        // Component.rightWheelEncoder.setDistancePerPulse(Metrics.Wheel.INCHES_PER_TICK);
 		Component.leftWheelAccelerationCap = new EnableableModifier(new AccelerationCap(Component.pdp));
 		Component.leftWheelAccelerationCap.enable();
 		Component.rightWheelAccelerationCap = new EnableableModifier(new AccelerationCap(Component.pdp));
@@ -109,13 +109,13 @@ public class RobotMap {
 		// Chassis
 		Component.shifter = new SolenoidShifters(Port.Pneumatics.shifter.pcmID, Port.Pneumatics.shifter.forward,
             Port.Pneumatics.shifter.reverse);
-        Component.chassisEncoders = new EncoderPair(Component.leftWheelEncoder, Component.rightWheelEncoder);
+        //Component.chassisEncoders = new EncoderPair(Component.leftWheelEncoder, Component.rightWheelEncoder);
         Component.chassis = new TankDriveShifting("2019-Chassis", Component.leftWheel, Component.rightWheel, Component.shifter);
         HumanInput.Driver.xbox = new CustomXbox(Port.HumanInput.xboxController);
         HumanInput.Driver.xbox.setDeadZone(HumanInterfaceConfig.XBOX_DEADZONE);
         HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
         HumanInput.Operator.joystick.setDeadzone(HumanInterfaceConfig.JOYSTICK_DEADZONE);
-        Component.drivePID = new CustomPIDController(PID.Drive.P, PID.Drive.I, PID.Drive.D, PID.Drive.F, Component.rightWheelEncoder);
+        //Component.drivePID = new CustomPIDController(PID.Drive.P, PID.Drive.I, PID.Drive.D, PID.Drive.F, Component.rightWheelEncoder);
 		Component.drivePID.setAbsoluteTolerance(PID.Drive.tolerance);
 		Component.drivePID.setDerivativeTolerance(PID.Drive.dTolerance);
     }
