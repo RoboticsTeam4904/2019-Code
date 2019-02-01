@@ -10,7 +10,7 @@ import org.usfirst.frc4904.robot.subsystems.VelcroPlate;
 public class FloorIO {
 	public static final double INTAKE_SPEED = 0.5;
 	public static final double OUTTAKE_SPEED = -0.5;
-	//public final Motor hatcherRollerIntake;
+	public final Motor hatcherRollerIntake;
 	// public final Motor cargoRollerIntake;
 	// public final Flipper flipper;
 	public final VelcroPlate velcroPlate;
@@ -24,8 +24,9 @@ public class FloorIO {
 
 	// }
 
-	public FloorIO (VelcroPlate hatchPlate) {
+	public FloorIO (VelcroPlate hatchPlate, Motor hatcherRollerIntake) {
 		this.velcroPlate = hatchPlate;
+		this.hatcherRollerIntake = hatcherRollerIntake;
 
 	}
 	
