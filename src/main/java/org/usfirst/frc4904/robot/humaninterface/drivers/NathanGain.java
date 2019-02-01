@@ -1,6 +1,8 @@
 package org.usfirst.frc4904.robot.humaninterface.drivers;
-
-
+import org.usfirst.frc4904.robot.commands.PickupSolenoidExtend;
+import org.usfirst.frc4904.robot.commands.PickupSolenoidRelease;
+import org.usfirst.frc4904.robot.commands.PlaceSolenoidExtend;
+import org.usfirst.frc4904.robot.commands.PlaceSolenoidRelease;
 import org.usfirst.frc4904.robot.RobotMap;
 import org.usfirst.frc4904.standard.commands.chassis.ChassisShift;
 import org.usfirst.frc4904.standard.humaninput.Driver;
@@ -16,6 +18,7 @@ public class NathanGain extends Driver {
 
 	public NathanGain() {
 		super("NathanGain");
+
 	}
 
 	protected double scaleGain(double input, double gain, double exp) {
@@ -24,6 +27,16 @@ public class NathanGain extends Driver {
 
 	@Override
 	public void bindCommands() {
+		RobotMap.Component.driverXbox.a.whenPressed(new PickupSolenoidRelease());
+		RobotMap.Component.driverXbox.b.whenPressed(new PickupSolenoidExtend());
+		// RobotMap.Component.driverXbox.b.whenPressed(new PlaceSolenoidExtend());
+		// RobotMap.Component.driverXbox.b.whenReleased(new PlaceSolenoidRelease());
+
+		// RobotMap.HumanInput.Operator.joystick.button3.whenPressed(new PickupSolenoidExtend());
+		// RobotMap.HumanInput.Operator.joystick.button4.whenPressed(new PickupSolenoidRelease());
+		// RobotMap.HumanInput.Operator.joystick.button5.whenPressed(new PlaceSolenoidExtend());
+		// RobotMap.HumanInput.Operator.joystick.button6.whenPressed(new PlaceSolenoidRelease());
+
 		// RobotMap.Component.driverXbox.lb
 		// 	.whenPressed(new ChassisShift(RobotMap.Component.chassis.getShifter(), SolenoidShifters.ShiftState.DOWN));
 		// RobotMap.Component.driverXbox.rb
