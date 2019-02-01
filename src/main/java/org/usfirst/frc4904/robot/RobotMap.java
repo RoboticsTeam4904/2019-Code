@@ -3,7 +3,6 @@ package org.usfirst.frc4904.robot;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
-<<<<<<< HEAD
 import org.usfirst.frc4904.robot.subsystems.FloorIO;
 import org.usfirst.frc4904.robot.subsystems.VelcroPlate;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
@@ -11,11 +10,9 @@ import org.usfirst.frc4904.standard.custom.PCMPort;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CANTalonSRX;
 import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-=======
 import org.usfirst.frc4904.standard.subsystems.chassis.TankDrive;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.Spark;
->>>>>>> origin/spark-test
 
 
 public class RobotMap {
@@ -25,16 +22,13 @@ public class RobotMap {
 
         }
         public static class CANMotor {
-<<<<<<< HEAD
             public static final int hatcherRollerIntake = -1; // TODO: Adjust port numbers
             public static final int cargoRollerIntake = -1; // TODO: Adjust port numbers
-=======
             public static final int leftMotorA = 24;
             public static final int leftMotorB = 2;
             public static final int rightMotorA = 3;
             public static final int rightMotorB = 4;
             
->>>>>>> origin/spark-test
         }
         public static class PWM {}
         public static class CAN {}
@@ -50,7 +44,6 @@ public class RobotMap {
     public static class Metrics{}
     public static class Component {
         public static CustomXbox driverXbox;
-<<<<<<< HEAD
 
         public static class Floorio {
             public static FloorIO floorio;
@@ -63,14 +56,12 @@ public class RobotMap {
             public static Motor cargoRollerIntake;
             public static Motor hatcherRollerIntake;
         }
-=======
         public static Motor leftMotorA;
         public static Motor leftMotorB;
         public static Motor rightMotorA;
         public static Motor rightMotorB;
 
         public static TankDrive chassis;
->>>>>>> origin/spark-test
     }
     public static class HumanInput {
         public static class Driver {
@@ -83,7 +74,6 @@ public class RobotMap {
 
     public RobotMap() {
         Component.driverXbox = new CustomXbox(Port.HumanInput.xboxController);
-<<<<<<< HEAD
         
         // Component.Floorio.cargoRollerIntake = new Motor("Cargo Roller Intake", new CANTalonSRX(Port.CANMotor.cargoRollerIntake));
         // Component.Floorio.hatcherRollerIntake = new Motor("Hatch Roller Intake", new CANTalonSRX(Port.CANMotor.hatcherRollerIntake));
@@ -93,8 +83,6 @@ public class RobotMap {
         Component.Floorio.floorio = new FloorIO(Component.Floorio.velcroPlate);        
 
         Component.driverXbox.setDeadZone(0.1);
-=======
-        Component.driverXbox.setDeadZone(0.1);
 
         Component.leftMotorA = new Motor("LeftMotorA", new Spark(Port.CANMotor.leftMotorA, MotorType.kBrushed));
         Component.leftMotorB = new Motor("LeftMotorB", true, new Spark(Port.CANMotor.leftMotorB, MotorType.kBrushed));
@@ -102,6 +90,5 @@ public class RobotMap {
         Component.rightMotorB = new Motor("rightMotorB", true, new Spark(Port.CANMotor.rightMotorB, MotorType.kBrushed));        
         Component.chassis = new TankDrive("Chassis", Component.leftMotorA, Component.leftMotorB, Component.rightMotorA, Component.rightMotorB);
         
->>>>>>> origin/spark-test
     }
 }
