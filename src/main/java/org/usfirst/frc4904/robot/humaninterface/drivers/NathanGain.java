@@ -1,4 +1,5 @@
 package org.usfirst.frc4904.robot.humaninterface.drivers;
+import org.usfirst.frc4904.robot.commands.HatcherSpinMotor;
 import org.usfirst.frc4904.robot.commands.PickupSolenoidExtend;
 import org.usfirst.frc4904.robot.commands.PickupSolenoidRelease;
 import org.usfirst.frc4904.robot.commands.PlaceSolenoidExtend;
@@ -29,6 +30,7 @@ public class NathanGain extends Driver {
 	public void bindCommands() {
 		RobotMap.Component.driverXbox.a.whenPressed(new PickupSolenoidRelease());
 		RobotMap.Component.driverXbox.b.whenPressed(new PickupSolenoidExtend());
+		RobotMap.Component.driverXbox.x.onlyWhileHeld(new HatcherSpinMotor(0.5));
 		// RobotMap.Component.driverXbox.b.whenPressed(new PlaceSolenoidExtend());
 		// RobotMap.Component.driverXbox.b.whenReleased(new PlaceSolenoidRelease());
 

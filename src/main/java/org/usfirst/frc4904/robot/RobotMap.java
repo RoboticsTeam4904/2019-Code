@@ -12,6 +12,7 @@ import org.usfirst.frc4904.standard.custom.motioncontrollers.CANTalonSRX;
 import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.VictorSP;
 import org.usfirst.frc4904.standard.subsystems.chassis.TankDrive;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.Spark;
@@ -25,7 +26,7 @@ public class RobotMap {
 
         }
         public static class CANMotor {
-            public static final int hatcherRollerIntake = -1; // TODO: Adjust port numbers
+            public static final int hatcherRollerIntake = 14; // TODO: Adjust port numbers
             public static final int cargoRollerIntake = -1; // TODO: Adjust port numbers
             public static final int leftMotorA = 24;
             public static final int leftMotorB = 2;
@@ -37,8 +38,8 @@ public class RobotMap {
         public static class CAN {}
         public static class Pneumatics {
 
-           public static final PCMPort placeSolenoid = new PCMPort(0, 1, 0); // TODO: Adjust port numbers
-           public static final PCMPort pickupSolenoid = new PCMPort(0, 3, 2); // TODO: Adjust port numbers
+           public static final PCMPort pickupSolenoid = new PCMPort(0, 1, 0); // TODO: Adjust port numbers
+           public static final PCMPort placeSolenoid = new PCMPort(0, 3, 2); // TODO: Adjust port numbers
            //public static final PCMPort flipper = new PCMPort(-1, -1, -1); // TODO: Adjust port numbers
 
         }
@@ -79,12 +80,12 @@ public class RobotMap {
         Component.driverXbox = new CustomXbox(Port.HumanInput.xboxController);
         Component.Floorio.pickupSolenoid = Port.Pneumatics.pickupSolenoid.buildDoubleSolenoid();
         Component.Floorio.placeSolenoid = Port.Pneumatics.placeSolenoid.buildDoubleSolenoid();
-        // Component.Floorio.cargoRollerIntake = new Motor("Cargo Roller Intake", new CANTalonSRX(Port.CANMotor.cargoRollerIntake));
-        // Component.Floorio.hatcherRollerIntake = new Motor("Hatch Roller Intake", new CANTalonSRX(Port.CANMotor.hatcherRollerIntake));
+        //Component.Floorio.cargoRollerIntake = new Motor("Cargo Roller Intake", new CANTalonSRX(Port.CANMotor.cargoRollerIntake));
+        Component.Floorio.hatcherRollerIntake = new Motor("Hatch Roller Intake", new CANTalonSRX(Port.CANMotor.hatcherRollerIntake));
 
         // Component.Floorio.flipper = new FloorIO.Flipper(Port.Pneumatics.flipper.buildDoubleSolenoid());
         Component.Floorio.velcroPlate = new VelcroPlate(Component.Floorio.pickupSolenoid, Component.Floorio.placeSolenoid);
-        Component.Floorio.floorio = new FloorIO(Component.Floorio.velcroPlate);        
+        Component.Floorio.floorio = new FloorIO(Component.Floorio.velcroPlate, Component.Floorio.hatcherRollerIntake);        
 
         Component.driverXbox.setDeadZone(0.1);
 
