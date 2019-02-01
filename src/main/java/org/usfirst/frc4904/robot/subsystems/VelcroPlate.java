@@ -1,6 +1,7 @@
 package org.usfirst.frc4904.robot.subsystems;
 
 import org.usfirst.frc4904.robot.commands.VelcroPlateRest;
+import org.usfirst.frc4904.standard.commands.Idle;
 import org.usfirst.frc4904.standard.commands.Noop;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -31,7 +32,7 @@ public class VelcroPlate {
 		}
 
 		public void initDefaultCommand() {
-			setDefaultCommand(new Noop());
+			setDefaultCommand(new Idle(this));
 		}
 	}
 

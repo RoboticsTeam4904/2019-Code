@@ -4,6 +4,7 @@ import org.usfirst.frc4904.standard.commands.Noop;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc4904.robot.RobotMap.Component.Floorio;
 import org.usfirst.frc4904.robot.subsystems.VelcroPlate;
 
 public class FloorIO {
@@ -53,7 +54,7 @@ public class FloorIO {
 
 		@Override
 		protected void initDefaultCommand() {
-			setDefaultCommand(new Noop());
+			setDefaultCommand(new Idle(this));
 		}       
 	}
 }
