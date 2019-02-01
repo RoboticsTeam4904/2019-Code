@@ -24,9 +24,9 @@ public class RobotMap {
         public static class CAN {}
         public static class Pneumatics {
 
-           public static final PCMPort placeSolenoid = new PCMPort(-1, -1, -1); // TODO: Adjust port numbers
-           public static final PCMPort pickupSolenoid = new PCMPort(-1, -1, -1); // TODO: Adjust port numbers
-           public static final PCMPort flipper = new PCMPort(-1, -1, -1); // TODO: Adjust port numbers
+           public static final PCMPort placeSolenoid = new PCMPort(0, 0, 1); // TODO: Adjust port numbers
+           public static final PCMPort pickupSolenoid = new PCMPort(0, 2, 3); // TODO: Adjust port numbers
+           //public static final PCMPort flipper = new PCMPort(-1, -1, -1); // TODO: Adjust port numbers
 
         }
     }
@@ -59,13 +59,12 @@ public class RobotMap {
     public RobotMap() {
         Component.driverXbox = new CustomXbox(Port.HumanInput.xboxController);
         
-        Component.Floorio.cargoRollerIntake = new Motor("Cargo Roller Intake", new CANTalonSRX(Port.CANMotor.cargoRollerIntake));
-        Component.Floorio.hatcherRollerIntake = new Motor("Hatch Roller Intake", new CANTalonSRX(Port.CANMotor.hatcherRollerIntake));
+        // Component.Floorio.cargoRollerIntake = new Motor("Cargo Roller Intake", new CANTalonSRX(Port.CANMotor.cargoRollerIntake));
+        // Component.Floorio.hatcherRollerIntake = new Motor("Hatch Roller Intake", new CANTalonSRX(Port.CANMotor.hatcherRollerIntake));
 
-        Component.Floorio.flipper = new FloorIO.Flipper(Port.Pneumatics.flipper.buildDoubleSolenoid());
+        // Component.Floorio.flipper = new FloorIO.Flipper(Port.Pneumatics.flipper.buildDoubleSolenoid());
         Component.Floorio.velcroPlate = new VelcroPlate(Component.Floorio.pickupSolenoid, Component.Floorio.placeSolenoid);
-
-        Component.Floorio.floorio = new FloorIO(Component.Floorio.cargoRollerIntake,  Component.Floorio.hatcherRollerIntake, Component.Floorio.velcroPlate, Component.Floorio.flipper);        
+        Component.Floorio.floorio = new FloorIO(Component.Floorio.velcroPlate);        
 
         Component.driverXbox.setDeadZone(0.1);
     }

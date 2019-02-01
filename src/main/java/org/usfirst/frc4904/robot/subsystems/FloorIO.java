@@ -9,21 +9,26 @@ import org.usfirst.frc4904.robot.subsystems.VelcroPlate;
 public class FloorIO {
 	public static final double INTAKE_SPEED = 0.5;
 	public static final double OUTTAKE_SPEED = -0.5;
-	public final Motor hatcherRollerIntake;
-	public final Motor cargoRollerIntake;
-	public final Flipper flipper;
+	//public final Motor hatcherRollerIntake;
+	// public final Motor cargoRollerIntake;
+	// public final Flipper flipper;
 	public final VelcroPlate velcroPlate;
 
 
-	public FloorIO (Motor hatcherRollerIntake, Motor cargoRollerIntake, VelcroPlate hatchPlate, Flipper flipper) {
-		this.hatcherRollerIntake = hatcherRollerIntake;
-		this.cargoRollerIntake = cargoRollerIntake;
-		this.flipper = flipper;
+	// public FloorIO (Motor hatcherRollerIntake, Motor cargoRollerIntake, VelcroPlate hatchPlate, Flipper flipper) {
+	// 	this.hatcherRollerIntake = hatcherRollerIntake;
+	// 	this.cargoRollerIntake = cargoRollerIntake;
+	// 	this.flipper = flipper;
+	// 	this.velcroPlate = hatchPlate;
+
+	// }
+
+	public FloorIO (VelcroPlate hatchPlate) {
 		this.velcroPlate = hatchPlate;
 
-    }
+	}
 	
-    public static class Flipper extends Subsystem {
+   	public static class Flipper extends Subsystem {
 	    public static final DoubleSolenoid.Value UP = DoubleSolenoid.Value.kForward; // Piston moves the block that holds the hatcher 90 degrees upwards 
 	    public static final DoubleSolenoid.Value DOWN = DoubleSolenoid.Value.kReverse; // Piston keeps the hatcher downwards 
 	    protected final DoubleSolenoid flipper;
