@@ -3,7 +3,7 @@ package org.usfirst.frc4904.robot;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
-import org.usfirst.frc4904.robot.commands.PickupSolenoidExtend;
+import org.usfirst.frc4904.robot.commands.PickupSolenoidDown;
 import org.usfirst.frc4904.robot.subsystems.FloorIO;
 import org.usfirst.frc4904.robot.subsystems.VelcroPlate;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;

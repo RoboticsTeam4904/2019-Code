@@ -2,10 +2,10 @@ package org.usfirst.frc4904.robot.humaninterface.operators;
 
 
 import org.usfirst.frc4904.robot.RobotMap;
-import org.usfirst.frc4904.robot.commands.PickupSolenoidExtend;
-import org.usfirst.frc4904.robot.commands.PickupSolenoidRelease;
-import org.usfirst.frc4904.robot.commands.PlaceSolenoidExtend;
-import org.usfirst.frc4904.robot.commands.PlaceSolenoidRelease;
+import org.usfirst.frc4904.robot.commands.PickupSolenoidDown;
+import org.usfirst.frc4904.robot.commands.PickupSolenoidUp;
+import org.usfirst.frc4904.robot.commands.PlaceSolenoidDown;
+import org.usfirst.frc4904.robot.commands.PlaceSolenoidUp;
 // import org.usfirst.frc4904.robot.commands.FlipperDown;
 // import org.usfirst.frc4904.robot.commands.FlipperUp;
 import org.usfirst.frc4904.standard.humaninput.Operator;
@@ -23,10 +23,10 @@ public class DefaultOperator extends Operator {
 
 	@Override
 	public void bindCommands() { // TODO: Add VelcroPlate routines to button1 and button2.
-		 RobotMap.HumanInput.Operator.joystick.button3.whenPressed(new PickupSolenoidExtend());
-		 RobotMap.HumanInput.Operator.joystick.button4.whenPressed(new PickupSolenoidRelease());
-		 RobotMap.HumanInput.Operator.joystick.button5.whenPressed(new PlaceSolenoidExtend());
-		 RobotMap.HumanInput.Operator.joystick.button6.whenPressed(new PlaceSolenoidRelease());
+		 RobotMap.HumanInput.Operator.joystick.button3.whenPressed(new PickupSolenoidDown());
+		 RobotMap.HumanInput.Operator.joystick.button4.whenPressed(new PickupSolenoidUp());
+		 RobotMap.HumanInput.Operator.joystick.button5.whenPressed(new PlaceSolenoidDown());
+		 RobotMap.HumanInput.Operator.joystick.button6.whenPressed(new PlaceSolenoidUp());
 
 
 	}

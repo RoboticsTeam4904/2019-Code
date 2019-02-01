@@ -14,8 +14,8 @@ public class PlaceSolenoidRoutine extends CommandGroup { // TODO: Update this ro
 
 	public PlaceSolenoidRoutine() {
         super("PlaceSolenoidRoutine");
-        addSequential(new PlaceSolenoidExtend());
+        addSequential(new PlaceSolenoidDown());
         //addParallel(new ChassisConstant(RobotMap.Component.chassis, MOTOR_HALT_X, MOTOR_HALT_Y, MOTOR_TURN, 0.0)); // TODO: This will be implemented later after routines are finalized.
-        addSequential(new PlaceSolenoidRelease());
+        addSequential(new PlaceSolenoidUp());
 	}
 }

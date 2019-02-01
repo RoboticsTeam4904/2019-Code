@@ -1,9 +1,10 @@
 package org.usfirst.frc4904.robot.humaninterface.drivers;
-import org.usfirst.frc4904.robot.commands.HatcherSpinMotor;
-import org.usfirst.frc4904.robot.commands.PickupSolenoidExtend;
-import org.usfirst.frc4904.robot.commands.PickupSolenoidRelease;
-import org.usfirst.frc4904.robot.commands.PlaceSolenoidExtend;
-import org.usfirst.frc4904.robot.commands.PlaceSolenoidRelease;
+import org.usfirst.frc4904.robot.commands.HatcherIntake;
+import org.usfirst.frc4904.robot.commands.HatcherOutake;
+import org.usfirst.frc4904.robot.commands.PickupSolenoidDown;
+import org.usfirst.frc4904.robot.commands.PickupSolenoidUp;
+import org.usfirst.frc4904.robot.commands.PlaceSolenoidDown;
+import org.usfirst.frc4904.robot.commands.PlaceSolenoidUp;
 import org.usfirst.frc4904.robot.RobotMap;
 import org.usfirst.frc4904.standard.commands.chassis.ChassisShift;
 import org.usfirst.frc4904.standard.humaninput.Driver;
@@ -28,9 +29,10 @@ public class NathanGain extends Driver {
 
 	@Override
 	public void bindCommands() {
-		RobotMap.Component.driverXbox.a.whenPressed(new PickupSolenoidRelease());
-		RobotMap.Component.driverXbox.b.whenPressed(new PickupSolenoidExtend());
-		RobotMap.Component.driverXbox.x.onlyWhileHeld(new HatcherSpinMotor(0.5));
+		RobotMap.Component.driverXbox.a.whenPressed(new PickupSolenoidUp());
+		RobotMap.Component.driverXbox.b.whenPressed(new PickupSolenoidDown());
+		RobotMap.Component.driverXbox.x.onlyWhileHeld(new HatcherIntake());
+		RobotMap.Component.driverXbox.y.onlyWhileHeld(new HatcherOutake());
 		// RobotMap.Component.driverXbox.b.whenPressed(new PlaceSolenoidExtend());
 		// RobotMap.Component.driverXbox.b.whenReleased(new PlaceSolenoidRelease());
 
