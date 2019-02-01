@@ -4,6 +4,7 @@ import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
 import org.usfirst.frc4904.robot.humaninterface.HumanInterfaceConfig;
 import org.usfirst.frc4904.standard.subsystems.chassis.TankDriveShifting;
+import org.usfirst.frc4904.standard.subsystems.chassis.TankDrive;
 import org.usfirst.frc4904.standard.subsystems.chassis.SolenoidShifters;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import org.usfirst.frc4904.standard.subsystems.motor.speedmodifiers.EnableableModifier;
@@ -22,23 +23,24 @@ import org.usfirst.frc4904.standard.custom.sensors.NavX;
 public class RobotMap {
     public static class Port {
         public static class HumanInput {
-            public static final int joystick = 0;
+            // public static final int joystick = 0;
             public static final int xboxController = 1;
 
         }
-        public static class CANMotor {}
+        public static class CANMotor {
+            public static final int leftDriveA = 1; // TODO: Change ports
+			public static final int leftDriveB = 2;
+			public static final int rightDriveA = 3;
+			public static final int rightDriveB = 4;
+        }
         public static class PWM {
-            public static final int leftDriveA = -1; // TODO: Change ports
-			public static final int leftDriveB = -1;
-			public static final int rightDriveA = -1;
-			public static final int rightDriveB = -1;
         }
         public static class CAN {
-            public static final int leftEncoder = -1; // TODO: Change ports
-			public static final int rightEncoder = -1;
+            // public static final int leftEncoder = -1; // TODO: Change ports
+			// public static final int rightEncoder = -1;
         }
         public static class Pneumatics {
-            public static final PCMPort shifter = new PCMPort(-1, -1, -1); // TODO: Change ports
+            // public static final PCMPort shifter = new PCMPort(-1, -1, -1); // TODO: Change ports
         }
     }
     
@@ -67,8 +69,12 @@ public class RobotMap {
     }
     public static class Component {
         public static PDP pdp;
-
-        public static TankDriveShifting chassis;
+        // public static TankDriveShifting chassis;
+        public static TankDrive chassis;
+        public static Motor leftWheelA;
+        public static Motor leftWheelB;
+        public static Motor rightWheelA;
+        public static Motor rightWheelB;
 		public static Motor leftWheel;
 		public static Motor rightWheel;
         public static SolenoidShifters shifter;
@@ -94,29 +100,33 @@ public class RobotMap {
         Component.pdp = new PDP();
 
         // Wheels
-        Component.leftWheelEncoder = new CANEncoder("LeftEncoder", Port.CAN.leftEncoder);
-        Component.rightWheelEncoder = new CANEncoder("RightEncoder", Port.CAN.rightEncoder);
-        Component.leftWheelEncoder.setDistancePerPulse(Metrics.Wheel.INCHES_PER_TICK);
-        Component.rightWheelEncoder.setDistancePerPulse(Metrics.Wheel.INCHES_PER_TICK);
+        // Component.leftWheelEncoder = new CANEncoder("LeftEncoder", Port.CAN.leftEncoder);
+        // Component.rightWheelEncoder = new CANEncoder("RightEncoder", Port.CAN.rightEncoder);
+        // Component.leftWheelEncoder.setDistancePerPulse(Metrics.Wheel.INCHES_PER_TICK);
+        // Component.rightWheelEncoder.setDistancePerPulse(Metrics.Wheel.INCHES_PER_TICK);
 		Component.leftWheelAccelerationCap = new EnableableModifier(new AccelerationCap(Component.pdp));
 		Component.leftWheelAccelerationCap.enable();
 		Component.rightWheelAccelerationCap = new EnableableModifier(new AccelerationCap(Component.pdp));
-		Component.rightWheelAccelerationCap.enable();
-        Component.leftWheel = new Motor("LeftWheel", Component.leftWheelAccelerationCap,
-			new CANTalonSRX(Port.PWM.leftDriveA), new CANTalonSRX(Port.PWM.leftDriveB));
-		Component.rightWheel = new Motor("RightWheel", Component.rightWheelAccelerationCap,
-            new CANTalonSRX(Port.PWM.rightDriveA), new CANTalonSRX(Port.PWM.rightDriveB));
+        Component.rightWheelAccelerationCap.enable();
+
+        Component.rightWheelA = new Motor("rightWheelA", true, Component.rightWheelAccelerationCap, new CANTalonSRX(Port.CANMotor.rightDriveA));
+        Component.rightWheelB = new Motor("rightWheelB", Component.rightWheelAccelerationCap, new CANTalonSRX(Port.CANMotor.rightDriveB));
+
+        Component.leftWheelA = new Motor("leftWheelA", true, Component.leftWheelAccelerationCap, new CANTalonSRX(Port.CANMotor.leftDriveA));
+        Component.leftWheelB = new Motor("leftWheelB", true, Component.leftWheelAccelerationCap, new CANTalonSRX(Port.CANMotor.leftDriveB));
+
 		// Chassis
-		Component.shifter = new SolenoidShifters(Port.Pneumatics.shifter.pcmID, Port.Pneumatics.shifter.forward,
-            Port.Pneumatics.shifter.reverse);
-        Component.chassisEncoders = new EncoderPair(Component.leftWheelEncoder, Component.rightWheelEncoder);
-        Component.chassis = new TankDriveShifting("2019-Chassis", Component.leftWheel, Component.rightWheel, Component.shifter);
+		// Component.shifter = new SolenoidShifters(Port.Pneumatics.shifter.pcmID, Port.Pneumatics.shifter.forward,
+            // Port.Pneumatics.shifter.reverse);
+        // Component.chassisEncoders = new EncoderPair(Component.leftWheelEncoder, Component.rightWheelEncoder);
+        // Component.chassis = new TankDriveShifting("2019-Chassis", Component.leftWheel, Component.rightWheel, Component.shifter);
+        Component.chassis = new TankDrive("2019-Chassis", Component.leftWheelA, Component.leftWheelB, Component.rightWheelA, Component.rightWheelB);
         HumanInput.Driver.xbox = new CustomXbox(Port.HumanInput.xboxController);
         HumanInput.Driver.xbox.setDeadZone(HumanInterfaceConfig.XBOX_DEADZONE);
-        HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
-        HumanInput.Operator.joystick.setDeadzone(HumanInterfaceConfig.JOYSTICK_DEADZONE);
-        Component.drivePID = new CustomPIDController(PID.Drive.P, PID.Drive.I, PID.Drive.D, PID.Drive.F, Component.rightWheelEncoder);
-		Component.drivePID.setAbsoluteTolerance(PID.Drive.tolerance);
-		Component.drivePID.setDerivativeTolerance(PID.Drive.dTolerance);
+        // HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
+        // HumanInput.Operator.joystick.setDeadzone(HumanInterfaceConfig.JOYSTICK_DEADZONE);
+        // Component.drivePID = new CustomPIDController(PID.Drive.P, PID.Drive.I, PID.Drive.D, PID.Drive.F, Component.rightWheelEncoder);
+		// Component.drivePID.setAbsoluteTolerance(PID.Drive.tolerance);
+		// Component.drivePID.setDerivativeTolerance(PID.Drive.dTolerance);
     }
 }
