@@ -5,11 +5,14 @@ import org.usfirst.frc4904.standard.commands.chassis.ChassisTurn;
 import org.usfirst.frc4904.standard.commands.chassis.ChassisMoveDistance;
 import org.usfirst.frc4904.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.networktables.NetworkTable;
 
 public class NotSplines extends CommandGroup {
     public static class Values{
-        public static final double distance = 1.0;
-        public static final double angle = 45.0;
+		public static final double distance = 1.0;
+		// public static final double distance = RobotMap.NetworkTables.PID.distance;
+		public static final double angle = 45.0;
+		// public static final double angle = RobotMap.NetworkTables.PID.angle;
         public static final double distance_x = distance*Math.sin(angle);
         public static final double distance_y = distance*Math.cos(angle);
     }

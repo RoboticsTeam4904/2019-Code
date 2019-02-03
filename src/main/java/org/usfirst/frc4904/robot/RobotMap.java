@@ -8,6 +8,9 @@ import org.usfirst.frc4904.standard.subsystems.chassis.SolenoidShifters;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import org.usfirst.frc4904.standard.subsystems.motor.speedmodifiers.EnableableModifier;
 import org.usfirst.frc4904.standard.subsystems.motor.speedmodifiers.AccelerationCap;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 
 import org.usfirst.frc4904.standard.custom.sensors.PDP;
 import org.usfirst.frc4904.standard.custom.PCMPort;
@@ -81,7 +84,24 @@ public class RobotMap {
         public static CustomPIDController chassisTurnMC;
 		public static CustomPIDController drivePID;
 		public static NavX navx;
-    }
+	}
+	
+	public static class NetworkTables {
+		public static NetworkTableInstance inst;
+		public static NetworkTable table;
+
+		public static class Sensors {
+			public static NetworkTable table;
+		}
+		
+		public static class PID {
+			public static NetworkTable table;
+			public static NetworkTableEntry distance;
+			public static NetworkTableEntry angle;
+
+		}
+	}
+
     public static class HumanInput {
         public static class Driver {
             public static CustomXbox xbox;
@@ -105,7 +125,13 @@ public class RobotMap {
         Component.leftWheel = new Motor("LeftWheel", Component.leftWheelAccelerationCap,
 			new CANTalonSRX(Port.PWM.leftDriveA), new CANTalonSRX(Port.PWM.leftDriveB));
 		Component.rightWheel = new Motor("RightWheel", Component.rightWheelAccelerationCap,
-            new CANTalonSRX(Port.PWM.rightDriveA), new CANTalonSRX(Port.PWM.rightDriveB));
+			new CANTalonSRX(Port.PWM.rightDriveA), new CANTalonSRX(Port.PWM.rightDriveB));
+		
+		NetworkTables.inst = NetworkTableInstance.getDefault();
+		NetworkTables.PID.table = NetworkTables.inst.getTable("PID");
+		NetworkTables.PID.distance = NetworkTables.PID.table.getEntry("Distance");
+        NetworkTables.PID.angle = NetworkTables.PID.table.getEntry("Angle");
+		
 		// Chassis
 		Component.shifter = new SolenoidShifters(Port.Pneumatics.shifter.pcmID, Port.Pneumatics.shifter.forward,
             Port.Pneumatics.shifter.reverse);
