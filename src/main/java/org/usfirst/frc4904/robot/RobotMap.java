@@ -5,6 +5,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
 import org.usfirst.frc4904.robot.commands.PickupSolenoidDown;
 import org.usfirst.frc4904.robot.subsystems.FloorIO;
+import org.usfirst.frc4904.robot.subsystems.SolenoidSubsystem;
 import org.usfirst.frc4904.robot.subsystems.VelcroPlate;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import org.usfirst.frc4904.standard.custom.PCMPort;
@@ -40,31 +41,23 @@ public class RobotMap {
 
            public static final PCMPort pickupSolenoid = new PCMPort(0, 1, 0); // TODO: Adjust port numbers
            public static final PCMPort placeSolenoid = new PCMPort(0, 3, 2); // TODO: Adjust port numbers
-           //public static final PCMPort flipper = new PCMPort(-1, -1, -1); // TODO: Adjust port numbers
+           public static final PCMPort flipper = new PCMPort(-1, -1, -1); // TODO: Adjust port numbers
 
         }
     }
     
     public static class Metrics{}
     public static class Component {
-        public static CustomXbox driverXbox;
-
-        public static class Floorio {
-            public static FloorIO floorio;
-            public static VelcroPlate velcroPlate;
-            public static DoubleSolenoid pickupSolenoid;
-            public static DoubleSolenoid placeSolenoid;
-            public static VelcroPlate.SolenoidWrapper pickupSolenoidWrapper;
-            public static VelcroPlate.SolenoidWrapper placeSolenoidWrapper;
-            public static FloorIO.Flipper flipper;
-            public static Motor cargoRollerIntake;
-            public static Motor hatcherRollerIntake;
-        }
+        public static FloorIO floorio;
+        public static SolenoidSubsystem pickupSolenoid;
+        public static SolenoidSubsystem placeSolenoid;
+        public static SolenoidSubsystem flipper;
+        public static Motor cargoRollerIntake;
+        public static Motor hatcherRollerIntake;
         public static Motor leftMotorA;
         public static Motor leftMotorB;
         public static Motor rightMotorA;
         public static Motor rightMotorB;
-
         public static TankDrive chassis;
     }
     public static class HumanInput {
@@ -77,17 +70,15 @@ public class RobotMap {
     }
 
     public RobotMap() {
-        Component.driverXbox = new CustomXbox(Port.HumanInput.xboxController);
-        Component.Floorio.pickupSolenoid = Port.Pneumatics.pickupSolenoid.buildDoubleSolenoid();
-        Component.Floorio.placeSolenoid = Port.Pneumatics.placeSolenoid.buildDoubleSolenoid();
+        HumanInput.Driver.xbox = new CustomXbox(Port.HumanInput.xboxController);
+        HumanInput.Driver.xbox.setDeadZone(0.1);        
+        Component.pickupSolenoid = new SolenoidSubsystem("PlaceSolenoid", Port.Pneumatics.pickupSolenoid.buildDoubleSolenoid());
+        Component.placeSolenoid = new SolenoidSubsystem("PickupSolenoid", Port.Pneumatics.placeSolenoid.buildDoubleSolenoid());
         //Component.Floorio.cargoRollerIntake = new Motor("Cargo Roller Intake", new CANTalonSRX(Port.CANMotor.cargoRollerIntake));
-        Component.Floorio.hatcherRollerIntake = new Motor("Hatch Roller Intake", new CANTalonSRX(Port.CANMotor.hatcherRollerIntake));
+        Component.hatcherRollerIntake = new Motor("Hatch Roller Intake", new CANTalonSRX(Port.CANMotor.hatcherRollerIntake));
 
-        // Component.Floorio.flipper = new FloorIO.Flipper(Port.Pneumatics.flipper.buildDoubleSolenoid());
-        Component.Floorio.velcroPlate = new VelcroPlate(Component.Floorio.pickupSolenoid, Component.Floorio.placeSolenoid);
-        Component.Floorio.floorio = new FloorIO(Component.Floorio.velcroPlate, Component.Floorio.hatcherRollerIntake);        
-
-        Component.driverXbox.setDeadZone(0.1);
+        Component.flipper = new SolenoidSubsystem("Flipper", Port.Pneumatics.flipper.buildDoubleSolenoid());
+        Component.floorio = new FloorIO(Component.placeSolenoid, Component.pickupSolenoid, Component.flipper, Component.hatcherRollerIntake);        
 
         Component.leftMotorA = new Motor("LeftMotorA", new Spark(Port.CANMotor.leftMotorA, MotorType.kBrushed));
         Component.leftMotorB = new Motor("LeftMotorB", true, new Spark(Port.CANMotor.leftMotorB, MotorType.kBrushed));

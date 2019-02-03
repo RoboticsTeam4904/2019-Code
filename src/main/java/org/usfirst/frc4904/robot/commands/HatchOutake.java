@@ -3,8 +3,8 @@ package org.usfirst.frc4904.robot.commands;
 import org.usfirst.frc4904.robot.subsystems.FloorIO;
 
 
-public class HatcherOutake extends HatcherSpin {
-    public HatcherOutake () {
+public class HatchOutake extends HatchSpin {
+    public HatchOutake () {
         super(FloorIO.OUTTAKE_SPEED);
     }
 }

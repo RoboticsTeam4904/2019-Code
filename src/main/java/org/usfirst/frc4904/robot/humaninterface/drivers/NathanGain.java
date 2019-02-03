@@ -1,6 +1,6 @@
 package org.usfirst.frc4904.robot.humaninterface.drivers;
-import org.usfirst.frc4904.robot.commands.HatcherIntake;
-import org.usfirst.frc4904.robot.commands.HatcherOutake;
+import org.usfirst.frc4904.robot.commands.HatchIntake;
+import org.usfirst.frc4904.robot.commands.HatchOutake;
 import org.usfirst.frc4904.robot.commands.PickupSolenoidDown;
 import org.usfirst.frc4904.robot.commands.PickupSolenoidUp;
 import org.usfirst.frc4904.robot.commands.PlaceSolenoidDown;
@@ -29,22 +29,22 @@ public class NathanGain extends Driver {
 
 	@Override
 	public void bindCommands() {
-		RobotMap.Component.driverXbox.a.whenPressed(new PickupSolenoidUp());
-		RobotMap.Component.driverXbox.b.whenPressed(new PickupSolenoidDown());
-		RobotMap.Component.driverXbox.x.onlyWhileHeld(new HatcherIntake());
-		RobotMap.Component.driverXbox.y.onlyWhileHeld(new HatcherOutake());
-		// RobotMap.Component.driverXbox.b.whenPressed(new PlaceSolenoidExtend());
-		// RobotMap.Component.driverXbox.b.whenReleased(new PlaceSolenoidRelease());
+		RobotMap.HumanInput.Driver.xbox.a.whenPressed(new PickupSolenoidUp());
+		RobotMap.HumanInput.Driver.xbox.b.whenPressed(new PickupSolenoidDown());
+		RobotMap.HumanInput.Driver.xbox.x.onlyWhileHeld(new HatchIntake());
+		RobotMap.HumanInput.Driver.xbox.y.onlyWhileHeld(new HatchOutake());
+		// RobotMap.HumanInput.Driver.xbox.b.whenPressed(new PlaceSolenoidExtend());
+		// RobotMap.HumanInput.Driver.xbox.b.whenReleased(new PlaceSolenoidRelease());
 
 		// RobotMap.HumanInput.Operator.joystick.button3.whenPressed(new PickupSolenoidExtend());
 		// RobotMap.HumanInput.Operator.joystick.button4.whenPressed(new PickupSolenoidRelease());
 		// RobotMap.HumanInput.Operator.joystick.button5.whenPressed(new PlaceSolenoidExtend());
 		// RobotMap.HumanInput.Operator.joystick.button6.whenPressed(new PlaceSolenoidRelease());
 
-		// RobotMap.Component.driverXbox.lb
-		// 	.whenPressed(new ChassisShift(RobotMap.Component.chassis.getShifter(), SolenoidShifters.ShiftState.DOWN));
-		// RobotMap.Component.driverXbox.rb
-		// 	.whenPressed(new ChassisShift(RobotMap.Component.chassis.getShifter(), SolenoidShifters.ShiftState.UP));
+		// RobotMap.HumanInput.Driver.xbox.lb
+		// 	.whenPressed(new ChassisShift(RobotMap.HumanInput.Driver.chassis.getShifter(), SolenoidShifters.ShiftState.DOWN));
+		// RobotMap.HumanInput.Driver.xbox.rb
+		// 	.whenPressed(new ChassisShift(RobotMap.HumanInput.Driver.chassis.getShifter(), SolenoidShifters.ShiftState.UP));
     }
     @Override
 	public double getX() {
@@ -53,7 +53,7 @@ public class NathanGain extends Driver {
 
 	@Override
 	public double getY() {
-		double rawSpeed = RobotMap.Component.driverXbox.rt.getX() - RobotMap.Component.driverXbox.lt.getX();
+		double rawSpeed = RobotMap.HumanInput.Driver.xbox.rt.getX() - RobotMap.HumanInput.Driver.xbox.lt.getX();
 		double speed = scaleGain(rawSpeed, NathanGain.SPEED_GAIN, NathanGain.SPEED_EXP)
 			* NathanGain.Y_SPEED_SCALE;
 		return speed;
@@ -61,7 +61,7 @@ public class NathanGain extends Driver {
 
 	@Override
 	public double getTurnSpeed() {
-		double rawTurnSpeed = RobotMap.Component.driverXbox.leftStick.getX();
+		double rawTurnSpeed = RobotMap.HumanInput.Driver.xbox.leftStick.getX();
 		double turnSpeed = scaleGain(rawTurnSpeed, NathanGain.TURN_GAIN, NathanGain.TURN_EXP)
 			* NathanGain.TURN_SPEED_SCALE;
 		return turnSpeed;
