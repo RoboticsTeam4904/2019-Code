@@ -6,6 +6,7 @@ import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
 import org.usfirst.frc4904.auton.Fusible;
 import org.usfirst.frc4904.auton.FusibleNavX;
 import org.usfirst.frc4904.auton.AligningCamera;
+import org.usfirst.frc4904.auton.DummyCamera;
 import org.usfirst.frc4904.robot.humaninterface.HumanInterfaceConfig;
 import org.usfirst.frc4904.standard.subsystems.chassis.TankDriveShifting;
 import org.usfirst.frc4904.standard.subsystems.chassis.TankDrive;
@@ -20,6 +21,7 @@ import org.usfirst.frc4904.standard.custom.sensors.EncoderPair;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CANTalonSRX;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CustomPIDController;
 import org.usfirst.frc4904.standard.custom.sensors.NavX;
+import edu.wpi.first.wpilibj.SerialPort;
 
 public class RobotMap {
     public static class Port {
@@ -92,7 +94,7 @@ public class RobotMap {
         public static CustomPIDController chassisTurnMC;
         public static CustomPIDController drivePID;
         public static FusibleNavX navx;
-        public static AligningCamera alignmentCamera;
+        public static DummyCamera alignmentCamera;
     }
 
     public static class HumanInput {
@@ -117,7 +119,7 @@ public class RobotMap {
         Component.rightWheelAccelerationCap = new EnableableModifier(new AccelerationCap(Component.pdp));
         Component.rightWheelAccelerationCap.enable();
         Component.rightWheelA = new Motor("rightWheelA", true, Component.rightWheelAccelerationCap,
-            new CANTalonSRX(Port.CANMotor.rightDriveA));
+            new CANSParkMAX(Port.CANMotor.rightDriveA));
         Component.rightWheelB = new Motor("rightWheelB", Component.rightWheelAccelerationCap,
             new CANTalonSRX(Port.CANMotor.rightDriveB));
         Component.leftWheelA = new Motor("leftWheelA", true, Component.leftWheelAccelerationCap,
@@ -138,5 +140,7 @@ public class RobotMap {
         // Component.drivePID = new CustomPIDController(PID.Drive.P, PID.Drive.I, PID.Drive.D, PID.Drive.F, Component.rightWheelEncoder);
         // Component.drivePID.setAbsoluteTolerance(PID.Drive.tolerance);
         // Component.drivePID.setDerivativeTolerance(PID.Drive.dTolerance);
+        Component.navx = new FusibleNavX(SerialPort.Port.kMXP);
+        Component.alignmentCamera = new DummyCamera(0);
     }
 }
