@@ -1,5 +1,16 @@
 package org.usfirst.frc4904.robot;
 
+<<<<<<< HEAD
+=======
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import org.usfirst.frc4904.standard.custom.PCMPort;
+import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
+import org.usfirst.frc4904.standard.subsystems.chassis.TankDrive;
+import org.usfirst.frc4904.standard.subsystems.motor.Motor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import org.usfirst.frc4904.standard.custom.motioncontrollers.Spark;
+>>>>>>> pinky-tests
 
 import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
@@ -73,9 +84,25 @@ public class RobotMap {
             public static final double tolerance = 4.5; // Tune PID
             public static final double dTolerance = 3.0; // Tune PID
         }
+<<<<<<< HEAD
+=======
+        public static class CANMotor {
+            public static final int leftMotorA = 24;
+            public static final int leftMotorB = 2;
+            public static final int rightMotorA = 3;
+            public static final int rightMotorB = 4;
+            
+        }
+        public static class PWM {}
+        public static class CAN {}
+        public static class Pneumatics {
+            public static final PCMPort port = new PCMPort(0, 1, 0);
+        }
+>>>>>>> pinky-tests
     }
 
     public static class Component {
+<<<<<<< HEAD
         public static PDP pdp;
         // public static TankDriveShifting chassis;
         public static TankDrive chassis;
@@ -95,6 +122,16 @@ public class RobotMap {
         public static CustomPIDController drivePID;
         public static FusibleNavX navx;
         public static DummyCamera alignmentCamera;
+=======
+        public static CustomXbox driverXbox;
+        public static Motor leftMotorA;
+        public static Motor leftMotorB;
+        public static Motor rightMotorA;
+        public static Motor rightMotorB;
+        public static DoubleSolenoid solenoid;
+
+        public static TankDrive chassis;
+>>>>>>> pinky-tests
     }
 
     public static class HumanInput {
@@ -108,6 +145,7 @@ public class RobotMap {
     }
 
     public RobotMap() {
+<<<<<<< HEAD
         Component.pdp = new PDP();
         // Wheels
         // Component.leftWheelEncoder = new CANEncoder("LeftEncoder", Port.CAN.leftEncoder);
@@ -142,5 +180,17 @@ public class RobotMap {
         // Component.drivePID.setDerivativeTolerance(PID.Drive.dTolerance);
         Component.navx = new FusibleNavX(SerialPort.Port.kMXP);
         Component.alignmentCamera = new DummyCamera(0);
+=======
+        Component.driverXbox = new CustomXbox(Port.HumanInput.xboxController);
+        Component.driverXbox.setDeadZone(0.1);
+        Component.solenoid = Port.Pneumatics.port.buildDoubleSolenoid();
+
+        Component.leftMotorA = new Motor("LeftMotorA", new Spark(Port.CANMotor.leftMotorA, MotorType.kBrushed));
+        Component.leftMotorB = new Motor("LeftMotorB", true, new Spark(Port.CANMotor.leftMotorB, MotorType.kBrushed));
+        Component.rightMotorA = new Motor("RightMotorA", true, new Spark(Port.CANMotor.rightMotorA, MotorType.kBrushed));
+        Component.rightMotorB = new Motor("rightMotorB", true, new Spark(Port.CANMotor.rightMotorB, MotorType.kBrushed));        
+        Component.chassis = new TankDrive("Chassis", Component.leftMotorA, Component.leftMotorB, Component.rightMotorA, Component.rightMotorB);
+        
+>>>>>>> pinky-tests
     }
 }

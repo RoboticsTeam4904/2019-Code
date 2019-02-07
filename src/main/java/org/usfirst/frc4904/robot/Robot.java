@@ -12,11 +12,16 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc4904.robot.commands.ExampleCommand;
+import org.usfirst.frc4904.robot.humaninterface.drivers.NathanGain;
 import org.usfirst.frc4904.standard.CommandRobotBase;
+import org.usfirst.frc4904.standard.commands.SingleOp;
+import org.usfirst.frc4904.standard.commands.chassis.ChassisConstant;
 import org.usfirst.frc4904.standard.commands.chassis.ChassisMove;
 import org.usfirst.frc4904.robot.humaninterface.drivers.NathanGain;
 import org.usfirst.frc4904.robot.humaninterface.operators.DefaultOperator;
 import org.usfirst.frc4904.auton.strategies.Align;
+import org.usfirst.frc4904.standard.commands.motor.MotorConstant;
 import edu.wpi.first.cameraserver.CameraServer;;
 
 public class Robot extends CommandRobotBase {
@@ -25,14 +30,14 @@ public class Robot extends CommandRobotBase {
 	@Override
 	public void initialize() {
 		driverChooser.addDefault(new NathanGain());
-		operatorChooser.addDefault(new DefaultOperator());
-		autoChooser.addDefault(new Align());
-		/*
-		 * works in shuffleboard with Logitech C270
-		 * any amount of compression, 30 FPS, 160 x 120
-		 * < 4 Mbps, often < 1
-		 */
-		CameraServer.getInstance().startAutomaticCapture();
+		// operatorChooser.addDefault();
+		/* 
+			works in shuffleboard with Logitech C270
+			any amount of compression, 30 FPS, 160 x 120
+			< 4 Mbps, often < 1
+		*/
+		// CameraServer.getInstance().startAutomaticCapture();
+
 	}
 
 	@Override
