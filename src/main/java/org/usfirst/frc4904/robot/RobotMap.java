@@ -1,21 +1,14 @@
 package org.usfirst.frc4904.robot;
 
-import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
-import org.usfirst.frc4904.robot.commands.PickupSolenoidDown;
 import org.usfirst.frc4904.robot.subsystems.FloorIO;
 import org.usfirst.frc4904.robot.subsystems.SolenoidSubsystem;
-import org.usfirst.frc4904.robot.subsystems.VelcroPlate;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import org.usfirst.frc4904.standard.custom.PCMPort;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CANTalonSRX;
 import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.VictorSP;
 import org.usfirst.frc4904.standard.subsystems.chassis.TankDrive;
-import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.Spark;
 
 
