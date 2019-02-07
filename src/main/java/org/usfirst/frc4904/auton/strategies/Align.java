@@ -16,8 +16,8 @@ abstract public class Align extends CommandGroup {
 		for (int i = 0; i < Align.ALIGNMENT_CYCLES; ++i) {
 			addSequential(new WaitCommand(Align.PAUSE_BETWEEN_ALIGNMENT_CYCLES));
             addSequential(new RunFor(new VisionTurn(RobotMap.Component.alignmentCamera), Align.MAX_CYCLE_TIME_SECONDS));
-            // TODO: have multiple "cameras" on CAN/NT and multiple commands that extend this one
-            //TODO: Maybe also add some kind of alignment validation
+            // TODO: Have multiple "cameras" on CAN/NT and multiple commands that extend this one
+            // TODO: Maybe also add some kind of alignment validation with trustable
 		}
 		addSequential(new KittenCommand("Done aligning", LogKitten.LEVEL_VERBOSE));
 	}
