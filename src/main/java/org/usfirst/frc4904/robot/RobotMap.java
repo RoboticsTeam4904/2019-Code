@@ -1,17 +1,15 @@
 package org.usfirst.frc4904.robot;
 
-<<<<<<< HEAD
-=======
+
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import org.usfirst.frc4904.standard.LogKitten;
 import org.usfirst.frc4904.standard.custom.PCMPort;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
 import org.usfirst.frc4904.standard.subsystems.chassis.TankDrive;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.Spark;
->>>>>>> pinky-tests
-
 import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
 import org.usfirst.frc4904.auton.Fusible;
@@ -41,13 +39,6 @@ public class RobotMap {
             public static final int xboxController = 1;
         }
 
-        public static class CANMotor {
-            public static final int leftDriveA = 1; // TODO: Change ports
-            public static final int leftDriveB = 2;
-            public static final int rightDriveA = 3;
-            public static final int rightDriveB = 4;
-        }
-
         public static class PWM {
         }
 
@@ -58,6 +49,13 @@ public class RobotMap {
 
         public static class Pneumatics {
             // public static final PCMPort shifter = new PCMPort(-1, -1, -1); // TODO: Change ports
+        }
+
+        public static class CANMotor {
+            public static final int leftMotorA = 24;
+            public static final int leftMotorB = 2;
+            public static final int rightMotorA = 3;
+            public static final int rightMotorB = 4;
         }
     }
 
@@ -84,25 +82,19 @@ public class RobotMap {
             public static final double tolerance = 4.5; // Tune PID
             public static final double dTolerance = 3.0; // Tune PID
         }
-<<<<<<< HEAD
-=======
-        public static class CANMotor {
-            public static final int leftMotorA = 24;
-            public static final int leftMotorB = 2;
-            public static final int rightMotorA = 3;
-            public static final int rightMotorB = 4;
-            
+
+        public static class PWM {
         }
-        public static class PWM {}
-        public static class CAN {}
+
+        public static class CAN {
+        }
+
         public static class Pneumatics {
             public static final PCMPort port = new PCMPort(0, 1, 0);
         }
->>>>>>> pinky-tests
     }
 
     public static class Component {
-<<<<<<< HEAD
         public static PDP pdp;
         // public static TankDriveShifting chassis;
         public static TankDrive chassis;
@@ -122,16 +114,12 @@ public class RobotMap {
         public static CustomPIDController drivePID;
         public static FusibleNavX navx;
         public static DummyCamera alignmentCamera;
-=======
         public static CustomXbox driverXbox;
         public static Motor leftMotorA;
         public static Motor leftMotorB;
         public static Motor rightMotorA;
         public static Motor rightMotorB;
         public static DoubleSolenoid solenoid;
-
-        public static TankDrive chassis;
->>>>>>> pinky-tests
     }
 
     public static class HumanInput {
@@ -145,25 +133,12 @@ public class RobotMap {
     }
 
     public RobotMap() {
-<<<<<<< HEAD
         Component.pdp = new PDP();
         // Wheels
         // Component.leftWheelEncoder = new CANEncoder("LeftEncoder", Port.CAN.leftEncoder);
         // Component.rightWheelEncoder = new CANEncoder("RightEncoder", Port.CAN.rightEncoder);
         // Component.leftWheelEncoder.setDistancePerPulse(Metrics.Wheel.INCHES_PER_TICK);
         // Component.rightWheelEncoder.setDistancePerPulse(Metrics.Wheel.INCHES_PER_TICK);
-        Component.leftWheelAccelerationCap = new EnableableModifier(new AccelerationCap(Component.pdp));
-        Component.leftWheelAccelerationCap.enable();
-        Component.rightWheelAccelerationCap = new EnableableModifier(new AccelerationCap(Component.pdp));
-        Component.rightWheelAccelerationCap.enable();
-        Component.rightWheelA = new Motor("rightWheelA", true, Component.rightWheelAccelerationCap,
-            new CANSParkMAX(Port.CANMotor.rightDriveA));
-        Component.rightWheelB = new Motor("rightWheelB", Component.rightWheelAccelerationCap,
-            new CANTalonSRX(Port.CANMotor.rightDriveB));
-        Component.leftWheelA = new Motor("leftWheelA", true, Component.leftWheelAccelerationCap,
-            new CANTalonSRX(Port.CANMotor.leftDriveA));
-        Component.leftWheelB = new Motor("leftWheelB", true, Component.leftWheelAccelerationCap,
-            new CANTalonSRX(Port.CANMotor.leftDriveB));
         // Chassis
         // Component.shifter = new SolenoidShifters(Port.Pneumatics.shifter.pcmID, Port.Pneumatics.shifter.forward,
         // Port.Pneumatics.shifter.reverse);
@@ -180,17 +155,16 @@ public class RobotMap {
         // Component.drivePID.setDerivativeTolerance(PID.Drive.dTolerance);
         Component.navx = new FusibleNavX(SerialPort.Port.kMXP);
         Component.alignmentCamera = new DummyCamera(0);
-=======
         Component.driverXbox = new CustomXbox(Port.HumanInput.xboxController);
         Component.driverXbox.setDeadZone(0.1);
-        Component.solenoid = Port.Pneumatics.port.buildDoubleSolenoid();
-
         Component.leftMotorA = new Motor("LeftMotorA", new Spark(Port.CANMotor.leftMotorA, MotorType.kBrushed));
         Component.leftMotorB = new Motor("LeftMotorB", true, new Spark(Port.CANMotor.leftMotorB, MotorType.kBrushed));
         Component.rightMotorA = new Motor("RightMotorA", true, new Spark(Port.CANMotor.rightMotorA, MotorType.kBrushed));
-        Component.rightMotorB = new Motor("rightMotorB", true, new Spark(Port.CANMotor.rightMotorB, MotorType.kBrushed));        
-        Component.chassis = new TankDrive("Chassis", Component.leftMotorA, Component.leftMotorB, Component.rightMotorA, Component.rightMotorB);
-        
->>>>>>> pinky-tests
+        Component.rightMotorB = new Motor("rightMotorB", true, new Spark(Port.CANMotor.rightMotorB, MotorType.kBrushed));
+        Component.chassis = new TankDrive("Chassis", Component.leftMotorA, Component.leftMotorB, Component.rightMotorA,
+            Component.rightMotorB);
+        for (Motor motor : Component.chassis.getMotors()) {
+            LogKitten.wtf(motor== null);
+        }
     }
 }
