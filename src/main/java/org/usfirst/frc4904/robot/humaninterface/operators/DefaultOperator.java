@@ -4,10 +4,6 @@ package org.usfirst.frc4904.robot.humaninterface.operators;
 import org.usfirst.frc4904.robot.RobotMap;
 import org.usfirst.frc4904.robot.commands.ElevatorSetSpeed;
 import org.usfirst.frc4904.standard.humaninput.Operator;
-import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
-import org.usfirst.frc4904.standard.commands.RunIfElse;
-import org.usfirst.frc4904.standard.commands.motor.MotorControl;
-import org.usfirst.frc4904.robot.subsystems.Elevator;
 import org.usfirst.frc4904.standard.commands.OverrideEnable;
 import org.usfirst.frc4904.standard.commands.OverrideDisable;
 

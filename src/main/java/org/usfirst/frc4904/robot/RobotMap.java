@@ -6,10 +6,7 @@ import org.usfirst.frc4904.robot.subsystems.FourBarLinkage;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CANTalonSRX;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CustomPIDController;
-import org.usfirst.frc4904.standard.custom.motioncontrollers.MotionController;
 import org.usfirst.frc4904.standard.custom.sensors.CANEncoder;
-import org.usfirst.frc4904.standard.subsystems.motor.Motor;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
 import org.usfirst.frc4904.standard.custom.PCMPort;
 
@@ -22,15 +19,12 @@ public class RobotMap {
         }
 
         public static class CANMotor {
-            public static final int elevMotor1 = -1;
-            public static final int elevMotor2 = -1;
-        }
-
-        public static class PWM {
+            public static final int elevatorMotorA = 1; // not final numbers
+            public static final int elevatorMotorB = 2;
         }
 
         public static class CAN {
-            public static final int elevCANEncoder = -1;
+            public static final int elevatorEncoder = 1; // also not final #
         }
 
         public static class Pneumatics {
@@ -43,14 +37,15 @@ public class RobotMap {
 
     public static class PID {
         public static class Elevator {
-            public static final double P = -1;
-            public static final double I = -1;
-            public static final double D = -1;
-            public static final double F = -1;
+            public static final double P = 1; // TODO: TUNE
+            public static final double I = 1;
+            public static final double D = 1;
+            public static final double F = 1;
         }
     }
 
     public static class Component {
+        public static CustomXbox driverXbox;
         public static Elevator elevator;
         public static CANEncoder elevCANEncoder;
         public static FourBarLinkage fourBar;
@@ -67,15 +62,14 @@ public class RobotMap {
     }
 
     public RobotMap() {
-        HumanInput.Driver.xbox = new CustomXbox(Port.HumanInput.xboxController);
-        HumanInput.Driver.xbox.setDeadZone(0.1);
+        Component.driverXbox = new CustomXbox(Port.HumanInput.xboxController);
+        Component.driverXbox.setDeadZone(0.1);
         HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
-        HumanInput.Operator.joystick.setDeadzone(0.1);
-        Component.elevCANEncoder = new CANEncoder(Port.CAN.elevCANEncoder);
+        Component.elevCANEncoder = new CANEncoder(Port.CAN.elevatorEncoder);
         Component.elevCANEncoder.setDistancePerPulse(Elevator.TICK_MULTIPLIER);
         Component.elevator = new Elevator(
             new CustomPIDController(PID.Elevator.P, PID.Elevator.I, PID.Elevator.D, PID.Elevator.F, Component.elevCANEncoder),
-            Component.elevCANEncoder, new CANTalonSRX(Port.CANMotor.elevMotor1), new CANTalonSRX(Port.CANMotor.elevMotor2));
+            Component.elevCANEncoder, new CANTalonSRX(Port.CANMotor.elevatorMotorA), new CANTalonSRX(Port.CANMotor.elevatorMotorB));
         Component.fourBar = new FourBarLinkage(Port.Pneumatics.fourBarLever.buildDoubleSolenoid());
     }
 }

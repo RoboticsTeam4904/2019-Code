@@ -1,5 +1,6 @@
 package org.usfirst.frc4904.robot.subsystems;
 
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc4904.robot.commands.FourBarLeverUp;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -10,7 +11,7 @@ public class FourBarLinkage extends Subsystem {
 	protected final DoubleSolenoid lever;
 
 	public FourBarLinkage(DoubleSolenoid lever) {
-		super("Four Bar Linkage Lever Flipper");
+		super("FourBarLinkage");
 		this.lever = lever;
 	}
 

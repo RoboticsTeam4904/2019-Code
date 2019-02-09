@@ -1,16 +1,13 @@
 package org.usfirst.frc4904.robot.commands;
 
 
-import org.usfirst.frc4904.robot.RobotMap;
-import org.usfirst.frc4904.standard.commands.motor.MotorPositionConstant;
 import org.usfirst.frc4904.robot.subsystems.Elevator;
-import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * Puts elevator at down position
  */
 public class ElevatorDown extends ElevatorSet {
 	public ElevatorDown() {
-		super(Elevator.ElevState.DOWN.position);
+		super(Elevator.ElevatorState.DOWN.position);
 	}
 }
