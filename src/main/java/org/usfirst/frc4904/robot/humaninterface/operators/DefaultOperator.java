@@ -6,8 +6,6 @@ import org.usfirst.frc4904.robot.commands.PickupSolenoidDown;
 import org.usfirst.frc4904.robot.commands.PickupSolenoidUp;
 import org.usfirst.frc4904.robot.commands.PlaceSolenoidDown;
 import org.usfirst.frc4904.robot.commands.PlaceSolenoidUp;
-// import org.usfirst.frc4904.robot.commands.FlipperDown;
-// import org.usfirst.frc4904.robot.commands.FlipperUp;
 import org.usfirst.frc4904.standard.humaninput.Operator;
 
 
