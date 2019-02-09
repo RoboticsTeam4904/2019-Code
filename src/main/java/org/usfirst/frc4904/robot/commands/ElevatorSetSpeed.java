@@ -13,7 +13,7 @@ import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- control elevator manually
+ Control elevator manually
  */
 public class ElevatorSetSpeed extends RunIfElse {
 

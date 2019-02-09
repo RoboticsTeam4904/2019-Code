@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc4904.standard.commands.motor.MotorPositionConstant;
 
 /**
- control elevator manually
+ Control elevator manually
  */
 public class ElevatorSet extends MotorPositionConstant {
 	public ElevatorSet(double position) {
