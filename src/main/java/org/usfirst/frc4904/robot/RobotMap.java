@@ -26,28 +26,28 @@ public class RobotMap {
         }
 
         public static class CANMotor {
-            public static final int leftDriveA = -1;
-            public static final int leftDriveB = -1;
-            public static final int rightDriveA = -1;
-            public static final int rightDriveB = -1;
+            public static final int leftDriveA = 24; //TODO: MIGHT CHANGE
+            public static final int leftDriveB = 2;
+            public static final int rightDriveA = 3;
+            public static final int rightDriveB = 4;
         }
 
         public static class PWM {
         }
 
         public static class CAN {
-            public static final int leftEncoder = -1;
+            public static final int leftEncoder = -1; //TODO: CHANGE PORTS
             public static final int rightEncoder = -1;
         }
 
         public static class Pneumatics {
-            public static final PCMPort shifter = new PCMPort(-1, -1, -1);
+            public static final PCMPort shifter = new PCMPort(-1, -1, -1); //TODO: CHANGE PORTS
         }
     }
 
     public static class Metrics {
         public static class Wheel {
-            public static final double TICKS_PER_REVOLUTION = -1;
+            public static final double TICKS_PER_REVOLUTION = -1; //TODO: CHANGE CONSTS
             public static final double DIAMETER_INCHES = -1;
             public static final double CIRCUMFERENCE_INCHES = Metrics.Wheel.DIAMETER_INCHES * Math.PI;
             public static final double TICKS_PER_INCH = Metrics.Wheel.TICKS_PER_REVOLUTION
