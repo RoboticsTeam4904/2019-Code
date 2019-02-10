@@ -5,6 +5,6 @@ import org.usfirst.frc4904.robot.subsystems.FloorIO;
 
 public class HatchIntake extends HatchSpin {
     public HatchIntake () {
-        super(FloorIO.INTAKE_SPEED);
+        super(FloorIO.HATCH_INTAKE_SPEED);
     }
 }

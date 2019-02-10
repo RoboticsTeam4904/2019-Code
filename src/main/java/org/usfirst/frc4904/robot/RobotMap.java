@@ -45,7 +45,7 @@ public class RobotMap {
         public static SolenoidSubsystem pickupSolenoid;
         public static SolenoidSubsystem placeSolenoid;
         public static SolenoidSubsystem flipper;
-        public static Motor cargoRollerIntake;
+		public static Motor cargoRollerIntake;
         public static Motor hatcherRollerIntake;
         public static Motor leftMotorA;
         public static Motor leftMotorB;
@@ -67,8 +67,8 @@ public class RobotMap {
         HumanInput.Driver.xbox.setDeadZone(0.1);        
         Component.pickupSolenoid = new SolenoidSubsystem("PlaceSolenoid", Port.Pneumatics.pickupSolenoid.buildDoubleSolenoid());
         Component.placeSolenoid = new SolenoidSubsystem("PickupSolenoid", Port.Pneumatics.placeSolenoid.buildDoubleSolenoid());
-        //Component.Floorio.cargoRollerIntake = new Motor("Cargo Roller Intake", new CANTalonSRX(Port.CANMotor.cargoRollerIntake));
-        Component.hatcherRollerIntake = new Motor("Hatch Roller Intake", new CANTalonSRX(Port.CANMotor.hatcherRollerIntake));
+        Component.cargoRollerIntake = new Motor("CargoRollerIntake", new CANTalonSRX(Port.CANMotor.cargoRollerIntake));
+        Component.hatcherRollerIntake = new Motor("HatchRollerIntake", new CANTalonSRX(Port.CANMotor.hatcherRollerIntake));
 
         Component.flipper = new SolenoidSubsystem("Flipper", Port.Pneumatics.flipper.buildDoubleSolenoid());
         Component.floorio = new FloorIO(Component.placeSolenoid, Component.pickupSolenoid, Component.flipper, Component.hatcherRollerIntake);        

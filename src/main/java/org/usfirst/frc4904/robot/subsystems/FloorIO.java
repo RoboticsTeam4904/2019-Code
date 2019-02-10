@@ -7,8 +7,10 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class FloorIO {
-	public static final double INTAKE_SPEED = 0.5;
-	public static final double OUTTAKE_SPEED = -0.5;
+	public static final double HATCH_INTAKE_SPEED = 0.5; // TODO: Tune these values
+	public static final double HATCH_OUTTAKE_SPEED = -0.5;
+	public static final double CARGO_INTAKE_SPEED = 0.5;
+	public static final double CARGO_OUTTAKE_SPEED = -0.5;
 	public final Motor hatcherRollerIntake;
 	public final SolenoidSubsystem placeSolenoid;
 	public final SolenoidSubsystem pickupSolenoid;
