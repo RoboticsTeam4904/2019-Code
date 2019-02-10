@@ -12,7 +12,7 @@ import org.usfirst.frc4904.standard.commands.chassis.ChassisConstant;
  */
 public class FollowLine extends CommandGroup {
     private final double TURN_RATE = -1;
-    private final double TURN_SPEED = -1; 
+    private final double TURN_SPEED = -1;
     private final double STRAIGHT_SPEED = -1;
     private final Color THRESH = new Color(-1, -1, -1);
     private ColorSensor leftSensor;
@@ -39,16 +39,13 @@ public class FollowLine extends CommandGroup {
         if (thresh(leftSensor.getColor()) && thresh(rightSensor.getColor())) {
             // move forward normal
             new ChassisConstant(RobotMap.Component.chassis, 0, STRAIGHT_SPEED, 0, this.duration);
-        }
-        else if (thresh(leftSensor.getColor()) && !thresh(rightSensor.getColor())) {
+        } else if (thresh(leftSensor.getColor()) && !thresh(rightSensor.getColor())) {
             // turn left
             new ChassisConstant(RobotMap.Component.chassis, 0, TURN_SPEED, -TURN_RATE, this.duration);
-        }
-        else if (!thresh(leftSensor.getColor()) && thresh(rightSensor.getColor())) {
+        } else if (!thresh(leftSensor.getColor()) && thresh(rightSensor.getColor())) {
             // turn right
             new ChassisConstant(RobotMap.Component.chassis, 0, TURN_SPEED, TURN_RATE, this.duration);
-        }
-        else {
+        } else {
             // lost
         }
     }
