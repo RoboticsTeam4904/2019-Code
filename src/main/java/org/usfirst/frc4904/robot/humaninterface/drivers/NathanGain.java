@@ -1,10 +1,6 @@
 package org.usfirst.frc4904.robot.humaninterface.drivers;
-import org.usfirst.frc4904.robot.commands.HatchIntake;
-import org.usfirst.frc4904.robot.commands.HatchOutake;
-import org.usfirst.frc4904.robot.commands.PickupSolenoidDown;
-import org.usfirst.frc4904.robot.commands.PickupSolenoidUp;
-import org.usfirst.frc4904.robot.commands.PlaceSolenoidDown;
-import org.usfirst.frc4904.robot.commands.PlaceSolenoidUp;
+
+
 import org.usfirst.frc4904.robot.RobotMap;
 import org.usfirst.frc4904.standard.commands.chassis.ChassisShift;
 import org.usfirst.frc4904.standard.humaninput.Driver;
@@ -20,7 +16,6 @@ public class NathanGain extends Driver {
 
 	public NathanGain() {
 		super("NathanGain");
-
 	}
 
 	protected double scaleGain(double input, double gain, double exp) {
@@ -29,22 +24,10 @@ public class NathanGain extends Driver {
 
 	@Override
 	public void bindCommands() {
-		RobotMap.HumanInput.Driver.xbox.a.whenPressed(new PickupSolenoidUp());
-		RobotMap.HumanInput.Driver.xbox.b.whenPressed(new PickupSolenoidDown());
-		RobotMap.HumanInput.Driver.xbox.x.onlyWhileHeld(new HatchIntake());
-		RobotMap.HumanInput.Driver.xbox.y.onlyWhileHeld(new HatchOutake());
-		// RobotMap.HumanInput.Driver.xbox.b.whenPressed(new PlaceSolenoidExtend());
-		// RobotMap.HumanInput.Driver.xbox.b.whenReleased(new PlaceSolenoidRelease());
-
-		// RobotMap.HumanInput.Operator.joystick.button3.whenPressed(new PickupSolenoidExtend());
-		// RobotMap.HumanInput.Operator.joystick.button4.whenPressed(new PickupSolenoidRelease());
-		// RobotMap.HumanInput.Operator.joystick.button5.whenPressed(new PlaceSolenoidExtend());
-		// RobotMap.HumanInput.Operator.joystick.button6.whenPressed(new PlaceSolenoidRelease());
-
-		// RobotMap.HumanInput.Driver.xbox.lb
-		// 	.whenPressed(new ChassisShift(RobotMap.HumanInput.Driver.chassis.getShifter(), SolenoidShifters.ShiftState.DOWN));
-		// RobotMap.HumanInput.Driver.xbox.rb
-		// 	.whenPressed(new ChassisShift(RobotMap.HumanInput.Driver.chassis.getShifter(), SolenoidShifters.ShiftState.UP));
+		// RobotMap.Component.driverXbox.lb
+		// 	.whenPressed(new ChassisShift(RobotMap.Component.chassis.getShifter(), SolenoidShifters.ShiftState.DOWN));
+		// RobotMap.Component.driverXbox.rb
+		// 	.whenPressed(new ChassisShift(RobotMap.Component.chassis.getShifter(), SolenoidShifters.ShiftState.UP));
     }
     @Override
 	public double getX() {
