@@ -10,6 +10,7 @@ import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import org.usfirst.frc4904.standard.subsystems.motor.speedmodifiers.EnableableModifier;
 import org.usfirst.frc4904.standard.subsystems.motor.speedmodifiers.AccelerationCap;
 import org.usfirst.frc4904.standard.custom.sensors.PDP;
+import org.usfirst.frc4904.standard.custom.sensors.REVColorSensor;
 import org.usfirst.frc4904.standard.custom.PCMPort;
 import org.usfirst.frc4904.standard.custom.sensors.CANEncoder;
 import org.usfirst.frc4904.standard.custom.sensors.EncoderPair;
@@ -17,6 +18,7 @@ import org.usfirst.frc4904.standard.custom.motioncontrollers.CANTalonSRX;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CustomPIDController;
 import org.usfirst.frc4904.standard.custom.sensors.NavX;
 import edu.wpi.first.wpilibj.SerialPort;
+import edu.wpi.first.wpilibj.I2C;
 
 public class RobotMap {
     public static class Port {
@@ -42,6 +44,12 @@ public class RobotMap {
 
         public static class Pneumatics {
             public static final PCMPort shifter = new PCMPort(-1, -1, -1); //TODO: CHANGE PORTS
+        }
+
+        public static class I2CDevice {
+            public static final I2C.Port port = I2C.Port.kOnboard;
+            public static final int whiteTapeLeft = -1; // TODO: CHANGE PORTS
+            public static final int whiteTapeRight = -1;
         }
     }
 
@@ -95,6 +103,8 @@ public class RobotMap {
         public static CustomPIDController chassisTurnPID;
         public static CustomPIDController drivePID;
         public static NavX navx;
+        public static REVColorSensor whiteTapeLeft;
+        public static REVColorSensor whiteTapeRight;
     }
 
     public static class HumanInput {
@@ -110,7 +120,6 @@ public class RobotMap {
     public RobotMap() {
         /* General */
         Component.pdp = new PDP();
-        Component.navx = new NavX(SerialPort.Port.kMXP);
         /* Drive Train */
         // Wheel Encoders
         Component.leftWheelEncoder = new CANEncoder("LeftEncoder", Port.CAN.leftEncoder);
@@ -149,5 +158,9 @@ public class RobotMap {
         HumanInput.Driver.xbox.setDeadZone(HumanInterfaceConfig.XBOX_DEADZONE);
         HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
         HumanInput.Operator.joystick.setDeadzone(HumanInterfaceConfig.JOYSTICK_DEADZONE);
+        // Sensors
+        Component.navx = new NavX(SerialPort.Port.kMXP);
+        Component.whiteTapeLeft = new REVColorSensor(Port.I2CDevice.port, Port.I2CDevice.whiteTapeLeft);
+        Component.whiteTapeRight = new REVColorSensor(Port.I2CDevice.port, Port.I2CDevice.whiteTapeRight);
     }
 }
