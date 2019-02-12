@@ -35,36 +35,42 @@ public class RobotMap {
 			public static final PCMPort flipper = new PCMPort(-1, -1, -1); // TODO: Adjust port numbers
 		}
 	}
-    
-    public static class Metrics {}
-    public static class Component {
-        public static FloorIO floorio;
-        public static SolenoidSubsystem pickupSolenoid;
-        public static SolenoidSubsystem placeSolenoid;
-        public static SolenoidSubsystem flipper;
-		public static Motor cargoRollerIntake;
-        public static Motor hatcherRollerIntake;
-        public static Motor leftMotorA;
-        public static Motor leftMotorB;
-        public static Motor rightMotorA;
-        public static Motor rightMotorB;
-        public static TankDrive chassis;
-    }
-    public static class HumanInput {
-        public static class Driver {
-            public static CustomXbox xbox;
-        }
-        public static class Operator {
-            public static CustomJoystick joystick;
-        }
-    }
 
-    public RobotMap() {
-        HumanInput.Driver.xbox = new CustomXbox(Port.HumanInput.xboxController);
-        HumanInput.Driver.xbox.setDeadZone(0.1);        
-        Component.pickupSolenoid = new SolenoidSubsystem("PlaceSolenoid", Port.Pneumatics.pickupSolenoid.buildDoubleSolenoid());
-        Component.placeSolenoid = new SolenoidSubsystem("PickupSolenoid", Port.Pneumatics.placeSolenoid.buildDoubleSolenoid());
-        Component.cargoRollerIntake = new Motor("CargoRollerIntake", new CANTalonSRX(Port.CANMotor.cargoRollerIntake));
-        Component.hatcherRollerIntake = new Motor("HatchRollerIntake", new CANTalonSRX(Port.CANMotor.hatcherRollerIntake));
+	public static class Metrics {
+	}
+
+	public static class Component {
+		public static FloorIO floorio;
+		public static SolenoidSubsystem velcroPiston;
+		public static SolenoidSubsystem pushPiston;
+		public static SolenoidSubsystem flipper;
+		public static Motor cargoRollerIntake;
+		public static Motor hatcherRollerIntake;
+		public static Motor leftMotorA;
+		public static Motor leftMotorB;
+		public static Motor rightMotorA;
+		public static Motor rightMotorB;
+		public static TankDrive chassis;
+	}
+
+	public static class HumanInput {
+		public static class Driver {
+			public static CustomXbox xbox;
+		}
+
+		public static class Operator {
+			public static CustomJoystick joystick;
+		}
+	}
+
+	public RobotMap() {
+		HumanInput.Driver.xbox = new CustomXbox(Port.HumanInput.xboxController);
+		HumanInput.Driver.xbox.setDeadZone(0.1);
+		Component.velcroPiston = new SolenoidSubsystem("VelcroPiston", Port.Pneumatics.pickupSolenoid.buildDoubleSolenoid());
+		Component.pushPiston = new SolenoidSubsystem("PushPiston", Port.Pneumatics.placeSolenoid.buildDoubleSolenoid());
+		Component.cargoRollerIntake = new Motor("CargoRollerIntake", new CANTalonSRX(Port.CANMotor.cargoRollerIntake));
+		Component.hatcherRollerIntake = new Motor("HatchRollerIntake", new CANTalonSRX(Port.CANMotor.hatcherRollerIntake));
+		Component.floorio = new FloorIO(Component.pushPiston, Component.velcroPiston, Component.flipper,
+			Component.hatcherRollerIntake, Component.cargoRollerIntake);
 	}
 }
