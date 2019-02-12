@@ -1,8 +1,8 @@
 package org.usfirst.frc4904.robot;
 
-
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.cscore.VideoMode;
+import edu.wpi.cscore.VideoSink;
 import edu.wpi.cscore.VideoMode.PixelFormat;
 import edu.wpi.first.cameraserver.CameraServer;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
@@ -27,16 +27,10 @@ public class RobotMap {
     }
 
     public static class Metrics {
-        public static final int streamingXRes = 640; // TODO: move these somewhere else?
-        public static final int streamingYRes = 360;
-        public static final int streamingFPS = 30;
-        public static final VideoMode.PixelFormat streamingFmt = PixelFormat.kMJPEG;
     }
 
     public static class Component {
         public static CustomXbox driverXbox;
-        public static UsbCamera streamingCameraA;
-        public static UsbCamera streamingCameraB;
     }
 
     public static class HumanInput {

@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc4904.robot.commands.CameraStream;
 import org.usfirst.frc4904.standard.CommandRobotBase;
+import org.usfirst.frc4904.standard.LogKitten;
 import org.usfirst.frc4904.standard.commands.chassis.ChassisMove;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.cscore.UsbCamera;
@@ -28,10 +29,9 @@ public class Robot extends CommandRobotBase {
 	public void initialize() {
 		// driverChooser.addDefault(object);
 		// operatorChooser.addDefault();
-		CameraStream streamCommand = new CameraStream(RobotMap.Metrics.streamingXRes, RobotMap.Metrics.streamingYRes,
-			RobotMap.Metrics.streamingFPS, RobotMap.Metrics.streamingFmt, RobotMap.Component.streamingCameraA,
-			RobotMap.Component.streamingCameraB);
+		CameraStream streamCommand = new CameraStream(2);
 		streamCommand.start();
+		LogKitten.wtf("rererere");
 	}
 
 	@Override
