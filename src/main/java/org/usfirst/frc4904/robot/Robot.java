@@ -31,7 +31,6 @@ public class Robot extends CommandRobotBase {
 		// operatorChooser.addDefault();
 		CameraStream streamCommand = new CameraStream(2);
 		streamCommand.start();
-		LogKitten.wtf("rererere");
 	}
 
 	@Override
