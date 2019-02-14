@@ -1,10 +1,5 @@
 package org.usfirst.frc4904.robot;
 
-import edu.wpi.cscore.UsbCamera;
-import edu.wpi.cscore.VideoMode;
-import edu.wpi.cscore.VideoSink;
-import edu.wpi.cscore.VideoMode.PixelFormat;
-import edu.wpi.first.cameraserver.CameraServer;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
 
 public class RobotMap {
