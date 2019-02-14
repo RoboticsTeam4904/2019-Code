@@ -14,9 +14,9 @@ import edu.wpi.first.wpilibj.command.Command;
  * Streams with multiple cameras
  */
 public class CameraStream extends Command {
-    private final int streamingXRes = 640;
-    private final int streamingYRes = 480;
-    private final int streamingFPS = 30;
+    private final int streamingXRes = 320;
+    private final int streamingYRes = 240;
+    private final int streamingFPS = 15;
     private final VideoMode.PixelFormat streamingFmt = VideoMode.PixelFormat.kMJPEG;
     private final VideoSink server;
     private final ArrayList<UsbCamera> cameras;
