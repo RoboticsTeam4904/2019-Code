@@ -19,8 +19,8 @@ public class RobotMap {
         }
 
         public static class CANMotor {
-            public static final int elevatorMotorA = 1; // not final numbers
-            public static final int elevatorMotorB = 2;
+            public static final int elevatorMotorA = -1; // not final numbers
+            public static final int elevatorMotorB = -1;
         }
 
         public static class CAN {

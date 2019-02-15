@@ -22,6 +22,6 @@ public class FourBarLinkage extends Subsystem {
 
 	@Override
 	protected void initDefaultCommand() {
-		setDefaultCommand(new FourBarLeverUp());
+		setDefaultCommand(new FourBarLeverDown());
 	}
 }
