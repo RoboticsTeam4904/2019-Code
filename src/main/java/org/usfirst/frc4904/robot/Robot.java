@@ -63,5 +63,6 @@ public class Robot extends CommandRobotBase {
 	public void testExecute() {}
 
 	@Override
-	public void alwaysExecute() {}
+	public void alwaysExecute() {
+	}
 }

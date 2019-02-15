@@ -92,12 +92,13 @@ public class RobotMap {
 
 		public static class Sensors {
 			public static NetworkTable table;
+			public static NetworkTableEntry beta;
+			public static NetworkTableEntry x;
+			public static NetworkTableEntry y;
 		}
 		
 		public static class PID {
 			public static NetworkTable table;
-			public static NetworkTableEntry distance;
-			public static NetworkTableEntry angle;
 
 		}
 	}
@@ -128,9 +129,10 @@ public class RobotMap {
 			new CANTalonSRX(Port.PWM.rightDriveA), new CANTalonSRX(Port.PWM.rightDriveB));
 		
 		NetworkTables.inst = NetworkTableInstance.getDefault();
-		NetworkTables.PID.table = NetworkTables.inst.getTable("PID");
-		NetworkTables.PID.distance = NetworkTables.PID.table.getEntry("Distance");
-        NetworkTables.PID.angle = NetworkTables.PID.table.getEntry("Angle");
+		NetworkTables.Sensors.table = NetworkTables.inst.getTable("Sensors");
+		NetworkTables.Sensors.beta = NetworkTables.Sensors.table.getEntry("beta");
+		NetworkTables.Sensors.x = NetworkTables.Sensors.table.getEntry("x");
+		NetworkTables.Sensors.y = NetworkTables.Sensors.table.getEntry("y");
 		
 		// Chassis
 		Component.shifter = new SolenoidShifters(Port.Pneumatics.shifter.pcmID, Port.Pneumatics.shifter.forward,
