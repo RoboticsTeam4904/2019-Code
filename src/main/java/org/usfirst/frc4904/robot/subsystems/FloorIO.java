@@ -6,7 +6,6 @@ import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem;
 
 public class FloorIO {
 	public static final double HATCH_INTAKE_SPEED = 0.5; // TODO: Tune these values
-	public static final double HATCH_OUTTAKE_SPEED = -0.5;
 	public static final double CARGO_INTAKE_SPEED_TOP = 0.5;
 	public static final double CARGO_OUTTAKE_SPEED_TOP = -0.5;
 	public static final double CARGO_INTAKE_SPEED_BOTTOM = -0.5;
