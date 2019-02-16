@@ -12,22 +12,22 @@ import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
  * Control elevator manually
  */
 public class ElevatorSetSpeed extends RunIfElse {
-	public ElevatorSetSpeed(CustomJoystick joystick) {
+	public ElevatorSetSpeed() {
 		super(
-			new RunIf(new MotorControl(RobotMap.Component.elevator, joystick, CustomJoystick.Y_AXIS,
+			new RunIf(new MotorControl(RobotMap.Component.elevator, RobotMap.HumanInput.Operator.joystick, CustomJoystick.Y_AXIS,
 				Elevator.UP_SPEED),
 				() -> {
 					return RobotMap.Component.elevator.getPosition() < Elevator.MAX_POSITION
 						|| RobotMap.Component.elevator.isOverridden();
 				}),
-			new RunIf(new MotorControl(RobotMap.Component.elevator, joystick, CustomJoystick.Y_AXIS,
+			new RunIf(new MotorControl(RobotMap.Component.elevator, RobotMap.HumanInput.Operator.joystick, CustomJoystick.Y_AXIS,
 				Elevator.DOWN_SPEED),
 				() -> {
 					return RobotMap.Component.elevator.getPosition() > Elevator.MIN_POSITION
 						|| RobotMap.Component.elevator.isOverridden();
 				}),
 			() -> {
-				return joystick.getAxis(CustomJoystick.Y_AXIS) > 0;
+				return RobotMap.HumanInput.Operator.joystick.getAxis(CustomJoystick.Y_AXIS) > 0;
 			});
 	}
 

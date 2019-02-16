@@ -19,7 +19,7 @@ public class DefaultOperator extends Operator {
 
 	@Override
 	public void bindCommands() {
-		RobotMap.HumanInput.Operator.joystick.button1.onlyWhileHeld(new ElevatorSetSpeed(RobotMap.HumanInput.Operator.joystick));
+		RobotMap.HumanInput.Operator.joystick.button1.onlyWhileHeld(new ElevatorSetSpeed());
 		RobotMap.HumanInput.Operator.joystick.button2.onlyWhileHeld(new OverrideEnable(RobotMap.Component.elevator));
 		RobotMap.HumanInput.Operator.joystick.button2.whenReleased(new OverrideDisable(RobotMap.Component.elevator));
 	}
