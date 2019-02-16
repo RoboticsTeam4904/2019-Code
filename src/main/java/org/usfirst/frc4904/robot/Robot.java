@@ -6,7 +6,6 @@
 /*----------------------------------------------------------------------------*/
 package org.usfirst.frc4904.robot;
 
-
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -31,12 +30,12 @@ public class Robot extends CommandRobotBase {
 		// operatorChooser.addDefault();
 		CameraStream streamCommand = new CameraStream(2);
 		streamCommand.start();
-		LogKitten.wtf("rererere");
 	}
 
 	@Override
 	public void teleopInitialize() {
-		// teleopCommand = new ChassisMove(RobotMap.Component.chassis, driverChooser.getSelected());
+		// teleopCommand = new ChassisMove(RobotMap.Component.chassis,
+		// driverChooser.getSelected());
 		// teleopCommand.start();
 	}
 
@@ -70,5 +69,8 @@ public class Robot extends CommandRobotBase {
 
 	@Override
 	public void alwaysExecute() {
+		RobotMap.Component.sensor.read();
+		LogKitten.wtf(RobotMap.Component.sensor.red + ", " + RobotMap.Component.sensor.green + ", "
+				+ RobotMap.Component.sensor.blue);
 	}
 }
