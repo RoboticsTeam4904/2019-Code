@@ -8,6 +8,6 @@ import org.usfirst.frc4904.robot.RobotMap;
  */
 public class PushPistonExtend extends SolenoidExtend {
 	public PushPistonExtend() {
-		super("PushPistonExtend", RobotMap.Component.pushPiston);
+		super("PushPistonExtend", RobotMap.Component.floorio.pushPiston);
 	}
 }

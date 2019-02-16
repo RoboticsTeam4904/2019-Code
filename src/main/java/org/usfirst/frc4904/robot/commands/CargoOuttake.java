@@ -9,7 +9,7 @@ import org.usfirst.frc4904.robot.subsystems.FloorIO;
 public class CargoOuttake extends CommandGroup {
 	public CargoOuttake() {
 		super("CargoOuttake");
-		addParallel(new MotorConstant(RobotMap.Component.floorio.cargoRollerIntake, FloorIO.CARGO_OUTTAKE_SPEED_TOP));
-		addParallel(new MotorConstant(RobotMap.Component.floorio.hatcherRollerIntake, FloorIO.CARGO_INTAKE_SPEED_BOTTOM));
+		addParallel(new MotorConstant(RobotMap.Component.floorio.cargoRoller, FloorIO.CARGO_OUTTAKE_SPEED_TOP));
+		addParallel(new MotorConstant(RobotMap.Component.floorio.hatchRoller, FloorIO.CARGO_INTAKE_SPEED_BOTTOM));
 	}
 }

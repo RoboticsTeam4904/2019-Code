@@ -8,6 +8,6 @@ import org.usfirst.frc4904.robot.RobotMap;
  */
 public class VelcroPistonExtend extends SolenoidExtend {
 	public VelcroPistonExtend() {
-		super("VelcroPistonExtend", RobotMap.Component.velcroPiston);
+		super("VelcroPistonExtend", RobotMap.Component.floorio.velcroPiston);
 	}
 }

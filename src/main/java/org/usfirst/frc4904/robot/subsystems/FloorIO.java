@@ -11,18 +11,18 @@ public class FloorIO {
 	public static final double CARGO_OUTTAKE_SPEED_TOP = -0.5;
 	public static final double CARGO_INTAKE_SPEED_BOTTOM = -0.5;
 	public static final double CARGO_OUTTAKE_SPEED_BOTTOM = 0.5;
-	public final Motor hatcherRollerIntake;
-	public final Motor cargoRollerIntake;
+	public final Motor hatchRoller;
+	public final Motor cargoRoller;
 	public final SolenoidSubsystem pushPiston;
 	public final SolenoidSubsystem velcroPiston;
 	public final SolenoidSubsystem wrist;
 
 	public FloorIO(SolenoidSubsystem pushPiston, SolenoidSubsystem velcroPiston, SolenoidSubsystem wrist,
-		Motor hatcherRollerIntake, Motor cargoRollerIntake) {
+		Motor hatchRoller, Motor cargoRoller) {
 		this.pushPiston = pushPiston;
 		this.velcroPiston = velcroPiston;
 		this.wrist = wrist;
-		this.hatcherRollerIntake = hatcherRollerIntake;
-		this.cargoRollerIntake = cargoRollerIntake;
+		this.hatchRoller = hatchRoller;
+		this.cargoRoller = cargoRoller;
 	}
 }

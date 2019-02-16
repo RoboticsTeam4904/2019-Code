@@ -8,6 +8,6 @@ import org.usfirst.frc4904.robot.RobotMap;
  */
 public class PushPistonRetract extends SolenoidRelease {
 	public PushPistonRetract() {
-		super("PlaceSolenoidDown", RobotMap.Component.pushPiston);
+		super("PlaceSolenoidDown", RobotMap.Component.floorio.pushPiston);
 	}
 }

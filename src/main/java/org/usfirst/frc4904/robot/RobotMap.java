@@ -17,8 +17,8 @@ public class RobotMap {
 		}
 
 		public static class CANMotor {
-			public static final int hatcherRollerIntake = 14; // TODO: Adjust port numbers
-			public static final int cargoRollerIntake = 15; // TODO: Adjust port numbers
+			public static final int hatchRoller = 14; // TODO: Adjust port numbers
+			public static final int cargoRoller = 15; // TODO: Adjust port numbers
 		}
 
 		public static class PWM {
@@ -28,9 +28,9 @@ public class RobotMap {
 		}
 
 		public static class Pneumatics {
-			public static final PCMPort pickupSolenoid = new PCMPort(0, 1, 0); // TODO: Adjust port numbers
-			public static final PCMPort placeSolenoid = new PCMPort(0, 3, 2); // TODO: Adjust port numbers
-			public static final PCMPort flipper = new PCMPort(-1, -1, -1); // TODO: Adjust port numbers
+			public static final PCMPort velcroPiston = new PCMPort(0, 1, 0); // TODO: Adjust port numbers
+			public static final PCMPort pushPiston = new PCMPort(0, 3, 2); // TODO: Adjust port numbers
+			public static final PCMPort wrist = new PCMPort(-1, -1, -1); // TODO: Adjust port numbers
 		}
 	}
 
@@ -39,16 +39,8 @@ public class RobotMap {
 
 	public static class Component {
 		public static FloorIO floorio;
-		public static SolenoidSubsystem velcroPiston;
-		public static SolenoidSubsystem pushPiston;
-		public static SolenoidSubsystem flipper;
 		public static Motor cargoRollerIntake;
 		public static Motor hatcherRollerIntake;
-		public static Motor leftMotorA;
-		public static Motor leftMotorB;
-		public static Motor rightMotorA;
-		public static Motor rightMotorB;
-		public static TankDrive chassis;
 	}
 
 	public static class HumanInput {
@@ -64,11 +56,11 @@ public class RobotMap {
 	public RobotMap() {
 		HumanInput.Driver.xbox = new CustomXbox(Port.HumanInput.xboxController);
 		HumanInput.Driver.xbox.setDeadZone(0.1);
-		Component.velcroPiston = new SolenoidSubsystem("VelcroPiston", Port.Pneumatics.pickupSolenoid.buildDoubleSolenoid());
-		Component.pushPiston = new SolenoidSubsystem("PushPiston", Port.Pneumatics.placeSolenoid.buildDoubleSolenoid());
-		Component.cargoRollerIntake = new Motor("CargoRollerIntake", new CANTalonSRX(Port.CANMotor.cargoRollerIntake));
-		Component.hatcherRollerIntake = new Motor("HatchRollerIntake", new CANTalonSRX(Port.CANMotor.hatcherRollerIntake));
-		Component.floorio = new FloorIO(Component.pushPiston, Component.velcroPiston, Component.flipper,
-			Component.hatcherRollerIntake, Component.cargoRollerIntake);
+		Component.floorio = new FloorIO(
+			new SolenoidSubsystem("PushPiston", Port.Pneumatics.pushPiston.buildDoubleSolenoid()),
+			new SolenoidSubsystem("VelcroPiston", Port.Pneumatics.velcroPiston.buildDoubleSolenoid()),
+			new SolenoidSubsystem("Wrist", Port.Pneumatics.wrist.buildDoubleSolenoid()),
+			new Motor("HatchRollerIntake", new CANTalonSRX(Port.CANMotor.hatchRoller)),
+			new Motor("CargoRollerIntake", new CANTalonSRX(Port.CANMotor.cargoRoller)));
 	}
 }
