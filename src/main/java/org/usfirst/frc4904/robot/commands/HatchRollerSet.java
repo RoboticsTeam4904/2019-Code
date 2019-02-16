@@ -6,6 +6,6 @@ import org.usfirst.frc4904.standard.commands.motor.MotorConstant;
 
 public class HatchRollerSet extends MotorConstant {
 	public HatchRollerSet(String name, double speed) {
-		super(name, RobotMap.Component.floorio.hatcherRollerIntake, speed);
+		super(name, RobotMap.Component.floorio.hatchRoller, speed);
 	}
 }

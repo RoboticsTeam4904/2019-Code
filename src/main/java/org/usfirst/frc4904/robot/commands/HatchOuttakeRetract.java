@@ -8,6 +8,6 @@ import org.usfirst.frc4904.robot.RobotMap;
  */
 public class HatchOuttakeRetract extends SolenoidRelease {
 	public HatchOuttakeRetract() {
-		super("PlaceSolenoidDown", RobotMap.Component.pushPiston);
+		super("HatchOuttakeRetract", RobotMap.Component.floorio.hatchOuttakePiston);
 	}
 }

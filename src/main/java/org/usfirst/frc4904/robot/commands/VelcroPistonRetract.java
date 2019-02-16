@@ -8,6 +8,6 @@ import org.usfirst.frc4904.robot.RobotMap;
  */
 public class VelcroPistonRetract extends SolenoidRelease {
 	public VelcroPistonRetract() {
-		super("PickupSolenoidDown", RobotMap.Component.velcroPiston);
+		super("PickupSolenoidDown", RobotMap.Component.floorio.velcroPiston);
 	}
 }

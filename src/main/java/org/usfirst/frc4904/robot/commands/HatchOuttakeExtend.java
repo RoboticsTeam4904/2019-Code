@@ -8,6 +8,6 @@ import org.usfirst.frc4904.robot.RobotMap;
  */
 public class HatchOuttakeExtend extends SolenoidExtend {
 	public HatchOuttakeExtend() {
-		super("PushPistonExtend", RobotMap.Component.pushPiston);
+		super("HatchOuttakeExtend", RobotMap.Component.floorio.hatchOuttakePiston);
 	}
 }
