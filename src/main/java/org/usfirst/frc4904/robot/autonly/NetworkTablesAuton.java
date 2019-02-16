@@ -24,9 +24,8 @@ public class NetworkTablesAuton extends CommandGroup {
 		addSequential(new RunIf(
 			new ChassisTurn(RobotMap.Component.chassis, getData.firstTurn, RobotMap.Component.navx,
 				RobotMap.Component.chassisTurnMC),
-			() -> {
-				return getData.getNewY.getAsDouble() >= driveTolerance;
-			}));
+			() -> getData.getNewY.getAsDouble() >= driveTolerance
+		));
 		addSequential(new ChassisMoveDistance(RobotMap.Component.chassis, getData.firstDrive, RobotMap.Component.drivePID));
 		addSequential(new ChassisTurn(RobotMap.Component.chassis, getData.getBeta, RobotMap.Component.navx,
 			RobotMap.Component.chassisTurnMC));
