@@ -1,12 +1,8 @@
 package org.usfirst.frc4904.robot.subsystems;
 
 
-import org.usfirst.frc4904.standard.commands.Idle;
-import org.usfirst.frc4904.standard.commands.Noop;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem;
 
 public class FloorIO {
 	public static final double HATCH_INTAKE_SPEED = 0.5; // TODO: Tune these values

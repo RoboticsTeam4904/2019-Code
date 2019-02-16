@@ -9,7 +9,6 @@ import org.usfirst.frc4904.robot.commands.CargoOuttake;
 import org.usfirst.frc4904.robot.commands.FlipperDown;
 import org.usfirst.frc4904.robot.commands.FlipperUp;
 import org.usfirst.frc4904.robot.commands.HatchRollerIntake;
-import org.usfirst.frc4904.robot.commands.PushPistonExtend;
 import org.usfirst.frc4904.standard.humaninput.Operator;
 import org.usfirst.frc4904.standard.commands.RunIfElse;
 

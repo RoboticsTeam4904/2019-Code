@@ -2,7 +2,7 @@ package org.usfirst.frc4904.robot;
 
 
 import org.usfirst.frc4904.robot.subsystems.FloorIO;
-import org.usfirst.frc4904.robot.subsystems.SolenoidSubsystem;
+import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem;
 import org.usfirst.frc4904.standard.custom.PCMPort;
 import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
