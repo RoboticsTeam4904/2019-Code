@@ -15,11 +15,6 @@ import org.usfirst.frc4904.robot.commands.CameraStream;
 import org.usfirst.frc4904.standard.CommandRobotBase;
 import org.usfirst.frc4904.standard.LogKitten;
 import org.usfirst.frc4904.standard.commands.chassis.ChassisMove;
-import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.cscore.UsbCamera;
-import edu.wpi.cscore.VideoMode;
-import edu.wpi.cscore.VideoSink;
-import edu.wpi.cscore.VideoSource;
 
 public class Robot extends CommandRobotBase {
 	private RobotMap map = new RobotMap();
