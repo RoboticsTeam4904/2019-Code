@@ -27,8 +27,7 @@ public class DefaultOperator extends Operator {
 		RobotMap.HumanInput.Operator.joystick.button2.whenReleased(new OverrideDisable(RobotMap.Component.fourBar));
 		RobotMap.HumanInput.Operator.joystick.button3
 			.whenPressed(new RunIfElse(new SolenoidExtend("FourBarUp", RobotMap.Component.fourBar.lever),
-				new SolenoidRetract("FourBarDown", RobotMap.Component.fourBar.lever), () -> {
-					return !RobotMap.Component.fourBar.lever.isExtended();
-				}));
+				new SolenoidRetract("FourBarDown", RobotMap.Component.fourBar.lever),
+				RobotMap.Component.fourBar.lever::isExtended));
 	}
 }
