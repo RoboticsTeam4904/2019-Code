@@ -15,13 +15,13 @@ public class FloorIO {
 	public final Motor cargoRollerIntake;
 	public final SolenoidSubsystem pushPiston;
 	public final SolenoidSubsystem velcroPiston;
-	public final SolenoidSubsystem flipper;
+	public final SolenoidSubsystem wrist;
 
-	public FloorIO(SolenoidSubsystem pushPiston, SolenoidSubsystem velcroPiston, SolenoidSubsystem flipper,
+	public FloorIO(SolenoidSubsystem pushPiston, SolenoidSubsystem velcroPiston, SolenoidSubsystem wrist,
 		Motor hatcherRollerIntake, Motor cargoRollerIntake) {
 		this.pushPiston = pushPiston;
 		this.velcroPiston = velcroPiston;
-		this.flipper = flipper;
+		this.wrist = wrist;
 		this.hatcherRollerIntake = hatcherRollerIntake;
 		this.cargoRollerIntake = cargoRollerIntake;
 	}

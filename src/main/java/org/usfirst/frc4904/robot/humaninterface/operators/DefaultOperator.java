@@ -6,8 +6,8 @@ import org.usfirst.frc4904.robot.commands.VelcroPistonRetract;
 import org.usfirst.frc4904.robot.commands.VelcroPistonExtend;
 import org.usfirst.frc4904.robot.commands.CargoIntake;
 import org.usfirst.frc4904.robot.commands.CargoOuttake;
-import org.usfirst.frc4904.robot.commands.FlipperDown;
-import org.usfirst.frc4904.robot.commands.FlipperUp;
+import org.usfirst.frc4904.robot.commands.WristDown;
+import org.usfirst.frc4904.robot.commands.WristUp;
 import org.usfirst.frc4904.robot.commands.HatchRollerIntake;
 import org.usfirst.frc4904.standard.humaninput.Operator;
 import org.usfirst.frc4904.standard.commands.RunIfElse;
@@ -22,12 +22,12 @@ public class DefaultOperator extends Operator {
 	}
 
 	@Override
-	public void bindCommands() { // TODO: Add VelcroPlate routines to button1 and button2.
+	public void bindCommands() {
 		RobotMap.HumanInput.Operator.joystick.button3.onlyWhileHeld(new HatchRollerIntake());
 		RobotMap.HumanInput.Operator.joystick.button5.whenPressed(new VelcroPistonExtend());
 		RobotMap.HumanInput.Operator.joystick.button5.whenReleased(new VelcroPistonRetract());
 		RobotMap.HumanInput.Operator.joystick.button2
-			.onlyWhileHeld(new RunIfElse(new FlipperUp(), new FlipperDown(), RobotMap.Component.floorio.flipper::isExtended));
+			.onlyWhileHeld(new RunIfElse(new WristUp(), new WristDown(), RobotMap.Component.floorio.wrist::isExtended));
 		RobotMap.HumanInput.Operator.joystick.button4.onlyWhileHeld(new CargoIntake());
 		RobotMap.HumanInput.Operator.joystick.button6.onlyWhileHeld(new CargoOuttake());
 	}

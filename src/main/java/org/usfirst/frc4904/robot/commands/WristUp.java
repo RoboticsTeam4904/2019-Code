@@ -6,8 +6,8 @@ import org.usfirst.frc4904.robot.RobotMap;
 /**
  * This command sets the state of the associated group to released.
  */
-public class FlipperDown extends SolenoidExtend {
-	public FlipperDown() {
-		super("FlipperDown", RobotMap.Component.flipper);
+public class WristUp extends SolenoidRelease {
+	public WristUp() {
+		super("FlipperUp", RobotMap.Component.flipper);
 	}
 }
