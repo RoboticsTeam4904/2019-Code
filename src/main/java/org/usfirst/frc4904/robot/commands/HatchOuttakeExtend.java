@@ -6,8 +6,8 @@ import org.usfirst.frc4904.robot.RobotMap;
 /**
  * This command sets the state of the associated group to extended.
  */
-public class PushPistonExtend extends SolenoidExtend {
-	public PushPistonExtend() {
+public class HatchOuttakeExtend extends SolenoidExtend {
+	public HatchOuttakeExtend() {
 		super("PushPistonExtend", RobotMap.Component.pushPiston);
 	}
 }

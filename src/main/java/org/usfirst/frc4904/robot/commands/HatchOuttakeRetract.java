@@ -6,8 +6,8 @@ import org.usfirst.frc4904.robot.RobotMap;
 /**
  * This command sets the state of the associated group to released.
  */
-public class PushPistonRetract extends SolenoidRelease {
-	public PushPistonRetract() {
+public class HatchOuttakeRetract extends SolenoidRelease {
+	public HatchOuttakeRetract() {
 		super("PlaceSolenoidDown", RobotMap.Component.pushPiston);
 	}
 }
