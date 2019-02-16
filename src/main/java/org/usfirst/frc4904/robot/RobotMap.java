@@ -57,6 +57,9 @@ public class RobotMap {
 			public static final double INCHES_PER_TICK = Metrics.Wheel.CIRCUMFERENCE_INCHES
 				/ Metrics.Wheel.TICKS_PER_REVOLUTION;
 		}
+		public static class Robot {
+			public static final double ROBOT_WIDTH = 4.904;
+		}
     }
     public static class PID {
 		public static class Drive {
