@@ -64,8 +64,5 @@ public class Robot extends CommandRobotBase {
 
 	@Override
 	public void alwaysExecute() {
-		RobotMap.Component.sensor.read();
-		LogKitten.wtf(RobotMap.Component.sensor.red + ", " + RobotMap.Component.sensor.green + ", "
-				+ RobotMap.Component.sensor.blue);
 	}
 }
