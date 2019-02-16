@@ -3,11 +3,11 @@ package org.usfirst.frc4904.robot;
 
 import org.usfirst.frc4904.robot.subsystems.FloorIO;
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem;
+import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem.SolenoidState;
 import org.usfirst.frc4904.standard.custom.PCMPort;
 import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CANTalonSRX;
-import org.usfirst.frc4904.standard.subsystems.chassis.TankDrive;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 
 public class RobotMap {
@@ -57,9 +57,9 @@ public class RobotMap {
 		HumanInput.Driver.xbox = new CustomXbox(Port.HumanInput.xboxController);
 		HumanInput.Driver.xbox.setDeadZone(0.1);
 		Component.floorio = new FloorIO(
-			new SolenoidSubsystem("PushPiston", Port.Pneumatics.pushPiston.buildDoubleSolenoid()),
-			new SolenoidSubsystem("VelcroPiston", Port.Pneumatics.velcroPiston.buildDoubleSolenoid()),
-			new SolenoidSubsystem("Wrist", Port.Pneumatics.wrist.buildDoubleSolenoid()),
+			new SolenoidSubsystem("PushPiston", SolenoidState.RETRACT, Port.Pneumatics.pushPiston.buildDoubleSolenoid()),
+			new SolenoidSubsystem("VelcroPiston", SolenoidState.RETRACT, Port.Pneumatics.velcroPiston.buildDoubleSolenoid()),
+			new SolenoidSubsystem("Wrist", SolenoidState.RETRACT, Port.Pneumatics.wrist.buildDoubleSolenoid()),
 			new Motor("HatchRollerIntake", new CANTalonSRX(Port.CANMotor.hatchRoller)),
 			new Motor("CargoRollerIntake", new CANTalonSRX(Port.CANMotor.cargoRoller)));
 	}
