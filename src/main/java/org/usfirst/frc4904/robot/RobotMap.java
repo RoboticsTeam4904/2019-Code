@@ -1,16 +1,14 @@
 package org.usfirst.frc4904.robot;
 
 
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
 import org.usfirst.frc4904.robot.subsystems.FloorIO;
 import org.usfirst.frc4904.robot.subsystems.SolenoidSubsystem;
-import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import org.usfirst.frc4904.standard.custom.PCMPort;
-import org.usfirst.frc4904.standard.custom.motioncontrollers.CANTalonSRX;
 import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
+import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
+import org.usfirst.frc4904.standard.custom.motioncontrollers.CANTalonSRX;
 import org.usfirst.frc4904.standard.subsystems.chassis.TankDrive;
-import org.usfirst.frc4904.standard.custom.motioncontrollers.Spark;
+import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 
 public class RobotMap {
 	public static class Port {
