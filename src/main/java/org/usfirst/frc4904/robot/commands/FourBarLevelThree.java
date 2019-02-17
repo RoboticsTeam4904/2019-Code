@@ -1,10 +1,9 @@
 package org.usfirst.frc4904.robot.commands;
 
-
-import org.usfirst.frc4904.robot.subsystems.FourBarElevator.FourBarState;
+import org.usfirst.frc4904.robot.subsystems.FourBarElevator.State;
 
 public class FourBarLevelThree extends FourBarSet {
     public FourBarLevelThree() {
-        super("FourBarLevelThree", FourBarState.LEVEL_THREE);
+        super("FourBarLevelThree", State.LEVEL_THREE);
     }
 }

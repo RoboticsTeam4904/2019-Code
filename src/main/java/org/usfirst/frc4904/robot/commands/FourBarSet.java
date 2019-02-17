@@ -2,16 +2,16 @@ package org.usfirst.frc4904.robot.commands;
 
 
 import org.usfirst.frc4904.robot.RobotMap;
-import org.usfirst.frc4904.robot.subsystems.FourBarElevator.FourBarState;
+import org.usfirst.frc4904.robot.subsystems.FourBarElevator.State;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Control elevator manually
+ * Set FourBarElevator to a state
  */
 public class FourBarSet extends Command {
-	public final FourBarState state;
+	public final State state;
 
-	public FourBarSet(String name, FourBarState state) {
+	public FourBarSet(String name, State state) {
 		super(name);
 		requires(RobotMap.Component.fourBar.elevator);
 		requires(RobotMap.Component.fourBar.lever);

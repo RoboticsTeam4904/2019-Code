@@ -1,10 +1,9 @@
 package org.usfirst.frc4904.robot.commands;
 
-
-import org.usfirst.frc4904.robot.subsystems.FourBarElevator.FourBarState;
+import org.usfirst.frc4904.robot.subsystems.FourBarElevator.State;
 
 public class FourBarCargoIntake extends FourBarSet {
     public FourBarCargoIntake() {
-        super("FourBarCargoIntake", FourBarState.CARGO_INTAKE);
+        super("FourBarCargoIntake", State.CARGO_INTAKE);
     }
 }

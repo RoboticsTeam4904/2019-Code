@@ -18,7 +18,7 @@ public class FourBarElevator implements Overridable {
 	public static final double SPOOL_CIRCUMFERENCE_INCHES = SPOOL_DIAMETER_INCHES * Math.PI;
 	public final SolenoidSubsystem lever;
 	public final PositionSensorMotor elevator;
-	public FourBarState state;
+	public State state;
 	public boolean isOverridden;
 
 	public FourBarElevator(SolenoidSubsystem lever, PositionSensorMotor elevator) {
@@ -26,14 +26,14 @@ public class FourBarElevator implements Overridable {
 		this.elevator = elevator;
 	}
 
-	public enum FourBarState {
+	public enum State {
 		HATCH_INTAKE(SolenoidState.RETRACT, 0.0), CARGO_INTAKE(SolenoidState.RETRACT, 10.0), LEVEL_ONE(SolenoidState.RETRACT,
 			8.0), LEVEL_TWO(SolenoidState.RETRACT, 28.0), LEVEL_THREE(SolenoidState.EXTEND, 28.0);
 		// TODO: VALUES SUBJECT TO CHANGE
 		public final SolenoidState fourBarState;
 		public final double elevatorPosition;
 
-		private FourBarState(SolenoidState fourBarState, double elevatorPosition) {
+		private State(SolenoidState fourBarState, double elevatorPosition) {
 			this.fourBarState = fourBarState;
 			this.elevatorPosition = elevatorPosition;
 		}
@@ -45,11 +45,11 @@ public class FourBarElevator implements Overridable {
 		elevator.setPosition(elevatorPosition);
 	}
 
-	public void setPosition(FourBarState state) {
+	public void setPosition(State state) {
 		setPosition(state.fourBarState, state.elevatorPosition);
 	}
 
-	public FourBarState getState() {
+	public State getState() {
 		return state;
 	}
 

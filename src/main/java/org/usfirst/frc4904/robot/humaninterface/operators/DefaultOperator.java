@@ -3,6 +3,7 @@ package org.usfirst.frc4904.robot.humaninterface.operators;
 
 import org.usfirst.frc4904.robot.RobotMap;
 import org.usfirst.frc4904.robot.commands.ElevatorControl;
+import org.usfirst.frc4904.robot.subsystems.FourBarElevator;
 import org.usfirst.frc4904.standard.humaninput.Operator;
 import org.usfirst.frc4904.standard.commands.OverrideEnable;
 import org.usfirst.frc4904.standard.commands.SingleOp;
@@ -33,7 +34,7 @@ public class DefaultOperator extends Operator {
 			RobotMap.Component.elevatorEncoder.resetViaOffset();
 		}));
 		RobotMap.Input.elevatorSwitchTop.whenPressed(new SingleOp(() -> {
-			RobotMap.Component.elevatorEncoder.resetViaOffset(RobotMap.Metrics.ELEVATOR_INNER_HEIGHT_INCHES);
+			RobotMap.Component.elevatorEncoder.resetViaOffset(FourBarElevator.MAX_HEIGHT);
 		}));
 	}
 }
