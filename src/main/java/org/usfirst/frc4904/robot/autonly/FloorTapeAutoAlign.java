@@ -13,27 +13,29 @@ import org.usfirst.frc4904.standard.commands.RunIf;
 import java.util.function.BooleanSupplier;
 import java.util.function.DoubleSupplier;
 
-public class NetworkTablesAuton extends CommandGroup {
+public class FloorTapeAutoAlign extends CommandGroup {
 	public static double fallbackValue = -1;
 	public static double driveTolerance = RobotMap.Metrics.Robot.ROBOT_WIDTH / 2;
 	public static double minimumVisionDistance = 18;
-	
-	private final DoubleSupplier getNewY = () -> RobotMap.UpdateableData.y - RobotMap.UpdateableData.x / Math.tan(RobotMap.UpdateableData.beta);
 
-	private final DoubleSupplier firstTurn = () -> Math.atan2(Math.max(RobotMap.UpdateableData.y/2,minimumVisionDistance), RobotMap.UpdateableData.x);
+	RobotMap.UpdateableData.Update update = new RobotMap.UpdateableData.Update();
+	
+	private final DoubleSupplier getNewY = () -> RobotMap.UpdateableData.y - RobotMap.UpdateableData.x / Math.tan(RobotMap.UpdateableData.betaRetroreflective);
+
+	private final DoubleSupplier firstTurn = () -> Math.atan2(Math.max(RobotMap.UpdateableData.y / 2, minimumVisionDistance), RobotMap.UpdateableData.x);
 
 	private final DoubleSupplier firstDrive = () -> {
 		double first;
 		if (RobotMap.UpdateableData.x >= 0) {
-			first = RobotMap.UpdateableData.x / Math.sin(RobotMap.UpdateableData.beta);
+			first = RobotMap.UpdateableData.x / Math.sin(RobotMap.UpdateableData.betaRetroreflective);
 		} else {
-			first = RobotMap.UpdateableData.x / Math.sin(-RobotMap.UpdateableData.beta);
+			first = RobotMap.UpdateableData.x / Math.sin(-RobotMap.UpdateableData.betaRetroreflective);
 		}
 		return first;
 	};
 
-	public NetworkTablesAuton() {
-		super("NetworkTablesAuton");
+	public FloorTapeAutoAlign() {
+		super("FloorTapeAutoAlign");
 		addSequential(new RobotMap.UpdateableData.Update());
 		addSequential(new RunIf(
 			new ChassisTurn(RobotMap.Component.chassis, firstTurn, RobotMap.Component.navx,
@@ -41,10 +43,10 @@ public class NetworkTablesAuton extends CommandGroup {
 			() -> getNewY.getAsDouble() <= Math.max(driveTolerance,minimumVisionDistance) || getNewY.getAsDouble() >= RobotMap.UpdateableData.y
 		));
 		addSequential(new ChassisMoveDistance(RobotMap.Component.chassis, firstDrive, RobotMap.Component.drivePID));
-		addSequential(new ChassisTurn(RobotMap.Component.chassis, RobotMap.UpdateableData.beta, RobotMap.Component.navx,
+		addSequential(new ChassisTurn(RobotMap.Component.chassis, RobotMap.UpdateableData.betaRetroreflective, RobotMap.Component.navx,
 			RobotMap.Component.chassisTurnMC));
 		addSequential(new RobotMap.UpdateableData.Update());
-		addSequential(new ChassisTurn(RobotMap.Component.chassis, RobotMap.UpdateableData.getBeta, RobotMap.Component.navx,
+		addSequential(new ChassisTurn(RobotMap.Component.chassis, RobotMap.UpdateableData.getBetaRetroreflective, RobotMap.Component.navx,
 		RobotMap.Component.chassisTurnMC));
 		addSequential(new RobotMap.UpdateableData.Update());
 		addSequential(new ChassisMoveDistance(RobotMap.Component.chassis, RobotMap.UpdateableData.y, RobotMap.Component.drivePID));
