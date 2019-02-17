@@ -60,7 +60,7 @@ public class RobotMap {
 				/ Metrics.Wheel.TICKS_PER_REVOLUTION;
 		}
 		public static class Robot {
-			public static final double ROBOT_WIDTH = 4.904;
+			public static final double ROBOT_WIDTH = 28;
 		}
     }
     public static class PID {
@@ -100,6 +100,7 @@ public class RobotMap {
 			public static NetworkTableEntry beta;
 			public static NetworkTableEntry x;
 			public static NetworkTableEntry y;
+			public static NetworkTableEntry isTapeVisible;
 		}
 		
 		public static class PID {
@@ -161,6 +162,7 @@ public class RobotMap {
 		NetworkTables.Sensors.beta = NetworkTables.Sensors.table.getEntry("beta");
 		NetworkTables.Sensors.x = NetworkTables.Sensors.table.getEntry("x");
 		NetworkTables.Sensors.y = NetworkTables.Sensors.table.getEntry("y");
+		NetworkTables.Sensors.isTapeVisible = NetworkTables.Sensors.table.getEntry("Is Tape Visible?");
 		
 		// Chassis
 		Component.shifter = new SolenoidShifters(Port.Pneumatics.shifter.pcmID, Port.Pneumatics.shifter.forward,
