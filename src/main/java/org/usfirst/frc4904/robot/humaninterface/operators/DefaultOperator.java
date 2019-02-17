@@ -33,7 +33,7 @@ public class DefaultOperator extends Operator {
 			RobotMap.Component.elevatorEncoder.resetViaOffset();
 		}));
 		RobotMap.Input.elevatorSwitchTop.whenPressed(new SingleOp(() -> {
-			RobotMap.Component.elevatorEncoder.resetViaOffset(RobotMap.Metrics.ELEVATOR_INNER_HEIGHT);
+			RobotMap.Component.elevatorEncoder.resetViaOffset(RobotMap.Metrics.ELEVATOR_INNER_HEIGHT_INCHES);
 		}));
 	}
 }

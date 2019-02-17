@@ -1,7 +1,7 @@
 package org.usfirst.frc4904.robot;
 
 
-import org.usfirst.frc4904.robot.subsystems.FourBarLinkage;
+import org.usfirst.frc4904.robot.subsystems.FourBarElevator;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CANTalonSRX;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CustomPIDController;
@@ -40,7 +40,6 @@ public class RobotMap {
     }
 
     public static class Metrics {
-        public static final double ELEVATOR_INNER_HEIGHT = -1; // TODO: set to actual value
     }
 
     public static class PID {
@@ -55,7 +54,7 @@ public class RobotMap {
     public static class Component {
         public static CustomXbox driverXbox;
         public static CANEncoder elevatorEncoder;
-        public static FourBarLinkage fourBar;
+        public static FourBarElevator fourBar;
     }
 
     public static class HumanInput {
@@ -78,8 +77,8 @@ public class RobotMap {
         Component.driverXbox.setDeadZone(0.1);
         HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
         Component.elevatorEncoder = new CANEncoder(Port.CAN.elevatorEncoder);
-        Component.elevatorEncoder.setDistancePerPulse(FourBarLinkage.TICK_MULTIPLIER);
-        Component.fourBar = new FourBarLinkage(new SolenoidSubsystem("FourBarLinkage", SolenoidState.RETRACT,
+        Component.elevatorEncoder.setDistancePerPulse(FourBarElevator.TICK_MULTIPLIER);
+        Component.fourBar = new FourBarElevator(new SolenoidSubsystem("FourBarLinkage", SolenoidState.RETRACT,
             Port.Pneumatics.fourBarLever.buildDoubleSolenoid()),
             new PositionSensorMotor("Elevator",
                 new CustomPIDController(PID.Elevator.P, PID.Elevator.I, PID.Elevator.D, PID.Elevator.F,

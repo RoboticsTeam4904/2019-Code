@@ -2,7 +2,7 @@ package org.usfirst.frc4904.robot.commands;
 
 
 import org.usfirst.frc4904.robot.RobotMap;
-import org.usfirst.frc4904.robot.subsystems.FourBarLinkage.FourBarState;
+import org.usfirst.frc4904.robot.subsystems.FourBarElevator.FourBarState;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
