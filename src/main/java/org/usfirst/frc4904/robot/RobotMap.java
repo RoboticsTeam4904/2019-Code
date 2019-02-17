@@ -11,6 +11,8 @@ import org.usfirst.frc4904.standard.subsystems.motor.speedmodifiers.Acceleration
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import java.util.function.DoubleSupplier;
+import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc4904.standard.custom.sensors.PDP;
 import org.usfirst.frc4904.standard.custom.PCMPort;
@@ -113,7 +115,30 @@ public class RobotMap {
         public static class Operator {
 			public static CustomJoystick joystick;
 		}
-    }
+	}
+	
+	public static class UpdateableData {
+		public static double beta;
+		public static double x;
+		public static double y;
+		public static class Update extends Command {
+			public Update() {}
+
+			@Override
+			protected void initialize() {
+				beta = RobotMap.NetworkTables.Sensors.beta.getDouble(0);
+				x = RobotMap.NetworkTables.Sensors.x.getDouble(0);
+				y = RobotMap.NetworkTables.Sensors.y.getDouble(0);
+			}
+			protected boolean isFinished() {
+				return true;
+			}
+		}
+		public static final DoubleSupplier getBeta = () -> beta;
+		public static final DoubleSupplier getX = () -> x;
+		public static final DoubleSupplier getY = () -> y;
+	}
+
     public RobotMap() {
         Component.pdp = new PDP();
 
