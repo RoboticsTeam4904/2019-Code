@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc4904.standard.CommandRobotBase;
+import org.usfirst.frc4904.standard.LogKitten;
 import org.usfirst.frc4904.standard.commands.chassis.ChassisMove;
 import edu.wpi.first.cameraserver.CameraServer;;
 
@@ -46,7 +47,10 @@ public class Robot extends CommandRobotBase {
 	public void autonomousInitialize() {}
 
 	@Override
-	public void autonomousExecute() {}
+	public void autonomousExecute() {
+		LogKitten.wtf(RobotMap.Component.NetworkTables.Vision.x.getDouble(-1.0));
+	}
+
 
 	@Override
 	public void disabledInitialize() {}
