@@ -39,8 +39,8 @@ public class RobotMap {
 
 	public static class Component {
 		public static FloorIO floorio;
-		public static Motor cargoRollerIntake;
-		public static Motor hatcherRollerIntake;
+		public static Motor cargoRoller;
+		public static Motor hatchRoller;
 	}
 
 	public static class HumanInput {
@@ -60,7 +60,7 @@ public class RobotMap {
 			new SolenoidSubsystem("PushPiston", SolenoidState.RETRACT, Port.Pneumatics.pushPiston.buildDoubleSolenoid()),
 			new SolenoidSubsystem("VelcroPiston", SolenoidState.RETRACT, Port.Pneumatics.velcroPiston.buildDoubleSolenoid()),
 			new SolenoidSubsystem("Wrist", SolenoidState.RETRACT, Port.Pneumatics.wrist.buildDoubleSolenoid()),
-			new Motor("HatchRollerIntake", new CANTalonSRX(Port.CANMotor.hatchRoller)),
-			new Motor("CargoRollerIntake", new CANTalonSRX(Port.CANMotor.cargoRoller)));
+			new Motor("HatchRoller", new CANTalonSRX(Port.CANMotor.hatchRoller)),
+			new Motor("CargoRoller", new CANTalonSRX(Port.CANMotor.cargoRoller)));
 	}
 }
