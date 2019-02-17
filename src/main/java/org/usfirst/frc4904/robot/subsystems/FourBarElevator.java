@@ -1,6 +1,7 @@
 package org.usfirst.frc4904.robot.subsystems;
 
 
+import org.usfirst.frc4904.standard.Util;
 import org.usfirst.frc4904.standard.custom.Overridable;
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem;
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem.SolenoidState;
@@ -16,6 +17,7 @@ public class FourBarElevator implements Overridable {
 	public static final double MAX_HEIGHT = 28.0;
 	public static final double SPOOL_DIAMETER_INCHES = 1.5;
 	public static final double SPOOL_CIRCUMFERENCE_INCHES = SPOOL_DIAMETER_INCHES * Math.PI;
+	public static final Util.Range elevatorRange = new Util.Range(MIN_HEIGHT, MAX_HEIGHT);
 	public final SolenoidSubsystem lever;
 	public final PositionSensorMotor elevator;
 	public State state;
@@ -39,14 +41,8 @@ public class FourBarElevator implements Overridable {
 		}
 	}
 
-	public void setPosition(SolenoidState fourBarState, double elevatorPosition) {
-		// TODO: Set the wrist up before doing this if going to LEVEL_ONE or above
-		lever.set(fourBarState);
-		elevator.setPosition(elevatorPosition);
-	}
-
-	public void setPosition(State state) {
-		setPosition(state.fourBarState, state.elevatorPosition);
+	public void setState(State state) {
+		this.state = state;
 	}
 
 	public State getState() {
