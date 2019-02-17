@@ -33,8 +33,8 @@ public class RobotMap {
 		}
 
 		public static class CAN {
-			public static final int leftEncoder = -1; // TODO: CHANGE PORTS
-			public static final int rightEncoder = -1;
+			public static final int leftWheelEncoder = -1; // TODO: CHANGE PORTS
+			public static final int rightWheelEncoder = -1;
 		}
 
 		public static class Pneumatics {
@@ -110,8 +110,8 @@ public class RobotMap {
 		Component.navx = new NavX(SerialPort.Port.kMXP);
 		/* Drive Train */
 		// Wheel Encoders
-		Component.leftWheelEncoder = new CANEncoder("LeftEncoder", Port.CAN.leftEncoder, Metrics.Wheel.INCHES_PER_TICK);
-		Component.rightWheelEncoder = new CANEncoder("RightEncoder", Port.CAN.rightEncoder, Metrics.Wheel.INCHES_PER_TICK);
+		Component.leftWheelEncoder = new CANEncoder("LeftEncoder", Port.CAN.leftWheelEncoder, Metrics.Wheel.INCHES_PER_TICK);
+		Component.rightWheelEncoder = new CANEncoder("RightEncoder", Port.CAN.rightWheelEncoder, Metrics.Wheel.INCHES_PER_TICK);
 		Component.chassisEncoders = new EncoderPair(Component.leftWheelEncoder, Component.rightWheelEncoder);
 		Component.leftWheelAccelerationCap = new EnableableModifier(new AccelerationCap(Component.pdp));
 		Component.leftWheelAccelerationCap.enable();
