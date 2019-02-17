@@ -97,12 +97,13 @@ public class RobotMap {
 
 		public static class Sensors {
 			public static NetworkTable table;
-			public static NetworkTableEntry betaRetroreflective;
+			public static NetworkTableEntry betaRF;
 			public static NetworkTableEntry betaFloor;
 			public static NetworkTableEntry theta;
 			public static NetworkTableEntry x;
 			public static NetworkTableEntry y;
-			public static NetworkTableEntry isTapeVisible;
+			public static NetworkTableEntry isRFTapeVisible;
+			public static NetworkTableEntry isFloorTapeVisible;
 		}
 		
 		public static class PID {
@@ -121,34 +122,37 @@ public class RobotMap {
 	}
 	
 	public static class UpdateableData {
-		public static double betaRetroreflective;
+		public static double betaRF;
 		public static double betaFloor;
 		public static double theta;
 		public static double x;
 		public static double y;
-		public static double isTapeVisible;
+		public static double isRFTapeVisible;
+		public static double isFloorTapeVisible;
 		public static class Update extends Command {
 			public Update() {}
 
 			@Override
 			protected void initialize() {
-				betaRetroreflective = RobotMap.NetworkTables.Sensors.betaRetroreflective.getDouble(0);
+				betaRF = RobotMap.NetworkTables.Sensors.betaRF.getDouble(0);
 				betaFloor = RobotMap.NetworkTables.Sensors.betaFloor.getDouble(0);
 				theta = RobotMap.NetworkTables.Sensors.theta.getDouble(0);
 				x = RobotMap.NetworkTables.Sensors.x.getDouble(0);
 				y = RobotMap.NetworkTables.Sensors.y.getDouble(0);
-				isTapeVisible = RobotMap.NetworkTables.Sensors.isTapeVisible.getDouble(0);
+				isRFTapeVisible = RobotMap.NetworkTables.Sensors.isRFTapeVisible.getDouble(0);
+				isFloorTapeVisible = RobotMap.NetworkTables.Sensors.isRFTapeVisible.getDouble(0);
 			}
 			protected boolean isFinished() {
 				return true;
 			}
 		}
-		public static final DoubleSupplier getBetaRetroreflective = () -> betaRetroreflective;
+		public static final DoubleSupplier getBetaRF = () -> betaRF;
 		public static final DoubleSupplier getBetaFloor = () -> betaFloor;
 		public static final DoubleSupplier getTheta = () -> theta;
 		public static final DoubleSupplier getX = () -> x;
 		public static final DoubleSupplier getY = () -> y;
-		public static final DoubleSupplier getIsTapeVisible = () -> isTapeVisible;
+		public static final DoubleSupplier getIsRFTapeVisible = () -> isRFTapeVisible;
+		public static final DoubleSupplier getIsFloorTapeVisible = () -> isFloorTapeVisible;
 	}
 
     public RobotMap() {
@@ -170,12 +174,13 @@ public class RobotMap {
 		
 		NetworkTables.inst = NetworkTableInstance.getDefault();
 		NetworkTables.Sensors.table = NetworkTables.inst.getTable("Sensors");
-		NetworkTables.Sensors.betaRetroreflective = NetworkTables.Sensors.table.getEntry("Retroreflective Beta");
+		NetworkTables.Sensors.betaRF = NetworkTables.Sensors.table.getEntry("Retroreflective Beta");
 		NetworkTables.Sensors.betaFloor = NetworkTables.Sensors.table.getEntry("Floor Beta");
 		NetworkTables.Sensors.theta = NetworkTables.Sensors.table.getEntry("Theta");
 		NetworkTables.Sensors.x = NetworkTables.Sensors.table.getEntry("X");
 		NetworkTables.Sensors.y = NetworkTables.Sensors.table.getEntry("Y");
-		NetworkTables.Sensors.isTapeVisible = NetworkTables.Sensors.table.getEntry("Is Tape Visible?");
+		NetworkTables.Sensors.isRFTapeVisible = NetworkTables.Sensors.table.getEntry("Is RF Tape Visible?");
+		NetworkTables.Sensors.isFloorTapeVisible = NetworkTables.Sensors.table.getEntry("Is Floor Tape Visible?");
 		
 		// Chassis
 		Component.shifter = new SolenoidShifters(Port.Pneumatics.shifter.pcmID, Port.Pneumatics.shifter.forward,
