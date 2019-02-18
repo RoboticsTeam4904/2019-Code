@@ -29,7 +29,7 @@ public class RobotMap {
 
 		public static class Pneumatics {
 			public static final PCMPort velcroPiston = new PCMPort(0, 1, 0); // TODO: Adjust port numbers
-			public static final PCMPort pushPiston = new PCMPort(0, 3, 2); // TODO: Adjust port numbers
+			public static final PCMPort hatchOuttakePiston = new PCMPort(0, 3, 2); // TODO: Adjust port numbers
 			public static final PCMPort wrist = new PCMPort(-1, -1, -1); // TODO: Adjust port numbers
 		}
 	}
@@ -39,8 +39,6 @@ public class RobotMap {
 
 	public static class Component {
 		public static FloorIO floorio;
-		public static Motor cargoRoller;
-		public static Motor hatchRoller;
 	}
 
 	public static class HumanInput {
@@ -57,7 +55,7 @@ public class RobotMap {
 		HumanInput.Driver.xbox = new CustomXbox(Port.HumanInput.xboxController);
 		HumanInput.Driver.xbox.setDeadZone(0.1);
 		Component.floorio = new FloorIO(
-			new SolenoidSubsystem("PushPiston", SolenoidState.RETRACT, Port.Pneumatics.pushPiston.buildDoubleSolenoid()),
+			new SolenoidSubsystem("HatchOuttakePiston", SolenoidState.RETRACT, Port.Pneumatics.hatchOuttakePiston.buildDoubleSolenoid()),
 			new SolenoidSubsystem("VelcroPiston", SolenoidState.RETRACT, Port.Pneumatics.velcroPiston.buildDoubleSolenoid()),
 			new SolenoidSubsystem("Wrist", SolenoidState.RETRACT, Port.Pneumatics.wrist.buildDoubleSolenoid()),
 			new Motor("HatchRoller", new CANTalonSRX(Port.CANMotor.hatchRoller)),

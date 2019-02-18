@@ -5,7 +5,7 @@ import org.usfirst.frc4904.robot.RobotMap;
 import org.usfirst.frc4904.standard.commands.solenoid.SolenoidRetract;
 
 /**
- * This command sets the state of the associated group to released.
+ * Retracts the hatch outtake piston
  */
 public class HatchOuttakeRetract extends SolenoidRetract {
 	public HatchOuttakeRetract() {
