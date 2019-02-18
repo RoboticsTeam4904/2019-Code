@@ -9,9 +9,13 @@ package org.usfirst.frc4904.robot;
 
 import org.usfirst.frc4904.standard.CommandRobotBase;
 import org.usfirst.frc4904.standard.commands.chassis.ChassisMove;
+import org.usfirst.frc4904.standard.custom.sensors.CANSensor;
+import javax.swing.text.StyleContext.SmallAttributeSet;
 import org.usfirst.frc4904.robot.humaninterface.drivers.NathanGain;
 import org.usfirst.frc4904.robot.humaninterface.operators.DefaultOperator;
-import edu.wpi.first.cameraserver.CameraServer;;
+import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;;
 
 public class Robot extends CommandRobotBase {
 	private RobotMap map = new RobotMap();
@@ -26,6 +30,16 @@ public class Robot extends CommandRobotBase {
 		 * < 4 Mbps, often < 1
 		 */
 		CameraServer.getInstance().startAutomaticCapture();
+		RobotMap.Component.leftWheelEncoder.reset();
+		RobotMap.Component.rightWheelEncoder.reset();
+		SmartDashboard.putNumber("DrivePID/P", RobotMap.Component.drivePID.getP());
+		SmartDashboard.putNumber("DrivePID/I", RobotMap.Component.drivePID.getI());
+		SmartDashboard.putNumber("DrivePID/D", RobotMap.Component.drivePID.getD());
+		SmartDashboard.putNumber("DrivePID/F", RobotMap.Component.drivePID.getF());
+		SmartDashboard.putNumber("TurnPID/P", RobotMap.Component.chassisTurnPID.getP());
+		SmartDashboard.putNumber("TurnPID/I", RobotMap.Component.chassisTurnPID.getI());
+		SmartDashboard.putNumber("TurnPID/D", RobotMap.Component.chassisTurnPID.getD());
+		SmartDashboard.putNumber("TurnPID/F", RobotMap.Component.chassisTurnPID.getF());
 	}
 
 	@Override
@@ -66,5 +80,26 @@ public class Robot extends CommandRobotBase {
 
 	@Override
 	public void alwaysExecute() {
+		SmartDashboard.putNumber("DrivePID/e", RobotMap.Component.drivePID.getError());
+		SmartDashboard.putNumber("DrivePID/x", RobotMap.Component.drivePID.getSensorValue());
+		SmartDashboard.putNumber("TurnPID/e", RobotMap.Component.chassisTurnPID.getError());
+		SmartDashboard.putNumber("TurnPID/x", RobotMap.Component.chassisTurnPID.getSensorValue());
+		RobotMap.Component.drivePID.setPIDF(SmartDashboard.getNumber("DrivePID/P", 0.0),
+			SmartDashboard.getNumber("DrivePID/I", 0.0), SmartDashboard.getNumber("DrivePID/D", 0.0),
+			SmartDashboard.getNumber("DrivePID/F", 0.0));
+		RobotMap.Component.chassisTurnPID.setPIDF(SmartDashboard.getNumber("TurnPID/P", 0.0),
+			SmartDashboard.getNumber("TurnPID/I", 0.0), SmartDashboard.getNumber("TurnPID/D", 0.0),
+			SmartDashboard.getNumber("TurnPID/F", 0.0));
+		SmartDashboard.putNumber("leftEncoder", RobotMap.Component.leftWheelEncoder.getDistance());
+		SmartDashboard.putNumber("rightEncoder", RobotMap.Component.rightWheelEncoder.getDistance());
+		putSBSubsystemSummary();
+	}
+
+	void putSBSubsystemSummary() {
+		String summary = "";
+		for (Subsystem subsystem : RobotMap.Component.mainSubsystems) {
+			summary += "{" + subsystem.getName() + "} running command {" + subsystem.getCurrentCommand() + "}\n";
+		}
+		SmartDashboard.putString("Subsystem Overview", summary);
 	}
 }

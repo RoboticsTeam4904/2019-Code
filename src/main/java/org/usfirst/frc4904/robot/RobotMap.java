@@ -17,6 +17,7 @@ import org.usfirst.frc4904.standard.custom.motioncontrollers.CANTalonSRX;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CustomPIDController;
 import org.usfirst.frc4904.standard.custom.sensors.NavX;
 import edu.wpi.first.wpilibj.SerialPort;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class RobotMap {
 	public static class Port {
@@ -92,6 +93,7 @@ public class RobotMap {
 		public static CustomPIDController chassisTurnPID;
 		public static CustomPIDController drivePID;
 		public static NavX navx;
+		public static Subsystem[] mainSubsystems;
 	}
 
 	public static class HumanInput {
@@ -111,7 +113,8 @@ public class RobotMap {
 		/* Drive Train */
 		// Wheel Encoders
 		Component.leftWheelEncoder = new CANEncoder("LeftEncoder", Port.CAN.leftWheelEncoder, Metrics.Chassis.INCHES_PER_TICK);
-		Component.rightWheelEncoder = new CANEncoder("RightEncoder", Port.CAN.rightWheelEncoder, Metrics.Chassis.INCHES_PER_TICK);
+		Component.rightWheelEncoder = new CANEncoder("RightEncoder", Port.CAN.rightWheelEncoder,
+			Metrics.Chassis.INCHES_PER_TICK);
 		Component.chassisEncoders = new EncoderPair(Component.leftWheelEncoder, Component.rightWheelEncoder);
 		Component.leftWheelAccelerationCap = new EnableableModifier(new AccelerationCap(Component.pdp));
 		Component.leftWheelAccelerationCap.enable();
@@ -132,7 +135,7 @@ public class RobotMap {
 		Component.chassis = new TankDriveShifting("2019-Chassis", Component.leftWheelA, Component.leftWheelB,
 			Component.rightWheelA, Component.rightWheelB, Component.shifter);
 		Component.drivePID = new CustomPIDController(PID.Drive.P, PID.Drive.I, PID.Drive.D, PID.Drive.F,
-		Component.chassisEncoders);
+			Component.chassisEncoders);
 		Component.drivePID.setAbsoluteTolerance(PID.Drive.tolerance);
 		Component.drivePID.setDerivativeTolerance(PID.Drive.dTolerance);
 		Component.chassisTurnPID = new CustomPIDController(PID.Turn.P, PID.Turn.I, PID.Turn.D, Component.navx);
@@ -143,5 +146,6 @@ public class RobotMap {
 		HumanInput.Driver.xbox.setDeadZone(HumanInterfaceConfig.XBOX_DEADZONE);
 		HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
 		HumanInput.Operator.joystick.setDeadzone(HumanInterfaceConfig.JOYSTICK_DEADZONE);
+		Component.mainSubsystems = new Subsystem[] {Component.chassis};
 	}
 }
