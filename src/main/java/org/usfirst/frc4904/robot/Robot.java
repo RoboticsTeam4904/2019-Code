@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* Copyright (c) 2017-2018 FIRST. All Rights Reserved. */
+/* Open Source Software - may be modified and shared by FRC teams. The code */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
+/* the project. */
 /*----------------------------------------------------------------------------*/
-
 package org.usfirst.frc4904.robot;
+
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -19,7 +19,6 @@ import org.usfirst.frc4904.standard.commands.chassis.ChassisMove;
 import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
 import edu.wpi.first.cameraserver.CameraServer;;
 
-
 public class Robot extends CommandRobotBase {
 	private RobotMap map = new RobotMap();
 
@@ -27,13 +26,12 @@ public class Robot extends CommandRobotBase {
 	public void initialize() {
 		// driverChooser.addDefault(object);
 		operatorChooser.addDefault(new DefaultOperator());
-		/* 
-			works in shuffleboard with Logitech C270
-			any amount of compression, 30 FPS, 160 x 120
-			< 4 Mbps, often < 1
-		*/
+		/*
+		 * works in shuffleboard with Logitech C270
+		 * any amount of compression, 30 FPS, 160 x 120
+		 * < 4 Mbps, often < 1
+		 */
 		CameraServer.getInstance().startAutomaticCapture();
-
 	}
 
 	@Override
@@ -43,30 +41,38 @@ public class Robot extends CommandRobotBase {
 	}
 
 	@Override
-	public void teleopExecute() {}
+	public void teleopExecute() {
+	}
 
 	@Override
-	public void autonomousInitialize() {}
+	public void autonomousInitialize() {
+	}
 
 	@Override
-	public void autonomousExecute() {}
+	public void autonomousExecute() {
+	}
 
 	@Override
-	public void disabledInitialize() {}
+	public void disabledInitialize() {
+	}
 
 	@Override
-	public void disabledExecute() {}
+	public void disabledExecute() {
+	}
 
 	@Override
-	public void testInitialize() {}
+	public void testInitialize() {
+	}
 
 	@Override
-	public void testExecute() {}
+	public void testExecute() {
+	}
 
 	@Override
 	public void alwaysExecute() {
-		LogKitten.wtf(RobotMap.Component.fourBar.elevator.get());
-		LogKitten.wtf(RobotMap.HumanInput.Operator.joystick.getAxis(CustomJoystick.Y_AXIS) > 0);
-
+		// LogKitten.wtf(RobotMap.Component.fourBar.elevator.get());
+		// LogKitten.wtf(RobotMap.HumanInput.Operator.joystick.getAxis(CustomJoystick.Y_AXIS) > 0);
+		LogKitten.wtf("Top" + RobotMap.Input.elevatorSwitchTop.get());
+		LogKitten.wtf("Bottom" + RobotMap.Input.elevatorSwitchBottom.get());
 	}
 }
