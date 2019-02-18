@@ -11,6 +11,7 @@ import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem;
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem.SolenoidState;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import org.usfirst.frc4904.standard.subsystems.motor.PositionSensorMotor;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
 import org.usfirst.frc4904.standard.custom.PCMPort;
 
@@ -49,6 +50,9 @@ public class RobotMap {
 			public static final double I = 1;
 			public static final double D = 1;
 			public static final double F = 1;
+			public static final double tolerance = -1;
+			public static final double dTolerance = -1;
+			public static final double IThreshold = -1;
 		}
 	}
 
@@ -59,6 +63,7 @@ public class RobotMap {
 		public static CustomPIDController elevatorPID;
 		public static CANTalonSRX rightElevatorMotor;
 		public static CANTalonSRX leftElevatorMotor;
+		public static Subsystem[] mainSubsystems;
 	}
 
 	public static class HumanInput {
@@ -82,7 +87,10 @@ public class RobotMap {
 		HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
 		Component.elevatorEncoder = new CANEncoder(Port.CAN.elevatorEncoder, FourBarElevator.TICK_MULTIPLIER);
 		Component.elevatorPID = new CustomPIDController(PID.Elevator.P, PID.Elevator.I, PID.Elevator.D, PID.Elevator.F,
-		Component.elevatorEncoder);
+			Component.elevatorEncoder);
+		Component.elevatorPID.setAbsoluteTolerance(PID.Elevator.tolerance);
+		Component.elevatorPID.setDerivativeTolerance(PID.Elevator.dTolerance);
+		Component.elevatorPID.setIThreshold(PID.Elevator.IThreshold);
 		Component.rightElevatorMotor = new CANTalonSRX(Port.CANMotor.rightElevatorMotor);
 		Component.rightElevatorMotor.setInverted(true);
 		Component.leftElevatorMotor = new CANTalonSRX(Port.CANMotor.leftElevatorMotor);
@@ -92,5 +100,6 @@ public class RobotMap {
 				Component.rightElevatorMotor));
 		Input.elevatorSwitchBottom = new CustomDigitalLimitSwitch(Port.Digital.elevatorSwitchBottomPort);
 		Input.elevatorSwitchTop = new CustomDigitalLimitSwitch(Port.Digital.elevatorSwitchTopPort);
+		Component.mainSubsystems = new Subsystem[] {Component.fourBar.elevator};
 	}
 }
