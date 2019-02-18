@@ -14,28 +14,28 @@ public class PathfinderBasic extends Command {
     double rightDistanceOffset = RobotMap.Component.rightWheelEncoder.getDistance();
     Trajectory.Config config = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH,
         0.05, 1.7, 2.0, 60.0);
-    Waypoint[] points = new Waypoint[] { // TODO: these are just random waypoints.
-            new Waypoint(-4, -1, Pathfinder.d2r(-45)),
-            new Waypoint(-2, -2, 0),
-            new Waypoint(0, 0, 0)
-    };
-    Trajectory trajectory = Pathfinder.generate(points, config);
-    // Wheelbase Width = 0.5m
-    TankModifier modifier = new TankModifier(trajectory).modify(0.5); // TODO: Modify
-    // Do something with the new Trajectories...
-    Trajectory left = modifier.getLeftTrajectory();
-    Trajectory right = modifier.getRightTrajectory();
-    DistanceFollower leftTrajectory = new DistanceFollower(left);
-    DistanceFollower rightTrajectory = new DistanceFollower(right);
+    Trajectory trajectory;
+    TankModifier modifier;
+    DistanceFollower leftTrajectory;
+    DistanceFollower rightTrajectory;
 
-    public PathfinderBasic() {
-        // Use requires() here to declare subsystem dependencies
+    public PathfinderBasic(Waypoint... waypoints) {
         requires(RobotMap.Component.leftWheelA);
         requires(RobotMap.Component.leftWheelB);
         requires(RobotMap.Component.rightWheelA);
         requires(RobotMap.Component.rightWheelB);
-        leftTrajectory.configurePIDVA(0.0, 0.0, 0.0, 0.0, 0.0);
+        trajectory = Pathfinder.generate(waypoints, config);
+        modifier = new TankModifier(trajectory).modify(RobotMap.Metrics.ROBOT_WIDTH_METERS);
+        leftTrajectory = new DistanceFollower(modifier.getLeftTrajectory());
+        rightTrajectory = new DistanceFollower(modifier.getRightTrajectory());
+        leftTrajectory.configurePIDVA(0.0, 0.0, 0.0, 0.0, 0.0); // TODO: set these PIDVA values
         rightTrajectory.configurePIDVA(0.0, 0.0, 0.0, 0.0, 0.0);
+    }
+
+    @Override
+    protected void initialize() {
+        leftDistanceOffset = RobotMap.Component.leftWheelEncoder.getDistance();
+        rightDistanceOffset = RobotMap.Component.rightWheelEncoder.getDistance();
     }
 
     // Called repeatedly when this Command is scheduled to run
