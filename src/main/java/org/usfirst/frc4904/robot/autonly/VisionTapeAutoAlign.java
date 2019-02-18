@@ -10,6 +10,7 @@ import org.usfirst.frc4904.standard.commands.RunIf;
 import java.util.function.BooleanSupplier;
 import java.util.function.DoubleSupplier;
 import org.usfirst.frc4904.robot.autonly.AutonConfig;
+import org.usfirst.frc4904.robot.autonly.UpdateableData;
 
 /*
 ** If the current path of robot will intersect the tape in a specific area, then it will drive forwards.
@@ -19,27 +20,27 @@ import org.usfirst.frc4904.robot.autonly.AutonConfig;
 */
 
 public class VisionTapeAutoAlign extends CommandGroup {
-	private final DoubleSupplier getNewY = () -> RobotMap.UpdateableData.y - RobotMap.UpdateableData.x / Math.tan(RobotMap.UpdateableData.betaRF);
+	private final DoubleSupplier getNewY = () -> UpdateableData.y - UpdateableData.x / Math.tan(UpdateableData.betaRF);
 
-	private final DoubleSupplier firstTurn = () -> Math.atan2(Math.max(RobotMap.UpdateableData.y / 2, AutonConfig.NO_CLOSER), RobotMap.UpdateableData.x);
+	private final DoubleSupplier firstTurn = () -> Math.atan2(Math.max(UpdateableData.y / 2, AutonConfig.NO_CLOSER), UpdateableData.x);
 
-	private final DoubleSupplier firstDrive = () -> Math.abs(RobotMap.UpdateableData.x / Math.sin(RobotMap.UpdateableData.betaRF));
+	private final DoubleSupplier firstDrive = () -> Math.abs(UpdateableData.x / Math.sin(UpdateableData.betaRF));
 
 	public VisionTapeAutoAlign() {
 		super("VisionTapeAutoAlign");
-		addSequential(new RobotMap.UpdateableData.Update());
+		addSequential(UpdateableData.update());
 		addSequential(new RunIf(
 			new ChassisTurn(RobotMap.Component.chassis, firstTurn, RobotMap.Component.navx,
 				RobotMap.Component.chassisTurnMC),
-			() -> getNewY.getAsDouble() <= AutonConfig.NO_CLOSER || getNewY.getAsDouble() >= RobotMap.UpdateableData.getY.getAsDouble()
+			() -> getNewY.getAsDouble() <= AutonConfig.NO_CLOSER || getNewY.getAsDouble() >= UpdateableData.getY.getAsDouble()
 		));
 		addSequential(new ChassisMoveDistance(RobotMap.Component.chassis, firstDrive, RobotMap.Component.drivePID));
-		addSequential(new ChassisTurn(RobotMap.Component.chassis, RobotMap.UpdateableData.getBetaRF, RobotMap.Component.navx,
+		addSequential(new ChassisTurn(RobotMap.Component.chassis, UpdateableData.getBetaRF, RobotMap.Component.navx,
 			RobotMap.Component.chassisTurnMC));
-		addSequential(new RobotMap.UpdateableData.Update());
-		addSequential(new ChassisTurn(RobotMap.Component.chassis, RobotMap.UpdateableData.getBetaRF, RobotMap.Component.navx,
+		addSequential(UpdateableData.update());
+		addSequential(new ChassisTurn(RobotMap.Component.chassis, UpdateableData.getBetaRF, RobotMap.Component.navx,
 		RobotMap.Component.chassisTurnMC));
-		addSequential(new RobotMap.UpdateableData.Update());
-		addSequential(new ChassisMoveDistance(RobotMap.Component.chassis, RobotMap.UpdateableData.getY, RobotMap.Component.drivePID));
+		addSequential(UpdateableData.update());
+		addSequential(new ChassisMoveDistance(RobotMap.Component.chassis, UpdateableData.getY, RobotMap.Component.drivePID));
 	}
 }

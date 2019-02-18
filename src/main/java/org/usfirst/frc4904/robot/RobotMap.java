@@ -11,8 +11,6 @@ import org.usfirst.frc4904.standard.subsystems.motor.speedmodifiers.Acceleration
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import java.util.function.DoubleSupplier;
-import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc4904.standard.custom.sensors.PDP;
 import org.usfirst.frc4904.standard.custom.PCMPort;
@@ -120,43 +118,6 @@ public class RobotMap {
         public static class Operator {
 			public static CustomJoystick joystick;
 		}
-	}
-	
-	public static class UpdateableData {
-		public static double betaRF;
-		public static double betaFloor;
-		public static double theta;
-		public static double x;
-		public static double y;
-		public static double distance;
-		public static double isRFTapeVisible;
-		public static double isFloorTapeVisible;
-		public static class Update extends Command {
-			public Update() {}
-
-			@Override
-			protected void initialize() {
-				betaRF = RobotMap.NetworkTables.Sensors.betaRF.getDouble(0);
-				betaFloor = RobotMap.NetworkTables.Sensors.betaFloor.getDouble(0);
-				theta = RobotMap.NetworkTables.Sensors.theta.getDouble(0);
-				x = RobotMap.NetworkTables.Sensors.x.getDouble(0);
-				y = RobotMap.NetworkTables.Sensors.y.getDouble(0);
-				distance = RobotMap.NetworkTables.Sensors.distance.getDouble(0);
-				isRFTapeVisible = RobotMap.NetworkTables.Sensors.isRFTapeVisible.getDouble(0);
-				isFloorTapeVisible = RobotMap.NetworkTables.Sensors.isRFTapeVisible.getDouble(0);
-			}
-			protected boolean isFinished() {
-				return true;
-			}
-		}
-		public static final DoubleSupplier getBetaRF = () -> betaRF;
-		public static final DoubleSupplier getBetaFloor = () -> betaFloor;
-		public static final DoubleSupplier getTheta = () -> theta;
-		public static final DoubleSupplier getX = () -> x;
-		public static final DoubleSupplier getY = () -> y;
-		public static final DoubleSupplier getDistance = () -> distance;
-		public static final DoubleSupplier getIsRFTapeVisible = () -> isRFTapeVisible;
-		public static final DoubleSupplier getIsFloorTapeVisible = () -> isFloorTapeVisible;
 	}
 
     public RobotMap() {

@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import java.util.function.BooleanSupplier;
 import java.util.function.DoubleSupplier;
+import org.usfirst.frc4904.robot.autonly.UpdateableData;
 
 /*
 ** The robot will drive forwards until it can see the white tape.
@@ -24,7 +25,8 @@ public class FloorTapeAutoAlign extends CommandGroup {
 	public FloorTapeAutoAlign() {
 		super("FloorTapeAutoAlign");
 		addSequential(new DriveUntilTape());
-		addSequential(new ChassisTurn(RobotMap.Component.chassis, RobotMap.UpdateableData.getBetaFloor.getAsDouble(), RobotMap.Component.navx,
+		addSequential(UpdateableData.update());
+		addSequential(new ChassisTurn(RobotMap.Component.chassis, UpdateableData.getBetaFloor.getAsDouble(), RobotMap.Component.navx,
 		RobotMap.Component.chassisTurnMC));
 	}
 	public class DriveUntilTape extends ChassisConstant {
@@ -33,7 +35,7 @@ public class FloorTapeAutoAlign extends CommandGroup {
 		}
 
 		protected boolean isFinished() {
-			return RobotMap.UpdateableData.getIsFloorTapeVisible.getAsDouble() == 1;
+			return UpdateableData.getIsFloorTapeVisible.getAsBoolean();
 		}
 	}
 }
