@@ -12,8 +12,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc4904.robot.humaninterface.operators.DefaultOperator;
 import org.usfirst.frc4904.standard.CommandRobotBase;
+import org.usfirst.frc4904.standard.LogKitten;
 import org.usfirst.frc4904.standard.commands.chassis.ChassisMove;
+import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
 import edu.wpi.first.cameraserver.CameraServer;;
 
 
@@ -23,7 +26,7 @@ public class Robot extends CommandRobotBase {
 	@Override
 	public void initialize() {
 		// driverChooser.addDefault(object);
-		// operatorChooser.addDefault();
+		operatorChooser.addDefault(new DefaultOperator());
 		/* 
 			works in shuffleboard with Logitech C270
 			any amount of compression, 30 FPS, 160 x 120
@@ -61,5 +64,9 @@ public class Robot extends CommandRobotBase {
 	public void testExecute() {}
 
 	@Override
-	public void alwaysExecute() {}
+	public void alwaysExecute() {
+		LogKitten.wtf(RobotMap.Component.fourBar.elevator.get());
+		LogKitten.wtf(RobotMap.HumanInput.Operator.joystick.getAxis(CustomJoystick.Y_AXIS) > 0);
+
+	}
 }

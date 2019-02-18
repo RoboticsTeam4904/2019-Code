@@ -26,15 +26,15 @@ public class DefaultOperator extends Operator {
 		RobotMap.HumanInput.Operator.joystick.button1.onlyWhileHeld(new ElevatorControl());
 		RobotMap.HumanInput.Operator.joystick.button2.whenPressed(new OverrideEnable(RobotMap.Component.fourBar));
 		RobotMap.HumanInput.Operator.joystick.button2.whenReleased(new OverrideDisable(RobotMap.Component.fourBar));
-		RobotMap.HumanInput.Operator.joystick.button3
-			.whenPressed(new RunIfElse(new SolenoidExtend("FourBarUp", RobotMap.Component.fourBar.lever),
-				new SolenoidRetract("FourBarDown", RobotMap.Component.fourBar.lever),
-				RobotMap.Component.fourBar.lever::isExtended));
-		RobotMap.Input.elevatorSwitchBottom.whenPressed(new SingleOp(() -> {
-			RobotMap.Component.elevatorEncoder.resetViaOffset();
-		}));
-		RobotMap.Input.elevatorSwitchTop.whenPressed(new SingleOp(() -> {
-			RobotMap.Component.elevatorEncoder.resetViaOffset(FourBarElevator.MAX_HEIGHT);
-		}));
+		// RobotMap.HumanInput.Operator.joystick.button3
+		// 	.whenPressed(new RunIfElse(new SolenoidExtend("FourBarUp", RobotMap.Component.fourBar.lever),
+		// 		new SolenoidRetract("FourBarDown", RobotMap.Component.fourBar.lever),
+		// 		RobotMap.Component.fourBar.lever::isExtended));
+		// RobotMap.Input.elevatorSwitchBottom.whenPressed(new SingleOp(() -> {
+		// 	RobotMap.Component.elevatorEncoder.resetViaOffset();
+		// }));
+		// RobotMap.Input.elevatorSwitchTop.whenPressed(new SingleOp(() -> {
+		// 	RobotMap.Component.elevatorEncoder.resetViaOffset(FourBarElevator.MAX_HEIGHT);
+		// }));
 	}
 }
