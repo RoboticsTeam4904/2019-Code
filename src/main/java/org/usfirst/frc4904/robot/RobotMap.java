@@ -102,6 +102,7 @@ public class RobotMap {
 			public static NetworkTableEntry theta;
 			public static NetworkTableEntry x;
 			public static NetworkTableEntry y;
+			public static NetworkTableEntry distance;
 			public static NetworkTableEntry isRFTapeVisible;
 			public static NetworkTableEntry isFloorTapeVisible;
 		}
@@ -127,6 +128,7 @@ public class RobotMap {
 		public static double theta;
 		public static double x;
 		public static double y;
+		public static double distance;
 		public static double isRFTapeVisible;
 		public static double isFloorTapeVisible;
 		public static class Update extends Command {
@@ -139,6 +141,7 @@ public class RobotMap {
 				theta = RobotMap.NetworkTables.Sensors.theta.getDouble(0);
 				x = RobotMap.NetworkTables.Sensors.x.getDouble(0);
 				y = RobotMap.NetworkTables.Sensors.y.getDouble(0);
+				distance = RobotMap.NetworkTables.Sensors.distance.getDouble(0);
 				isRFTapeVisible = RobotMap.NetworkTables.Sensors.isRFTapeVisible.getDouble(0);
 				isFloorTapeVisible = RobotMap.NetworkTables.Sensors.isRFTapeVisible.getDouble(0);
 			}
@@ -151,6 +154,7 @@ public class RobotMap {
 		public static final DoubleSupplier getTheta = () -> theta;
 		public static final DoubleSupplier getX = () -> x;
 		public static final DoubleSupplier getY = () -> y;
+		public static final DoubleSupplier getDistance = () -> distance;
 		public static final DoubleSupplier getIsRFTapeVisible = () -> isRFTapeVisible;
 		public static final DoubleSupplier getIsFloorTapeVisible = () -> isFloorTapeVisible;
 	}
@@ -174,11 +178,12 @@ public class RobotMap {
 		
 		NetworkTables.inst = NetworkTableInstance.getDefault();
 		NetworkTables.Sensors.table = NetworkTables.inst.getTable("Sensors");
-		NetworkTables.Sensors.betaRF = NetworkTables.Sensors.table.getEntry("Retroreflective Beta");
+		NetworkTables.Sensors.betaRF = NetworkTables.Sensors.table.getEntry("RF Beta");
 		NetworkTables.Sensors.betaFloor = NetworkTables.Sensors.table.getEntry("Floor Beta");
 		NetworkTables.Sensors.theta = NetworkTables.Sensors.table.getEntry("Theta");
 		NetworkTables.Sensors.x = NetworkTables.Sensors.table.getEntry("X");
 		NetworkTables.Sensors.y = NetworkTables.Sensors.table.getEntry("Y");
+		NetworkTables.Sensors.distance = NetworkTables.Sensors.table.getEntry("Distance");
 		NetworkTables.Sensors.isRFTapeVisible = NetworkTables.Sensors.table.getEntry("Is RF Tape Visible?");
 		NetworkTables.Sensors.isFloorTapeVisible = NetworkTables.Sensors.table.getEntry("Is Floor Tape Visible?");
 		
