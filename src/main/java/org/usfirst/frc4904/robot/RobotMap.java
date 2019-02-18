@@ -26,33 +26,33 @@ public class RobotMap {
 		}
 
 		public static class CANMotor {
-			public static final int leftDriveA = -1; // TODO: CHANGE PORTS
-			public static final int leftDriveB = -1;
-			public static final int rightDriveA = -1;
-			public static final int rightDriveB = -1;
+			public static final int leftDriveA = 1;
+			public static final int leftDriveB = 2;
+			public static final int rightDriveA = 3;
+			public static final int rightDriveB = 4;
 		}
 
 		public static class CAN {
-			// public static final int leftWheelEncoder = -1; // TODO: CHANGE PORTS
-			// public static final int rightWheelEncoder = -1;
+			public static final int leftWheelEncoder = -1; // TODO: CHANGE PORTS
+			public static final int rightWheelEncoder = -1;
 		}
 
 		public static class Pneumatics {
-			public static final PCMPort shifter = new PCMPort(0, 0, 1); // TODO: reverse is top, forward is bottom //TODO: CHANGE PORTS
+			public static final PCMPort shifter = new PCMPort(0, 0, 1);
 		}
 	}
 
 	public static class Metrics {
-		public static class Wheel {
+		public static class Chassis {
 			public static final double TICKS_PER_REVOLUTION = -1; // TODO: CHANGE CONSTS
 			public static final double DIAMETER_INCHES = -1;
-			public static final double CIRCUMFERENCE_INCHES = Metrics.Wheel.DIAMETER_INCHES * Math.PI;
-			public static final double TICKS_PER_INCH = Metrics.Wheel.TICKS_PER_REVOLUTION
-				/ Metrics.Wheel.CIRCUMFERENCE_INCHES;
+			public static final double CIRCUMFERENCE_INCHES = Metrics.Chassis.DIAMETER_INCHES * Math.PI;
+			public static final double TICKS_PER_INCH = Metrics.Chassis.TICKS_PER_REVOLUTION
+				/ Metrics.Chassis.CIRCUMFERENCE_INCHES;
 			public static final double DISTANCE_FRONT_BACK = -1;
 			public static final double DISTANCE_SIDE_SIDE = -1;
-			public static final double INCHES_PER_TICK = Metrics.Wheel.CIRCUMFERENCE_INCHES
-				/ Metrics.Wheel.TICKS_PER_REVOLUTION;
+			public static final double INCHES_PER_TICK = Metrics.Chassis.CIRCUMFERENCE_INCHES
+				/ Metrics.Chassis.TICKS_PER_REVOLUTION;
 		}
 	}
 
@@ -110,9 +110,9 @@ public class RobotMap {
 		Component.navx = new NavX(SerialPort.Port.kMXP);
 		/* Drive Train */
 		// Wheel Encoders
-		// Component.leftWheelEncoder = new CANEncoder("LeftEncoder", Port.CAN.leftWheelEncoder, Metrics.Wheel.INCHES_PER_TICK);
-		// Component.rightWheelEncoder = new CANEncoder("RightEncoder", Port.CAN.rightWheelEncoder, Metrics.Wheel.INCHES_PER_TICK);
-		// Component.chassisEncoders = new EncoderPair(Component.leftWheelEncoder, Component.rightWheelEncoder);
+		Component.leftWheelEncoder = new CANEncoder("LeftEncoder", Port.CAN.leftWheelEncoder, Metrics.Chassis.INCHES_PER_TICK);
+		Component.rightWheelEncoder = new CANEncoder("RightEncoder", Port.CAN.rightWheelEncoder, Metrics.Chassis.INCHES_PER_TICK);
+		Component.chassisEncoders = new EncoderPair(Component.leftWheelEncoder, Component.rightWheelEncoder);
 		Component.leftWheelAccelerationCap = new EnableableModifier(new AccelerationCap(Component.pdp));
 		Component.leftWheelAccelerationCap.enable();
 		Component.rightWheelAccelerationCap = new EnableableModifier(new AccelerationCap(Component.pdp));
@@ -131,17 +131,17 @@ public class RobotMap {
 		// General Chassis
 		Component.chassis = new TankDriveShifting("2019-Chassis", Component.leftWheelA, Component.leftWheelB,
 			Component.rightWheelA, Component.rightWheelB, Component.shifter);
-		// Component.drivePID = new CustomPIDController(PID.Drive.P, PID.Drive.I, PID.Drive.D, PID.Drive.F,
-		// Component.chassisEncoders);
-		// Component.drivePID.setAbsoluteTolerance(PID.Drive.tolerance);
-		// Component.drivePID.setDerivativeTolerance(PID.Drive.dTolerance);
-		// Component.chassisTurnPID = new CustomPIDController(PID.Turn.P, PID.Turn.I, PID.Turn.D, Component.navx);
-		// Component.chassisTurnPID.setAbsoluteTolerance(PID.Turn.tolerance);
-		// Component.chassisTurnPID.setDerivativeTolerance(PID.Turn.dTolerance);
+		Component.drivePID = new CustomPIDController(PID.Drive.P, PID.Drive.I, PID.Drive.D, PID.Drive.F,
+		Component.chassisEncoders);
+		Component.drivePID.setAbsoluteTolerance(PID.Drive.tolerance);
+		Component.drivePID.setDerivativeTolerance(PID.Drive.dTolerance);
+		Component.chassisTurnPID = new CustomPIDController(PID.Turn.P, PID.Turn.I, PID.Turn.D, Component.navx);
+		Component.chassisTurnPID.setAbsoluteTolerance(PID.Turn.tolerance);
+		Component.chassisTurnPID.setDerivativeTolerance(PID.Turn.dTolerance);
 		// Human Input
 		HumanInput.Driver.xbox = new CustomXbox(Port.HumanInput.xboxController);
 		HumanInput.Driver.xbox.setDeadZone(HumanInterfaceConfig.XBOX_DEADZONE);
-		// HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
-		// HumanInput.Operator.joystick.setDeadzone(HumanInterfaceConfig.JOYSTICK_DEADZONE);
+		HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
+		HumanInput.Operator.joystick.setDeadzone(HumanInterfaceConfig.JOYSTICK_DEADZONE);
 	}
 }
