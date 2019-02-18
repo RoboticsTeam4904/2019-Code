@@ -27,7 +27,7 @@ public class RobotMap {
 		}
 
 		public static class CAN {
-			// public static final int elevatorEncoder = 1; // also not final #
+			public static final int elevatorEncoder = 1; // also not final #
 		}
 
 		public static class Pneumatics {
@@ -80,18 +80,14 @@ public class RobotMap {
 		Component.driverXbox = new CustomXbox(Port.HumanInput.xboxController);
 		Component.driverXbox.setDeadZone(0.1);
 		HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
-		// Component.elevatorEncoder = new CANEncoder(Port.CAN.elevatorEncoder, FourBarElevator.TICK_MULTIPLIER);
-		// Component.elevatorPID = new CustomPIDController(PID.Elevator.P, PID.Elevator.I, PID.Elevator.D, PID.Elevator.F,
-		// Component.elevatorEncoder);
-		// Component.fourBar = new FourBarElevator(
-		// new PositionSensorMotor("Elevator",
-		// Component.elevatorPID,
-		// new CANTalonSRX(Port.CANMotor.elevatorMotorA)));
+		Component.elevatorEncoder = new CANEncoder(Port.CAN.elevatorEncoder, FourBarElevator.TICK_MULTIPLIER);
+		Component.elevatorPID = new CustomPIDController(PID.Elevator.P, PID.Elevator.I, PID.Elevator.D, PID.Elevator.F,
+		Component.elevatorEncoder);
 		Component.rightElevatorMotor = new CANTalonSRX(Port.CANMotor.rightElevatorMotor);
 		Component.rightElevatorMotor.setInverted(true);
 		Component.leftElevatorMotor = new CANTalonSRX(Port.CANMotor.leftElevatorMotor);
 		Component.fourBar = new FourBarElevator(
-			new Motor("Elevator",
+			new PositionSensorMotor("Elevator", Component.elevatorPID,
 				Component.leftElevatorMotor,
 				Component.rightElevatorMotor));
 		Input.elevatorSwitchBottom = new CustomDigitalLimitSwitch(Port.Digital.elevatorSwitchBottomPort);

@@ -12,26 +12,44 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc4904.robot.commands.NeutralElevator;
+import org.usfirst.frc4904.robot.humaninterface.drivers.NathanGain;
 import org.usfirst.frc4904.robot.humaninterface.operators.DefaultOperator;
+import org.usfirst.frc4904.robot.subsystems.FourBarElevator;
 import org.usfirst.frc4904.standard.CommandRobotBase;
 import org.usfirst.frc4904.standard.LogKitten;
+import org.usfirst.frc4904.standard.commands.SingleOp;
 import org.usfirst.frc4904.standard.commands.chassis.ChassisMove;
 import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
-import edu.wpi.first.cameraserver.CameraServer;;
+import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.networktables.NetworkTable;
 
 public class Robot extends CommandRobotBase {
 	private RobotMap map = new RobotMap();
 
 	@Override
 	public void initialize() {
-		// driverChooser.addDefault(object);
+		driverChooser.addDefault(new NathanGain());
 		operatorChooser.addDefault(new DefaultOperator());
+		RobotMap.Input.elevatorSwitchBottom.whenPressed(new NeutralElevator());
+		RobotMap.Input.elevatorSwitchTop.whenPressed(new NeutralElevator());
+		RobotMap.Input.elevatorSwitchBottom.whenPressed(new SingleOp(() -> {
+			RobotMap.Component.elevatorEncoder.resetViaOffset();
+		}));
+		RobotMap.Input.elevatorSwitchTop.whenPressed(new SingleOp(() -> {
+			RobotMap.Component.elevatorEncoder.resetViaOffset(FourBarElevator.MAX_HEIGHT);
+		}));
 		/*
 		 * works in shuffleboard with Logitech C270
 		 * any amount of compression, 30 FPS, 160 x 120
 		 * < 4 Mbps, often < 1
 		 */
 		CameraServer.getInstance().startAutomaticCapture();
+		RobotMap.Component.elevatorEncoder.reset();
+		SmartDashboard.putNumber("ElevatorPID/P", RobotMap.Component.elevatorPID.getP());
+		SmartDashboard.putNumber("ElevatorPID/I", RobotMap.Component.elevatorPID.getI());
+		SmartDashboard.putNumber("ElevatorPID/D", RobotMap.Component.elevatorPID.getD());
+		SmartDashboard.putNumber("ElevatorPID/F", RobotMap.Component.elevatorPID.getF());
 	}
 
 	@Override
@@ -70,9 +88,12 @@ public class Robot extends CommandRobotBase {
 
 	@Override
 	public void alwaysExecute() {
-		// LogKitten.wtf(RobotMap.Component.fourBar.elevator.get());
-		// LogKitten.wtf(RobotMap.HumanInput.Operator.joystick.getAxis(CustomJoystick.Y_AXIS) > 0);
 		LogKitten.wtf("Top" + RobotMap.Input.elevatorSwitchTop.get());
 		LogKitten.wtf("Bottom" + RobotMap.Input.elevatorSwitchBottom.get());
+		SmartDashboard.putNumber("ElevatorPID/e", RobotMap.Component.elevatorPID.getError());
+		SmartDashboard.putNumber("ElevatorPID/x", RobotMap.Component.elevatorPID.getSensorValue());
+		RobotMap.Component.elevatorPID.setPIDF(SmartDashboard.getNumber("ElevatorPID/P", 0.0),
+			SmartDashboard.getNumber("ElevatorPID/I", 0.0), SmartDashboard.getNumber("ElevatorPID/D", 0.0),
+			SmartDashboard.getNumber("ElevatorPID/F", 0.0));
 	}
 }

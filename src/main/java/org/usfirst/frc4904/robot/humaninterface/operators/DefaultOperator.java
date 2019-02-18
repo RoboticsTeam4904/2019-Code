@@ -31,13 +31,5 @@ public class DefaultOperator extends Operator {
 		// .whenPressed(new RunIfElse(new SolenoidExtend("FourBarUp", RobotMap.Component.fourBar.lever),
 		// new SolenoidRetract("FourBarDown", RobotMap.Component.fourBar.lever),
 		// RobotMap.Component.fourBar.lever::isExtended));
-		RobotMap.Input.elevatorSwitchBottom.whenPressed(new NeutralElevator());
-		RobotMap.Input.elevatorSwitchTop.whenPressed(new NeutralElevator());
-		RobotMap.Input.elevatorSwitchBottom.whenPressed(new SingleOp(() -> {
-			RobotMap.Component.elevatorEncoder.resetViaOffset();
-		}));
-		RobotMap.Input.elevatorSwitchTop.whenPressed(new SingleOp(() -> {
-			RobotMap.Component.elevatorEncoder.resetViaOffset(FourBarElevator.MAX_HEIGHT);
-		}));
 	}
 }

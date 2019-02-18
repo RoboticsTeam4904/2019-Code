@@ -18,17 +18,17 @@ public class ElevatorControl extends RunIfElse {
 				CustomJoystick.Y_AXIS,
 				FourBarElevator.UP_SPEED),
 				() -> {
-					// return !RobotMap.Input.elevatorSwitchTop.get()
-					// || RobotMap.Component.fourBar.isOverridden();
-					return true;
+					return (!RobotMap.Input.elevatorSwitchTop.get()
+						&& RobotMap.Component.fourBar.getElevatorPosition() < FourBarElevator.MAX_HEIGHT)
+						|| RobotMap.Component.fourBar.isOverridden();
 				}),
 			new RunIf(new MotorControl(RobotMap.Component.fourBar.elevator, RobotMap.HumanInput.Operator.joystick,
 				CustomJoystick.Y_AXIS,
 				FourBarElevator.DOWN_SPEED),
 				() -> {
-					// return !RobotMap.Input.elevatorSwitchBottom.get()
-					// || RobotMap.Component.fourBar.isOverridden();
-					return true;
+					return (!RobotMap.Input.elevatorSwitchBottom.get()
+						&& RobotMap.Component.fourBar.getElevatorPosition() > FourBarElevator.MIN_HEIGHT)
+						|| RobotMap.Component.fourBar.isOverridden();
 				}),
 			() -> {
 				return RobotMap.HumanInput.Operator.joystick.getAxis(CustomJoystick.Y_AXIS) > 0;
