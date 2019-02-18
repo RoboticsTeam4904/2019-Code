@@ -18,7 +18,8 @@ public class FourBarElevatorSet extends CommandGroup {
 		requires(RobotMap.Component.fourBar.lever);
 		// TODO: Set the wrist up before doing this if going to LEVEL_ONE or above
 		addParallel(new MotorPositionConstant(RobotMap.Component.fourBar.elevator, state.elevatorPosition));
-		addParallel(new SolenoidSet(RobotMap.Component.fourBar.lever, state.fourBarState));
+		addSequential(new SolenoidSet(RobotMap.Component.fourBar.lever, state.fourBarState));
+		addSequential(new NeutralElevator());
 		RobotMap.Component.fourBar.setState(state);
 	}
 }

@@ -1,6 +1,7 @@
 package org.usfirst.frc4904.robot;
 
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import org.usfirst.frc4904.robot.subsystems.FourBarElevator;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CANTalonSRX;
@@ -21,8 +22,8 @@ public class RobotMap {
 		}
 
 		public static class CANMotor {
-			public static final int elevatorMotorA = -1; // not final numbers
-			public static final int elevatorMotorB = -1;
+			public static final int rightElevatorMotor = 8; // not final numbers
+			public static final int leftElevatorMotor = 7;
 		}
 
 		public static class CAN {
@@ -52,11 +53,13 @@ public class RobotMap {
 	}
 
 	public static class Component {
-        public static CustomXbox driverXbox;
-        public static CANEncoder elevatorEncoder;
-        public static FourBarElevator fourBar;
+		public static CustomXbox driverXbox;
+		public static CANEncoder elevatorEncoder;
+		public static CANTalonSRX rightElevatorMotor;
+		public static CANTalonSRX leftElevatorMotor;
+		public static FourBarElevator fourBar;
 		public static CustomPIDController elevatorPID;
-    }
+	}
 
 	public static class HumanInput {
 		public static class Driver {
@@ -81,11 +84,14 @@ public class RobotMap {
 		Component.elevatorEncoder.setDistancePerPulse(FourBarElevator.TICK_MULTIPLIER);
 		Component.elevatorPID = new CustomPIDController(PID.Elevator.P, PID.Elevator.I, PID.Elevator.D, PID.Elevator.F,
 			Component.elevatorEncoder);
+		Component.leftElevatorMotor = new CANTalonSRX(Port.CANMotor.leftElevatorMotor);
+		Component.leftElevatorMotor.setNeutralMode(NeutralMode.Brake);
+		Component.rightElevatorMotor = new CANTalonSRX(Port.CANMotor.rightElevatorMotor);
+		Component.rightElevatorMotor.setNeutralMode(NeutralMode.Brake);
 		Component.fourBar = new FourBarElevator(new SolenoidSubsystem("FourBarLinkage", SolenoidState.RETRACT,
 			Port.Pneumatics.fourBarLever.buildDoubleSolenoid()),
 			new PositionSensorMotor("Elevator",
-				Component.elevatorPID,
-				new CANTalonSRX(Port.CANMotor.elevatorMotorA), new CANTalonSRX(Port.CANMotor.elevatorMotorB)));
+				Component.elevatorPID, Component.leftElevatorMotor, Component.rightElevatorMotor));
 		Input.elevatorSwitchBottom = new CustomDigitalLimitSwitch(Port.Digital.elevatorSwitchBottomPort);
 		Input.elevatorSwitchTop = new CustomDigitalLimitSwitch(Port.Digital.elevatorSwitchTopPort);
 	}
