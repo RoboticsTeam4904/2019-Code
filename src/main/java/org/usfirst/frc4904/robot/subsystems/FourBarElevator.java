@@ -12,8 +12,8 @@ import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import org.usfirst.frc4904.standard.subsystems.motor.PositionSensorMotor;
 
 public class FourBarElevator implements Overridable {
-	public static final double UP_SPEED = 0.5; // TODO: SET THESE
-	public static final double DOWN_SPEED = 0.5;
+	public static final double UP_SPEED = 0.7; // TODO: SET THESE
+	public static final double DOWN_SPEED = 0.7;
 	public static final double ENCODER_TICKS = 1024;
 	// public static final double DISTANCE_PER_ROTATION = -1;
 	// public static final double TICK_MULTIPLIER = DISTANCE_PER_ROTATION;
@@ -28,7 +28,7 @@ public class FourBarElevator implements Overridable {
 	public State state;
 	public boolean isOverridden;
 
-	public FourBarElevator(PositionSensorMotor elevator) {
+	public FourBarElevator(Motor elevator) {
 		this.elevator = elevator;
 	}
 
@@ -53,10 +53,10 @@ public class FourBarElevator implements Overridable {
 		return state;
 	}
 
-	public double getElevatorPosition() {
-		return RobotMap.Component.elevatorPID.getSensorValue();
-		// return encoder.getDistance();
-	}
+	// public double getElevatorPosition() {
+	// 	return RobotMap.Component.elevatorPID.getSensorValue();
+	// 	// return encoder.getDistance();
+	// }
 
 	// public SolenoidState getFourBarState() {
 	// 	return lever.getState();

@@ -1,11 +1,11 @@
 package org.usfirst.frc4904.robot;
 
-
 import org.usfirst.frc4904.robot.subsystems.FourBarElevator;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CANTalonSRX;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CustomPIDController;
 import org.usfirst.frc4904.standard.custom.sensors.CANEncoder;
+import org.usfirst.frc4904.standard.custom.sensors.CANTalonEncoder;
 import org.usfirst.frc4904.standard.custom.sensors.CustomDigitalLimitSwitch;
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem;
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem.SolenoidState;
@@ -28,7 +28,7 @@ public class RobotMap {
 		}
 
 		public static class CAN {
-			public static final int elevatorEncoder = 1; // also not final #
+			// public static final int elevatorEncoder = 1; // also not final #
 		}
 
 		public static class Pneumatics {
@@ -36,8 +36,8 @@ public class RobotMap {
 		}
 
 		public static class Digital {
-			public static final int elevatorSwitchBottomPort = -1; // TODO: Not final values.
-			public static final int elevatorSwitchTopPort = -1;
+			public static final int elevatorSwitchBottomPort = 0; // TODO: Not final values.
+			public static final int elevatorSwitchTopPort = 1;
 		}
 	}
 
@@ -58,7 +58,7 @@ public class RobotMap {
 
 	public static class Component {
 		public static CustomXbox driverXbox;
-		public static CANEncoder elevatorEncoder;
+		public static CANTalonEncoder elevatorEncoder;
 		public static FourBarElevator fourBar;
 		public static CustomPIDController elevatorPID;
 		public static CANTalonSRX rightElevatorMotor;
@@ -85,21 +85,18 @@ public class RobotMap {
 		Component.driverXbox = new CustomXbox(Port.HumanInput.xboxController);
 		Component.driverXbox.setDeadZone(0.1);
 		HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
-		Component.elevatorEncoder = new CANEncoder(Port.CAN.elevatorEncoder, FourBarElevator.TICK_MULTIPLIER);
-		Component.elevatorPID = new CustomPIDController(PID.Elevator.P, PID.Elevator.I, PID.Elevator.D, PID.Elevator.F,
-			Component.elevatorEncoder);
-		Component.elevatorPID.setAbsoluteTolerance(PID.Elevator.tolerance);
-		Component.elevatorPID.setDerivativeTolerance(PID.Elevator.dTolerance);
-		// Component.elevatorPID.setIThreshold(PID.Elevator.IThreshold);
 		Component.rightElevatorMotor = new CANTalonSRX(Port.CANMotor.rightElevatorMotor);
 		Component.rightElevatorMotor.setInverted(true);
 		Component.leftElevatorMotor = new CANTalonSRX(Port.CANMotor.leftElevatorMotor);
-		Component.fourBar = new FourBarElevator(
-			new PositionSensorMotor("Elevator", Component.elevatorPID,
-				Component.leftElevatorMotor,
-				Component.rightElevatorMotor));
+		Component.elevatorEncoder = new CANTalonEncoder(Component.leftElevatorMotor, FourBarElevator.TICK_MULTIPLIER);
+		Component.elevatorPID = new CustomPIDController(PID.Elevator.P, PID.Elevator.I, PID.Elevator.D, PID.Elevator.F,
+				Component.elevatorEncoder);
+		// Component.elevatorPID.setAbsoluteTolerance(PID.Elevator.tolerance);
+		// Component.elevatorPID.setDerivativeTolerance(PID.Elevator.dTolerance);
+		Component.fourBar = new FourBarElevator(new PositionSensorMotor("Elevator", Component.elevatorPID,
+				Component.leftElevatorMotor, Component.rightElevatorMotor));
 		Input.elevatorSwitchBottom = new CustomDigitalLimitSwitch(Port.Digital.elevatorSwitchBottomPort);
 		Input.elevatorSwitchTop = new CustomDigitalLimitSwitch(Port.Digital.elevatorSwitchTopPort);
-		Component.mainSubsystems = new Subsystem[] {Component.fourBar.elevator};
+		Component.mainSubsystems = new Subsystem[] { Component.fourBar.elevator };
 	}
 }
