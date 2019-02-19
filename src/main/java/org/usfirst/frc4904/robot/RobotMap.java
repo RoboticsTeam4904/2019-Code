@@ -14,8 +14,6 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 
 import org.usfirst.frc4904.standard.custom.sensors.PDP;
 import org.usfirst.frc4904.standard.custom.PCMPort;
-//import org.usfirst.frc4904.standard.custom.sensors.CANEncoder;
-//import org.usfirst.frc4904.standard.custom.sensors.EncoderPair;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CANTalonSRX;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CustomPIDController;
 import org.usfirst.frc4904.standard.custom.sensors.NavX;
@@ -63,12 +61,12 @@ public class RobotMap {
     }
     public static class PID {
 		public static class Drive {
-			public static final double P = 0.04; //Tune PID
-			public static final double I = 0.0; //Tune PID
-			public static final double D = -0.006; //Tune PID
-			public static final double F = 0.01; //Tune PID
-			public static final double tolerance = 4.5; //Tune PID
-			public static final double dTolerance = 3.0; //Tune PID
+			public static final double P = -1; //Tune PID
+			public static final double I = -1; //Tune PID
+			public static final double D = -1; //Tune PID
+			public static final double F = -1; //Tune PID
+			public static final double tolerance = -1; //Tune PID
+			public static final double dTolerance = -1; //Tune PID
         }
     }
     public static class Component {

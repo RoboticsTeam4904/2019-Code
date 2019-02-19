@@ -1,7 +1,7 @@
 package org.usfirst.frc4904.sovereignty;
 
 
-import org.usfirst.frc4904.robot.vision.AligningCamera;
+import org.usfirst.frc4904.sovereignty.AligningCamera;
 import org.usfirst.frc4904.sovereignty.FusibleNavX.NavxMode;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
