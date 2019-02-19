@@ -34,8 +34,8 @@ public class RobotMap {
 		}
 
 		public static class CAN {
-			public static final int leftWheelEncoder = -1; // TODO: CHANGE PORTS
-			public static final int rightWheelEncoder = -1;
+			public static final int leftWheelEncoder = 0x612; // TODO: CHANGE PORTS
+			public static final int rightWheelEncoder = 0x613;
 		}
 
 		public static class Pneumatics {
@@ -112,18 +112,18 @@ public class RobotMap {
 		Component.navx = new NavX(SerialPort.Port.kMXP);
 		/* Drive Train */
 		// Wheel Encoders
-		Component.leftWheelEncoder = new CANEncoder("LeftEncoder", Port.CAN.leftWheelEncoder, Metrics.Chassis.INCHES_PER_TICK);
-		Component.rightWheelEncoder = new CANEncoder("RightEncoder", Port.CAN.rightWheelEncoder,
-			Metrics.Chassis.INCHES_PER_TICK);
-		Component.chassisEncoders = new EncoderPair(Component.leftWheelEncoder, Component.rightWheelEncoder);
+		// Component.leftWheelEncoder = new CANEncoder("LeftEncoder", Port.CAN.leftWheelEncoder, Metrics.Chassis.INCHES_PER_TICK);
+		// Component.rightWheelEncoder = new CANEncoder("RightEncoder", Port.CAN.rightWheelEncoder,
+		// 	Metrics.Chassis.INCHES_PER_TICK);
+		// Component.chassisEncoders = new EncoderPair(Component.leftWheelEncoder, Component.rightWheelEncoder);
 		Component.leftWheelAccelerationCap = new EnableableModifier(new AccelerationCap(Component.pdp));
 		Component.leftWheelAccelerationCap.enable();
 		Component.rightWheelAccelerationCap = new EnableableModifier(new AccelerationCap(Component.pdp));
 		Component.rightWheelAccelerationCap.enable();
 		// Wheels
-		Component.rightWheelA = new Motor("rightWheelA", true, Component.rightWheelAccelerationCap,
+		Component.rightWheelA = new Motor("rightWheelA", false, Component.rightWheelAccelerationCap,
 			new CANTalonSRX(Port.CANMotor.rightDriveA));
-		Component.rightWheelB = new Motor("rightWheelB", Component.rightWheelAccelerationCap,
+		Component.rightWheelB = new Motor("rightWheelB", false, Component.rightWheelAccelerationCap,
 			new CANTalonSRX(Port.CANMotor.rightDriveB));
 		Component.leftWheelA = new Motor("leftWheelA", true, Component.leftWheelAccelerationCap,
 			new CANTalonSRX(Port.CANMotor.leftDriveA));
@@ -134,13 +134,13 @@ public class RobotMap {
 		// General Chassis
 		Component.chassis = new TankDriveShifting("2019-Chassis", Component.leftWheelA, Component.leftWheelB,
 			Component.rightWheelA, Component.rightWheelB, Component.shifter);
-		Component.drivePID = new CustomPIDController(PID.Drive.P, PID.Drive.I, PID.Drive.D, PID.Drive.F,
-			Component.chassisEncoders);
-		Component.drivePID.setAbsoluteTolerance(PID.Drive.tolerance);
-		Component.drivePID.setDerivativeTolerance(PID.Drive.dTolerance);
-		Component.chassisTurnPID = new CustomPIDController(PID.Turn.P, PID.Turn.I, PID.Turn.D, Component.navx);
-		Component.chassisTurnPID.setAbsoluteTolerance(PID.Turn.tolerance);
-		Component.chassisTurnPID.setDerivativeTolerance(PID.Turn.dTolerance);
+		// Component.drivePID = new CustomPIDController(PID.Drive.P, PID.Drive.I, PID.Drive.D, PID.Drive.F,
+		// 	Component.chassisEncoders);
+		// // Component.drivePID.setAbsoluteTolerance(PID.Drive.tolerance);
+		// // Component.drivePID.setDerivativeTolerance(PID.Drive.dTolerance);
+		// Component.chassisTurnPID = new CustomPIDController(PID.Turn.P, PID.Turn.I, PID.Turn.D, Component.navx);
+		// Component.chassisTurnPID.setAbsoluteTolerance(PID.Turn.tolerance);
+		// Component.chassisTurnPID.setDerivativeTolerance(PID.Turn.dTolerance);
 		// Human Input
 		HumanInput.Driver.xbox = new CustomXbox(Port.HumanInput.xboxController);
 		HumanInput.Driver.xbox.setDeadZone(HumanInterfaceConfig.XBOX_DEADZONE);
