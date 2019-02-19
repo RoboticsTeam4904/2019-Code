@@ -46,13 +46,13 @@ public class RobotMap {
 
 	public static class PID {
 		public static class Elevator {
-			public static final double P = 1; // TODO: TUNE
-			public static final double I = 1;
-			public static final double D = 1;
-			public static final double F = 1;
-			public static final double tolerance = -1;
-			public static final double dTolerance = -1;
-			public static final double IThreshold = -1;
+			public static final double P = 0.07; // TODO: TUNE
+			public static final double I = 0.000007;
+			public static final double D = -0.0004;
+			public static final double F = 0.0001;
+			public static final double tolerance = 4.0;
+			public static final double dTolerance = 3.0;
+			// public static final double IThreshold = 13;
 		}
 	}
 
@@ -90,7 +90,7 @@ public class RobotMap {
 			Component.elevatorEncoder);
 		Component.elevatorPID.setAbsoluteTolerance(PID.Elevator.tolerance);
 		Component.elevatorPID.setDerivativeTolerance(PID.Elevator.dTolerance);
-		Component.elevatorPID.setIThreshold(PID.Elevator.IThreshold);
+		// Component.elevatorPID.setIThreshold(PID.Elevator.IThreshold);
 		Component.rightElevatorMotor = new CANTalonSRX(Port.CANMotor.rightElevatorMotor);
 		Component.rightElevatorMotor.setInverted(true);
 		Component.leftElevatorMotor = new CANTalonSRX(Port.CANMotor.leftElevatorMotor);
