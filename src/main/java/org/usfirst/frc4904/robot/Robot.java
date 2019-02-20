@@ -29,7 +29,7 @@ public class Robot extends CommandRobotBase {
 		streamCommand.start();
 		RobotMap.Component.leftWheelEncoder.reset();
 		RobotMap.Component.rightWheelEncoder.reset();
-		RobotMap.Input.elevatorSwitchBottom.whenPressed(new NeutralElevator()); //TODO: Test if this is needed
+		RobotMap.Input.elevatorSwitchBottom.whenPressed(new NeutralElevator()); // TODO: Test if this is needed
 		RobotMap.Input.elevatorSwitchTop.whenPressed(new NeutralElevator());
 
 		RobotMap.Input.elevatorSwitchBottom.whenPressed(new SingleOp(() -> {
