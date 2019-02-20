@@ -80,8 +80,6 @@ public class Robot extends CommandRobotBase {
 		RobotMap.Component.chassisTurnPID.setPIDF(SmartDashboard.getNumber("TurnPID/P", 0.0),
 				SmartDashboard.getNumber("TurnPID/I", 0.0), SmartDashboard.getNumber("TurnPID/D", 0.0),
 				SmartDashboard.getNumber("TurnPID/F", 0.0));
-		SmartDashboard.putNumber("leftEncoder", RobotMap.Component.leftWheelEncoder.getDistance());
-		SmartDashboard.putNumber("rightEncoder", RobotMap.Component.rightWheelEncoder.getDistance());
 		putSBSubsystemSummary();
 	}
 
