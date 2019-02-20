@@ -7,59 +7,65 @@
 
 package org.usfirst.frc4904.robot;
 
-import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc4904.robot.humaninterface.drivers.NathanGain;
+import org.usfirst.frc4904.robot.humaninterface.operators.DefaultOperator;
 import org.usfirst.frc4904.standard.CommandRobotBase;
-import org.usfirst.frc4904.standard.commands.chassis.ChassisMove;
-import edu.wpi.first.cameraserver.CameraServer;;
-
+import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;;
 
 public class Robot extends CommandRobotBase {
 	private RobotMap map = new RobotMap();
 
 	@Override
 	public void initialize() {
-		// driverChooser.addDefault(object);
-		// operatorChooser.addDefault();
-		/* 
-			works in shuffleboard with Logitech C270
-			any amount of compression, 30 FPS, 160 x 120
-			< 4 Mbps, often < 1
-		*/
-		CameraServer.getInstance().startAutomaticCapture();
+		driverChooser.addDefault(new NathanGain());
+		operatorChooser.addDefault(new DefaultOperator());
 
 	}
 
 	@Override
 	public void teleopInitialize() {
-		// teleopCommand = new ChassisMove(RobotMap.Component.chassis, driverChooser.getSelected());
-		// teleopCommand.start();
 	}
 
 	@Override
-	public void teleopExecute() {}
+	public void teleopExecute() {
+	}
 
 	@Override
-	public void autonomousInitialize() {}
+	public void autonomousInitialize() {
+	}
 
 	@Override
-	public void autonomousExecute() {}
+	public void autonomousExecute() {
+	}
 
 	@Override
-	public void disabledInitialize() {}
+	public void disabledInitialize() {
+	}
 
 	@Override
-	public void disabledExecute() {}
+	public void disabledExecute() {
+	}
 
 	@Override
-	public void testInitialize() {}
+	public void testInitialize() {
+	}
 
 	@Override
-	public void testExecute() {}
+	public void testExecute() {
+	}
 
 	@Override
-	public void alwaysExecute() {}
+	public void alwaysExecute() {
+		putSBSubsystemSummary();
+	}
+
+	void putSBSubsystemSummary() {
+		String summary = "";
+		for (Subsystem subsystem : RobotMap.Component.mainSubsystems) {
+			summary += "{" + subsystem.getName() + "} running command {" + subsystem.getCurrentCommand() + "}\n";
+		}
+		SmartDashboard.putString("Subsystem Overview", summary);
+	}
 }

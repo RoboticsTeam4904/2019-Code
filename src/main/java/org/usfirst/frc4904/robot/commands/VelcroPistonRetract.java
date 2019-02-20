@@ -9,6 +9,6 @@ import org.usfirst.frc4904.standard.commands.solenoid.SolenoidRetract;
  */
 public class VelcroPistonRetract extends SolenoidRetract {
 	public VelcroPistonRetract() {
-		super("PickupSolenoidDown", RobotMap.Component.floorio.velcroPiston);
+		super("VelcroPistonDown", RobotMap.Component.floorio.velcroPiston);
 	}
 }

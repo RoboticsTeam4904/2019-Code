@@ -9,6 +9,6 @@ import org.usfirst.frc4904.standard.commands.solenoid.SolenoidExtend;
  */
 public class WristDown extends SolenoidExtend {
 	public WristDown() {
-		super("FlipperDown", RobotMap.Component.floorio.wrist);
+		super("WristDown", RobotMap.Component.floorio.wrist);
 	}
 }
