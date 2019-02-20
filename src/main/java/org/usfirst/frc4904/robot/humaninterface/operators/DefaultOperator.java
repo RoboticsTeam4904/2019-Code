@@ -2,11 +2,8 @@ package org.usfirst.frc4904.robot.humaninterface.operators;
 
 import org.usfirst.frc4904.robot.RobotMap;
 import org.usfirst.frc4904.robot.commands.ElevatorControl;
-import org.usfirst.frc4904.robot.commands.NeutralElevator;
-import org.usfirst.frc4904.robot.subsystems.FourBarElevator;
 import org.usfirst.frc4904.standard.humaninput.Operator;
 import org.usfirst.frc4904.standard.commands.OverrideEnable;
-import org.usfirst.frc4904.standard.commands.SingleOp;
 import org.usfirst.frc4904.standard.commands.RunIfElse;
 import org.usfirst.frc4904.standard.commands.solenoid.SolenoidExtend;
 import org.usfirst.frc4904.standard.commands.solenoid.SolenoidRetract;

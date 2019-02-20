@@ -24,19 +24,20 @@ public class NathanGain extends Driver {
 
 	@Override
 	public void bindCommands() {
-		// RobotMap.Component.driverXbox.lb
-		// 	.whenPressed(new ChassisShift(RobotMap.Component.chassis.getShifter(), SolenoidShifters.ShiftState.DOWN));
-		// RobotMap.Component.driverXbox.rb
-		// 	.whenPressed(new ChassisShift(RobotMap.Component.chassis.getShifter(), SolenoidShifters.ShiftState.UP));
-    }
-    @Override
+		RobotMap.HumanInput.Driver.xbox.lb
+			.whenPressed(new ChassisShift(RobotMap.Component.chassis.getShifter(), SolenoidShifters.ShiftState.DOWN));
+		RobotMap.HumanInput.Driver.xbox.rb
+			.whenPressed(new ChassisShift(RobotMap.Component.chassis.getShifter(), SolenoidShifters.ShiftState.UP));
+	}
+
+	@Override
 	public double getX() {
 		return 0;
 	}
 
 	@Override
 	public double getY() {
-		double rawSpeed = RobotMap.Component.driverXbox.rt.getX() - RobotMap.Component.driverXbox.lt.getX();
+		double rawSpeed = RobotMap.HumanInput.Driver.xbox.rt.getX() - RobotMap.HumanInput.Driver.xbox.lt.getX();
 		double speed = scaleGain(rawSpeed, NathanGain.SPEED_GAIN, NathanGain.SPEED_EXP)
 			* NathanGain.Y_SPEED_SCALE;
 		return speed;
@@ -44,7 +45,7 @@ public class NathanGain extends Driver {
 
 	@Override
 	public double getTurnSpeed() {
-		double rawTurnSpeed = RobotMap.Component.driverXbox.leftStick.getX();
+		double rawTurnSpeed = RobotMap.HumanInput.Driver.xbox.leftStick.getX();
 		double turnSpeed = scaleGain(rawTurnSpeed, NathanGain.TURN_GAIN, NathanGain.TURN_EXP)
 			* NathanGain.TURN_SPEED_SCALE;
 		return turnSpeed;
