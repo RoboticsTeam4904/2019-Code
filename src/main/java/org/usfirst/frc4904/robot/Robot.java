@@ -46,11 +46,11 @@ public class Robot extends CommandRobotBase {
 		 * < 4 Mbps, often < 1
 		 */
 		CameraServer.getInstance().startAutomaticCapture();
-		// RobotMap.Component.elevatorEncoder.reset();
-		// SmartDashboard.putNumber("ElevatorPID/P", RobotMap.Component.elevatorPID.getP());
-		// SmartDashboard.putNumber("ElevatorPID/I", RobotMap.Component.elevatorPID.getI());
-		// SmartDashboard.putNumber("ElevatorPID/D", RobotMap.Component.elevatorPID.getD());
-		// SmartDashboard.putNumber("ElevatorPID/F", RobotMap.Component.elevatorPID.getF());
+		RobotMap.Component.elevatorEncoder.reset();
+		SmartDashboard.putNumber("ElevatorPID/P", RobotMap.Component.elevatorPID.getP());
+		SmartDashboard.putNumber("ElevatorPID/I", RobotMap.Component.elevatorPID.getI());
+		SmartDashboard.putNumber("ElevatorPID/D", RobotMap.Component.elevatorPID.getD());
+		SmartDashboard.putNumber("ElevatorPID/F", RobotMap.Component.elevatorPID.getF());
 	}
 
 	@Override
@@ -91,19 +91,19 @@ public class Robot extends CommandRobotBase {
 	public void alwaysExecute() {
 		LogKitten.wtf("Top: " + RobotMap.Input.elevatorSwitchTop.get());
 		LogKitten.wtf("Bottom: " + RobotMap.Input.elevatorSwitchBottom.get());
-		LogKitten.wtf(RobotMap.Component.elevatorEncoder.get());
-		// LogKitten.wtf("Left" +  RobotMap.Component.fourBar.elevator.get());
-		// LogKitten.wtf(!RobotMap.Input.elevatorSwitchTop.get()
-		// || RobotMap.Component.fourBar.isOverridden());
-		// LogKitten.wtf(RobotMap.HumanInput.Operator.joystick.getAxis(CustomJoystick.Y_AXIS) > 0);
-		// LogKitten.wtf(RobotMap.Component.fourBar.elevator.get());
-		// SmartDashboard.putNumber("ElevatorPID/e", RobotMap.Component.elevatorPID.getError());
-		// SmartDashboard.putNumber("ElevatorPID/x", RobotMap.Component.elevatorPID.getSensorValue());
-		// RobotMap.Component.elevatorPID.setPIDF(SmartDashboard.getNumber("ElevatorPID/P", 0.0),
-		// 	SmartDashboard.getNumber("ElevatorPID/I", 0.0), SmartDashboard.getNumber("ElevatorPID/D", 0.0),
-		// 	SmartDashboard.getNumber("ElevatorPID/F", 0.0));
-		// SmartDashboard.putNumber("elevatorEncoder", RobotMap.Component.elevatorEncoder.getDistance());
-		// putSBSubsystemSummary();
+		LogKitten.wtf(RobotMap.Component.elevatorEncoder.getDistance());
+		LogKitten.wtf("Left" +  RobotMap.Component.fourBar.elevator.get());
+		LogKitten.wtf(!RobotMap.Input.elevatorSwitchTop.get()
+		|| RobotMap.Component.fourBar.isOverridden());
+		LogKitten.wtf(RobotMap.HumanInput.Operator.joystick.getAxis(CustomJoystick.Y_AXIS) > 0);
+		LogKitten.wtf(RobotMap.Component.fourBar.elevator.get());
+		SmartDashboard.putNumber("ElevatorPID/e", RobotMap.Component.elevatorPID.getError());
+		SmartDashboard.putNumber("ElevatorPID/x", RobotMap.Component.elevatorPID.getSensorValue());
+		RobotMap.Component.elevatorPID.setPIDF(SmartDashboard.getNumber("ElevatorPID/P", 0.0),
+			SmartDashboard.getNumber("ElevatorPID/I", 0.0), SmartDashboard.getNumber("ElevatorPID/D", 0.0),
+			SmartDashboard.getNumber("ElevatorPID/F", 0.0));
+		SmartDashboard.putNumber("elevatorEncoder", RobotMap.Component.elevatorEncoder.getDistance());
+		putSBSubsystemSummary();
 	}
 
 	void putSBSubsystemSummary() {
