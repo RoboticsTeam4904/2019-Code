@@ -6,13 +6,13 @@
 /*----------------------------------------------------------------------------*/
 package org.usfirst.frc4904.robot;
 
+import org.usfirst.frc4904.robot.humaninterface.drivers.NathanGain;
+import org.usfirst.frc4904.robot.humaninterface.operators.DefaultOperator;
+import org.usfirst.frc4904.standard.CommandRobotBase;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc4904.robot.commands.NeutralElevator;
-import org.usfirst.frc4904.robot.humaninterface.drivers.NathanGain;
-import org.usfirst.frc4904.robot.humaninterface.operators.DefaultOperator;
 import org.usfirst.frc4904.robot.subsystems.FourBarElevator;
-import org.usfirst.frc4904.standard.CommandRobotBase;
 import org.usfirst.frc4904.standard.LogKitten;
 import org.usfirst.frc4904.standard.commands.SingleOp;
 import org.usfirst.frc4904.robot.commands.CameraStream;
@@ -29,7 +29,7 @@ public class Robot extends CommandRobotBase {
 		streamCommand.start();
 		RobotMap.Component.leftWheelEncoder.reset();
 		RobotMap.Component.rightWheelEncoder.reset();
-		RobotMap.Input.elevatorSwitchBottom.whenPressed(new NeutralElevator());
+		RobotMap.Input.elevatorSwitchBottom.whenPressed(new NeutralElevator()); // TODO: Test if this is needed
 		RobotMap.Input.elevatorSwitchTop.whenPressed(new NeutralElevator());
 
 		RobotMap.Input.elevatorSwitchBottom.whenPressed(new SingleOp(() -> {

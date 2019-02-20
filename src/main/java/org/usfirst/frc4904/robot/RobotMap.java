@@ -1,22 +1,23 @@
 package org.usfirst.frc4904.robot;
 
-import com.ctre.phoenix.motorcontrol.NeutralMode;
-import org.usfirst.frc4904.robot.subsystems.FourBarElevator;
+import org.usfirst.frc4904.robot.subsystems.FloorIO;
+import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem;
+import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem.SolenoidState;
+import org.usfirst.frc4904.standard.custom.PCMPort;
+import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CANTalonSRX;
+import org.usfirst.frc4904.standard.subsystems.motor.Motor;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import org.usfirst.frc4904.robot.subsystems.FourBarElevator;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CustomPIDController;
 import org.usfirst.frc4904.standard.custom.sensors.CANTalonEncoder;
 import org.usfirst.frc4904.standard.custom.sensors.CustomDigitalLimitSwitch;
-import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem;
-import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem.SolenoidState;
 import org.usfirst.frc4904.standard.subsystems.motor.PositionSensorMotor;
-import edu.wpi.first.wpilibj.command.Subsystem;
-import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
-import org.usfirst.frc4904.standard.custom.PCMPort;
 import org.usfirst.frc4904.robot.humaninterface.HumanInterfaceConfig;
 import org.usfirst.frc4904.standard.subsystems.chassis.TankDriveShifting;
 import org.usfirst.frc4904.standard.subsystems.chassis.SolenoidShifters;
-import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import org.usfirst.frc4904.standard.subsystems.motor.speedmodifiers.EnableableModifier;
 import org.usfirst.frc4904.standard.subsystems.motor.speedmodifiers.AccelerationCap;
 import org.usfirst.frc4904.standard.custom.sensors.PDP;
@@ -39,11 +40,22 @@ public class RobotMap {
 			public static final int rightDriveB = 4;
 			public static final int rightElevatorMotor = 8;
 			public static final int leftElevatorMotor = 7;
+			public static final int hatchRoller = 14; // TODO: Adjust port numbers
+			public static final int cargoRoller = 15; // TODO: Adjust port numbers
+		}
+
+		public static class CAN {
+			public static final int leftWheelEncoder = 0x612;
+			public static final int rightWheelEncoder = 0x613;
 		}
 
 		public static class Pneumatics {
 			public static final PCMPort shifter = new PCMPort(0, 0, 1);
 			public static final PCMPort fourBarLever = new PCMPort(1, 4, 5);
+			public static final PCMPort velcroPiston = new PCMPort(0, 1, 0); // TODO: Adjust port numbers
+			public static final PCMPort hatchOuttakePiston = new PCMPort(0, 3, 2); // TODO: Adjust port numbers
+			public static final PCMPort wrist = new PCMPort(-1, -1, -1); // TODO: Adjust port numbers
+
 		}
 
 		public static class Digital {
@@ -51,10 +63,6 @@ public class RobotMap {
 			public static final int elevatorSwitchTopPort = 1;
 		}
 
-		public static class CAN {
-			public static final int leftWheelEncoder = 0x612;
-			public static final int rightWheelEncoder = 0x613;
-		}
 	}
 
 	public static class Metrics {
@@ -103,6 +111,7 @@ public class RobotMap {
 	}
 
 	public static class Component {
+		public static FloorIO floorio;
 		public static CANTalonEncoder elevatorEncoder;
 		public static FourBarElevator fourBar;
 		public static CustomPIDController elevatorPID;
@@ -126,6 +135,11 @@ public class RobotMap {
 		public static Subsystem[] mainSubsystems;
 	}
 
+	public static class Input {
+		public static CustomDigitalLimitSwitch elevatorSwitchBottom;
+		public static CustomDigitalLimitSwitch elevatorSwitchTop;
+	}
+
 	public static class HumanInput {
 		public static class Driver {
 			public static CustomXbox xbox;
@@ -134,11 +148,6 @@ public class RobotMap {
 		public static class Operator {
 			public static CustomJoystick joystick;
 		}
-	}
-
-	public static class Input {
-		public static CustomDigitalLimitSwitch elevatorSwitchBottom;
-		public static CustomDigitalLimitSwitch elevatorSwitchTop;
 	}
 
 	public RobotMap() {
@@ -177,7 +186,7 @@ public class RobotMap {
 		Component.chassisTurnPID = new CustomPIDController(PID.Turn.P, PID.Turn.I, PID.Turn.D, Component.navx);
 		// Component.chassisTurnPID.setAbsoluteTolerance(PID.Turn.tolerance);
 		// Component.chassisTurnPID.setDerivativeTolerance(PID.Turn.dTolerance);
-		/* Elevator */
+		/* Elevator + FourBar */
 		Component.rightElevatorMotor = new CANTalonSRX(Port.CANMotor.rightElevatorMotor);
 		Component.rightElevatorMotor.setInverted(true);
 		Component.leftElevatorMotor = new CANTalonSRX(Port.CANMotor.leftElevatorMotor);
@@ -196,12 +205,22 @@ public class RobotMap {
 		Input.elevatorSwitchBottom = new CustomDigitalLimitSwitch(Port.Digital.elevatorSwitchBottomPort);
 		Input.elevatorSwitchTop = new CustomDigitalLimitSwitch(Port.Digital.elevatorSwitchTopPort);
 		Component.mainSubsystems = new Subsystem[] {};
+		/* Floorio */
+		Component.floorio = new FloorIO(
+				new SolenoidSubsystem("HatchOuttakePiston", SolenoidState.RETRACT,
+						Port.Pneumatics.hatchOuttakePiston.buildDoubleSolenoid()),
+				new SolenoidSubsystem("VelcroPiston", SolenoidState.RETRACT,
+						Port.Pneumatics.velcroPiston.buildDoubleSolenoid()),
+				new SolenoidSubsystem("Wrist", SolenoidState.RETRACT, Port.Pneumatics.wrist.buildDoubleSolenoid()),
+				new Motor("HatchRoller", new CANTalonSRX(Port.CANMotor.hatchRoller)),
+				new Motor("CargoRoller", new CANTalonSRX(Port.CANMotor.cargoRoller)));
 		// Human Input
 		HumanInput.Driver.xbox = new CustomXbox(Port.HumanInput.xboxController);
 		HumanInput.Driver.xbox.setDeadZone(HumanInterfaceConfig.XBOX_DEADZONE);
 		HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
 		HumanInput.Operator.joystick.setDeadzone(HumanInterfaceConfig.JOYSTICK_DEADZONE);
 		Component.mainSubsystems = new Subsystem[] { Component.chassis, Component.fourBar.lever,
-				Component.fourBar.elevator };
+				Component.fourBar.elevator, Component.floorio.hatchOuttakePiston, Component.floorio.velcroPiston,
+				Component.floorio.wrist, Component.floorio.hatchRoller, Component.floorio.cargoRoller };
 	}
 }
