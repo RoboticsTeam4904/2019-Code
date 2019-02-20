@@ -27,16 +27,12 @@ public class RobotMap {
 			public static final int leftElevatorMotor = 7;
 		}
 
-		public static class CAN {
-			// public static final int elevatorEncoder = 1; // also not final #
-		}
-
 		public static class Pneumatics {
 			public static final PCMPort fourBarLever = new PCMPort(-1, -1, -1);
 		}
 
 		public static class Digital {
-			public static final int elevatorSwitchBottomPort = 0; // TODO: Not final values.
+			public static final int elevatorSwitchBottomPort = 0;
 			public static final int elevatorSwitchTopPort = 1;
 		}
 	}

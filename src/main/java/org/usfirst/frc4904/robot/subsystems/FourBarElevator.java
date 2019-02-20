@@ -53,10 +53,10 @@ public class FourBarElevator implements Overridable {
 		return state;
 	}
 
-	// public double getElevatorPosition() {
-	// 	return RobotMap.Component.elevatorPID.getSensorValue();
-	// 	// return encoder.getDistance();
-	// }
+	public double getElevatorPosition() {
+		return RobotMap.Component.elevatorPID.getSensorValue();
+		// return encoder.getDistance();
+	}
 
 	// public SolenoidState getFourBarState() {
 	// 	return lever.getState();
