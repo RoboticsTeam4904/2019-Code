@@ -6,25 +6,42 @@
 /*----------------------------------------------------------------------------*/
 package org.usfirst.frc4904.robot;
 
+import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc4904.robot.commands.CameraStream;
-import org.usfirst.frc4904.standard.CommandRobotBase;
-import org.usfirst.frc4904.standard.commands.chassis.ChassisMove;
+import org.usfirst.frc4904.robot.commands.NeutralElevator;
 import org.usfirst.frc4904.robot.humaninterface.drivers.NathanGain;
 import org.usfirst.frc4904.robot.humaninterface.operators.DefaultOperator;
-import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc4904.robot.subsystems.FourBarElevator;
+import org.usfirst.frc4904.standard.CommandRobotBase;
+import org.usfirst.frc4904.standard.LogKitten;
+import org.usfirst.frc4904.standard.commands.SingleOp;
+import org.usfirst.frc4904.robot.commands.CameraStream;
+import org.usfirst.frc4904.standard.commands.chassis.ChassisMove;
 
 public class Robot extends CommandRobotBase {
 	private RobotMap map = new RobotMap();
 
 	@Override
 	public void initialize() {
-		CameraStream streamCommand = new CameraStream(2);
-		streamCommand.start();
 		driverChooser.addDefault(new NathanGain());
 		operatorChooser.addDefault(new DefaultOperator());
+		CameraStream streamCommand = new CameraStream(2);
+		streamCommand.start();
 		RobotMap.Component.leftWheelEncoder.reset();
 		RobotMap.Component.rightWheelEncoder.reset();
+		RobotMap.Input.elevatorSwitchBottom.whenPressed(new NeutralElevator());
+		RobotMap.Input.elevatorSwitchTop.whenPressed(new NeutralElevator());
+
+		RobotMap.Input.elevatorSwitchBottom.whenPressed(new SingleOp(() -> {
+			RobotMap.Component.elevatorEncoder.reset();
+		}));
+		RobotMap.Input.elevatorSwitchTop.whenPressed(new SingleOp(() -> {
+			RobotMap.Component.leftElevatorMotor.setSelectedSensorPosition((int) FourBarElevator.MAX_HEIGHT, 0, 0);
+		})); // TODO: CustomEncoder should have a resetViaOffset
+		SmartDashboard.putNumber("ElevatorPID/P", RobotMap.Component.elevatorPID.getP());
+		SmartDashboard.putNumber("ElevatorPID/I", RobotMap.Component.elevatorPID.getI());
+		SmartDashboard.putNumber("ElevatorPID/D", RobotMap.Component.elevatorPID.getD());
+		SmartDashboard.putNumber("ElevatorPID/F", RobotMap.Component.elevatorPID.getF());
 		SmartDashboard.putNumber("DrivePID/P", RobotMap.Component.drivePID.getP());
 		SmartDashboard.putNumber("DrivePID/I", RobotMap.Component.drivePID.getI());
 		SmartDashboard.putNumber("DrivePID/D", RobotMap.Component.drivePID.getD());
@@ -73,6 +90,14 @@ public class Robot extends CommandRobotBase {
 
 	@Override
 	public void alwaysExecute() {
+		LogKitten.wtf(RobotMap.Component.elevatorEncoder.getDistance()); // TODO: Just for testing encoder
+		LogKitten.wtf(RobotMap.Component.leftWheelEncoder.getDistance()); // TODO: Just for testing encoder
+		LogKitten.wtf(RobotMap.Component.rightWheelEncoder.getDistance()); // TODO: Just for testing encoder
+		SmartDashboard.putNumber("ElevatorPID/e", RobotMap.Component.elevatorPID.getError());
+		SmartDashboard.putNumber("ElevatorPID/x", RobotMap.Component.elevatorPID.getSensorValue());
+		RobotMap.Component.elevatorPID.setPIDF(SmartDashboard.getNumber("ElevatorPID/P", 0.0),
+				SmartDashboard.getNumber("ElevatorPID/I", 0.0), SmartDashboard.getNumber("ElevatorPID/D", 0.0),
+				SmartDashboard.getNumber("ElevatorPID/F", 0.0));
 		SmartDashboard.putNumber("DrivePID/e", RobotMap.Component.drivePID.getError());
 		SmartDashboard.putNumber("DrivePID/x", RobotMap.Component.drivePID.getSensorValue());
 		SmartDashboard.putNumber("TurnPID/e", RobotMap.Component.chassisTurnPID.getError());
