@@ -1,6 +1,5 @@
 package org.usfirst.frc4904.robot;
 
-
 import org.usfirst.frc4904.robot.subsystems.FloorIO;
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem;
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem.SolenoidState;
@@ -9,6 +8,8 @@ import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CANTalonSRX;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
+
+import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class RobotMap {
 	public static class Port {
@@ -39,6 +40,7 @@ public class RobotMap {
 
 	public static class Component {
 		public static FloorIO floorio;
+		public static Subsystem[] mainSubsystems;
 	}
 
 	public static class HumanInput {
@@ -55,10 +57,15 @@ public class RobotMap {
 		HumanInput.Driver.xbox = new CustomXbox(Port.HumanInput.xboxController);
 		HumanInput.Driver.xbox.setDeadZone(0.1);
 		Component.floorio = new FloorIO(
-			new SolenoidSubsystem("HatchOuttakePiston", SolenoidState.RETRACT, Port.Pneumatics.hatchOuttakePiston.buildDoubleSolenoid()),
-			new SolenoidSubsystem("VelcroPiston", SolenoidState.RETRACT, Port.Pneumatics.velcroPiston.buildDoubleSolenoid()),
-			new SolenoidSubsystem("Wrist", SolenoidState.RETRACT, Port.Pneumatics.wrist.buildDoubleSolenoid()),
-			new Motor("HatchRoller", new CANTalonSRX(Port.CANMotor.hatchRoller)),
-			new Motor("CargoRoller", new CANTalonSRX(Port.CANMotor.cargoRoller)));
+				new SolenoidSubsystem("HatchOuttakePiston", SolenoidState.RETRACT,
+						Port.Pneumatics.hatchOuttakePiston.buildDoubleSolenoid()),
+				new SolenoidSubsystem("VelcroPiston", SolenoidState.RETRACT,
+						Port.Pneumatics.velcroPiston.buildDoubleSolenoid()),
+				new SolenoidSubsystem("Wrist", SolenoidState.RETRACT, Port.Pneumatics.wrist.buildDoubleSolenoid()),
+				new Motor("HatchRoller", new CANTalonSRX(Port.CANMotor.hatchRoller)),
+				new Motor("CargoRoller", new CANTalonSRX(Port.CANMotor.cargoRoller)));
+		Component.mainSubsystems = new Subsystem[] { Component.floorio.hatchOuttakePiston,
+				Component.floorio.velcroPiston, Component.floorio.wrist, Component.floorio.hatchRoller,
+				Component.floorio.cargoRoller };
 	}
 }
