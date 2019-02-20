@@ -1,13 +1,10 @@
 package org.usfirst.frc4904.robot.subsystems;
 
-import java.awt.Robot;
 import org.usfirst.frc4904.robot.RobotMap;
 import org.usfirst.frc4904.standard.Util;
 import org.usfirst.frc4904.standard.custom.Overridable;
-import org.usfirst.frc4904.standard.custom.sensors.CustomEncoder;
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem;
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem.SolenoidState;
-import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import org.usfirst.frc4904.standard.subsystems.motor.PositionSensorMotor;
 
 public class FourBarElevator implements Overridable {
