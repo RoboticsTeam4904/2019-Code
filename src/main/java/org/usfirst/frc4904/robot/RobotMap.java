@@ -1,6 +1,7 @@
 package org.usfirst.frc4904.robot;
 
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
+import org.usfirst.frc4904.robot.subsystems.Manipulator;
 
 
 public class RobotMap {
@@ -17,7 +18,11 @@ public class RobotMap {
     
     public static class Metrics{}
     public static class Component {
-        public static CustomXbox driverXbox;
+		public static CustomXbox driverXbox;
+		public static Manipulator manipulator;
+		public static Manipulator.Arm manipulatorArm;
+		public static Manipulator.Claws manipulatorClaws;
+		public static Manipulator.Ground manipulatorGround;
     }
     public static class HumanInput {
         public static class Driver {
