@@ -9,7 +9,8 @@ import org.usfirst.frc4904.standard.humaninput.Operator;
 import org.usfirst.frc4904.standard.commands.RunIfElse;
 import org.usfirst.frc4904.robot.commands.ElevatorControl;
 import org.usfirst.frc4904.robot.commands.GroundIntake;
-import org.usfirst.frc4904.robot.commands.HatchIntake;
+import org.usfirst.frc4904.robot.commands.GroundToHatch;
+import org.usfirst.frc4904.robot.commands.ReadyGroundIntake;
 import org.usfirst.frc4904.standard.commands.OverrideEnable;
 import org.usfirst.frc4904.standard.commands.solenoid.SolenoidRetract;
 import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
@@ -29,9 +30,10 @@ public class DefaultOperator extends Operator {
 		// RobotMap.HumanInput.Operator.joystick.button1.whenPressed(new NikhilDefault());
 		// RobotMap.HumanInput.Operator.joystick.button2.whenPressed(new Nikhil2());
 		// RobotMap.HumanInput.Operator.joystick.button3.whenPressed(new Nikhil3());
-		
+
 		//RobotMap.HumanInput.Operator.joystick.buttonX.whenPressed(new GroundIntake());
 		//RobotMap.HumanInput.Operator.joystick.buttonY.whenPressed(new HatchIntake());
+		//RobotMap.HumanInput.Operator.joystick.buttonZ.whenPressed(new ReadyGroundIntake());
 		RobotMap.HumanInput.Operator.joystick.button1.onlyWhileHeld(new ElevatorControl(() -> {
 			return RobotMap.HumanInput.Operator.joystick.getAxis(CustomJoystick.Y_AXIS) > 0;
 		}));
