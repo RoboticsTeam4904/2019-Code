@@ -9,7 +9,9 @@ import org.usfirst.frc4904.standard.subsystems.motor.PositionSensorMotor;
 
 public class FourBarElevator implements Overridable {
 	public static final double UP_SPEED = 0.7; // TODO: SET THESE
-	public static final double DOWN_SPEED = 0.7;
+	public static final double DOWN_SPEED = -0.7;
+	public static final double UP_TIME = 0.5;
+	public static final double DOWN_TIME = 0.5;
 	public static final double ENCODER_TICKS = 1024;
 	public static final double TICK_MULTIPLIER = 360.0 / ENCODER_TICKS;
 	public static final double MIN_HEIGHT = 0.0;
