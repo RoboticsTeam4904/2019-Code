@@ -1,7 +1,6 @@
 package org.usfirst.frc4904.robot;
 
 
-import org.usfirst.frc4904.robot.subsystems.FloorIO;
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem;
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem.SolenoidState;
 import org.usfirst.frc4904.standard.custom.PCMPort;
@@ -119,7 +118,6 @@ public class RobotMap {
 
 	public static class Component {
 		public static Manipulator manipulator;
-		public static FloorIO floorio;
 		public static CANTalonEncoder elevatorEncoder;
 		public static FourBarElevator fourBar;
 		public static CustomPIDController elevatorPID;
@@ -227,24 +225,13 @@ public class RobotMap {
 		Input.elevatorSwitchBottom = new CustomDigitalLimitSwitch(Port.Digital.elevatorSwitchBottomPort);
 		Input.elevatorSwitchTop = new CustomDigitalLimitSwitch(Port.Digital.elevatorSwitchTopPort);
 		Component.mainSubsystems = new Subsystem[] {};
-		/* Floorio */
-		Component.floorio = new FloorIO(
-			new SolenoidSubsystem("HatchOuttakePiston", SolenoidState.RETRACT,
-				Port.Pneumatics.hatchOuttakePiston.buildDoubleSolenoid()),
-			new SolenoidSubsystem("VelcroPiston", SolenoidState.RETRACT,
-				Port.Pneumatics.velcroPiston.buildDoubleSolenoid()),
-			new SolenoidSubsystem("Wrist", SolenoidState.RETRACT, Port.Pneumatics.wrist.buildDoubleSolenoid()),
-			new Motor("HatchRoller", new CANTalonSRX(Port.CANMotor.hatchRoller)),
-			new Motor("CargoRoller", new CANTalonSRX(Port.CANMotor.cargoRoller)));
 		// Human Input
 		HumanInput.Driver.xbox = new CustomXbox(Port.HumanInput.xboxController);
 		HumanInput.Driver.xbox.setDeadZone(HumanInterfaceConfig.XBOX_DEADZONE);
 		HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
 		HumanInput.Operator.joystick.setDeadzone(HumanInterfaceConfig.JOYSTICK_DEADZONE);
 		Component.mainSubsystems = new Subsystem[] {Component.chassis, Component.fourBar.lever,
-				Component.fourBar.elevator, Component.floorio.hatchOuttakePiston, Component.floorio.velcroPiston,
-				Component.floorio.wrist, Component.floorio.hatchRoller, Component.floorio.cargoRoller,
-				Component.manipulator.arm, Component.manipulator.claws, Component.manipulator.ground,
-				Component.manipulator.grabber, Component.manipulator.rollers};
+				Component.fourBar.elevator, Component.manipulator.arm, Component.manipulator.claws, 
+				Component.manipulator.ground, Component.manipulator.grabber, Component.manipulator.rollers};
 	}
 }
