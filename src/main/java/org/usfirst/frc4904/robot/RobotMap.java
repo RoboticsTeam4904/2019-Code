@@ -3,7 +3,6 @@ package org.usfirst.frc4904.robot;
 import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
 import org.usfirst.frc4904.robot.humaninterface.HumanInterfaceConfig;
-import org.usfirst.frc4904.sovereignty.FusibleNavX;
 import org.usfirst.frc4904.standard.subsystems.chassis.TankDriveShifting;
 import org.usfirst.frc4904.standard.subsystems.chassis.SolenoidShifters;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
@@ -12,7 +11,7 @@ import org.usfirst.frc4904.standard.subsystems.motor.speedmodifiers.Acceleration
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
-
+import org.usfirst.frc4904.standard.custom.sensors.NavX;
 import org.usfirst.frc4904.standard.custom.sensors.PDP;
 import org.usfirst.frc4904.standard.custom.PCMPort;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CANTalonSRX;
@@ -84,7 +83,7 @@ public class RobotMap {
 		//public static EncoderPair chassisEncoders;
         public static CustomPIDController chassisTurnMC;
 		public static CustomPIDController drivePID;
-		public static FusibleNavX navx;
+		public static NavX navx;
 	}
 	
 	public static class NetworkTables {
