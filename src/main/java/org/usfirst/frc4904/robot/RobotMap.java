@@ -224,14 +224,13 @@ public class RobotMap {
 				Component.rightElevatorMotor));
 		Input.elevatorSwitchBottom = new CustomDigitalLimitSwitch(Port.Digital.elevatorSwitchBottomPort);
 		Input.elevatorSwitchTop = new CustomDigitalLimitSwitch(Port.Digital.elevatorSwitchTopPort);
-		Component.mainSubsystems = new Subsystem[] {};
 		// Human Input
 		HumanInput.Driver.xbox = new CustomXbox(Port.HumanInput.xboxController);
 		HumanInput.Driver.xbox.setDeadZone(HumanInterfaceConfig.XBOX_DEADZONE);
 		HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
 		HumanInput.Operator.joystick.setDeadzone(HumanInterfaceConfig.JOYSTICK_DEADZONE);
 		Component.mainSubsystems = new Subsystem[] {Component.chassis, Component.fourBar.lever,
-				Component.fourBar.elevator, Component.manipulator.arm, Component.manipulator.claws, 
+				Component.fourBar.elevator, Component.manipulator.arm, Component.manipulator.claws,
 				Component.manipulator.ground, Component.manipulator.grabber, Component.manipulator.rollers};
 	}
 }
