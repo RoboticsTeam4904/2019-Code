@@ -1,6 +1,8 @@
 package org.usfirst.frc4904.robot;
 
+import org.usfirst.frc4904.standard.custom.PCMPort;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
+import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem;
 import org.usfirst.frc4904.robot.subsystems.Manipulator;
 
 
@@ -13,17 +15,19 @@ public class RobotMap {
         public static class CANMotor {}
         public static class PWM {}
         public static class CAN {}
-        public static class Pneumatics {}
+        public static class Pneumatics {
+			// public static PCMPort 
+		}
     }
     
     public static class Metrics{}
     public static class Component {
 		public static CustomXbox driverXbox;
 		public static Manipulator manipulator;
-		public static Manipulator.Arm manipulatorArm;
-		public static Manipulator.Claws manipulatorClaws;
-		public static Manipulator.Ground manipulatorGround;
-		public static Manipulator.Grabber manipulatorGrabber;
+		public static SolenoidSubsystem manipulatorArm;
+		public static SolenoidSubsystem manipulatorClaws;
+		public static SolenoidSubsystem manipulatorGround;
+		public static SolenoidSubsystem manipulatorGrabber;
     }
     public static class HumanInput {
         public static class Driver {
