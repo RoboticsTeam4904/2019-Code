@@ -23,6 +23,7 @@ public class RobotMap {
 		public static Manipulator.Arm manipulatorArm;
 		public static Manipulator.Claws manipulatorClaws;
 		public static Manipulator.Ground manipulatorGround;
+		public static Manipulator.Grabber manipulatorGrabber;
     }
     public static class HumanInput {
         public static class Driver {
