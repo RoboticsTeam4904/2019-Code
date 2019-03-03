@@ -11,10 +11,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class HatchIntake extends CommandGroup {
 	public HatchIntake() {
-		addSequential(new SolenoidExtend("ManipulatorGrabberOut", RobotMap.Component.manipulator.grabber));
-		addSequential(new SolenoidExtend("ManipulatorGroundOut", RobotMap.Component.manipulator.ground));
-		addSequential(new RunFor(new MotorConstant("ElevatorUp", RobotMap.Component.fourBar.elevator, FourBarElevator.UP_SPEED),FourBarElevator.UP_TIME));
-		addSequential(new SolenoidRetract("ManipulatorGroundIn", RobotMap.Component.manipulator.ground));
-		addSequential(new RunFor(new MotorConstant("ElevatorDown", RobotMap.Component.fourBar.elevator, FourBarElevator.DOWN_SPEED),FourBarElevator.DOWN_TIME));
+		addSequential(new ManipulatorGrabberOut());
+		addSequential(new ManipulatorGroundOut());
+		addSequential(new ElevatorUp());
+		addSequential(new ManipulatorGroundIn());
+		addSequential(new ElevatorDown());
 	}
 }

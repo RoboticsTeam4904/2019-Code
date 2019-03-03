@@ -232,6 +232,6 @@ public class RobotMap {
 		HumanInput.Operator.joystick.setDeadzone(HumanInterfaceConfig.JOYSTICK_DEADZONE);
 		Component.mainSubsystems = new Subsystem[] {Component.chassis, Component.fourBar.lever,
 				Component.fourBar.elevator, Component.manipulator.arm, Component.manipulator.claws, 
-				Component.manipulator.ground, Component.manipulator.grabber, Component.manipulator.rollers};
+				Component.manipulator.ground, Component.manipulator.grabber, Component.manipulator.roller};
 	}
 }
