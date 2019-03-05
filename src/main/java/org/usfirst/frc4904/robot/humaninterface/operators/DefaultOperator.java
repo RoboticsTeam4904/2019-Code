@@ -1,16 +1,16 @@
 package org.usfirst.frc4904.robot.humaninterface.operators;
 
 import org.usfirst.frc4904.robot.RobotMap;
-import org.usfirst.frc4904.robot.commands.NikhilDefault;
-import org.usfirst.frc4904.robot.commands.Nikhil2;
-import org.usfirst.frc4904.robot.commands.Nikhil3;
+import org.usfirst.frc4904.robot.commands.manipulator.NikhilDefault;
+import org.usfirst.frc4904.robot.commands.manipulator.Nikhil2;
+import org.usfirst.frc4904.robot.commands.manipulator.Nikhil3;
 import org.usfirst.frc4904.standard.commands.solenoid.SolenoidExtend;
 import org.usfirst.frc4904.standard.humaninput.Operator;
 import org.usfirst.frc4904.standard.commands.RunIfElse;
-import org.usfirst.frc4904.robot.commands.ElevatorControl;
-import org.usfirst.frc4904.robot.commands.GroundIntake;
-import org.usfirst.frc4904.robot.commands.GroundToHatch;
-import org.usfirst.frc4904.robot.commands.ReadyGroundIntake;
+import org.usfirst.frc4904.robot.commands.elevator.ElevatorControl;
+import org.usfirst.frc4904.robot.commands.manipulator.GroundIntake;
+import org.usfirst.frc4904.robot.commands.manipulator.GroundToHatch;
+import org.usfirst.frc4904.robot.commands.manipulator.ReadyGroundIntake;
 import org.usfirst.frc4904.standard.commands.OverrideEnable;
 import org.usfirst.frc4904.standard.commands.solenoid.SolenoidRetract;
 import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
