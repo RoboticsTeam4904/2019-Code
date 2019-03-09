@@ -11,14 +11,14 @@ public class Manipulator {
 	public static final double STOP_TIME = -1;
 	public final SolenoidSubsystem arm; // manipulator arm
 	public final SolenoidSubsystem claws; // cargo skid
-	public final SolenoidSubsystem groundPiston; // the ground intake 
+	public final SolenoidSubsystem hatchExtender; // the ground intake 
 	public final SolenoidSubsystem grabber; // the hatch grabber 
 	public final Motor roller; // IO rollers
 
 	public Manipulator(SolenoidSubsystem arm, SolenoidSubsystem claws, SolenoidSubsystem groundPiston, SolenoidSubsystem grabber, Motor roller) {
 		this.arm = arm;
 		this.claws = claws;
-		this.groundPiston = groundPiston;
+		this.hatchExtender = groundPiston;
 		this.grabber = grabber;
 		this.roller = roller;
 	}

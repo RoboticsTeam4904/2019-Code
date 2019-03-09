@@ -6,7 +6,7 @@ public class HatchOuttake extends CommandGroup {
 	public HatchOuttake() {
 		super("ReadyHatchOuttake");
 		addParallel(new ManipulatorGrabberIn());
-		addParallel(new ManipulatorGroundOut());
+		addParallel(new HatchExtenderIn());
 		addParallel(new ManipulatorClawsDown());
 	}
 }
