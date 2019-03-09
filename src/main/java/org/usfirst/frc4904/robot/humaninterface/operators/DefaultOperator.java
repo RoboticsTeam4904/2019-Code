@@ -31,27 +31,43 @@ public class DefaultOperator extends Operator {
 
 	@Override
 	public void bindCommands() {
-		RobotMap.HumanInput.Operator.joystick.button1.onlyWhileHeld(new ElevatorControl(() -> {
-			return RobotMap.HumanInput.Operator.joystick.getAxis(CustomJoystick.Y_AXIS) > 0;
-		}));
-		RobotMap.HumanInput.Operator.joystick.button2.whenPressed(
-				new RunIfElse(new WristUp(), new WristDown(), RobotMap.Component.floorio.wrist::isExtended));
+		// RobotMap.HumanInput.Operator.joystick.button1.onlyWhileHeld(new
+		// ElevatorControl(() -> {
+		// return RobotMap.HumanInput.Operator.joystick.getAxis(CustomJoystick.Y_AXIS) >
+		// 0;
+		// }));
+		// RobotMap.HumanInput.Operator.joystick.button2.whenPressed(
+		// new RunIfElse(new WristUp(), new WristDown(),
+		// RobotMap.Component.floorio.wrist::isExtended));
 
-		RobotMap.HumanInput.Operator.joystick.button3.onlyWhileHeld(new HatchRollerIntake());
-		RobotMap.HumanInput.Operator.joystick.button4.onlyWhileHeld(new CargoIntake());
-		RobotMap.HumanInput.Operator.joystick.button5.whenPressed(new VelcroPistonExtend());
-		RobotMap.HumanInput.Operator.joystick.button5.whenReleased(new VelcroPistonRetract());
-		RobotMap.HumanInput.Operator.joystick.button6.onlyWhileHeld(new CargoOuttake());
-		RobotMap.HumanInput.Operator.joystick.button7.onlyWhileHeld(new HatchRollerOuttake());
+		// RobotMap.HumanInput.Operator.joystick.button3.onlyWhileHeld(new
+		// HatchRollerIntake());
+		// RobotMap.HumanInput.Operator.joystick.button4.onlyWhileHeld(new
+		// CargoIntake());
+		// RobotMap.HumanInput.Operator.joystick.button5.whenPressed(new
+		// VelcroPistonExtend());
+		// RobotMap.HumanInput.Operator.joystick.button5.whenReleased(new
+		// VelcroPistonRetract());
+		// RobotMap.HumanInput.Operator.joystick.button6.onlyWhileHeld(new
+		// CargoOuttake());
+		// RobotMap.HumanInput.Operator.joystick.button7.onlyWhileHeld(new
+		// HatchRollerOuttake());
+		RobotMap.HumanInput.Operator.joystick.button9
+				.whenPressed(new SolenoidExtend("FourBarUp", RobotMap.Component.fourBar.lever));
 		RobotMap.HumanInput.Operator.joystick.button8
-				.whenPressed(new RunIfElse(new SolenoidExtend("FourBarUp", RobotMap.Component.fourBar.lever),
-						new SolenoidRetract("FourBarDown", RobotMap.Component.fourBar.lever),
+				.whenPressed(new RunIfElse(new SolenoidRetract("FourBarUp", RobotMap.Component.fourBar.lever),
+						new SolenoidExtend("FourBarDown", RobotMap.Component.fourBar.lever),
 						RobotMap.Component.fourBar.lever::isExtended));
-		RobotMap.HumanInput.Operator.joystick.button9.whenPressed(new OverrideEnable(RobotMap.Component.fourBar));
-		RobotMap.HumanInput.Operator.joystick.button9.whenReleased(new OverrideDisable(RobotMap.Component.fourBar));
-		RobotMap.HumanInput.Operator.joystick.button10.whenPressed(new HatchOuttakeExtend());
-		RobotMap.HumanInput.Operator.joystick.button10.whenReleased(new HatchOuttakeRetract());
-
+		RobotMap.HumanInput.Operator.joystick.button10
+				.whenPressed(new SolenoidRetract("FourBarUp", RobotMap.Component.fourBar.lever));
+		// RobotMap.HumanInput.Operator.joystick.button9.whenPressed(new
+		// OverrideEnable(RobotMap.Component.fourBar));
+		// RobotMap.HumanInput.Operator.joystick.button9.whenReleased(new
+		// OverrideDisable(RobotMap.Component.fourBar));
+		// RobotMap.HumanInput.Operator.joystick.button10.whenPressed(new
+		// HatchOuttakeExtend());
+		// RobotMap.HumanInput.Operator.joystick.button10.whenReleased(new
+		// HatchOuttakeRetract());
 
 	}
 }

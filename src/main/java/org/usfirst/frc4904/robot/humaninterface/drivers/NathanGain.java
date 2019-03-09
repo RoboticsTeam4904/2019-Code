@@ -28,11 +28,11 @@ public class NathanGain extends Driver {
 
 	@Override
 	public void bindCommands() {
-		RobotMap.HumanInput.Driver.xbox.b.whenPressed(new HatchOuttakeExtend());
-		RobotMap.HumanInput.Driver.xbox.b.whenReleased(new HatchOuttakeRetract());
-		RobotMap.HumanInput.Driver.xbox.x.whenPressed(new VelcroPistonExtend());
-		RobotMap.HumanInput.Driver.xbox.x.whenReleased(new VelcroPistonRetract());
-		RobotMap.HumanInput.Driver.xbox.y.onlyWhileHeld(new CargoOuttake());
+		// RobotMap.HumanInput.Driver.xbox.b.whenPressed(new HatchOuttakeExtend());
+		// RobotMap.HumanInput.Driver.xbox.b.whenReleased(new HatchOuttakeRetract());
+		// RobotMap.HumanInput.Driver.xbox.x.whenPressed(new VelcroPistonExtend());
+		// RobotMap.HumanInput.Driver.xbox.x.whenReleased(new VelcroPistonRetract());
+		// RobotMap.HumanInput.Driver.xbox.y.onlyWhileHeld(new CargoOuttake());
 		RobotMap.HumanInput.Driver.xbox.lb.whenPressed(
 				new ChassisShift(RobotMap.Component.chassis.getShifter(), SolenoidShifters.ShiftState.DOWN));
 		RobotMap.HumanInput.Driver.xbox.rb
