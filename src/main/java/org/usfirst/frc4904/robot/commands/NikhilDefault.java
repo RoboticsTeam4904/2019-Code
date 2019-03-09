@@ -7,7 +7,7 @@ import org.usfirst.frc4904.standard.commands.solenoid.SolenoidRetract;
 
 public class NikhilDefault extends CommandGroup {
 	public NikhilDefault() {
-		addSequential(new SolenoidRetract("ManipulatorGroundIn", RobotMap.Component.manipulator.ground));
+		addSequential(new SolenoidRetract("ManipulatorGroundIn", RobotMap.Component.manipulator.groundPiston));
 		addSequential(new SolenoidExtend("ManipulatorGrabberOut", RobotMap.Component.manipulator.grabber));
 		addSequential(new SolenoidRetract("ManipulatorGrabberIn", RobotMap.Component.manipulator.grabber));
 		addSequential(new SolenoidRetract("ManipulatorClawsIn", RobotMap.Component.manipulator.claws));

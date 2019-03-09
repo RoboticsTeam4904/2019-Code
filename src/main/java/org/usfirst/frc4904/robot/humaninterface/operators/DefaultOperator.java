@@ -2,7 +2,6 @@ package org.usfirst.frc4904.robot.humaninterface.operators;
 
 import org.usfirst.frc4904.robot.RobotMap;
 import org.usfirst.frc4904.robot.commands.NikhilDefault;
-import org.usfirst.frc4904.robot.commands.Nikhil2;
 import org.usfirst.frc4904.robot.commands.Nikhil3;
 import org.usfirst.frc4904.standard.commands.solenoid.SolenoidExtend;
 import org.usfirst.frc4904.standard.humaninput.Operator;
