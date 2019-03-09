@@ -7,10 +7,10 @@ import org.usfirst.frc4904.standard.commands.RunIfElse;
 import org.usfirst.frc4904.standard.commands.solenoid.SolenoidExtend;
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem.SolenoidState;
 
-public class ManipulatorGroundOut extends RunIfElse {
-	public ManipulatorGroundOut() {
+public class HatchExtenderOut extends RunIfElse {
+	public HatchExtenderOut() {
 		super(
-			new SolenoidExtend("ManipulatorGroundOut", RobotMap.Component.manipulator.groundPiston),
+			new SolenoidExtend("HatchExtenderOut", RobotMap.Component.manipulator.hatchExtender),
 			new KittenCommand("Cannot extend ground piston due to claws.", LogKitten.KittenLevel.WTF),
 			() -> RobotMap.Component.manipulator.claws.getState() == SolenoidState.RETRACT
 		);

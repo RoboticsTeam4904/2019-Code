@@ -5,9 +5,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class GroundIntake extends CommandGroup {
 	public GroundIntake() {
-		addSequential(new RunFor(new ManipulatorGroundOut(), 0.5));
+		addSequential(new RunFor(new HatchExtenderIn(), 0.5));
 		addSequential(new ManipulatorRollerIn());
-		addSequential(new ManipulatorGroundIn());
+		addSequential(new HatchExtenderIn());
 		addSequential(new ManipulatorRollerStop());
 	}
 }

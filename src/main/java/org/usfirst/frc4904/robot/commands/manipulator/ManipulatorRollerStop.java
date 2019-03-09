@@ -1,12 +1,10 @@
 package org.usfirst.frc4904.robot.commands.manipulator;
 
 import org.usfirst.frc4904.robot.RobotMap;
-import org.usfirst.frc4904.robot.subsystems.Manipulator;
-import org.usfirst.frc4904.standard.commands.RunFor;
-import org.usfirst.frc4904.standard.commands.motor.MotorConstant;
+import org.usfirst.frc4904.standard.commands.motor.MotorIdle;
 
-public class ManipulatorRollerStop extends RunFor {
+public class ManipulatorRollerStop extends MotorIdle {
 	public ManipulatorRollerStop() {
-		super(new MotorConstant("ManipulatorRollerStop", RobotMap.Component.manipulator.roller, Manipulator.STOP_SPEED), Manipulator.STOP_TIME);
+		super(RobotMap.Component.manipulator.roller);
 	}
 }
