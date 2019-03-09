@@ -6,7 +6,6 @@ import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 public class Manipulator {
 	public static final double INTAKE_SPEED = -1; //TODO: change these
 	public static final double OUTTAKE_SPEED = -1;
-	public static final double STOP_SPEED = 0;
 	public static final double INTAKE_TIME = -1;
 	public static final double OUTTAKE_TIME = -1;
 	public static final double STOP_TIME = -1;
