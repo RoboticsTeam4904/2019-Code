@@ -1,8 +1,6 @@
 package org.usfirst.frc4904.robot.humaninterface.operators;
 
 import org.usfirst.frc4904.robot.RobotMap;
-import org.usfirst.frc4904.robot.commands.manipulator.HatchIntakeOld;
-import org.usfirst.frc4904.robot.commands.manipulator.ResetOld;
 import org.usfirst.frc4904.standard.commands.solenoid.SolenoidExtend;
 import org.usfirst.frc4904.standard.humaninput.Operator;
 import org.usfirst.frc4904.standard.commands.RunIfElse;
@@ -26,8 +24,6 @@ public class DefaultOperator extends Operator {
 
 	@Override
 	public void bindCommands() {
-		// RobotMap.HumanInput.Operator.joystick.button1.whenPressed(new HatchIntakeOld());
-		// RobotMap.HumanInput.Operator.joystick.button3.whenPressed(new ResetOld());
 
 		//RobotMap.HumanInput.Operator.joystick.buttonX.whenPressed(new GroundIntake());
 		//RobotMap.HumanInput.Operator.joystick.buttonY.whenPressed(new HatchIntake());
