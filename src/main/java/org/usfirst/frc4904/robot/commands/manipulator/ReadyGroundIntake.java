@@ -1,14 +1,19 @@
 package org.usfirst.frc4904.robot.commands.manipulator;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import org.usfirst.frc4904.robot.commands.elevator.ElevatorUp;
-import org.usfirst.frc4904.robot.commands.elevator.ElevatorDown;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 
+/** 
+ * Prepares manipulator for intake by lowering the claw and rolling the rollers in
+ */
 public class ReadyGroundIntake extends CommandGroup {
+
+	private static double ROLLER_WAIT_TIME = 0.254; // TODO: find actual value
+
 	public ReadyGroundIntake() {
-		addSequential(new ElevatorUp());
-		addSequential(new ManipulatorGroundOut());
-		addSequential(new ElevatorDown());
-		addSequential(new ManipulatorGroundIn());
+		addParallel(new ManipulatorGroundOut());
+		addParallel(new ManipulatorGrabberOut());
+		addSequential(new WaitCommand(ROLLER_WAIT_TIME));
+		addSequential(new ManipulatorRollerIn());
 	}
 }
