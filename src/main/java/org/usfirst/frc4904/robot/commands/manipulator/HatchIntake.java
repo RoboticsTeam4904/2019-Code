@@ -15,7 +15,7 @@ public class HatchIntake extends RunIf {
 	public static class HatchIntakeDangerously extends CommandGroup {
 		public HatchIntakeDangerously() {
 			addSequential(new ManipulatorArmDown());
-			addSequential(new ManipulatorGroundOut());
+			addSequential(new HatchExtenderOut());
 			addSequential(new ManipulatorGrabberOut());
 			addSequential(new ManipulatorGrabberIn());
 		}
