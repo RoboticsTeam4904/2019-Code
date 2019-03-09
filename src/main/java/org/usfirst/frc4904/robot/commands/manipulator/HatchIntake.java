@@ -8,10 +8,12 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- * Gets robot ready to intake hatch
+ * ReadyHatchIntakeDangerously: Just intakes the hatch, assumes that the claws are up.
+ * HatchIntake Constructor: Makes sure that we can intake a hatch by only running when the claws are up.
+ * Interrupted: After getting ready to intake a hatch, makes sure claws are up, and intakes hatch.
  */
-public class ReadyHatchIntake extends RunIf {
-	public ReadyHatchIntake() {
+public class HatchIntake extends RunIf {
+	public HatchIntake() {
 		super(
 			new ReadyHatchIntakeDangerously(),
 			() -> RobotMap.Component.manipulator.claws.getState() == SolenoidState.RETRACT);
