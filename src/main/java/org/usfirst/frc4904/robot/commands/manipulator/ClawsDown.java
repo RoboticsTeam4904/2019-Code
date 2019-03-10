@@ -11,7 +11,7 @@ public class ClawsDown extends RunIfElse {
 	public ClawsDown() {
 		super(
 			new SolenoidExtend("Claws Down", RobotMap.Component.manipulator.claws),
-			new KittenCommand("Cannot flip claws down due to extension of the ground piston.", LogKitten.KittenLevel.WTF),
+			new KittenCommand("Cannot flip claws down due to extension of the hatch extender piston.", LogKitten.KittenLevel.WTF),
 			() -> RobotMap.Component.manipulator.hatchExtender.getState() == SolenoidState.RETRACT
 		);
 	}

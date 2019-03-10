@@ -13,11 +13,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /** 
  * Prepares the manipulator for intake by lowering the claw and rolling the rollers in
  */
-public class GroundIntake extends RunIfElse {
+public class CargoIntake extends RunIfElse {
 
 	private static double ROLLER_WAIT_TIME = 0.254; // TODO: find actual value
 
-	public GroundIntake() {
+	public CargoIntake() {
 		super(
 			new ReadyGroundIntakeDangerously(),
 			new KittenCommand("Cannot flip claws down due to extension of the ground piston.", LogKitten.KittenLevel.WTF),

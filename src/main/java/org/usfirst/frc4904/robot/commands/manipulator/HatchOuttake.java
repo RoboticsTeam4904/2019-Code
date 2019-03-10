@@ -12,7 +12,7 @@ public class HatchOuttake extends CommandGroup {
 		addParallel(new HatchGrabberIn());
 		addSequential(new WaitCommand(GRABBER_WAIT_TIME));
 		addParallel(new HatchExtenderIn());
-		addSequential(new WaitCommand(CLAWS_WAIT_TIME));
-		addParallel(new ClawsDown());
+		// addSequential(new WaitCommand(CLAWS_WAIT_TIME));
+		// addParallel(new ClawsDown());
 	}
 }
