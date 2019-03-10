@@ -1,5 +1,6 @@
 package org.usfirst.frc4904.robot.commands.manipulator;
 
+
 import org.usfirst.frc4904.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
@@ -9,12 +10,10 @@ import org.usfirst.frc4904.standard.LogKitten;
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem.SolenoidState;
 import edu.wpi.first.wpilibj.command.Command;
 
-
-/** 
+/**
  * Prepares the manipulator for intake by lowering the claw and rolling the rollers in
  */
 public class CargoIntake extends RunIfElse {
-
 	private static double ROLLER_WAIT_TIME = 0.254; // TODO: find actual value
 
 	public CargoIntake() {
@@ -45,8 +44,10 @@ public class CargoIntake extends RunIfElse {
 	 */
 	public static class FinishGroundIntake extends CommandGroup {
 		public FinishGroundIntake() {
+			addParallel(new ClawsDown());
 			addParallel(new WristUp());
 			addParallel(new RollerKeepBall());
+			addParallel(new HatchExtenderIn());
 		}
 	}
 }

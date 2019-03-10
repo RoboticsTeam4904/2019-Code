@@ -1,5 +1,6 @@
 package org.usfirst.frc4904.robot.commands.manipulator;
 
+
 import org.usfirst.frc4904.robot.RobotMap;
 import org.usfirst.frc4904.standard.commands.motor.MotorConstant;
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem.SolenoidState;
@@ -12,7 +13,6 @@ public class RollerSet extends RunIfElse {
 		super(
 			new MotorConstant(name, RobotMap.Component.manipulator.roller, speed),
 			new KittenCommand("Cannot flip spin rollers due to claws being up.", LogKitten.KittenLevel.WTF),
-			() -> RobotMap.Component.manipulator.claws.getState() == SolenoidState.RETRACT
-		);
+			() -> RobotMap.Component.manipulator.claws.getState() != SolenoidState.RETRACT);
 	}
 }

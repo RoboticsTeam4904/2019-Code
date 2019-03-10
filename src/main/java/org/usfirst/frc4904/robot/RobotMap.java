@@ -55,7 +55,7 @@ public class RobotMap {
 		public static class Pneumatics {
 			public static final PCMPort wrist = new PCMPort(1, 0, 1);
 			public static final PCMPort claws = new PCMPort(0, 3, 2);
-			public static final PCMPort hatchExtender = new PCMPort(0, 4, 5);
+			public static final PCMPort hatchExtender = new PCMPort(0, 5, 4);
 			public static final PCMPort hatchGrabber = new PCMPort(0, 0, 1);
 			public static final PCMPort shifter = new PCMPort(0, 6, 7); // TODO: Get real ports
 			public static final PCMPort fourBarLever = new PCMPort(1, 3, 2);
@@ -158,7 +158,6 @@ public class RobotMap {
 		/* General */
 		Component.pdp = new PDP();
 		// Component.navx = new NavX(SerialPort.Port.kMXP);
-
 		/* Drive Train */
 		// Wheel Encoders
 		// Component.leftWheelEncoder = new CANEncoder("LeftEncoder",
@@ -195,19 +194,17 @@ public class RobotMap {
 		// Component.chassisTurnPID = new CustomPIDController(PID.Turn.P, PID.Turn.I, PID.Turn.D, Component.navx);
 		// Component.chassisTurnPID.setAbsoluteTolerance(PID.Turn.tolerance);
 		// Component.chassisTurnPID.setDerivativeTolerance(PID.Turn.dTolerance);
-
 		/* Manipulator */
 		Component.manipulator = new Manipulator(
-				new SolenoidSubsystem("Manipulator Wrist", SolenoidState.RETRACT,
-						Port.Pneumatics.wrist.buildDoubleSolenoid()),
-				new SolenoidSubsystem("Manipulator Claws", SolenoidState.RETRACT,
-						Port.Pneumatics.claws.buildDoubleSolenoid()),
-				new SolenoidSubsystem("Manipulator Hatch Extender", SolenoidState.RETRACT,
-						Port.Pneumatics.hatchExtender.buildDoubleSolenoid()),
-				new SolenoidSubsystem("Manipulator Hatch Grabber", SolenoidState.RETRACT,
-						Port.Pneumatics.hatchGrabber.buildDoubleSolenoid()),
-				new Motor("Manipulator Roller", new CANTalonSRX(Port.CANMotor.manipulatorRoller)));
-
+			new SolenoidSubsystem("Manipulator Wrist", SolenoidState.RETRACT,
+				Port.Pneumatics.wrist.buildDoubleSolenoid()),
+			new SolenoidSubsystem("Manipulator Claws",
+				Port.Pneumatics.claws.buildDoubleSolenoid()),
+			new SolenoidSubsystem("Manipulator Hatch Extender", SolenoidState.RETRACT,
+				Port.Pneumatics.hatchExtender.buildDoubleSolenoid()),
+			new SolenoidSubsystem("Manipulator Hatch Grabber", SolenoidState.RETRACT,
+				Port.Pneumatics.hatchGrabber.buildDoubleSolenoid()),
+			new Motor("Manipulator Roller", new CANTalonSRX(Port.CANMotor.manipulatorRoller)));
 		/* Elevator + FourBar */
 		Component.rightElevatorMotor = new CANTalonSRX(Port.CANMotor.rightElevatorMotor);
 		Component.rightElevatorMotor.setInverted(true);
@@ -231,13 +228,11 @@ public class RobotMap {
 		// CustomDigitalLimitSwitch(Port.Digital.elevatorSwitchBottomPort);
 		// Input.elevatorSwitchTop = new
 		// CustomDigitalLimitSwitch(Port.Digital.elevatorSwitchTopPort);
-
 		/* Human Input */
 		HumanInput.Driver.xbox = new CustomXbox(Port.HumanInput.xboxController);
 		HumanInput.Driver.xbox.setDeadZone(HumanInterfaceConfig.XBOX_DEADZONE);
 		HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
 		HumanInput.Operator.joystick.setDeadzone(HumanInterfaceConfig.JOYSTICK_DEADZONE);
-
 		/* Main Subsystems */
 		Component.mainSubsystems = new Subsystem[] {Component.fourBar.lever};
 		// Component.mainSubsystems = new Subsystem[] { Component.chassis,
