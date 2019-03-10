@@ -11,6 +11,8 @@ import org.usfirst.frc4904.robot.commands.manipulator.ClawsDown;
 import org.usfirst.frc4904.robot.commands.manipulator.ClawsUp;
 import org.usfirst.frc4904.robot.commands.manipulator.HatchExtenderIn;
 import org.usfirst.frc4904.robot.commands.manipulator.HatchExtenderOut;
+import org.usfirst.frc4904.robot.commands.manipulator.HatchGrabberIn;
+import org.usfirst.frc4904.robot.commands.manipulator.HatchGrabberOut;
 import org.usfirst.frc4904.robot.commands.manipulator.RollerIn;
 import org.usfirst.frc4904.robot.commands.manipulator.RollerOut;
 import org.usfirst.frc4904.robot.commands.manipulator.HatchIntake;
@@ -47,13 +49,14 @@ public class DefaultOperator extends Operator {
 		RobotMap.HumanInput.Operator.joystick.button1.onlyWhileHeld(new RollerOut());
 		RobotMap.HumanInput.Operator.joystick.button2.onlyWhileHeld(new RollerIn());
 
-		RobotMap.HumanInput.Operator.joystick.button3.onlyWhileHeld(new HatchIntake());
-		RobotMap.HumanInput.Operator.joystick.button5.whenPressed(new HatchOuttake());
+		RobotMap.HumanInput.Operator.joystick.button3.whenPressed(new HatchGrabberIn());//new HatchIntake());
+		RobotMap.HumanInput.Operator.joystick.button3.whenReleased(new HatchGrabberOut());
+		// RobotMap.HumanInput.Operator.joystick.button5.whenPressed(new HatchOuttake());
 		RobotMap.HumanInput.Operator.joystick.button4.onlyWhileHeld(new CargoIntake());
 		RobotMap.HumanInput.Operator.joystick.button6.onlyWhileHeld(new CargoOuttake());
 
-		RobotMap.HumanInput.Operator.joystick.button7.whenPressed(new HatchExtenderIn());
-		RobotMap.HumanInput.Operator.joystick.button8.whenPressed(new HatchExtenderOut());
+		RobotMap.HumanInput.Operator.joystick.button7.whenPressed(new HatchExtenderOut());
+		RobotMap.HumanInput.Operator.joystick.button8.whenPressed(new HatchExtenderIn());
 		RobotMap.HumanInput.Operator.joystick.button11.whenPressed(new ClawsUp());
 		RobotMap.HumanInput.Operator.joystick.button12.whenPressed(new ClawsDown());
 		// RobotMap.HumanInput.Operator.joystick.button11.whenPressed(new WristUp());
