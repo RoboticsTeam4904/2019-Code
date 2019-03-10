@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 package org.usfirst.frc4904.robot;
 
+
 import org.usfirst.frc4904.robot.humaninterface.drivers.NathanGain;
 import org.usfirst.frc4904.robot.humaninterface.operators.DefaultOperator;
 import org.usfirst.frc4904.standard.CommandRobotBase;
@@ -33,7 +34,6 @@ public class Robot extends CommandRobotBase {
 		// RobotMap.Input.elevatorSwitchBottom.whenPressed(new NeutralElevator()); //
 		// TODO: Test if this is needed
 		// RobotMap.Input.elevatorSwitchTop.whenPressed(new NeutralElevator());
-
 		// RobotMap.Input.elevatorSwitchBottom.whenPressed(new SingleOp(() -> {
 		// RobotMap.Component.elevatorEncoder.reset();
 		// }));
@@ -143,5 +143,6 @@ public class Robot extends CommandRobotBase {
 			summary += "{" + subsystem.getName() + "} running command {" + subsystem.getCurrentCommand() + "}\n";
 		}
 		SmartDashboard.putString("Subsystem Overview", summary);
+		LogKitten.wtf("Subsystem Overview" + summary);
 	}
 }
