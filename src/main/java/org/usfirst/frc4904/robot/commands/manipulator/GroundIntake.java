@@ -36,6 +36,7 @@ public class GroundIntake extends RunIfElse {
 		protected void interrupted() {
 			Command intake = new StopGroundIntake();
 			intake.start();
+		}
 	}
 
 	/**

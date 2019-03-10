@@ -54,9 +54,9 @@ public class RobotMap {
 
 		public static class Pneumatics {
 			public static final PCMPort wrist = new PCMPort(1, 0, 1);
-			public static final PCMPort manipulatorClaws = new PCMPort(0, 2, 3);
-			public static final PCMPort manipulatorHatchExtender = new PCMPort(0, 4, 5);
-			public static final PCMPort manipulatorGrabber = new PCMPort(0, 0, 1);
+			public static final PCMPort claws = new PCMPort(0, 2, 3);
+			public static final PCMPort hatchExtender = new PCMPort(0, 4, 5);
+			public static final PCMPort hatchGrabber = new PCMPort(0, 0, 1);
 			public static final PCMPort shifter = new PCMPort(-1, -1, -1);  // TODO: Get real ports
 			public static final PCMPort fourBarLever = new PCMPort(1, 4, 5);
 		}
@@ -195,11 +195,11 @@ public class RobotMap {
 			new SolenoidSubsystem("Manipulator Wrist", SolenoidState.EXTEND,
 				Port.Pneumatics.wrist.buildDoubleSolenoid()),
 			new SolenoidSubsystem("Manipulator Claws", SolenoidState.EXTEND,
-				Port.Pneumatics.manipulatorClaws.buildDoubleSolenoid()),
+				Port.Pneumatics.claws.buildDoubleSolenoid()),
 			new SolenoidSubsystem("Manipulator Ground", SolenoidState.EXTEND,
-				Port.Pneumatics.manipulatorHatchExtender.buildDoubleSolenoid()),
+				Port.Pneumatics.hatchExtender.buildDoubleSolenoid()),
 			new SolenoidSubsystem("Manipulator Grabber", SolenoidState.EXTEND,
-				Port.Pneumatics.manipulatorGrabber.buildDoubleSolenoid()),
+				Port.Pneumatics.hatchGrabber.buildDoubleSolenoid()),
 			new Motor("Manipulator Roller", new CANTalonSRX(Port.CANMotor.manipulatorRoller)));
 		/* Elevator + FourBar */
 		Component.rightElevatorMotor = new CANTalonSRX(Port.CANMotor.rightElevatorMotor);
