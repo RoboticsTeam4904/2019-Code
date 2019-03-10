@@ -22,16 +22,23 @@ public class HatchIntake extends RunIf {
 	public static class ReadyHatchIntakeDangerously extends CommandGroup {
 		public ReadyHatchIntakeDangerously() {
 			addParallel(new WristUp());
-			addParallel(new ClawsUp());
+			// addParallel(new ClawsUp());
 			addParallel(new HatchExtenderOut());
-			addParallel(new GrabberIn());
+			addParallel(new HatchGrabberIn());
 		}
 
 		@Override
 		protected void interrupted() {
-			Command hatchIntake = new RunIf(new GrabberOut(),
+			Command finishIntake = new FinishHatchIntake();
+			finishIntake.start();
+		}
+	}
+
+	public static class FinishHatchIntake extends RunIf {
+		public FinishHatchIntake() {
+			super(
+				new HatchGrabberOut(),
 				() -> RobotMap.Component.manipulator.claws.getState() == SolenoidState.RETRACT);
-			hatchIntake.start();
 		}
 	}
 }

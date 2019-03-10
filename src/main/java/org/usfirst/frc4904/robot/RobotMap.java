@@ -34,15 +34,13 @@ public class RobotMap {
 		}
 
 		public static class CANMotor {
-			public static int manipulatorRoller = 5;
 			public static final int leftDriveA = 1;
 			public static final int leftDriveB = 2;
 			public static final int rightDriveA = 3;
 			public static final int rightDriveB = 4;
-			public static final int rightElevatorMotor = 8;
+			public static final int manipulatorRoller = 5;
 			public static final int leftElevatorMotor = 7;
-			public static final int hatchRoller = 14; // TODO: Adjust port numbers
-			public static final int cargoRoller = 15; // TODO: Adjust port numbers
+			public static final int rightElevatorMotor = 8;
 		}
 
 		public static class PWM {
@@ -54,11 +52,11 @@ public class RobotMap {
 		}
 
 		public static class Pneumatics {
-			public static final PCMPort manipulatorWrist = new PCMPort(1, 0, 1);
-			public static final PCMPort manipulatorClaws = new PCMPort(0, 3, 2);
-			public static final PCMPort manipulatorHatchExtender = new PCMPort(0, 4, 5);
-			public static final PCMPort manipulatorGrabber = new PCMPort(0, 0, 1);
-			public static final PCMPort shifter = new PCMPort(0, 6, 7);
+			public static final PCMPort wrist = new PCMPort(1, 0, 1);
+			public static final PCMPort claws = new PCMPort(0, 3, 2);
+			public static final PCMPort hatchExtender = new PCMPort(0, 4, 5);
+			public static final PCMPort hatchGrabber = new PCMPort(0, 0, 1);
+			public static final PCMPort shifter = new PCMPort(0, 6, 7); // TODO: Get real ports
 			public static final PCMPort fourBarLever = new PCMPort(1, 4, 5);
 		}
 
@@ -112,10 +110,10 @@ public class RobotMap {
 		}
 	}
 
-	public static class Component {
+	public static class Component { // TODO: Reorganize
 		public static Manipulator manipulator;
 		public static CANTalonEncoder elevatorEncoder;
-		public static FourBarElevator fourBar;
+		public static FourBarElevator fourBar; // TODO: Rename fourBar subsystem
 		public static CustomPIDController elevatorPID;
 		public static CANTalonSRX rightElevatorMotor;
 		public static CANTalonSRX leftElevatorMotor;
@@ -138,7 +136,7 @@ public class RobotMap {
 	}
 
 	public static class Input {
-		public static CustomDigitalLimitSwitch elevatorSwitchBottom;
+		public static CustomDigitalLimitSwitch elevatorSwitchBottom; // TODO: Move into fourBar subsystem
 		public static CustomDigitalLimitSwitch elevatorSwitchTop;
 	}
 
@@ -159,27 +157,6 @@ public class RobotMap {
 		/* General */
 		Component.pdp = new PDP();
 		Component.navx = new NavX(SerialPort.Port.kMXP);
-		// Component.rightElevatorMotor = new
-		// CANTalonSRX(Port.CANMotor.rightElevatorMotor);
-		// Component.rightElevatorMotor.setInverted(true);
-		// Component.leftElevatorMotor = new
-		// CANTalonSRX(Port.CANMotor.leftElevatorMotor);
-		// Component.elevatorEncoder = new CANTalonEncoder(Component.leftElevatorMotor,
-		// FourBarElevator.TICK_MULTIPLIER);
-		// Component.elevatorPID = new CustomPIDController(PID.Elevator.P,
-		// PID.Elevator.I, PID.Elevator.D, PID.Elevator.F,
-		// Component.elevatorEncoder);
-		// Component.leftElevatorMotor.setNeutralMode(NeutralMode.Brake);
-		// Component.rightElevatorMotor.setNeutralMode(NeutralMode.Brake);
-		// Component.fourBar = new FourBarElevator(
-		// new SolenoidSubsystem("FourBarLever", SolenoidState.RETRACT,
-		// Port.Pneumatics.fourBarLever.buildDoubleSolenoid()),
-		// new PositionSensorMotor("Elevator", Component.elevatorPID,
-		// Component.leftElevatorMotor,
-		// Component.rightElevatorMotor));
-
-		// Component.elevatorPID.setAbsoluteTolerance(PID.Elevator.tolerance);
-		// Component.elevatorPID.setDerivativeTolerance(PID.Elevator.dTolerance);
 
 		/* Drive Train */
 		// Wheel Encoders
@@ -205,7 +182,7 @@ public class RobotMap {
 		Component.leftWheelB = new Motor("leftWheelB", true, Component.leftWheelAccelerationCap,
 				new CANTalonSRX(Port.CANMotor.leftDriveB));
 		// Shifter
-		Component.shifter = new SolenoidShifters(Port.Pneumatics.shifter.buildDoubleSolenoid());
+		// Component.shifter = new SolenoidShifters(Port.Pneumatics.shifter.buildDoubleSolenoid());
 		// General Chassis
 		Component.chassis = new TankDriveShifting("2019-Chassis", Component.leftWheelA, Component.leftWheelB,
 				Component.rightWheelA, Component.rightWheelB, Component.shifter);
@@ -214,41 +191,53 @@ public class RobotMap {
 		// Component.chassisEncoders);
 		// Component.drivePID.setAbsoluteTolerance(PID.Drive.tolerance);
 		// Component.drivePID.setDerivativeTolerance(PID.Drive.dTolerance);
-		Component.chassisTurnPID = new CustomPIDController(PID.Turn.P, PID.Turn.I, PID.Turn.D, Component.navx);
+		// Component.chassisTurnPID = new CustomPIDController(PID.Turn.P, PID.Turn.I, PID.Turn.D, Component.navx);
 		// Component.chassisTurnPID.setAbsoluteTolerance(PID.Turn.tolerance);
 		// Component.chassisTurnPID.setDerivativeTolerance(PID.Turn.dTolerance);
+
 		/* Manipulator */
 		Component.manipulator = new Manipulator(
 				new SolenoidSubsystem("Manipulator Wrist", SolenoidState.RETRACT,
-						Port.Pneumatics.manipulatorWrist.buildDoubleSolenoid()),
+						Port.Pneumatics.wrist.buildDoubleSolenoid()),
 				new SolenoidSubsystem("Manipulator Claws", SolenoidState.RETRACT,
-						Port.Pneumatics.manipulatorClaws.buildDoubleSolenoid()),
-				new SolenoidSubsystem("Manipulator Ground", SolenoidState.RETRACT,
-						Port.Pneumatics.manipulatorHatchExtender.buildDoubleSolenoid()),
-				new SolenoidSubsystem("Manipulator Grabber", SolenoidState.RETRACT,
-						Port.Pneumatics.manipulatorGrabber.buildDoubleSolenoid()),
+						Port.Pneumatics.claws.buildDoubleSolenoid()),
+				new SolenoidSubsystem("Manipulator Hatch Extender", SolenoidState.RETRACT,
+						Port.Pneumatics.hatchExtender.buildDoubleSolenoid()),
+				new SolenoidSubsystem("Manipulator Hatch Grabber", SolenoidState.RETRACT,
+						Port.Pneumatics.hatchGrabber.buildDoubleSolenoid()),
 				new Motor("Manipulator Roller", new CANTalonSRX(Port.CANMotor.manipulatorRoller)));
-		/* Elevator + FourBar */
 
+		/* Elevator + FourBar */
+		// Component.rightElevatorMotor = new CANTalonSRX(Port.CANMotor.rightElevatorMotor);
+		// Component.rightElevatorMotor.setInverted(true); // TODO: Add into constructor in standard
+		// Component.leftElevatorMotor = new CANTalonSRX(Port.CANMotor.leftElevatorMotor);
+		// Component.elevatorEncoder = new CANTalonEncoder(Component.leftElevatorMotor,
+		// FourBarElevator.TICK_MULTIPLIER);
+		// Component.elevatorPID = new CustomPIDController(PID.Elevator.P,
+		// PID.Elevator.I, PID.Elevator.D, PID.Elevator.F,
+		// Component.elevatorEncoder);
+		// Component.leftElevatorMotor.setNeutralMode(NeutralMode.Brake);
+		// Component.rightElevatorMotor.setNeutralMode(NeutralMode.Brake);
+		// Component.fourBar = new FourBarElevator(
+		// new SolenoidSubsystem("FourBarLever", SolenoidState.RETRACT,
+		// Port.Pneumatics.fourBarLever.buildDoubleSolenoid()),
+		// new PositionSensorMotor("Elevator", Component.elevatorPID,
+		// Component.leftElevatorMotor,
+		// Component.rightElevatorMotor));
+
+		// Component.elevatorPID.setAbsoluteTolerance(PID.Elevator.tolerance);
+		// Component.elevatorPID.setDerivativeTolerance(PID.Elevator.dTolerance);
 		// Input.elevatorSwitchBottom = new
 		// CustomDigitalLimitSwitch(Port.Digital.elevatorSwitchBottomPort);
 		// Input.elevatorSwitchTop = new
 		// CustomDigitalLimitSwitch(Port.Digital.elevatorSwitchTopPort);
-		/* Floorio */
-		// Component.floorio = new FloorIO(
-		// new SolenoidSubsystem("HatchOuttakePiston", SolenoidState.RETRACT,
-		// Port.Pneumatics.hatchOuttakePiston.buildDoubleSolenoid()),
-		// new SolenoidSubsystem("VelcroPiston", SolenoidState.RETRACT,
-		// Port.Pneumatics.velcroPiston.buildDoubleSolenoid()),
-		// new SolenoidSubsystem("Wrist", SolenoidState.RETRACT,
-		// Port.Pneumatics.wrist.buildDoubleSolenoid()),
-		// new Motor("HatchRoller", new CANTalonSRX(Port.CANMotor.hatchRoller)),
-		// new Motor("CargoRoller", new CANTalonSRX(Port.CANMotor.cargoRoller)));
+
 		/* Human Input */
 		HumanInput.Driver.xbox = new CustomXbox(Port.HumanInput.xboxController);
 		HumanInput.Driver.xbox.setDeadZone(HumanInterfaceConfig.XBOX_DEADZONE);
 		HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
 		HumanInput.Operator.joystick.setDeadzone(HumanInterfaceConfig.JOYSTICK_DEADZONE);
+
 		/* Main Subsystems */
 		// Component.mainSubsystems = new Subsystem[] { Component.chassis,
 		// Component.fourBar.lever,
