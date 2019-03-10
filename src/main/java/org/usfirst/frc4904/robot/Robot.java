@@ -10,6 +10,7 @@ package org.usfirst.frc4904.robot;
 import org.usfirst.frc4904.robot.humaninterface.drivers.NathanGain;
 import org.usfirst.frc4904.robot.humaninterface.operators.DefaultOperator;
 import org.usfirst.frc4904.standard.CommandRobotBase;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc4904.robot.commands.elevator.NeutralElevator;
@@ -18,6 +19,7 @@ import org.usfirst.frc4904.standard.LogKitten;
 import org.usfirst.frc4904.standard.commands.SingleOp;
 import org.usfirst.frc4904.robot.commands.CameraStream;
 import org.usfirst.frc4904.standard.commands.chassis.ChassisMove;
+import org.usfirst.frc4904.standard.commands.solenoid.SolenoidRetract;
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem.SolenoidState;
 
 public class Robot extends CommandRobotBase {
@@ -27,8 +29,10 @@ public class Robot extends CommandRobotBase {
 	public void initialize() {
 		driverChooser.addDefault(new NathanGain());
 		operatorChooser.addDefault(new DefaultOperator());
-		CameraStream streamCommand = new CameraStream(2);
+		CameraStream streamCommand = new CameraStream(1);
 		streamCommand.start();
+		Command command = new SolenoidRetract(RobotMap.Component.manipulator.wrist);
+		command.start();
 		// RobotMap.Component.leftWheelEncoder.reset();
 		// RobotMap.Component.rightWheelEncoder.reset();
 		// RobotMap.Input.elevatorSwitchBottom.whenPressed(new NeutralElevator()); //

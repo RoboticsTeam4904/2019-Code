@@ -196,7 +196,7 @@ public class RobotMap {
 		// Component.chassisTurnPID.setDerivativeTolerance(PID.Turn.dTolerance);
 		/* Manipulator */
 		Component.manipulator = new Manipulator(
-			new SolenoidSubsystem("Manipulator Wrist",// SolenoidState.RETRACT,
+			new SolenoidSubsystem("Manipulator Wrist", SolenoidState.RETRACT,
 				Port.Pneumatics.wrist.buildDoubleSolenoid()),
 			new SolenoidSubsystem("Manipulator Claws",
 				Port.Pneumatics.claws.buildDoubleSolenoid()),
