@@ -35,15 +35,13 @@ public class RobotMap {
 		}
 
 		public static class CANMotor {
-			public static int manipulatorRoller = -1;
 			public static final int leftDriveA = 1;
 			public static final int leftDriveB = 2;
 			public static final int rightDriveA = 3;
 			public static final int rightDriveB = 4;
-			public static final int rightElevatorMotor = 8;
+			public static final int manipulatorRoller = 5;
 			public static final int leftElevatorMotor = 7;
-			public static final int hatchRoller = 14; // TODO: Adjust port numbers
-			public static final int cargoRoller = 15; // TODO: Adjust port numbers
+			public static final int rightElevatorMotor = 8;
 		}
 
 		public static class PWM {
@@ -55,11 +53,11 @@ public class RobotMap {
 		}
 
 		public static class Pneumatics {
-			public static final PCMPort manipulatorWrist = new PCMPort(1, 0, 1);
+			public static final PCMPort wrist = new PCMPort(1, 0, 1);
 			public static final PCMPort manipulatorClaws = new PCMPort(0, 2, 3);
 			public static final PCMPort manipulatorHatchExtender = new PCMPort(0, 4, 5);
 			public static final PCMPort manipulatorGrabber = new PCMPort(0, 0, 1);
-			public static final PCMPort shifter = new PCMPort(0, 0, 1);
+			public static final PCMPort shifter = new PCMPort(-1, -1, -1);  // TODO: Get real ports
 			public static final PCMPort fourBarLever = new PCMPort(1, 4, 5);
 		}
 
@@ -181,7 +179,7 @@ public class RobotMap {
 		Component.leftWheelB = new Motor("leftWheelB", true, Component.leftWheelAccelerationCap,
 			new CANTalonSRX(Port.CANMotor.leftDriveB));
 		// Shifter
-		Component.shifter = new SolenoidShifters(Port.Pneumatics.shifter.buildDoubleSolenoid());
+		// Component.shifter = new SolenoidShifters(Port.Pneumatics.shifter.buildDoubleSolenoid());
 		// General Chassis
 		Component.chassis = new TankDriveShifting("2019-Chassis", Component.leftWheelA, Component.leftWheelB,
 			Component.rightWheelA, Component.rightWheelB, Component.shifter);
@@ -195,7 +193,7 @@ public class RobotMap {
 		/* Manipulator */
 		Component.manipulator = new Manipulator(
 			new SolenoidSubsystem("Manipulator Wrist", SolenoidState.EXTEND,
-				Port.Pneumatics.manipulatorWrist.buildDoubleSolenoid()),
+				Port.Pneumatics.wrist.buildDoubleSolenoid()),
 			new SolenoidSubsystem("Manipulator Claws", SolenoidState.EXTEND,
 				Port.Pneumatics.manipulatorClaws.buildDoubleSolenoid()),
 			new SolenoidSubsystem("Manipulator Ground", SolenoidState.EXTEND,
