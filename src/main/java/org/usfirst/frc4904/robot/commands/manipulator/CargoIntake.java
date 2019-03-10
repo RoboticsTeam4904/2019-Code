@@ -23,6 +23,8 @@ public class CargoIntake extends RunIfElse {
 	}
 
 	public static class ReadyGroundIntakeDangerously extends CommandGroup {
+		private Command finishIntake;
+
 		public ReadyGroundIntakeDangerously() {
 			addParallel(new HatchExtenderIn());
 			// addSequential(new WaitCommand())
@@ -30,11 +32,11 @@ public class CargoIntake extends RunIfElse {
 			addParallel(new ClawsDown());
 			addSequential(new WaitCommand(ROLLER_WAIT_TIME));
 			addSequential(new RollerIn());
+			finishIntake = new FinishGroundIntake();
 		}
 
 		@Override
 		protected void interrupted() {
-			Command finishIntake = new FinishGroundIntake();
 			finishIntake.start();
 		}
 	}
@@ -44,9 +46,9 @@ public class CargoIntake extends RunIfElse {
 	 */
 	public static class FinishGroundIntake extends CommandGroup {
 		public FinishGroundIntake() {
+			addParallel(new RollerKeepBall());
 			addParallel(new ClawsDown());
 			addParallel(new WristUp());
-			addParallel(new RollerKeepBall());
 			addParallel(new HatchExtenderIn());
 		}
 	}
