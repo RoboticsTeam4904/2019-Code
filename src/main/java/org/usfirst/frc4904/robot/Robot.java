@@ -101,6 +101,7 @@ public class Robot extends CommandRobotBase {
 
 	@Override
 	public void alwaysExecute() {
+		LogKitten.wtf(RobotMap.Component.manipulator.claws.getState());
 		// LogKitten.wtf(RobotMap.Component.elevatorEncoder.getDistance()); // TODO:
 		// Just for testing encoder
 		// LogKitten.wtf(RobotMap.Component.leftWheelEncoder.getDistance()); // TODO:

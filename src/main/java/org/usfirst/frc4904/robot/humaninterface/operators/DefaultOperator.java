@@ -9,6 +9,8 @@ import org.usfirst.frc4904.standard.commands.motor.MotorConstant;
 import org.usfirst.frc4904.robot.commands.elevator.ElevatorControl;
 import org.usfirst.frc4904.robot.commands.manipulator.ClawsDown;
 import org.usfirst.frc4904.robot.commands.manipulator.ClawsUp;
+import org.usfirst.frc4904.robot.commands.manipulator.HatchExtenderIn;
+import org.usfirst.frc4904.robot.commands.manipulator.HatchExtenderOut;
 import org.usfirst.frc4904.robot.commands.manipulator.RollerIn;
 import org.usfirst.frc4904.robot.commands.manipulator.RollerOut;
 import org.usfirst.frc4904.robot.commands.manipulator.HatchIntake;
@@ -54,28 +56,32 @@ public class DefaultOperator extends Operator {
 		// CargoOuttake());
 		// RobotMap.HumanInput.Operator.joystick.button7.onlyWhileHeld(new
 		// HatchRollerOuttake());
+		RobotMap.HumanInput.Operator.joystick.button1.onlyWhileHeld(new RollerOut());
+		RobotMap.HumanInput.Operator.joystick.button2.onlyWhileHeld(new RollerIn());
 		RobotMap.HumanInput.Operator.joystick.button3.onlyWhileHeld(new HatchIntake());
 		RobotMap.HumanInput.Operator.joystick.button4.onlyWhileHeld(new CargoIntake());
-		RobotMap.HumanInput.Operator.joystick.button1.whenPressed(new HatchOuttake());
-		RobotMap.HumanInput.Operator.joystick.button2.onlyWhileHeld(new CargoOuttake());
-
+		RobotMap.HumanInput.Operator.joystick.button5.whenPressed(new HatchOuttake());
+		RobotMap.HumanInput.Operator.joystick.button7.whenPressed(new HatchExtenderIn());
+		RobotMap.HumanInput.Operator.joystick.button8.whenPressed(new HatchExtenderOut());
+		RobotMap.HumanInput.Operator.joystick.button11.whenPressed(new ClawsUp());
+		RobotMap.HumanInput.Operator.joystick.button12.whenPressed(new ClawsDown());
 		// RobotMap.HumanInput.Operator.joystick.button2.onlyWhileHeld(
-		// 	new MotorConstant(RobotMap.Component.manipulator.roller, RobotMap.Component.manipulator.INTAKE_SPEED));
+		// new MotorConstant(RobotMap.Component.manipulator.roller, RobotMap.Component.manipulator.INTAKE_SPEED));
 		// RobotMap.HumanInput.Operator.joystick.button1.onlyWhileHeld(
-		// 	new MotorConstant(RobotMap.Component.manipulator.roller, RobotMap.Component.manipulator.OUTTAKE_SPEED));
-		RobotMap.HumanInput.Operator.joystick.button11.whenPressed(new WristUp());
-		RobotMap.HumanInput.Operator.joystick.button12.whenPressed(new WristDown());
-		RobotMap.HumanInput.Operator.joystick.button5.whenPressed(new ClawsUp());
-		RobotMap.HumanInput.Operator.joystick.button6.whenPressed(new ClawsDown());
-		RobotMap.HumanInput.Operator.joystick.button8
-			.whenPressed(new RunIfElse(new SolenoidRetract("FourBarUp",
-				RobotMap.Component.fourBar.lever),
-				new SolenoidExtend("FourBarDown", RobotMap.Component.fourBar.lever),
-				() -> {
-					boolean temp = RobotMap.Component.fourBar.lever.isExtended();
-					LogKitten.wtf(temp);
-					return temp;
-				}));
+		// new MotorConstant(RobotMap.Component.manipulator.roller, RobotMap.Component.manipulator.OUTTAKE_SPEED));
+		// RobotMap.HumanInput.Operator.joystick.button11.whenPressed(new WristUp());
+		// RobotMap.HumanInput.Operator.joystick.button12.whenPressed(new WristDown());
+		// RobotMap.HumanInput.Operator.joystick.button5.whenPressed(new ClawsUp());
+		// RobotMap.HumanInput.Operator.joystick.button6.whenPressed(new ClawsDown());
+		// RobotMap.HumanInput.Operator.joystick.button8
+		// .whenPressed(new RunIfElse(new SolenoidRetract("FourBarUp",
+		// RobotMap.Component.fourBar.lever),
+		// new SolenoidExtend("FourBarDown", RobotMap.Component.fourBar.lever),
+		// () -> {
+		// boolean temp = RobotMap.Component.fourBar.lever.isExtended();
+		// LogKitten.wtf(temp);
+		// return temp;
+		// }));
 		RobotMap.HumanInput.Operator.joystick.button9
 			.whenPressed(new SolenoidExtend("FourBarUp",
 				RobotMap.Component.fourBar.lever));

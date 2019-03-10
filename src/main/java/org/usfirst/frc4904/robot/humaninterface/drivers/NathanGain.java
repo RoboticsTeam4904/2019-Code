@@ -1,5 +1,6 @@
 package org.usfirst.frc4904.robot.humaninterface.drivers;
 
+
 import org.usfirst.frc4904.robot.RobotMap;
 import org.usfirst.frc4904.standard.commands.chassis.ChassisShift;
 import org.usfirst.frc4904.standard.humaninput.Driver;
@@ -29,7 +30,7 @@ public class NathanGain extends Driver {
 		// RobotMap.HumanInput.Driver.xbox.rb
 		// .whenPressed(new ChassisShift(RobotMap.Component.chassis.getShifter(),
 		// SolenoidShifters.ShiftState.UP));
-
+		// RobotMap.HumanInput.Driver.xbox.x(new RunIfElse(new GrabberOut(), new GrabberIn(), ()))
 	}
 
 	@Override
@@ -48,7 +49,7 @@ public class NathanGain extends Driver {
 	public double getTurnSpeed() {
 		double rawTurnSpeed = RobotMap.HumanInput.Driver.xbox.leftStick.getX();
 		double turnSpeed = scaleGain(rawTurnSpeed, NathanGain.TURN_GAIN, NathanGain.TURN_EXP)
-				* NathanGain.TURN_SPEED_SCALE;
+			* NathanGain.TURN_SPEED_SCALE;
 		return turnSpeed;
 	}
 }
