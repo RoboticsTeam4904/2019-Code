@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.command.Command;
  * Prepares the manipulator for intake by lowering the claw and rolling the rollers in
  */
 public class CargoIntake extends RunIfElse {
-	private static double ROLLER_WAIT_TIME = 0.254; // TODO: find actual value
+	private static double ROLLER_WAIT_TIME = 0.1; // TODO: find actual value
 
 	public CargoIntake() {
 		super(new ReadyGroundIntakeDangerously(),
@@ -28,7 +28,7 @@ public class CargoIntake extends RunIfElse {
 			// addSequential(new WaitCommand())
 			addParallel(new WristDown());
 			addParallel(new ClawsDown());
-			// addSequential(new WaitCommand(ROLLER_WAIT_TIME));
+			addSequential(new WaitCommand(ROLLER_WAIT_TIME));
 			addSequential(new RollerIn());
 		}
 

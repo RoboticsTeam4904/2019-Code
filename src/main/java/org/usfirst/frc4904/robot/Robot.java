@@ -27,8 +27,8 @@ public class Robot extends CommandRobotBase {
 	public void initialize() {
 		driverChooser.addDefault(new NathanGain());
 		operatorChooser.addDefault(new DefaultOperator());
-		// CameraStream streamCommand = new CameraStream(2);
-		// streamCommand.start();
+		CameraStream streamCommand = new CameraStream(1);
+		streamCommand.start();
 		// RobotMap.Component.leftWheelEncoder.reset();
 		// RobotMap.Component.rightWheelEncoder.reset();
 		// RobotMap.Input.elevatorSwitchBottom.whenPressed(new NeutralElevator()); //
@@ -101,12 +101,6 @@ public class Robot extends CommandRobotBase {
 
 	@Override
 	public void alwaysExecute() {
-		LogKitten.wtf(RobotMap.Component.manipulator.claws.getState());
-		// LogKitten.wtf(RobotMap.Component.elevatorEncoder.getDistance()); // TODO:
-		// Just for testing encoder
-		// LogKitten.wtf(RobotMap.Component.leftWheelEncoder.getDistance()); // TODO:
-		// Just for testing encoder
-		// LogKitten.wtf(RobotMap.Component.rightWheelEncoder.getDistance()); // TODO:
 		// Just for testing encoder
 		// SmartDashboard.putNumber("ElevatorPID/e",
 		// RobotMap.Component.elevatorPID.getError());
