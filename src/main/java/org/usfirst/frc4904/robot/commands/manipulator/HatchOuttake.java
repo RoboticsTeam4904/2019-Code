@@ -5,8 +5,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class HatchOuttake extends CommandGroup {
 	public HatchOuttake() {
 		super("ReadyHatchOuttake");
-		addParallel(new ManipulatorGrabberIn());
+		addParallel(new GrabberIn());
 		addParallel(new HatchExtenderIn());
-		addParallel(new ManipulatorClawsDown());
+		addParallel(new ClawsDown());
 	}
 }

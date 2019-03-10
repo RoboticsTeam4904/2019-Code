@@ -55,7 +55,7 @@ public class RobotMap {
 		}
 
 		public static class Pneumatics {
-			public static final PCMPort manipulatorArm = new PCMPort(1, 0, 1);
+			public static final PCMPort manipulatorWrist = new PCMPort(1, 0, 1);
 			public static final PCMPort manipulatorClaws = new PCMPort(0, 2, 3);
 			public static final PCMPort manipulatorHatchExtender = new PCMPort(0, 4, 5);
 			public static final PCMPort manipulatorGrabber = new PCMPort(0, 0, 1);
@@ -194,8 +194,8 @@ public class RobotMap {
 		// Component.chassisTurnPID.setDerivativeTolerance(PID.Turn.dTolerance);
 		/* Manipulator */
 		Component.manipulator = new Manipulator(
-			new SolenoidSubsystem("Manipulator Arm", SolenoidState.EXTEND,
-				Port.Pneumatics.manipulatorArm.buildDoubleSolenoid()),
+			new SolenoidSubsystem("Manipulator Wrist", SolenoidState.EXTEND,
+				Port.Pneumatics.manipulatorWrist.buildDoubleSolenoid()),
 			new SolenoidSubsystem("Manipulator Claws", SolenoidState.EXTEND,
 				Port.Pneumatics.manipulatorClaws.buildDoubleSolenoid()),
 			new SolenoidSubsystem("Manipulator Ground", SolenoidState.EXTEND,
@@ -227,7 +227,7 @@ public class RobotMap {
 		HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
 		HumanInput.Operator.joystick.setDeadzone(HumanInterfaceConfig.JOYSTICK_DEADZONE);
 		Component.mainSubsystems = new Subsystem[] {Component.chassis, Component.fourBar.lever,
-				Component.fourBar.elevator, Component.manipulator.arm, Component.manipulator.claws, 
+				Component.fourBar.elevator, Component.manipulator.wrist, Component.manipulator.claws, 
 				Component.manipulator.hatchExtender, Component.manipulator.grabber, Component.manipulator.roller};
 	}
 }

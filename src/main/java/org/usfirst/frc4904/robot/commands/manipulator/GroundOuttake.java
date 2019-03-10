@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class GroundOuttake extends CommandGroup {
 	public GroundOuttake() {
-		addSequential(new ManipulatorRollerOut());
+		addSequential(new RollerOut());
 		
 	}
 }

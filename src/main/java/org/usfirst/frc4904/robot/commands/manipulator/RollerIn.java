@@ -5,8 +5,8 @@ import org.usfirst.frc4904.robot.subsystems.Manipulator;
 import org.usfirst.frc4904.standard.commands.RunFor;
 import org.usfirst.frc4904.standard.commands.motor.MotorConstant;
 
-public class ManipulatorRollerOut extends RunFor {
-	public ManipulatorRollerOut() {
-		super(new MotorConstant("ManipulatorRollerOut", RobotMap.Component.manipulator.roller, Manipulator.OUTTAKE_SPEED), Manipulator.OUTTAKE_TIME);
+public class RollerIn extends RunFor {
+	public RollerIn() {
+		super(new MotorConstant("Roller In", RobotMap.Component.manipulator.roller, Manipulator.INTAKE_SPEED), Manipulator.INTAKE_TIME);
 	}
 }

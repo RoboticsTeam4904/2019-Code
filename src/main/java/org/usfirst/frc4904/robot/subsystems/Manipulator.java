@@ -10,14 +10,14 @@ public class Manipulator {
 	public static final double INTAKE_TIME = -1;
 	public static final double OUTTAKE_TIME = -1;
 	public static final double STOP_TIME = -1;
-	public final SolenoidSubsystem arm; // manipulator arm
+	public final SolenoidSubsystem wrist; // manipulator arm
 	public final SolenoidSubsystem claws; // cargo skid
 	public final SolenoidSubsystem hatchExtender; // the ground intake 
 	public final SolenoidSubsystem grabber; // the hatch grabber 
 	public final Motor roller; // IO rollers
 
-	public Manipulator(SolenoidSubsystem arm, SolenoidSubsystem claws, SolenoidSubsystem groundPiston, SolenoidSubsystem grabber, Motor roller) {
-		this.arm = arm;
+	public Manipulator(SolenoidSubsystem wrist, SolenoidSubsystem claws, SolenoidSubsystem groundPiston, SolenoidSubsystem grabber, Motor roller) {
+		this.wrist = wrist;
 		this.claws = claws;
 		this.hatchExtender = groundPiston;
 		this.grabber = grabber;

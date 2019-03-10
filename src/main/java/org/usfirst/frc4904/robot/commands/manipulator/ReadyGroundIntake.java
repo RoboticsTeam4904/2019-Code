@@ -11,9 +11,9 @@ public class ReadyGroundIntake extends CommandGroup {
 	private static double ROLLER_WAIT_TIME = 0.254; // TODO: find actual value
 
 	public ReadyGroundIntake() {
-		addParallel(new ManipulatorArmDown());
-		addParallel(new ManipulatorClawsDown());
+		addParallel(new WristDown());
+		addParallel(new ClawsDown());
 		addSequential(new WaitCommand(ROLLER_WAIT_TIME));
-		addSequential(new ManipulatorRollerIn());
+		addSequential(new RollerIn());
 	}
 }
