@@ -19,7 +19,7 @@ public class CargoOuttake extends RollerOut {
 	}
 
 	public static class FinishCargoOuttake extends CommandGroup {
-		public final double CLAW_WAIT_TIME = 2;
+		public final double CLAW_WAIT_TIME = 1;
 
 		public FinishCargoOuttake() {
 			// Interruptable by other roller commands (due to requires)
