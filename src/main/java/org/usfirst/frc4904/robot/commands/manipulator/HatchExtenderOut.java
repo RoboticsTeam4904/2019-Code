@@ -11,8 +11,8 @@ public class HatchExtenderOut extends RunIfElse {
 	public HatchExtenderOut() {
 		super(
 			new SolenoidExtend("HatchExtenderOut", RobotMap.Component.manipulator.hatchExtender),
-			new KittenCommand("Cannot extend ground piston due to claws.", LogKitten.KittenLevel.WTF),
-			() -> RobotMap.Component.manipulator.claws.getState() == SolenoidState.RETRACT
+			new KittenCommand("Cannot extend hatch extender piston due to claws being down.", LogKitten.KittenLevel.WTF),
+			() -> RobotMap.Component.manipulator.claws.getState() != SolenoidState.EXTEND
 		);
 	}
 }
