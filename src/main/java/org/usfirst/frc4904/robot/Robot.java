@@ -27,7 +27,7 @@ public class Robot extends CommandRobotBase {
 	public void initialize() {
 		driverChooser.addDefault(new NathanGain());
 		operatorChooser.addDefault(new DefaultOperator());
-		CameraStream streamCommand = new CameraStream(1);
+		CameraStream streamCommand = new CameraStream(2);
 		streamCommand.start();
 		// RobotMap.Component.leftWheelEncoder.reset();
 		// RobotMap.Component.rightWheelEncoder.reset();
