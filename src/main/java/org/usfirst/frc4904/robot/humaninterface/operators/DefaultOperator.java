@@ -1,21 +1,12 @@
 package org.usfirst.frc4904.robot.humaninterface.operators;
 
 import org.usfirst.frc4904.robot.RobotMap;
-import org.usfirst.frc4904.robot.commands.VelcroPistonRetract;
-import org.usfirst.frc4904.robot.commands.VelcroPistonExtend;
-import org.usfirst.frc4904.robot.commands.CargoIntake;
-import org.usfirst.frc4904.robot.commands.CargoOuttake;
-import org.usfirst.frc4904.robot.commands.WristDown;
-import org.usfirst.frc4904.robot.commands.WristUp;
-import org.usfirst.frc4904.robot.commands.HatchRollerIntake;
-import org.usfirst.frc4904.robot.commands.HatchRollerOuttake;
+import org.usfirst.frc4904.standard.commands.solenoid.SolenoidExtend;
 import org.usfirst.frc4904.standard.humaninput.Operator;
 import org.usfirst.frc4904.standard.commands.RunIfElse;
-import org.usfirst.frc4904.robot.commands.ElevatorControl;
-import org.usfirst.frc4904.robot.commands.HatchOuttakeExtend;
-import org.usfirst.frc4904.robot.commands.HatchOuttakeRetract;
+import org.usfirst.frc4904.robot.commands.elevator.ElevatorControl;
+import org.usfirst.frc4904.robot.commands.manipulator.ReadyGroundIntake;
 import org.usfirst.frc4904.standard.commands.OverrideEnable;
-import org.usfirst.frc4904.standard.commands.solenoid.SolenoidExtend;
 import org.usfirst.frc4904.standard.commands.solenoid.SolenoidRetract;
 import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
 import org.usfirst.frc4904.standard.commands.OverrideDisable;

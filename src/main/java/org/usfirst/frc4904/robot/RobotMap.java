@@ -1,6 +1,5 @@
 package org.usfirst.frc4904.robot;
 
-import org.usfirst.frc4904.robot.subsystems.FloorIO;
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem;
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem.SolenoidState;
 import org.usfirst.frc4904.standard.custom.PCMPort;
@@ -8,7 +7,7 @@ import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CANTalonSRX;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
-import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc4904.robot.subsystems.Manipulator;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import org.usfirst.frc4904.robot.subsystems.FourBarElevator;
 import org.usfirst.frc4904.standard.custom.motioncontrollers.CustomPIDController;
@@ -25,6 +24,7 @@ import org.usfirst.frc4904.standard.custom.sensors.CANEncoder;
 import org.usfirst.frc4904.standard.custom.sensors.EncoderPair;
 import org.usfirst.frc4904.standard.custom.sensors.NavX;
 import edu.wpi.first.wpilibj.SerialPort;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class RobotMap {
 	public static class Port {
@@ -34,6 +34,7 @@ public class RobotMap {
 		}
 
 		public static class CANMotor {
+			public static int manipulatorRoller = 5;
 			public static final int leftDriveA = 1;
 			public static final int leftDriveB = 2;
 			public static final int rightDriveA = 3;
@@ -44,20 +45,21 @@ public class RobotMap {
 			public static final int cargoRoller = 15; // TODO: Adjust port numbers
 		}
 
+		public static class PWM {
+		}
+
 		public static class CAN {
 			public static final int leftWheelEncoder = 0x612;
 			public static final int rightWheelEncoder = 0x613;
 		}
 
 		public static class Pneumatics {
-			public static final PCMPort shifter = new PCMPort(0, 0, 1);
-			public static final PCMPort fourBarLever = new PCMPort(1, 3, 2);
-			// public static final PCMPort velcroPiston = new PCMPort(0, 1, 0); // TODO:
-			// Adjust port numbers
-			// public static final PCMPort hatchOuttakePiston = new PCMPort(0, 3, 2); //
-			// TODO: Adjust port numbers
-			// public static final PCMPort wrist = new PCMPort(-1, -1, -1); // TODO: Adjust
-			// port numbers
+			public static final PCMPort manipulatorWrist = new PCMPort(1, 0, 1);
+			public static final PCMPort manipulatorClaws = new PCMPort(0, 2, 3);
+			public static final PCMPort manipulatorHatchExtender = new PCMPort(0, 4, 5);
+			public static final PCMPort manipulatorGrabber = new PCMPort(0, 0, 1);
+			public static final PCMPort shifter = new PCMPort(0, 6, 7);
+			public static final PCMPort fourBarLever = new PCMPort(1, 4, 5);
 		}
 
 		public static class Digital {
@@ -111,7 +113,7 @@ public class RobotMap {
 	}
 
 	public static class Component {
-		public static FloorIO floorio;
+		public static Manipulator manipulator;
 		public static CANTalonEncoder elevatorEncoder;
 		public static FourBarElevator fourBar;
 		public static CustomPIDController elevatorPID;
@@ -151,6 +153,9 @@ public class RobotMap {
 	}
 
 	public RobotMap() {
+		HumanInput.Driver.xbox = new CustomXbox(Port.HumanInput.xboxController);
+		HumanInput.Driver.xbox.setDeadZone(0.1);
+		HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
 		/* General */
 		Component.pdp = new PDP();
 		Component.navx = new NavX(SerialPort.Port.kMXP);
@@ -207,6 +212,17 @@ public class RobotMap {
 		Component.chassisTurnPID = new CustomPIDController(PID.Turn.P, PID.Turn.I, PID.Turn.D, Component.navx);
 		// Component.chassisTurnPID.setAbsoluteTolerance(PID.Turn.tolerance);
 		// Component.chassisTurnPID.setDerivativeTolerance(PID.Turn.dTolerance);
+		/* Manipulator */
+		Component.manipulator = new Manipulator(
+				new SolenoidSubsystem("Manipulator Wrist", SolenoidState.EXTEND,
+						Port.Pneumatics.manipulatorWrist.buildDoubleSolenoid()),
+				new SolenoidSubsystem("Manipulator Claws", SolenoidState.EXTEND,
+						Port.Pneumatics.manipulatorClaws.buildDoubleSolenoid()),
+				new SolenoidSubsystem("Manipulator Ground", SolenoidState.EXTEND,
+						Port.Pneumatics.manipulatorHatchExtender.buildDoubleSolenoid()),
+				new SolenoidSubsystem("Manipulator Grabber", SolenoidState.EXTEND,
+						Port.Pneumatics.manipulatorGrabber.buildDoubleSolenoid()),
+				new Motor("Manipulator Roller", new CANTalonSRX(Port.CANMotor.manipulatorRoller)));
 		/* Elevator + FourBar */
 
 		// Input.elevatorSwitchBottom = new

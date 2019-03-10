@@ -1,11 +1,6 @@
 package org.usfirst.frc4904.robot.humaninterface.drivers;
 
 import org.usfirst.frc4904.robot.RobotMap;
-import org.usfirst.frc4904.robot.commands.CargoOuttake;
-import org.usfirst.frc4904.robot.commands.HatchOuttakeExtend;
-import org.usfirst.frc4904.robot.commands.HatchOuttakeRetract;
-import org.usfirst.frc4904.robot.commands.VelcroPistonExtend;
-import org.usfirst.frc4904.robot.commands.VelcroPistonRetract;
 import org.usfirst.frc4904.standard.commands.chassis.ChassisShift;
 import org.usfirst.frc4904.standard.humaninput.Driver;
 import org.usfirst.frc4904.standard.subsystems.chassis.SolenoidShifters;
@@ -28,15 +23,12 @@ public class NathanGain extends Driver {
 
 	@Override
 	public void bindCommands() {
-		// RobotMap.HumanInput.Driver.xbox.b.whenPressed(new HatchOuttakeExtend());
-		// RobotMap.HumanInput.Driver.xbox.b.whenReleased(new HatchOuttakeRetract());
-		// RobotMap.HumanInput.Driver.xbox.x.whenPressed(new VelcroPistonExtend());
-		// RobotMap.HumanInput.Driver.xbox.x.whenReleased(new VelcroPistonRetract());
-		// RobotMap.HumanInput.Driver.xbox.y.onlyWhileHeld(new CargoOuttake());
-		RobotMap.HumanInput.Driver.xbox.lb.whenPressed(
-				new ChassisShift(RobotMap.Component.chassis.getShifter(), SolenoidShifters.ShiftState.DOWN));
-		RobotMap.HumanInput.Driver.xbox.rb
-				.whenPressed(new ChassisShift(RobotMap.Component.chassis.getShifter(), SolenoidShifters.ShiftState.UP));
+		// RobotMap.HumanInput.Driver.xbox.lb.whenPressed(
+		// new ChassisShift(RobotMap.Component.chassis.getShifter(),
+		// SolenoidShifters.ShiftState.DOWN));
+		// RobotMap.HumanInput.Driver.xbox.rb
+		// .whenPressed(new ChassisShift(RobotMap.Component.chassis.getShifter(),
+		// SolenoidShifters.ShiftState.UP));
 
 	}
 
