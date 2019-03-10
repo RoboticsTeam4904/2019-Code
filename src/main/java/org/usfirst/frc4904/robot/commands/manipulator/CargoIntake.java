@@ -18,17 +18,18 @@ public class CargoIntake extends RunIfElse {
 	private static double ROLLER_WAIT_TIME = 0.254; // TODO: find actual value
 
 	public CargoIntake() {
-		super(
-			new ReadyGroundIntakeDangerously(),
-			new KittenCommand("Cannot flip claws down due to extension of the ground piston.", LogKitten.KittenLevel.WTF),
-			() -> RobotMap.Component.manipulator.hatchExtender.getState() == SolenoidState.RETRACT);
+		super(new ReadyGroundIntakeDangerously(),
+			new KittenCommand("Cannot flip claws down because we grabber has a hatch.", LogKitten.KittenLevel.WTF),
+			() -> RobotMap.Component.manipulator.hatchGrabber.getState() == SolenoidState.RETRACT);
 	}
 
 	public static class ReadyGroundIntakeDangerously extends CommandGroup {
 		public ReadyGroundIntakeDangerously() {
+			addParallel(new HatchExtenderIn());
+			// addSequential(new WaitCommand())
 			addParallel(new WristDown());
 			addParallel(new ClawsDown());
-			addSequential(new WaitCommand(ROLLER_WAIT_TIME));
+			// addSequential(new WaitCommand(ROLLER_WAIT_TIME));
 			addSequential(new RollerIn());
 		}
 

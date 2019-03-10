@@ -56,7 +56,7 @@ public class DefaultOperator extends Operator {
 		// HatchRollerOuttake());
 		RobotMap.HumanInput.Operator.joystick.button3.onlyWhileHeld(new HatchIntake());
 		RobotMap.HumanInput.Operator.joystick.button4.onlyWhileHeld(new CargoIntake());
-		RobotMap.HumanInput.Operator.joystick.button1.onlyWhileHeld(new HatchOuttake());
+		RobotMap.HumanInput.Operator.joystick.button1.whenPressed(new HatchOuttake());
 		RobotMap.HumanInput.Operator.joystick.button2.onlyWhileHeld(new CargoOuttake());
 
 		// RobotMap.HumanInput.Operator.joystick.button2.onlyWhileHeld(
