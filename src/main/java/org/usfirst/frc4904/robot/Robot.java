@@ -31,8 +31,6 @@ public class Robot extends CommandRobotBase {
 		operatorChooser.addDefault(new DefaultOperator());
 		CameraStream streamCommand = new CameraStream(1);
 		streamCommand.start();
-		Command command = new SolenoidRetract(RobotMap.Component.manipulator.wrist);
-		command.start();
 		// RobotMap.Component.leftWheelEncoder.reset();
 		// RobotMap.Component.rightWheelEncoder.reset();
 		// RobotMap.Input.elevatorSwitchBottom.whenPressed(new NeutralElevator()); //
@@ -71,6 +69,9 @@ public class Robot extends CommandRobotBase {
 	public void teleopInitialize() {
 		teleopCommand = new ChassisMove(RobotMap.Component.chassis, driverChooser.getSelected());
 		teleopCommand.start();
+
+		// Command command = new SolenoidRetract(RobotMap.Component.manipulator.wrist);
+		// command.start(); // RobotMap.initCommands
 	}
 
 	@Override

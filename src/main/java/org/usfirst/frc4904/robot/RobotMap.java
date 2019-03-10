@@ -111,6 +111,8 @@ public class RobotMap {
 		}
 	}
 
+	// public Command[] initCommands;
+
 	public static class Component { // TODO: Reorganize
 		public static Manipulator manipulator;
 		public static CANTalonEncoder elevatorEncoder;
