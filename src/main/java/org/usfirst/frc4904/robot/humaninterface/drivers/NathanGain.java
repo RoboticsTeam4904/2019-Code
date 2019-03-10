@@ -2,6 +2,9 @@ package org.usfirst.frc4904.robot.humaninterface.drivers;
 
 
 import org.usfirst.frc4904.robot.RobotMap;
+import org.usfirst.frc4904.robot.commands.manipulator.HatchGrabberIn;
+import org.usfirst.frc4904.robot.commands.manipulator.HatchGrabberOut;
+import org.usfirst.frc4904.standard.commands.RunIfElse;
 import org.usfirst.frc4904.standard.commands.chassis.ChassisShift;
 import org.usfirst.frc4904.standard.humaninput.Driver;
 import org.usfirst.frc4904.standard.subsystems.chassis.SolenoidShifters;
@@ -30,7 +33,7 @@ public class NathanGain extends Driver {
 		// RobotMap.HumanInput.Driver.xbox.rb
 		// .whenPressed(new ChassisShift(RobotMap.Component.chassis.getShifter(),
 		// SolenoidShifters.ShiftState.UP));
-		// RobotMap.HumanInput.Driver.xbox.x(new RunIfElse(new GrabberOut(), new GrabberIn(), ()))
+		RobotMap.HumanInput.Driver.xbox.x.whenPressed(new RunIfElse(new HatchGrabberOut(), new HatchGrabberIn(), RobotMap.Component.manipulator.hatchGrabber::isExtended));
 	}
 
 	@Override
