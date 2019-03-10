@@ -24,12 +24,12 @@ public class HatchIntake extends RunIf {
 			addParallel(new WristUp());
 			addParallel(new ClawsUp());
 			addParallel(new HatchExtenderOut());
-			addParallel(new GrabberIn());
+			addParallel(new HatchGrabberIn());
 		}
 
 		@Override
 		protected void interrupted() {
-			Command hatchIntake = new RunIf(new GrabberOut(),
+			Command hatchIntake = new RunIf(new HatchGrabberOut(),
 				() -> RobotMap.Component.manipulator.claws.getState() == SolenoidState.RETRACT);
 			hatchIntake.start();
 		}
