@@ -34,11 +34,10 @@ public class HatchIntake extends RunIf {
 		}
 	}
 
-	public static class FinishHatchIntake extends RunIf {
+	public static class FinishHatchIntake extends CommandGroup {
 		public FinishHatchIntake() {
-			super(
-				new HatchGrabberOut(),
-				() -> RobotMap.Component.manipulator.claws.getState() == SolenoidState.RETRACT);
+			addParallel(new HatchExtenderOut());
+			addParallel(new HatchGrabberOut());
 		}
 	}
 }
