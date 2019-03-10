@@ -156,7 +156,7 @@ public class RobotMap {
 		HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
 		/* General */
 		Component.pdp = new PDP();
-		Component.navx = new NavX(SerialPort.Port.kMXP);
+		// Component.navx = new NavX(SerialPort.Port.kMXP);
 
 		/* Drive Train */
 		// Wheel Encoders

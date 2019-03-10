@@ -54,8 +54,8 @@ public class DefaultOperator extends Operator {
 				new MotorConstant(RobotMap.Component.manipulator.roller, RobotMap.Component.manipulator.INTAKE_SPEED));
 		RobotMap.HumanInput.Operator.joystick.button1.onlyWhileHeld(
 				new MotorConstant(RobotMap.Component.manipulator.roller, RobotMap.Component.manipulator.OUTTAKE_SPEED));
-		RobotMap.HumanInput.Operator.joystick.button3.whenPressed(new WristUp());
-		RobotMap.HumanInput.Operator.joystick.button4.whenPressed(new WristDown());
+		RobotMap.HumanInput.Operator.joystick.button11.whenPressed(new WristUp());
+		RobotMap.HumanInput.Operator.joystick.button12.whenPressed(new WristDown());
 		RobotMap.HumanInput.Operator.joystick.button5.whenPressed(new ClawsUp());
 		RobotMap.HumanInput.Operator.joystick.button6.whenPressed(new ClawsDown());
 		// RobotMap.HumanInput.Operator.joystick.button9
