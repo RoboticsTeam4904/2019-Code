@@ -48,7 +48,7 @@ public class FourBarElevator implements Overridable {
 	}
 
 	public State getState() {
-		return state;
+		return state; //this.lever.getState(), this.elevator.motioncontroller.getSensorValue
 	}
 
 	public double getElevatorPosition() {

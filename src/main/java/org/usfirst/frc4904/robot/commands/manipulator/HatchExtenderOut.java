@@ -7,12 +7,12 @@ import org.usfirst.frc4904.standard.commands.RunIfElse;
 import org.usfirst.frc4904.standard.commands.solenoid.SolenoidExtend;
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem.SolenoidState;
 
-public class ManipulatorClawsDown extends RunIfElse {
-	public ManipulatorClawsDown() {
+public class HatchExtenderOut extends RunIfElse {
+	public HatchExtenderOut() {
 		super(
-			new SolenoidExtend("ManipulatorClawsDown", RobotMap.Component.manipulator.claws),
-			new KittenCommand("Cannot flip claws down due to extension of the ground piston.", LogKitten.KittenLevel.WTF),
-			() -> RobotMap.Component.manipulator.hatchExtender.getState() == SolenoidState.RETRACT
+			new SolenoidExtend("HatchExtenderOut", RobotMap.Component.manipulator.hatchExtender),
+			new KittenCommand("Cannot extend ground piston due to claws.", LogKitten.KittenLevel.WTF),
+			() -> RobotMap.Component.manipulator.claws.getState() == SolenoidState.RETRACT
 		);
 	}
 }

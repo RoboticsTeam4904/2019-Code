@@ -11,10 +11,10 @@ public class ReadyHatchIntake extends CommandGroup {
 		requires(RobotMap.Component.manipulator.arm);
 		requires(RobotMap.Component.manipulator.claws);
 		requires(RobotMap.Component.manipulator.grabber);
-		requires(RobotMap.Component.manipulator.groundPiston);
+		requires(RobotMap.Component.manipulator.hatchExtender);
 		requires(RobotMap.Component.manipulator.roller);
 		addParallel(new ManipulatorArmUp());
 		addParallel(new ManipulatorClawsUp());
-		addParallel(new ManipulatorGroundIn());
+		addParallel(new HatchExtenderIn());
 	}
 }
