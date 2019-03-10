@@ -55,13 +55,12 @@ public class RobotMap {
 		}
 
 		public static class Pneumatics {
-			public static final PCMPort manipulatorArm = new PCMPort(-1, -1, -1);
-			public static final PCMPort manipulatorClaws = new PCMPort(-1, -1, -1);
-			public static final PCMPort manipulatorGround = new PCMPort(-1, -1, -1);
-			public static final PCMPort manipulatorGrabber = new PCMPort(-1, -1, -1);
+			public static final PCMPort manipulatorArm = new PCMPort(1, 0, 1);
+			public static final PCMPort manipulatorClaws = new PCMPort(0, 2, 3);
+			public static final PCMPort manipulatorHatchExtender = new PCMPort(0, 4, 5);
+			public static final PCMPort manipulatorGrabber = new PCMPort(0, 0, 1);
 			public static final PCMPort shifter = new PCMPort(0, 0, 1);
 			public static final PCMPort fourBarLever = new PCMPort(1, 4, 5);
-			public static final PCMPort wrist = new PCMPort(-1, -1, -1); // TODO: Adjust port numbers
 		}
 
 		public static class Digital {
@@ -200,7 +199,7 @@ public class RobotMap {
 			new SolenoidSubsystem("Manipulator Claws", SolenoidState.EXTEND,
 				Port.Pneumatics.manipulatorClaws.buildDoubleSolenoid()),
 			new SolenoidSubsystem("Manipulator Ground", SolenoidState.EXTEND,
-				Port.Pneumatics.manipulatorGround.buildDoubleSolenoid()),
+				Port.Pneumatics.manipulatorHatchExtender.buildDoubleSolenoid()),
 			new SolenoidSubsystem("Manipulator Grabber", SolenoidState.EXTEND,
 				Port.Pneumatics.manipulatorGrabber.buildDoubleSolenoid()),
 			new Motor("Manipulator Roller", new CANTalonSRX(Port.CANMotor.manipulatorRoller)));
