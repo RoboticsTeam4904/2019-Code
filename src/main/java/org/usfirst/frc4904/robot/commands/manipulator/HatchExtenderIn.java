@@ -12,7 +12,7 @@ public class HatchExtenderIn extends RunIfElse {
 		super(
 			new SolenoidRetract("ManipulatorHatchExtenderIn", RobotMap.Component.manipulator.hatchExtender),
 			new KittenCommand("Cannot retract ground piston due to hatch.", LogKitten.KittenLevel.WTF),
-			() -> RobotMap.Component.manipulator.grabber.getState() == SolenoidState.RETRACT
+			() -> RobotMap.Component.manipulator.hatchGrabber.getState() == SolenoidState.RETRACT
 		);
 	}
 }

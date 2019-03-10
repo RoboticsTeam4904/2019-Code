@@ -1,5 +1,6 @@
 package org.usfirst.frc4904.robot;
 
+
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem;
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem.SolenoidState;
 import org.usfirst.frc4904.standard.custom.PCMPort;
@@ -57,7 +58,7 @@ public class RobotMap {
 			public static final PCMPort hatchExtender = new PCMPort(0, 4, 5);
 			public static final PCMPort hatchGrabber = new PCMPort(0, 0, 1);
 			public static final PCMPort shifter = new PCMPort(0, 6, 7); // TODO: Get real ports
-			public static final PCMPort fourBarLever = new PCMPort(1, 4, 5);
+			public static final PCMPort fourBarLever = new PCMPort(1, 3, 2);
 		}
 
 		public static class Digital {
@@ -72,11 +73,11 @@ public class RobotMap {
 			public static final double DIAMETER_INCHES = -1;
 			public static final double CIRCUMFERENCE_INCHES = Metrics.Chassis.DIAMETER_INCHES * Math.PI;
 			public static final double TICKS_PER_INCH = Metrics.Chassis.TICKS_PER_REVOLUTION
-					/ Metrics.Chassis.CIRCUMFERENCE_INCHES;
+				/ Metrics.Chassis.CIRCUMFERENCE_INCHES;
 			public static final double DISTANCE_FRONT_BACK = -1;
 			public static final double DISTANCE_SIDE_SIDE = -1;
 			public static final double INCHES_PER_TICK = Metrics.Chassis.CIRCUMFERENCE_INCHES
-					/ Metrics.Chassis.TICKS_PER_REVOLUTION;
+				/ Metrics.Chassis.TICKS_PER_REVOLUTION;
 		}
 	}
 
@@ -174,18 +175,18 @@ public class RobotMap {
 		Component.rightWheelAccelerationCap.enable();
 		// Wheels
 		Component.rightWheelA = new Motor("rightWheelA", false, Component.rightWheelAccelerationCap,
-				new CANTalonSRX(Port.CANMotor.rightDriveA));
+			new CANTalonSRX(Port.CANMotor.rightDriveA));
 		Component.rightWheelB = new Motor("rightWheelB", true, Component.rightWheelAccelerationCap,
-				new CANTalonSRX(Port.CANMotor.rightDriveB));
+			new CANTalonSRX(Port.CANMotor.rightDriveB));
 		Component.leftWheelA = new Motor("leftWheelA", false, Component.leftWheelAccelerationCap,
-				new CANTalonSRX(Port.CANMotor.leftDriveA));
+			new CANTalonSRX(Port.CANMotor.leftDriveA));
 		Component.leftWheelB = new Motor("leftWheelB", true, Component.leftWheelAccelerationCap,
-				new CANTalonSRX(Port.CANMotor.leftDriveB));
+			new CANTalonSRX(Port.CANMotor.leftDriveB));
 		// Shifter
 		// Component.shifter = new SolenoidShifters(Port.Pneumatics.shifter.buildDoubleSolenoid());
 		// General Chassis
 		Component.chassis = new TankDriveShifting("2019-Chassis", Component.leftWheelA, Component.leftWheelB,
-				Component.rightWheelA, Component.rightWheelB, Component.shifter);
+			Component.rightWheelA, Component.rightWheelB, Component.shifter);
 		// Component.drivePID = new CustomPIDController(PID.Drive.P, PID.Drive.I,
 		// PID.Drive.D, PID.Drive.F,
 		// Component.chassisEncoders);
@@ -208,23 +209,22 @@ public class RobotMap {
 				new Motor("Manipulator Roller", new CANTalonSRX(Port.CANMotor.manipulatorRoller)));
 
 		/* Elevator + FourBar */
-		// Component.rightElevatorMotor = new CANTalonSRX(Port.CANMotor.rightElevatorMotor);
-		// Component.rightElevatorMotor.setInverted(true); // TODO: Add into constructor in standard
-		// Component.leftElevatorMotor = new CANTalonSRX(Port.CANMotor.leftElevatorMotor);
-		// Component.elevatorEncoder = new CANTalonEncoder(Component.leftElevatorMotor,
-		// FourBarElevator.TICK_MULTIPLIER);
-		// Component.elevatorPID = new CustomPIDController(PID.Elevator.P,
-		// PID.Elevator.I, PID.Elevator.D, PID.Elevator.F,
-		// Component.elevatorEncoder);
-		// Component.leftElevatorMotor.setNeutralMode(NeutralMode.Brake);
-		// Component.rightElevatorMotor.setNeutralMode(NeutralMode.Brake);
-		// Component.fourBar = new FourBarElevator(
-		// new SolenoidSubsystem("FourBarLever", SolenoidState.RETRACT,
-		// Port.Pneumatics.fourBarLever.buildDoubleSolenoid()),
-		// new PositionSensorMotor("Elevator", Component.elevatorPID,
-		// Component.leftElevatorMotor,
-		// Component.rightElevatorMotor));
-
+		Component.rightElevatorMotor = new CANTalonSRX(Port.CANMotor.rightElevatorMotor);
+		Component.rightElevatorMotor.setInverted(true);
+		Component.leftElevatorMotor = new CANTalonSRX(Port.CANMotor.leftElevatorMotor);
+		Component.elevatorEncoder = new CANTalonEncoder(Component.leftElevatorMotor,
+			FourBarElevator.TICK_MULTIPLIER);
+		Component.elevatorPID = new CustomPIDController(PID.Elevator.P,
+			PID.Elevator.I, PID.Elevator.D, PID.Elevator.F,
+			Component.elevatorEncoder);
+		Component.leftElevatorMotor.setNeutralMode(NeutralMode.Brake);
+		Component.rightElevatorMotor.setNeutralMode(NeutralMode.Brake);
+		Component.fourBar = new FourBarElevator(
+			new SolenoidSubsystem("FourBarLever", SolenoidState.RETRACT,
+				Port.Pneumatics.fourBarLever.buildDoubleSolenoid()),
+			new PositionSensorMotor("Elevator", Component.elevatorPID,
+				Component.leftElevatorMotor,
+				Component.rightElevatorMotor));
 		// Component.elevatorPID.setAbsoluteTolerance(PID.Elevator.tolerance);
 		// Component.elevatorPID.setDerivativeTolerance(PID.Elevator.dTolerance);
 		// Input.elevatorSwitchBottom = new
@@ -239,6 +239,7 @@ public class RobotMap {
 		HumanInput.Operator.joystick.setDeadzone(HumanInterfaceConfig.JOYSTICK_DEADZONE);
 
 		/* Main Subsystems */
+		Component.mainSubsystems = new Subsystem[] {Component.fourBar.lever};
 		// Component.mainSubsystems = new Subsystem[] { Component.chassis,
 		// Component.fourBar.lever,
 		// Component.fourBar.elevator, Component.floorio.hatchOuttakePiston,
