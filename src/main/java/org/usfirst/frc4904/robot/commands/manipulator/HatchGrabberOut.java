@@ -5,6 +5,6 @@ import org.usfirst.frc4904.standard.commands.solenoid.SolenoidExtend;
 
 public class HatchGrabberOut extends SolenoidExtend {
 	public HatchGrabberOut() {
-		super("HatchGrabberOut", RobotMap.Component.manipulator.grabber);
+		super("HatchGrabberOut", RobotMap.Component.manipulator.hatchGrabber);
 	}
 }

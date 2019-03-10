@@ -10,15 +10,15 @@ public class Manipulator {
 	public final SolenoidSubsystem wrist; // flipper for whole  manipulator
 	public final SolenoidSubsystem claws; // cargo claws
 	public final SolenoidSubsystem hatchExtender; // extend hatch grabber out of frame
-	public final SolenoidSubsystem grabber; // the hatch grabber
+	public final SolenoidSubsystem hatchGrabber; // the hatch grabber
 	public final Motor roller; // CargoIO rollers
 
-	public Manipulator(SolenoidSubsystem wrist, SolenoidSubsystem claws, SolenoidSubsystem groundPiston,
-			SolenoidSubsystem grabber, Motor roller) {
+	public Manipulator(SolenoidSubsystem wrist, SolenoidSubsystem claws, SolenoidSubsystem hatchExtender,
+				SolenoidSubsystem hatchGrabber, Motor roller) {
 		this.wrist = wrist;
 		this.claws = claws;
-		this.hatchExtender = groundPiston;
-		this.grabber = grabber;
+		this.hatchExtender = hatchExtender;
+		this.hatchGrabber = hatchGrabber;
 		this.roller = roller;
 	}
 }
