@@ -22,7 +22,7 @@ public class HatchIntake extends RunIf {
 	public static class ReadyHatchIntakeDangerously extends CommandGroup {
 		public ReadyHatchIntakeDangerously() {
 			addParallel(new WristUp());
-			addParallel(new ClawsUp());
+			// addParallel(new ClawsUp());
 			addParallel(new HatchExtenderOut());
 			addParallel(new HatchGrabberIn());
 		}

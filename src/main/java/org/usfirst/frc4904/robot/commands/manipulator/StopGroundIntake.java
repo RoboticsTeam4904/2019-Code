@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class StopGroundIntake extends CommandGroup {
 	public StopGroundIntake() {
 		addParallel(new WristUp());
+		addParallel(new RollerKeepBall());
 		
 	}
 }
