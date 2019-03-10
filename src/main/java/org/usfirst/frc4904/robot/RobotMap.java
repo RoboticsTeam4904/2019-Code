@@ -196,13 +196,13 @@ public class RobotMap {
 		// Component.chassisTurnPID.setDerivativeTolerance(PID.Turn.dTolerance);
 		/* Manipulator */
 		Component.manipulator = new Manipulator(
-			new SolenoidSubsystem("Manipulator Wrist", SolenoidState.RETRACT,
+			new SolenoidSubsystem("Manipulator Wrist",// SolenoidState.RETRACT,
 				Port.Pneumatics.wrist.buildDoubleSolenoid()),
 			new SolenoidSubsystem("Manipulator Claws",
 				Port.Pneumatics.claws.buildDoubleSolenoid()),
-			new SolenoidSubsystem("Manipulator Hatch Extender", SolenoidState.RETRACT,
+			new SolenoidSubsystem("Manipulator Hatch Extender",// SolenoidState.RETRACT,
 				Port.Pneumatics.hatchExtender.buildDoubleSolenoid()),
-			new SolenoidSubsystem("Manipulator Hatch Grabber", SolenoidState.RETRACT,
+			new SolenoidSubsystem("Manipulator Hatch Grabber", SolenoidState.EXTEND,
 				Port.Pneumatics.hatchGrabber.buildDoubleSolenoid()),
 			new Motor("Manipulator Roller", new CANTalonSRX(Port.CANMotor.manipulatorRoller)));
 		/* Elevator + FourBar */
