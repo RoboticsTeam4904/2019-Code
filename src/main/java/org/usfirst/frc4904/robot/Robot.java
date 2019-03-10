@@ -17,6 +17,7 @@ import org.usfirst.frc4904.standard.LogKitten;
 import org.usfirst.frc4904.standard.commands.SingleOp;
 import org.usfirst.frc4904.robot.commands.CameraStream;
 import org.usfirst.frc4904.standard.commands.chassis.ChassisMove;
+import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem.SolenoidState;
 
 public class Robot extends CommandRobotBase {
 	private RobotMap map = new RobotMap();
@@ -100,7 +101,6 @@ public class Robot extends CommandRobotBase {
 
 	@Override
 	public void alwaysExecute() {
-		LogKitten.wtf(RobotMap.Component.fourBar.lever.isExtended());
 		// LogKitten.wtf(RobotMap.Component.elevatorEncoder.getDistance()); // TODO:
 		// Just for testing encoder
 		// LogKitten.wtf(RobotMap.Component.leftWheelEncoder.getDistance()); // TODO:

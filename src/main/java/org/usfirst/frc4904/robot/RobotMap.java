@@ -55,7 +55,7 @@ public class RobotMap {
 
 		public static class Pneumatics {
 			public static final PCMPort manipulatorWrist = new PCMPort(1, 0, 1);
-			public static final PCMPort manipulatorClaws = new PCMPort(0, 2, 3);
+			public static final PCMPort manipulatorClaws = new PCMPort(0, 3, 2);
 			public static final PCMPort manipulatorHatchExtender = new PCMPort(0, 4, 5);
 			public static final PCMPort manipulatorGrabber = new PCMPort(0, 0, 1);
 			public static final PCMPort shifter = new PCMPort(0, 6, 7);
@@ -159,21 +159,24 @@ public class RobotMap {
 		/* General */
 		Component.pdp = new PDP();
 		Component.navx = new NavX(SerialPort.Port.kMXP);
-		Component.rightElevatorMotor = new CANTalonSRX(Port.CANMotor.rightElevatorMotor);
-		Component.rightElevatorMotor.setInverted(true);
-		Component.leftElevatorMotor = new CANTalonSRX(Port.CANMotor.leftElevatorMotor);
+		// Component.rightElevatorMotor = new
+		// CANTalonSRX(Port.CANMotor.rightElevatorMotor);
+		// Component.rightElevatorMotor.setInverted(true);
+		// Component.leftElevatorMotor = new
+		// CANTalonSRX(Port.CANMotor.leftElevatorMotor);
 		// Component.elevatorEncoder = new CANTalonEncoder(Component.leftElevatorMotor,
 		// FourBarElevator.TICK_MULTIPLIER);
 		// Component.elevatorPID = new CustomPIDController(PID.Elevator.P,
 		// PID.Elevator.I, PID.Elevator.D, PID.Elevator.F,
 		// Component.elevatorEncoder);
-		Component.leftElevatorMotor.setNeutralMode(NeutralMode.Brake);
-		Component.rightElevatorMotor.setNeutralMode(NeutralMode.Brake);
-		Component.fourBar = new FourBarElevator(
-				new SolenoidSubsystem("FourBarLever", SolenoidState.RETRACT,
-						Port.Pneumatics.fourBarLever.buildDoubleSolenoid()),
-				new PositionSensorMotor("Elevator", Component.elevatorPID, Component.leftElevatorMotor,
-						Component.rightElevatorMotor));
+		// Component.leftElevatorMotor.setNeutralMode(NeutralMode.Brake);
+		// Component.rightElevatorMotor.setNeutralMode(NeutralMode.Brake);
+		// Component.fourBar = new FourBarElevator(
+		// new SolenoidSubsystem("FourBarLever", SolenoidState.RETRACT,
+		// Port.Pneumatics.fourBarLever.buildDoubleSolenoid()),
+		// new PositionSensorMotor("Elevator", Component.elevatorPID,
+		// Component.leftElevatorMotor,
+		// Component.rightElevatorMotor));
 
 		// Component.elevatorPID.setAbsoluteTolerance(PID.Elevator.tolerance);
 		// Component.elevatorPID.setDerivativeTolerance(PID.Elevator.dTolerance);
@@ -216,13 +219,13 @@ public class RobotMap {
 		// Component.chassisTurnPID.setDerivativeTolerance(PID.Turn.dTolerance);
 		/* Manipulator */
 		Component.manipulator = new Manipulator(
-				new SolenoidSubsystem("Manipulator Wrist", SolenoidState.EXTEND,
+				new SolenoidSubsystem("Manipulator Wrist", SolenoidState.RETRACT,
 						Port.Pneumatics.manipulatorWrist.buildDoubleSolenoid()),
-				new SolenoidSubsystem("Manipulator Claws", SolenoidState.EXTEND,
+				new SolenoidSubsystem("Manipulator Claws", SolenoidState.RETRACT,
 						Port.Pneumatics.manipulatorClaws.buildDoubleSolenoid()),
-				new SolenoidSubsystem("Manipulator Ground", SolenoidState.EXTEND,
+				new SolenoidSubsystem("Manipulator Ground", SolenoidState.RETRACT,
 						Port.Pneumatics.manipulatorHatchExtender.buildDoubleSolenoid()),
-				new SolenoidSubsystem("Manipulator Grabber", SolenoidState.EXTEND,
+				new SolenoidSubsystem("Manipulator Grabber", SolenoidState.RETRACT,
 						Port.Pneumatics.manipulatorGrabber.buildDoubleSolenoid()),
 				new Motor("Manipulator Roller", new CANTalonSRX(Port.CANMotor.manipulatorRoller)));
 		/* Elevator + FourBar */
