@@ -5,6 +5,8 @@ import org.usfirst.frc4904.standard.commands.solenoid.SolenoidExtend;
 import org.usfirst.frc4904.standard.humaninput.Operator;
 import org.usfirst.frc4904.standard.commands.RunIfElse;
 import org.usfirst.frc4904.robot.commands.elevator.ElevatorControl;
+import org.usfirst.frc4904.robot.commands.manipulator.ClawsDown;
+import org.usfirst.frc4904.robot.commands.manipulator.ClawsUp;
 import org.usfirst.frc4904.robot.commands.manipulator.ReadyGroundIntake;
 import org.usfirst.frc4904.standard.commands.OverrideEnable;
 import org.usfirst.frc4904.standard.commands.solenoid.SolenoidRetract;
@@ -43,6 +45,8 @@ public class DefaultOperator extends Operator {
 		// CargoOuttake());
 		// RobotMap.HumanInput.Operator.joystick.button7.onlyWhileHeld(new
 		// HatchRollerOuttake());
+		RobotMap.HumanInput.Operator.joystick.button3.whenPressed(new ClawsUp());
+		RobotMap.HumanInput.Operator.joystick.button4.whenPressed(new ClawsDown());
 		RobotMap.HumanInput.Operator.joystick.button9
 				.whenPressed(new SolenoidExtend("FourBarUp", RobotMap.Component.fourBar.lever));
 		RobotMap.HumanInput.Operator.joystick.button8

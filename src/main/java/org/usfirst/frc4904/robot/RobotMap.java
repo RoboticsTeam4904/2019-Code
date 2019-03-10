@@ -169,13 +169,15 @@ public class RobotMap {
 		// Component.elevatorEncoder);
 		Component.leftElevatorMotor.setNeutralMode(NeutralMode.Brake);
 		Component.rightElevatorMotor.setNeutralMode(NeutralMode.Brake);
-		// Component.elevatorPID.setAbsoluteTolerance(PID.Elevator.tolerance);
-		// Component.elevatorPID.setDerivativeTolerance(PID.Elevator.dTolerance);
 		Component.fourBar = new FourBarElevator(
 				new SolenoidSubsystem("FourBarLever", SolenoidState.RETRACT,
 						Port.Pneumatics.fourBarLever.buildDoubleSolenoid()),
 				new PositionSensorMotor("Elevator", Component.elevatorPID, Component.leftElevatorMotor,
 						Component.rightElevatorMotor));
+
+		// Component.elevatorPID.setAbsoluteTolerance(PID.Elevator.tolerance);
+		// Component.elevatorPID.setDerivativeTolerance(PID.Elevator.dTolerance);
+
 		/* Drive Train */
 		// Wheel Encoders
 		// Component.leftWheelEncoder = new CANEncoder("LeftEncoder",
