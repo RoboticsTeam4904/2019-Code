@@ -22,6 +22,7 @@ public class ClawsDown extends RunIfElse {
 		public ClawsDownAndHatchExtenderIn() {
 			addParallel(new SolenoidExtend("Claws Down", RobotMap.Component.manipulator.claws));
 			addParallel(new SolenoidRetract("HatchExtenderIn", RobotMap.Component.manipulator.hatchExtender));
+			addParallel(new RollerKeepBall());
 		}
 	}
 }
