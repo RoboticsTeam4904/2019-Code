@@ -55,14 +55,12 @@ public class RobotMap {
 		}
 
 		public static class Pneumatics {
-			public static PCMPort manipulatorArm = new PCMPort(-1, -1, -1);
-			public static PCMPort manipulatorClaws = new PCMPort(-1, -1, -1);
-			public static PCMPort manipulatorGround = new PCMPort(-1, -1, -1);
-			public static PCMPort manipulatorGrabber = new PCMPort(-1, -1, -1);
+			public static final PCMPort manipulatorArm = new PCMPort(-1, -1, -1);
+			public static final PCMPort manipulatorClaws = new PCMPort(-1, -1, -1);
+			public static final PCMPort manipulatorGround = new PCMPort(-1, -1, -1);
+			public static final PCMPort manipulatorGrabber = new PCMPort(-1, -1, -1);
 			public static final PCMPort shifter = new PCMPort(0, 0, 1);
 			public static final PCMPort fourBarLever = new PCMPort(1, 4, 5);
-			public static final PCMPort velcroPiston = new PCMPort(0, 1, 0); // TODO: Adjust port numbers
-			public static final PCMPort hatchOuttakePiston = new PCMPort(0, 3, 2); // TODO: Adjust port numbers
 			public static final PCMPort wrist = new PCMPort(-1, -1, -1); // TODO: Adjust port numbers
 		}
 
