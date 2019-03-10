@@ -19,13 +19,13 @@ public class GroundIntake extends RunIfElse {
 
 	public GroundIntake() {
 		super(
-			new ReadyGroundIntake(),
+			new ReadyGroundIntakeDangerously(),
 			new KittenCommand("Cannot flip claws down due to extension of the ground piston.", LogKitten.KittenLevel.WTF),
 			() -> RobotMap.Component.manipulator.hatchExtender.getState() == SolenoidState.RETRACT);
 	}
 
-	public static class ReadyGroundIntake extends CommandGroup {
-		public ReadyGroundIntake() {
+	public static class ReadyGroundIntakeDangerously extends CommandGroup {
+		public ReadyGroundIntakeDangerously() {
 			addParallel(new WristDown());
 			addParallel(new ClawsDown());
 			addSequential(new WaitCommand(ROLLER_WAIT_TIME));
@@ -34,16 +34,16 @@ public class GroundIntake extends RunIfElse {
 
 		@Override
 		protected void interrupted() {
-			Command intake = new StopGroundIntake();
-			intake.start();
+			Command finishIntake = new FinishGroundIntake();
+			finishIntake.start();
 		}
 	}
 
 	/**
 	 * Returns the manipulator to its original position after intaking
 	 */
-	public static class StopGroundIntake extends CommandGroup {
-		public StopGroundIntake() {
+	public static class FinishGroundIntake extends CommandGroup {
+		public FinishGroundIntake() {
 			addParallel(new WristUp());
 			addParallel(new RollerKeepBall());
 		}

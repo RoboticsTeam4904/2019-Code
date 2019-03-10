@@ -29,9 +29,16 @@ public class HatchIntake extends RunIf {
 
 		@Override
 		protected void interrupted() {
-			Command hatchIntake = new RunIf(new HatchGrabberOut(),
+			Command finishIntake = new FinishHatchIntake();
+			finishIntake.start();
+		}
+	}
+
+	public static class FinishHatchIntake extends RunIf {
+		public FinishHatchIntake() {
+			super(
+				new HatchGrabberOut(),
 				() -> RobotMap.Component.manipulator.claws.getState() == SolenoidState.RETRACT);
-			hatchIntake.start();
 		}
 	}
 }
