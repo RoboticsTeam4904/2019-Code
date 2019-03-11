@@ -204,7 +204,7 @@ public class RobotMap {
 				Port.Pneumatics.claws.buildDoubleSolenoid()),
 			new SolenoidSubsystem("Manipulator Hatch Extender",// SolenoidState.RETRACT,
 				Port.Pneumatics.hatchExtender.buildDoubleSolenoid()),
-			new SolenoidSubsystem("Manipulator Hatch Grabber", SolenoidState.EXTEND,
+			new SolenoidSubsystem("Manipulator Hatch Grabber",// SolenoidState.EXTEND,
 				Port.Pneumatics.hatchGrabber.buildDoubleSolenoid()),
 			new Motor("Manipulator Roller", new CANTalonSRX(Port.CANMotor.manipulatorRoller)));
 		/* Elevator + FourBar */
@@ -236,7 +236,7 @@ public class RobotMap {
 		HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
 		HumanInput.Operator.joystick.setDeadzone(HumanInterfaceConfig.JOYSTICK_DEADZONE);
 		/* Main Subsystems */
-		Component.mainSubsystems = new Subsystem[] {Component.fourBar.lever};
+		Component.mainSubsystems = new Subsystem[] {Component.fourBar.lever, Component.manipulator.hatchExtender, Component.manipulator.hatchGrabber, Component.manipulator.claws, Component.manipulator.wrist};
 		// Component.mainSubsystems = new Subsystem[] { Component.chassis,
 		// Component.fourBar.lever,
 		// Component.fourBar.elevator, Component.floorio.hatchOuttakePiston,
