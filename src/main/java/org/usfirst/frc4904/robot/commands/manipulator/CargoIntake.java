@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class CargoIntake extends RunIfElse {
 	private static double ROLLER_WAIT_TIME = 0.1;
+	public static double WRIST_UP_WAIT_TIME = 0.2;
 
 	public CargoIntake() {
 		super(new ReadyGroundIntakeDangerously(),
@@ -48,6 +49,7 @@ public class CargoIntake extends RunIfElse {
 		public FinishGroundIntake() {
 			addParallel(new RollerKeepBall());
 			addParallel(new ClawsDown());
+			addSequential(new WaitCommand(WRIST_UP_WAIT_TIME));
 			addParallel(new WristUp());
 			addParallel(new HatchExtenderIn());
 		}
