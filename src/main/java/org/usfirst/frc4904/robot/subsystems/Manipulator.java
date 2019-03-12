@@ -1,6 +1,7 @@
 package org.usfirst.frc4904.robot.subsystems;
 
 
+import org.usfirst.frc4904.robot.commands.manipulator.RollerDefault;
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem;
 import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 
@@ -21,5 +22,6 @@ public class Manipulator {
 		this.hatchExtender = hatchExtender;
 		this.hatchGrabber = hatchGrabber;
 		this.roller = roller;
+		this.roller.setDefaultCommand(new RollerDefault());
 	}
 }
