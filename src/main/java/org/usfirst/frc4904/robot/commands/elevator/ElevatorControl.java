@@ -1,7 +1,8 @@
 package org.usfirst.frc4904.robot.commands.elevator;
 
-import java.util.function.BooleanSupplier;
 
+import java.awt.Robot;
+import java.util.function.BooleanSupplier;
 import org.usfirst.frc4904.robot.RobotMap;
 import org.usfirst.frc4904.robot.subsystems.FourBarElevator;
 import org.usfirst.frc4904.standard.LogKitten;
@@ -16,21 +17,22 @@ public class ElevatorControl extends MotorControl {
 
 	public ElevatorControl(BooleanSupplier joystickDirection) {
 		super(RobotMap.Component.fourBar.elevator, RobotMap.HumanInput.Operator.joystick,
-				CustomJoystick.Y_AXIS);
+			CustomJoystick.Y_AXIS);
 		requires(RobotMap.Component.fourBar.elevator);
 	}
 
 	@Override
 	protected void execute() {
-		if (!RobotMap.Component.fourBar.isOverridden() && (
-				(joystickDirection.getAsBoolean() && RobotMap.Input.elevatorSwitchTop.get())
-				|| (!joystickDirection.getAsBoolean() && RobotMap.Input.elevatorSwitchBottom.get()))) {
-				motor.set(0);
-				LogKitten.d("MotorControl executing: 0");
+		if (!RobotMap.Component.fourBar.isOverridden()
+			&& (joystickDirection.getAsBoolean() ? RobotMap.Input.elevatorSwitchTop : RobotMap.Input.elevatorSwitchBottom)
+				.get()) {
+			motor.set(0);
+			LogKitten.d("MotorControl executing: 0");
 		} else {
-			double scale = joystickDirection.getAsBoolean() ? FourBarElevator.UP_SPEED : FourBarElevator.DOWN_SPEED;
-			motor.set(controller.getAxis(axis) * scale);
-			LogKitten.d("MotorControl executing: " + controller.getAxis(axis));
+			double speed = controller.getAxis(axis)
+				* (joystickDirection.getAsBoolean() ? FourBarElevator.UP_SPEED : FourBarElevator.DOWN_SPEED);
+			motor.set(speed);
+			LogKitten.d("MotorControl executing: " + speed);
 		}
 	}
 }
