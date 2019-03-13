@@ -19,6 +19,7 @@ public class ElevatorControl extends MotorControl {
 		super(RobotMap.Component.fourBar.elevator, RobotMap.HumanInput.Operator.joystick,
 			CustomJoystick.Y_AXIS);
 		requires(RobotMap.Component.fourBar.elevator);
+		this.joystickDirection = joystickDirection;
 	}
 
 	@Override

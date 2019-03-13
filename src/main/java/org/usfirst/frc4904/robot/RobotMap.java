@@ -24,6 +24,7 @@ import org.usfirst.frc4904.standard.custom.sensors.PDP;
 import org.usfirst.frc4904.standard.custom.sensors.CANEncoder;
 import org.usfirst.frc4904.standard.custom.sensors.EncoderPair;
 import org.usfirst.frc4904.standard.custom.sensors.NavX;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -139,8 +140,8 @@ public class RobotMap {
 	}
 
 	public static class Input {
-		public static CustomDigitalLimitSwitch elevatorSwitchBottom; // TODO: Move into fourBar subsystem
-		public static CustomDigitalLimitSwitch elevatorSwitchTop;
+		public static DigitalInput elevatorSwitchBottom; // TODO: Move into fourBar subsystem
+		public static DigitalInput elevatorSwitchTop;
 	}
 
 	public static class HumanInput {
@@ -226,10 +227,10 @@ public class RobotMap {
 				Component.rightElevatorMotor));
 		// Component.elevatorPID.setAbsoluteTolerance(PID.Elevator.tolerance);
 		// Component.elevatorPID.setDerivativeTolerance(PID.Elevator.dTolerance);
-		// Input.elevatorSwitchBottom = new
-		// CustomDigitalLimitSwitch(Port.Digital.elevatorSwitchBottomPort);
-		// Input.elevatorSwitchTop = new
-		// CustomDigitalLimitSwitch(Port.Digital.elevatorSwitchTopPort);
+		Input.elevatorSwitchBottom = new
+			DigitalInput(Port.Digital.elevatorSwitchBottomPort);
+		Input.elevatorSwitchTop = new
+			DigitalInput(Port.Digital.elevatorSwitchTopPort);
 		/* Human Input */
 		HumanInput.Driver.xbox = new CustomXbox(Port.HumanInput.xboxController);
 		HumanInput.Driver.xbox.setDeadZone(HumanInterfaceConfig.XBOX_DEADZONE);
