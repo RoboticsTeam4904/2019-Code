@@ -21,6 +21,7 @@ import org.usfirst.frc4904.robot.commands.manipulator.WristDown;
 import org.usfirst.frc4904.robot.commands.manipulator.WristUp;
 import org.usfirst.frc4904.robot.commands.manipulator.CargoIntake;
 import org.usfirst.frc4904.robot.commands.manipulator.CargoOuttake;
+import org.usfirst.frc4904.robot.commands.manipulator.ManipulatorReset;
 import org.usfirst.frc4904.standard.commands.OverrideEnable;
 import org.usfirst.frc4904.standard.commands.solenoid.SolenoidRetract;
 import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
