@@ -33,15 +33,6 @@ public class Robot extends CommandRobotBase {
 		streamCommand.start();
 		// RobotMap.Component.leftWheelEncoder.reset();
 		// RobotMap.Component.rightWheelEncoder.reset();
-		// RobotMap.Input.elevatorSwitchBottom.whenPressed(new NeutralElevator()); //
-		// TODO: Test if this is needed
-		// RobotMap.Input.elevatorSwitchTop.whenPressed(new NeutralElevator());
-		// RobotMap.Input.elevatorSwitchBottom.whenPressed(new SingleOp(() -> {
-		// RobotMap.Component.elevatorEncoder.reset();
-		// }));
-		// RobotMap.Input.elevatorSwitchTop.whenPressed(new SingleOp(() -> {
-		// RobotMap.Component.leftElevatorMotor.setSelectedSensorPosition((int)
-		// FourBarElevator.MAX_HEIGHT, 0, 0);
 		// })); // TODO: CustomEncoder should have a resetViaOffset
 		// SmartDashboard.putNumber("ElevatorPID/P",
 		// RobotMap.Component.elevatorPID.getP());
