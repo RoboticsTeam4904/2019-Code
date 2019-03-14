@@ -14,7 +14,7 @@ import org.usfirst.frc4904.standard.subsystems.chassis.SolenoidShifters;
 public class NathanGain extends Driver {
 	public static final double SPEED_GAIN = 1;
 	public static final double SPEED_EXP = 2;
-	public static final double TURN_GAIN = 1;
+	public static final double TURN_GAIN = 0.7;
 	public static final double TURN_EXP = 2;
 	public static final double Y_SPEED_SCALE = 1;
 	public static final double TURN_SPEED_SCALE = 1;
@@ -24,7 +24,8 @@ public class NathanGain extends Driver {
 	}
 
 	protected double scaleGain(double input, double gain, double exp) {
-		return Math.pow(Math.abs(input), exp) * gain * Math.signum(input);
+		return input * TURN_GAIN;
+		// return Math.pow(Math.abs(input), exp) * gain * Math.signum(input);
 	}
 
 	@Override
