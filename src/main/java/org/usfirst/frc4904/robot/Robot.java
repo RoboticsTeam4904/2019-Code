@@ -106,6 +106,12 @@ public class Robot extends CommandRobotBase {
 
 	@Override
 	public void alwaysExecute() {
+		SmartDashboard.putBoolean("HatchExtenderExtended(Out)", RobotMap.Component.manipulator.hatchExtender.isExtended());
+		SmartDashboard.putBoolean("HatchGrabberExtended(Out)", RobotMap.Component.manipulator.hatchGrabber.isExtended());
+		SmartDashboard.putBoolean("ClawsExtended(Down)", RobotMap.Component.manipulator.hatchExtender.isExtended());
+		SmartDashboard.putBoolean("WristExtended(Down)", RobotMap.Component.manipulator.hatchExtender.isExtended());
+		SmartDashboard.putBoolean("WristExtended(Down)", RobotMap.Component.manipulator.hatchExtender.isExtended());
+		SmartDashboard.putNumber("RollerSpeed", RobotMap.Component.manipulator.roller.get());
 		// Just for testing encoder
 		// SmartDashboard.putNumber("ElevatorPID/e",
 		// RobotMap.Component.elevatorPID.getError());
