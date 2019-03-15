@@ -30,52 +30,52 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class RobotMap {
 	public static class Port {
 		public static class HumanInput {
-			public static final int joystick = 0;
-			public static final int xboxController = 1;
+			public static final int joystick = WhichBot.compBot ? 0 : 0;
+			public static final int xboxController = WhichBot.compBot ? 1 : 1;
 		}
 
 		public static class CANMotor {
-			public static final int leftDriveA = 1;
-			public static final int leftDriveB = 2;
-			public static final int rightDriveA = 3;
-			public static final int rightDriveB = 4;
-			public static final int manipulatorRoller = 5;
-			public static final int leftElevatorMotor = 7;
-			public static final int rightElevatorMotor = 8;
+			public static final int leftDriveA = WhichBot.compBot ? 1 : 1;
+			public static final int leftDriveB = WhichBot.compBot ? 2 : 2;
+			public static final int rightDriveA = WhichBot.compBot ? 3 : 3;
+			public static final int rightDriveB = WhichBot.compBot ? 4 : 4;
+			public static final int manipulatorRoller = WhichBot.compBot ? 5 : 5;
+			public static final int leftElevatorMotor = WhichBot.compBot ? 7 : 7;
+			public static final int rightElevatorMotor = WhichBot.compBot ? 8 : 8;
 		}
 
 		public static class PWM {
 		}
 
 		public static class CAN {
-			public static final int leftWheelEncoder = 0x612;
-			public static final int rightWheelEncoder = 0x613;
+			public static final int leftWheelEncoder = WhichBot.compBot ? 0x612 : 0x612;
+			public static final int rightWheelEncoder = WhichBot.compBot ? 0x613 : 0x613;
 		}
 
 		public static class Pneumatics {
-			public static final PCMPort wrist = new PCMPort(1, 0, 1);
-			public static final PCMPort claws = new PCMPort(0, 3, 2);
-			public static final PCMPort hatchExtender = new PCMPort(0, 5, 4);
-			public static final PCMPort hatchGrabber = new PCMPort(0, 0, 1);
-			public static final PCMPort shifter = new PCMPort(0, 6, 7); // TODO: Get real ports
-			public static final PCMPort fourBarLever = new PCMPort(1, 3, 2);
+			public static final PCMPort wrist = WhichBot.compBot ? new PCMPort(1, 0, 1) : new PCMPort(1, 0, 1);
+			public static final PCMPort claws = WhichBot.compBot ? new PCMPort(0, 3, 2) : new PCMPort(0, 3, 2);
+			public static final PCMPort hatchExtender = WhichBot.compBot ? new PCMPort(0, 5, 4) : new PCMPort(0, 5, 4);
+			public static final PCMPort hatchGrabber = WhichBot.compBot ? new PCMPort(0, 0, 1) : new PCMPort(0, 0, 1);
+			public static final PCMPort shifter = WhichBot.compBot ? new PCMPort(0, 6, 7) : new PCMPort(0, 6, 7);
+			public static final PCMPort fourBarLever = WhichBot.compBot ? new PCMPort(1, 3, 2) : new PCMPort(1, 3, 2);
 		}
 
 		public static class Digital {
-			public static final int elevatorSwitchBottomPort = 0;
-			public static final int elevatorSwitchTopPort = 1;
+			public static final int elevatorSwitchBottomPort = WhichBot.compBot ? 0 : 0;
+			public static final int elevatorSwitchTopPort = WhichBot.compBot ? 1 : 1;
 		}
 	}
 
 	public static class Metrics {
 		public static class Chassis {
-			public static final double TICKS_PER_REVOLUTION = -1; // TODO: CHANGE CONSTS
-			public static final double DIAMETER_INCHES = -1;
+			public static final double TICKS_PER_REVOLUTION = WhichBot.compBot ? -1 : -1; // TODO: CHANGE CONSTS
+			public static final double DIAMETER_INCHES = WhichBot.compBot ? -1 : -1;
 			public static final double CIRCUMFERENCE_INCHES = Metrics.Chassis.DIAMETER_INCHES * Math.PI;
 			public static final double TICKS_PER_INCH = Metrics.Chassis.TICKS_PER_REVOLUTION
 				/ Metrics.Chassis.CIRCUMFERENCE_INCHES;
-			public static final double DISTANCE_FRONT_BACK = -1;
-			public static final double DISTANCE_SIDE_SIDE = -1;
+			public static final double DISTANCE_FRONT_BACK = WhichBot.compBot ? -1 : -1;
+			public static final double DISTANCE_SIDE_SIDE = WhichBot.compBot ? -1 : -1;
 			public static final double INCHES_PER_TICK = Metrics.Chassis.CIRCUMFERENCE_INCHES
 				/ Metrics.Chassis.TICKS_PER_REVOLUTION;
 		}
@@ -84,30 +84,30 @@ public class RobotMap {
 	public static class PID {
 		public static class Drive {
 			public static final double P = -1; // TODO: maybe TUNE
-			public static final double I = -1;
-			public static final double D = -1;
-			public static final double F = -1;
-			public static final double tolerance = -1;
-			public static final double dTolerance = -1;
+			public static final double I = WhichBot.compBot ? -1 : -1;
+			public static final double D = WhichBot.compBot ? -1 : -1;
+			public static final double F = WhichBot.compBot ? -1 : -1;
+			public static final double tolerance = WhichBot.compBot ? -1 : -1;
+			public static final double dTolerance = WhichBot.compBot ? -1 : -1;
 		}
 
 		public static class Turn {
 			public static final double P = -1; // TODO: TUNE
-			public static final double I = -1;
-			public static final double D = -1;
-			public static final double F = -1;
-			public static final double tolerance = -1;
-			public static final double dTolerance = -1;
+			public static final double I = WhichBot.compBot ? -1 : -1;
+			public static final double D = WhichBot.compBot ? -1 : -1;
+			public static final double F = WhichBot.compBot ? -1 : -1;
+			public static final double tolerance = WhichBot.compBot ? -1 : -1;
+			public static final double dTolerance = WhichBot.compBot ? -1 : -1;
 		}
 
 		public static class Elevator {
 			public static final double P = 0.07; // TODO: TUNE
-			public static final double I = 0.000007;
-			public static final double D = -0.0004;
-			public static final double F = 0.0001;
-			public static final double tolerance = 4.0;
-			public static final double dTolerance = 3.0;
-			// public static final double IThreshold = 13;
+			public static final double I = WhichBot.compBot ? 0.000007 : 0.000007;
+			public static final double D = WhichBot.compBot ? -0.0004 : -0.0004;
+			public static final double F = WhichBot.compBot ? 0.0001 : 0.0001;
+			public static final double tolerance = WhichBot.compBot ? 4.0 : 4.0;
+			public static final double dTolerance = WhichBot.compBot ? 3.0 : 3.0;
+			// public static final double IThreshold = WhichBot.compBot ? 13 : 13;
 		}
 	}
 
