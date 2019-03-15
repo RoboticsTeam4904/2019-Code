@@ -53,12 +53,12 @@ public class RobotMap {
 		}
 
 		public static class Pneumatics {
-			public static final PCMPort wrist = new PCMPort(1, 0, 1);
-			public static final PCMPort claws = new PCMPort(0, 3, 2);
-			public static final PCMPort hatchExtender = new PCMPort(0, 5, 4);
-			public static final PCMPort hatchGrabber = new PCMPort(0, 0, 1);
-			public static final PCMPort shifter = new PCMPort(0, 6, 7); // TODO: Get real ports
-			public static final PCMPort fourBarLever = new PCMPort(1, 3, 2);
+			public static final PCMPort wrist = new PCMPort(1, 6, 7); //TODO: Change pcms accordingly
+			public static final PCMPort claws = new PCMPort(0, 2, 3);
+			public static final PCMPort hatchExtender = new PCMPort(0, 7, 2);
+			public static final PCMPort hatchGrabber = new PCMPort(0, 4, 5);
+			public static final PCMPort shifter = new PCMPort(0, 0, 1);
+			public static final PCMPort fourBarLever = new PCMPort(1, 0, 1);
 		}
 
 		public static class Digital {
