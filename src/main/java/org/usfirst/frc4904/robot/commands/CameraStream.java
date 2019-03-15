@@ -20,9 +20,9 @@ public class CameraStream extends Command {
     private final VideoSink server;
     private final ArrayList<UsbCamera> cameras;
 
-    public CameraStream(int numCameras, int streamingXRes, int streamingYRes, int streamingFPS) {
-        cameras = new ArrayList<>(numCameras);
-        for (int i = 0; i < numCameras; ++i) {
+    public CameraStream(int streamingXRes, int streamingYRes, int streamingFPS, int ...ports) {
+        cameras = new ArrayList<>(ports.length);
+        for (int i : ports) {
             cameras.add(CameraServer.getInstance().startAutomaticCapture(i));
             cameras.get(i).setVideoMode(streamingFmt, streamingXRes, streamingYRes, streamingFPS);
             cameras.get(i).setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
@@ -30,8 +30,8 @@ public class CameraStream extends Command {
         server = CameraServer.getInstance().getServer();
     }
 
-    public CameraStream(int numCameras) {
-        this(numCameras, STREAMING_X_RES, STREAMING_Y_RES, STREAMING_FPS);
+    public CameraStream(int ...ports) {
+        this(STREAMING_X_RES, STREAMING_Y_RES, STREAMING_FPS, ports);
     }
 
     @Override
