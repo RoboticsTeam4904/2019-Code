@@ -30,8 +30,8 @@ public class CameraStream extends Command {
         server = CameraServer.getInstance().getServer();
     }
 
-    public CameraStream(int numCameras) {
-        this(numCameras, STREAMING_X_RES, STREAMING_Y_RES, STREAMING_FPS);
+    public CameraStream(int ...ports) {
+        this(STREAMING_X_RES, STREAMING_Y_RES, STREAMING_FPS, ports);
     }
 
     @Override
