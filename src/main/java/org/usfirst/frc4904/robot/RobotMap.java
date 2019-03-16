@@ -24,6 +24,9 @@ import org.usfirst.frc4904.standard.custom.sensors.PDP;
 import org.usfirst.frc4904.standard.custom.sensors.CANEncoder;
 import org.usfirst.frc4904.standard.custom.sensors.EncoderPair;
 import org.usfirst.frc4904.standard.custom.sensors.NavX;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -143,6 +146,20 @@ public class RobotMap {
 		public static CustomDigitalLimitSwitch elevatorSwitchTop;
 	}
 
+	public static class NetworkTables {
+		public static NetworkTableInstance inst;
+		public static NetworkTable table;
+
+		public static class Pistons {
+			public static NetworkTable table;
+			public static NetworkTableEntry hatchExtender;
+			public static NetworkTableEntry hatchGrabber;
+			public static NetworkTableEntry claws;
+			public static NetworkTableEntry wrist;
+			public static NetworkTableEntry roller;
+		}
+	}
+
 	public static class HumanInput {
 		public static class Driver {
 			public static CustomXbox xbox;
@@ -243,5 +260,12 @@ public class RobotMap {
 		// Component.floorio.velcroPiston,
 		// Component.floorio.wrist, Component.floorio.hatchRoller,
 		// Component.floorio.cargoRoller };
+		NetworkTables.inst = NetworkTableInstance.getDefault();
+		NetworkTables.Pistons.table = NetworkTables.inst.getTable("Pistons");
+		NetworkTables.Pistons.hatchExtender = NetworkTables.Pistons.table.getEntry("HatchExtenderExtended(Out)");
+        NetworkTables.Pistons.hatchGrabber = NetworkTables.Pistons.table.getEntry("HatchGrabberExtended(Out)");
+        NetworkTables.Pistons.claws = NetworkTables.Pistons.table.getEntry("ClawsExtended(Down)");
+		NetworkTables.Pistons.wrist = NetworkTables.Pistons.table.getEntry("WristExtended(Down)");
+		NetworkTables.Pistons.roller = NetworkTables.Pistons.table.getEntry("RollerSpeed");
 	}
 }
