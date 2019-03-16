@@ -55,18 +55,18 @@ public class DefaultOperator extends Operator {
 
 
 		// RobotMap.HumanInput.Operator.joystick.button5.whenPressed(new HatchOuttake());
-		RobotMap.HumanInput.Operator.joystick.button4.whenPressed(new HatchGrabberIn());  //FOR TESTING
-		RobotMap.HumanInput.Operator.joystick.button6.whenPressed(new HatchGrabberOut()); //FOR TESTING
+		RobotMap.HumanInput.Operator.joystick.button4.whenPressed(new SolenoidRetract(RobotMap.Component.manipulator.hatchGrabber));//HatchGrabberIn());  //FOR TESTING
+		RobotMap.HumanInput.Operator.joystick.button6.whenPressed(new SolenoidExtend(RobotMap.Component.manipulator.hatchGrabber));//HatchGrabberOut()); //FOR TESTING
 		// RobotMap.HumanInput.Operator.joystick.button4.onlyWhileHeld(new CargoIntake()); //UNDO  AFTER TESTING
 		// RobotMap.HumanInput.Operator.joystick.button6.onlyWhileHeld(new CargoOuttake()); //UNDO  AFTER TESTING
 
-		RobotMap.HumanInput.Operator.joystick.button12.whenPressed(new WristDown());
-		RobotMap.HumanInput.Operator.joystick.button11.whenPressed(new WristUp());
+		RobotMap.HumanInput.Operator.joystick.button12.whenPressed(new SolenoidExtend(RobotMap.Component.manipulator.wrist));  //WristDown());
+		RobotMap.HumanInput.Operator.joystick.button11.whenPressed(new SolenoidRetract(RobotMap.Component.manipulator.wrist)); //WristUp());
 
-		RobotMap.HumanInput.Operator.joystick.button7.whenPressed(new HatchExtenderOut());
-		RobotMap.HumanInput.Operator.joystick.button8.whenPressed(new HatchExtenderIn());
-		RobotMap.HumanInput.Operator.joystick.button5.whenPressed(new ClawsUp());
-		RobotMap.HumanInput.Operator.joystick.button3.whenPressed(new ClawsDown());
+		RobotMap.HumanInput.Operator.joystick.button7.whenPressed(new SolenoidExtend(RobotMap.Component.manipulator.hatchExtender)); //HatchExtenderOut());
+		RobotMap.HumanInput.Operator.joystick.button8.whenPressed(new SolenoidRetract(RobotMap.Component.manipulator.hatchExtender)); //HatchExtenderIn());
+		RobotMap.HumanInput.Operator.joystick.button5.whenPressed(new SolenoidRetract(RobotMap.Component.manipulator.claws)); //ClawsUp());
+		RobotMap.HumanInput.Operator.joystick.button3.whenPressed(new SolenoidExtend(RobotMap.Component.manipulator.claws)); // ClawsDown());
 		// RobotMap.HumanInput.Operator.joystick.button11.whenPressed(new WristUp());
 		// RobotMap.HumanInput.Operator.joystick.button12.whenPressed(new WristDown());
 		// RobotMap.HumanInput.Operator.joystick.button8

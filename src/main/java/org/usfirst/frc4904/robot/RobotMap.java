@@ -54,12 +54,12 @@ public class RobotMap {
 		}
 
 		public static class Pneumatics {
-			public static final PCMPort wrist = new PCMPort(1, 6, 7); //TODO: Change pcms accordingly
+			public static final PCMPort wrist = new PCMPort(1, 7, 6); //TODO: Change pcms accordingly
 			public static final PCMPort claws = new PCMPort(1, 2, 3);
 			public static final PCMPort hatchExtender = new PCMPort(0, 7, 2);
 			public static final PCMPort hatchGrabber = new PCMPort(1, 4, 5);
 			public static final PCMPort shifter = new PCMPort(0, 0, 1);
-			public static final PCMPort fourBarLever = new PCMPort(1, 0, 1);
+			public static final PCMPort fourBarLever = new PCMPort(1, 1, 0);
 		}
 
 		public static class Digital {
@@ -220,7 +220,7 @@ public class RobotMap {
 		Component.leftElevatorMotor.setNeutralMode(NeutralMode.Brake);
 		Component.rightElevatorMotor.setNeutralMode(NeutralMode.Brake);
 		Component.fourBar = new FourBarElevator(
-			new SolenoidSubsystem("FourBarLever", SolenoidState.RETRACT,
+			new SolenoidSubsystem("FourBarLever",
 				Port.Pneumatics.fourBarLever.buildDoubleSolenoid()),
 			new PositionSensorMotor("Elevator", Component.elevatorPID,
 				Component.leftElevatorMotor,
