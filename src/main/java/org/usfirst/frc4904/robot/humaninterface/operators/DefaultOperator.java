@@ -39,15 +39,15 @@ public class DefaultOperator extends Operator {
 
 	@Override
 	public void bindCommands() {
-		// RobotMap.HumanInput.Operator.joystick.button1.onlyWhileHeld(new
-		// ElevatorControl(() -> {
-		// return RobotMap.HumanInput.Operator.joystick.getAxis(CustomJoystick.Y_AXIS) >
-		// 0;
-		// }));
+		RobotMap.HumanInput.Operator.joystick.button1.onlyWhileHeld(new
+		ElevatorControl(() -> {
+		return RobotMap.HumanInput.Operator.joystick.getAxis(CustomJoystick.Y_AXIS) >
+		0;
+		}));
 		// RobotMap.HumanInput.Operator.joystick.button2.whenPressed(
 		// new RunIfElse(new WristUp(), new WristDown(),
 		// RobotMap.Component.floorio.wrist::isExtended));
-		RobotMap.HumanInput.Operator.joystick.button1.onlyWhileHeld(new RollerOut());
+		// RobotMap.HumanInput.Operator.joystick.button1.onlyWhileHeld(new RollerOut());
 		RobotMap.HumanInput.Operator.joystick.button2.onlyWhileHeld(new RollerIn());
 
 		// RobotMap.HumanInput.Operator.joystick.button3.whenPressed(new HatchGrabberIn());//new HatchIntake());

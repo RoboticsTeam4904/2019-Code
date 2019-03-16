@@ -3,6 +3,8 @@ package org.usfirst.frc4904.robot;
 
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem;
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem.SolenoidState;
+import org.usfirst.frc4904.standard.LogKitten.KittenLevel;
+import org.usfirst.frc4904.standard.commands.KittenCommand;
 import org.usfirst.frc4904.standard.custom.PCMPort;
 import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
 import org.usfirst.frc4904.standard.custom.controllers.CustomXbox;
@@ -56,7 +58,7 @@ public class RobotMap {
 		public static class Pneumatics {
 			public static final PCMPort wrist = new PCMPort(1, 7, 6); //TODO: Change pcms accordingly
 			public static final PCMPort claws = new PCMPort(1, 2, 3);
-			public static final PCMPort hatchExtender = new PCMPort(0, 7, 2);
+			public static final PCMPort hatchExtender = new PCMPort(0, 2, 7);
 			public static final PCMPort hatchGrabber = new PCMPort(1, 4, 5);
 			public static final PCMPort shifter = new PCMPort(0, 0, 1);
 			public static final PCMPort fourBarLever = new PCMPort(1, 1, 0);
@@ -208,6 +210,7 @@ public class RobotMap {
 			new SolenoidSubsystem("Manipulator Hatch Grabber",// SolenoidState.EXTEND,
 				Port.Pneumatics.hatchGrabber.buildDoubleSolenoid()),
 			new Motor("Manipulator Roller", new CANTalonSRX(Port.CANMotor.manipulatorRoller)));
+			Component.manipulator.roller.setInverted(true);
 		/* Elevator + FourBar */
 		Component.rightElevatorMotor = new CANTalonSRX(Port.CANMotor.rightElevatorMotor);
 		Component.rightElevatorMotor.setInverted(true);
@@ -231,6 +234,8 @@ public class RobotMap {
 			DigitalInput(Port.Digital.elevatorSwitchBottomPort);
 		Input.elevatorSwitchTop = new
 			DigitalInput(Port.Digital.elevatorSwitchTopPort);
+		// Input.elevatorSwitchBottom.whenPressed(new KittenCommand("Bottom switch activated", KittenLevel.WTF));
+		// Input.elevatorSwitchTop.whenPressed(new KittenCommand("Top switch activated", KittenLevel.WTF));
 		/* Human Input */
 		HumanInput.Driver.xbox = new CustomXbox(Port.HumanInput.xboxController);
 		HumanInput.Driver.xbox.setDeadZone(HumanInterfaceConfig.XBOX_DEADZONE);

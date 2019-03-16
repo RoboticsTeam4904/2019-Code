@@ -31,7 +31,7 @@ public class FourBarElevator implements Overridable {
 	}
 
 	public FourBarElevator(SolenoidSubsystem lever, PositionSensorMotor elevator) {
-		this(lever, elevator, false);
+		this(lever, elevator, true);
 	}
 
 	public enum State {

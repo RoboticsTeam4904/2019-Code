@@ -10,6 +10,7 @@ package org.usfirst.frc4904.robot;
 import org.usfirst.frc4904.robot.humaninterface.drivers.NathanGain;
 import org.usfirst.frc4904.robot.humaninterface.operators.DefaultOperator;
 import org.usfirst.frc4904.standard.CommandRobotBase;
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -29,8 +30,9 @@ public class Robot extends CommandRobotBase {
 	public void initialize() {
 		driverChooser.addDefault(new NathanGain());
 		operatorChooser.addDefault(new DefaultOperator());
-		CameraStream streamCommand = new CameraStream(0);
-		streamCommand.start();
+		// CameraStream streamCommand = new CameraStream(0);
+		// streamCommand.start();
+		CameraServer.getInstance().startAutomaticCapture();
 		// RobotMap.Component.leftWheelEncoder.reset();
 		// RobotMap.Component.rightWheelEncoder.reset();
 		// })); // TODO: CustomEncoder should have a resetViaOffset
@@ -97,6 +99,7 @@ public class Robot extends CommandRobotBase {
 
 	@Override
 	public void alwaysExecute() {
+		LogKitten.wtf(RobotMap.Component.fourBar.elevator.get());
 		// Just for testing encoder
 		// SmartDashboard.putNumber("ElevatorPID/e",
 		// RobotMap.Component.elevatorPID.getError());
