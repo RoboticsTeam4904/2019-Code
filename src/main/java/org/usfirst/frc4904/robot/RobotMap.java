@@ -210,7 +210,7 @@ public class RobotMap {
 			new SolenoidSubsystem("Manipulator Hatch Grabber",// SolenoidState.EXTEND,
 				Port.Pneumatics.hatchGrabber.buildDoubleSolenoid()),
 			new Motor("Manipulator Roller", new CANTalonSRX(Port.CANMotor.manipulatorRoller)),
-			true); // Override safety checks
+			true); // Override safety checks for pistons
 			Component.manipulator.roller.setInverted(true);
 		/* Elevator + FourBar */
 		Component.rightElevatorMotor = new CANTalonSRX(Port.CANMotor.rightElevatorMotor);
@@ -228,7 +228,8 @@ public class RobotMap {
 				Port.Pneumatics.fourBarLever.buildDoubleSolenoid()),
 			new PositionSensorMotor("Elevator", Component.elevatorPID,
 				Component.leftElevatorMotor,
-				Component.rightElevatorMotor));
+				Component.rightElevatorMotor),
+			true); // Override safety checks for reed switches
 		// Component.elevatorPID.setAbsoluteTolerance(PID.Elevator.tolerance);
 		// Component.elevatorPID.setDerivativeTolerance(PID.Elevator.dTolerance);
 		Input.elevatorSwitchBottom = new
