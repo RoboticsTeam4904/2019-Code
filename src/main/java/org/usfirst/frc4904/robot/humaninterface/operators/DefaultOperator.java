@@ -38,7 +38,7 @@ public class DefaultOperator extends Operator {
 
 	@Override
 	public void bindCommands() {
-		RobotMap.HumanInput.Operator.joystick.button4.onlyWhileHeld(new
+		RobotMap.HumanInput.Operator.joystick.button6.onlyWhileHeld(new
 		ElevatorControl(() -> {
 		return RobotMap.HumanInput.Operator.joystick.getAxis(CustomJoystick.Y_AXIS) >
 		0;
@@ -54,7 +54,7 @@ public class DefaultOperator extends Operator {
 
 
 		// RobotMap.HumanInput.Operator.joystick.button5.whenPressed(new HatchOuttake());
-		// RobotMap.HumanInput.Operator.joystick.button4.onlyWhileHeld(new CargoIntake());
+		RobotMap.HumanInput.Operator.joystick.button4.onlyWhileHeld(new CargoIntake());
 		// RobotMap.HumanInput.Operator.joystick.button6.onlyWhileHeld(new CargoOuttake()); 
 
 		RobotMap.HumanInput.Operator.joystick.button12.whenPressed(new WristDown());
