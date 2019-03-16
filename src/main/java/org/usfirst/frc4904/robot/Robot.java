@@ -73,6 +73,14 @@ public class Robot extends CommandRobotBase {
 
 	@Override
 	public void autonomousInitialize() {
+		if (driverChooser.getSelected() != null) {
+			LogKitten.d("Loading driver " + driverChooser.getSelected().getName());
+			driverChooser.getSelected().bindCommands();
+		}
+		if (operatorChooser.getSelected() != null) {
+			LogKitten.d("Loading operator " + operatorChooser.getSelected().getName());
+			operatorChooser.getSelected().bindCommands();
+		}
 		teleopCommand = new ChassisMove(RobotMap.Component.chassis, driverChooser.getSelected());
 		teleopCommand.start();
 	}
