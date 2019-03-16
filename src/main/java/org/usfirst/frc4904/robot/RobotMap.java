@@ -53,9 +53,9 @@ public class RobotMap {
 		}
 
 		public static class Pneumatics {
-			public static final PCMPort wrist = new PCMPort(0, 6, 7); //TODO: Change pcms accordingly
-			public static final PCMPort claws = new PCMPort(0, 2, 3);
-			public static final PCMPort hatchExtender = new PCMPort(1, 7, 2);
+			public static final PCMPort wrist = new PCMPort(1, 7, 2); //TODO: Change pcms accordingly
+			public static final PCMPort claws = new PCMPort(0, 6, 2);
+			public static final PCMPort hatchExtender = new PCMPort(0, 7, 3);
 			public static final PCMPort hatchGrabber = new PCMPort(0, 4, 5);
 			public static final PCMPort shifter = new PCMPort(1, 0, 1);
 			public static final PCMPort fourBarLever = new PCMPort(0, 0, 1);
@@ -177,9 +177,9 @@ public class RobotMap {
 		// Wheels
 		Component.rightWheelA = new Motor("rightWheelA", false, Component.rightWheelAccelerationCap,
 			new CANTalonSRX(Port.CANMotor.rightDriveA));
-		Component.rightWheelB = new Motor("rightWheelB", true, Component.rightWheelAccelerationCap,
+		Component.rightWheelB = new Motor("rightWheelB", false, Component.rightWheelAccelerationCap,
 			new CANTalonSRX(Port.CANMotor.rightDriveB));
-		Component.leftWheelA = new Motor("leftWheelA", false, Component.leftWheelAccelerationCap,
+		Component.leftWheelA = new Motor("leftWheelA", true, Component.leftWheelAccelerationCap,
 			new CANTalonSRX(Port.CANMotor.leftDriveA));
 		Component.leftWheelB = new Motor("leftWheelB", true, Component.leftWheelAccelerationCap,
 			new CANTalonSRX(Port.CANMotor.leftDriveB));
@@ -198,7 +198,7 @@ public class RobotMap {
 		// Component.chassisTurnPID.setDerivativeTolerance(PID.Turn.dTolerance);
 		/* Manipulator */
 		Component.manipulator = new Manipulator(
-			new SolenoidSubsystem("Manipulator Wrist", SolenoidState.RETRACT,
+			new SolenoidSubsystem("Manipulator Wrist",// SolenoidState.RETRACT,
 				Port.Pneumatics.wrist.buildDoubleSolenoid()),
 			new SolenoidSubsystem("Manipulator Claws",
 				Port.Pneumatics.claws.buildDoubleSolenoid()),
