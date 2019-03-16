@@ -14,7 +14,9 @@ public class RollerSet extends RunIfElse {
 		super(
 			new RollerSetAndLowerClaws(name, speed),
 			new KittenCommand("Cannot flip spin rollers due to claws being up.", LogKitten.KittenLevel.WTF),
-			() -> RobotMap.Component.manipulator.claws.getState() != SolenoidState.RETRACT);
+			() -> RobotMap.Component.manipulator.claws.getState() != SolenoidState.RETRACT
+				|| RobotMap.Component.manipulator.isOverridden()
+		);
 	}
 
 	public static class RollerSetAndLowerClaws extends CommandGroup {

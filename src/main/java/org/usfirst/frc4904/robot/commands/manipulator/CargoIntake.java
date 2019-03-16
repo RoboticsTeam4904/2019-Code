@@ -20,7 +20,9 @@ public class CargoIntake extends RunIfElse {
 	public CargoIntake() {
 		super(new ReadyGroundIntakeDangerously(),
 			new KittenCommand("Cannot flip claws down because we grabber has a hatch.", LogKitten.KittenLevel.WTF),
-			() -> RobotMap.Component.manipulator.hatchGrabber.getState() == SolenoidState.RETRACT);
+			() -> RobotMap.Component.manipulator.hatchGrabber.getState() == SolenoidState.RETRACT
+				|| RobotMap.Component.manipulator.isOverridden()
+		);
 	}
 
 	public static class ReadyGroundIntakeDangerously extends CommandGroup {

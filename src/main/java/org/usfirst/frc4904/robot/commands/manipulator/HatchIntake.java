@@ -16,7 +16,9 @@ public class HatchIntake extends RunIf {
 	public HatchIntake() {
 		super(
 			new ReadyHatchIntakeDangerously(),
-			() -> RobotMap.Component.manipulator.claws.getState() != SolenoidState.EXTEND);
+			() -> RobotMap.Component.manipulator.claws.getState() != SolenoidState.EXTEND
+				|| RobotMap.Component.manipulator.isOverridden()
+		);
 	}
 
 	public static class ReadyHatchIntakeDangerously extends CommandGroup {

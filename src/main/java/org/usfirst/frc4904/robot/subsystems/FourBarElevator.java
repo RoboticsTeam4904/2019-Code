@@ -24,9 +24,14 @@ public class FourBarElevator implements Overridable {
 	public State state;
 	public boolean isOverridden;
 
-	public FourBarElevator(SolenoidSubsystem lever, PositionSensorMotor elevator) {
+	public FourBarElevator(SolenoidSubsystem lever, PositionSensorMotor elevator, boolean overriden) {
 		this.lever = lever;
 		this.elevator = elevator;
+		this.setOverridden(overriden);
+	}
+
+	public FourBarElevator(SolenoidSubsystem lever, PositionSensorMotor elevator) {
+		this(lever, elevator, false);
 	}
 
 	public enum State {
