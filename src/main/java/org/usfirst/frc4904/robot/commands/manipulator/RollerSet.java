@@ -8,12 +8,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import org.usfirst.frc4904.standard.commands.KittenCommand;
 import org.usfirst.frc4904.standard.commands.RunIfElse;
 import org.usfirst.frc4904.standard.LogKitten;
+import org.usfirst.frc4904.robot.commands.NetworkKittenError;
 
 public class RollerSet extends RunIfElse {
 	public RollerSet(String name, double speed) {
 		super(
 			new RollerSetAndLowerClaws(name, speed),
-			new KittenCommand("Cannot flip spin rollers due to claws being up.", LogKitten.KittenLevel.WTF),
+			new NetworkKittenError("Cannot flip spin rollers due to claws being up."),
 			() -> RobotMap.Component.manipulator.claws.getState() != SolenoidState.RETRACT);
 	}
 

@@ -158,6 +158,11 @@ public class RobotMap {
 			public static NetworkTableEntry wrist;
 			public static NetworkTableEntry roller;
 		}
+
+		public static class SafetyChecks {
+			public static NetworkTable table;
+			public static NetworkTableEntry conflict;
+		}
 	}
 
 	public static class HumanInput {

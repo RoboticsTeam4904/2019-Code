@@ -9,6 +9,7 @@ import org.usfirst.frc4904.standard.commands.KittenCommand;
 import org.usfirst.frc4904.standard.LogKitten;
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem.SolenoidState;
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc4904.robot.commands.NetworkKittenError;
 
 /**
  * Prepares the manipulator for intake by lowering the claw and rolling the rollers in
@@ -18,7 +19,7 @@ public class CargoIntake extends RunIfElse {
 
 	public CargoIntake() {
 		super(new ReadyGroundIntakeDangerously(),
-			new KittenCommand("Cannot flip claws down because we grabber has a hatch.", LogKitten.KittenLevel.WTF),
+			new NetworkKittenError("Cannot flip claws down because we grabber has a hatch."),
 			() -> RobotMap.Component.manipulator.hatchGrabber.getState() == SolenoidState.RETRACT);
 	}
 
