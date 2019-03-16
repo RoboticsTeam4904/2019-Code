@@ -8,7 +8,7 @@ import org.usfirst.frc4904.standard.custom.Overridable;
 
 public class Manipulator implements Overridable {
 	public static final double INTAKE_SPEED = -0.6;
-	public static final double OUTTAKE_SPEED = 1.0;
+	public static final double OUTTAKE_SPEED = 0.75;
 	public static final double KEEP_BALL_SPEED = 0.15;
 	public final SolenoidSubsystem wrist; // flipper for whole manipulator
 	public final SolenoidSubsystem claws; // cargo claws
@@ -29,7 +29,7 @@ public class Manipulator implements Overridable {
 
 	public Manipulator(SolenoidSubsystem wrist, SolenoidSubsystem claws, SolenoidSubsystem hatchExtender,
 		SolenoidSubsystem hatchGrabber, Motor roller) {
-		this(wrist, claws, hatchExtender, hatchGrabber, roller, false);
+		this(wrist, claws, hatchExtender, hatchGrabber, roller, true);
 	}
 
 	public void setOverridden(boolean override) { // TODO: add to standard by default, but can override optionally (like in OverridableSubsystem)

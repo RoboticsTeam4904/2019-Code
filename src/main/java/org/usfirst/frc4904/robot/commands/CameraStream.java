@@ -13,9 +13,9 @@ import edu.wpi.first.wpilibj.command.Command;
  * Streams with multiple cameras
  */
 public class CameraStream extends Command {
-    private static final int STREAMING_X_RES = 320;
-    private static final int STREAMING_Y_RES = 240;
-    private static final int STREAMING_FPS = 15;
+    private static final int STREAMING_X_RES = 24;
+    private static final int STREAMING_Y_RES = 24;
+    private static final int STREAMING_FPS = 5;
     private static final VideoMode.PixelFormat streamingFmt = VideoMode.PixelFormat.kMJPEG;
     private final VideoSink server;
     private final ArrayList<UsbCamera> cameras;
@@ -24,7 +24,8 @@ public class CameraStream extends Command {
         cameras = new ArrayList<>(ports.length);
         for (int i : ports) {
             cameras.add(CameraServer.getInstance().startAutomaticCapture(i));
-            cameras.get(i).setVideoMode(streamingFmt, streamingXRes, streamingYRes, streamingFPS);
+			// cameras.get(i).setVideoMode(streamingFmt);
+			cameras.get(i).setFPS(streamingFPS);
             cameras.get(i).setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
         }
         server = CameraServer.getInstance().getServer();

@@ -30,9 +30,9 @@ public class Robot extends CommandRobotBase {
 	public void initialize() {
 		driverChooser.addDefault(new NathanGain());
 		operatorChooser.addDefault(new DefaultOperator());
-		CameraStream streamCommand = new CameraStream(0);
-		streamCommand.start();
-		// CameraServer.getInstance().startAutomaticCapture();
+		// CameraStream streamCommand = new CameraStream(0);
+		// streamCommand.start();
+		CameraServer.getInstance().startAutomaticCapture();
 		// RobotMap.Component.leftWheelEncoder.reset();
 		// RobotMap.Component.rightWheelEncoder.reset();
 		// })); // TODO: CustomEncoder should have a resetViaOffset
