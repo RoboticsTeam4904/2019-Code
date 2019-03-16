@@ -33,6 +33,8 @@ public class Robot extends CommandRobotBase {
 		// CameraStream streamCommand = new CameraStream(0);
 		// streamCommand.start();
 		CameraServer.getInstance().startAutomaticCapture();
+		LogKitten.setLogMute(true);
+		LogKitten.setPrintMute(true);
 		// RobotMap.Component.leftWheelEncoder.reset();
 		// RobotMap.Component.rightWheelEncoder.reset();
 		// })); // TODO: CustomEncoder should have a resetViaOffset
@@ -62,6 +64,7 @@ public class Robot extends CommandRobotBase {
 	public void teleopInitialize() {
 		teleopCommand = new ChassisMove(RobotMap.Component.chassis, driverChooser.getSelected());
 		teleopCommand.start();
+		CameraServer.getInstance().removeCamera("USB Camera 0");
 
 		// Command command = new SolenoidRetract(RobotMap.Component.manipulator.wrist);
 		// command.start(); // RobotMap.initCommands
