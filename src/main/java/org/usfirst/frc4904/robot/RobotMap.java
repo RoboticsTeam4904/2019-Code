@@ -56,7 +56,7 @@ public class RobotMap {
 		}
 
 		public static class Pneumatics {
-			public static final PCMPort wrist = new PCMPort(1, 7, 6); //TODO: Change pcms accordingly
+			public static final PCMPort wrist = new PCMPort(1, 7, 6); // TODO: Change pcms accordingly
 			public static final PCMPort claws = new PCMPort(1, 2, 3);
 			public static final PCMPort hatchExtender = new PCMPort(0, 2, 7);
 			public static final PCMPort hatchGrabber = new PCMPort(0, 1, 0);
@@ -115,9 +115,9 @@ public class RobotMap {
 	}
 
 	// public Command[] initCommands;
-
 	public static class Component { // TODO: Reorganize
 		public static Manipulator manipulator;
+		public static CANTalonSRX manipulatorRoller;
 		public static CANTalonEncoder elevatorEncoder;
 		public static FourBarElevator fourBar; // TODO: Rename fourBar subsystem
 		public static CustomPIDController elevatorPID;
@@ -200,18 +200,20 @@ public class RobotMap {
 		// Component.chassisTurnPID.setAbsoluteTolerance(PID.Turn.tolerance);
 		// Component.chassisTurnPID.setDerivativeTolerance(PID.Turn.dTolerance);
 		/* Manipulator */
+		Component.manipulatorRoller = new CANTalonSRX(Port.CANMotor.manipulatorRoller);
+		Component.manipulatorRoller.setNeutralMode(NeutralMode.Brake);
 		Component.manipulator = new Manipulator(
-			new SolenoidSubsystem("Manipulator Wrist",// SolenoidState.RETRACT,
+			new SolenoidSubsystem("Manipulator Wrist", // SolenoidState.RETRACT,
 				Port.Pneumatics.wrist.buildDoubleSolenoid()),
 			new SolenoidSubsystem("Manipulator Claws",
 				Port.Pneumatics.claws.buildDoubleSolenoid()),
-			new SolenoidSubsystem("Manipulator Hatch Extender",// SolenoidState.RETRACT,
+			new SolenoidSubsystem("Manipulator Hatch Extender", // SolenoidState.RETRACT,
 				Port.Pneumatics.hatchExtender.buildDoubleSolenoid()),
-			new SolenoidSubsystem("Manipulator Hatch Grabber",// SolenoidState.EXTEND,
+			new SolenoidSubsystem("Manipulator Hatch Grabber", // SolenoidState.EXTEND,
 				Port.Pneumatics.hatchGrabber.buildDoubleSolenoid()),
 			new Motor("Manipulator Roller", new CANTalonSRX(Port.CANMotor.manipulatorRoller)),
 			true); // Override safety checks for pistons
-			Component.manipulator.roller.setInverted(true);
+		Component.manipulator.roller.setInverted(true);
 		/* Elevator + FourBar */
 		Component.rightElevatorMotor = new CANTalonSRX(Port.CANMotor.rightElevatorMotor);
 		Component.rightElevatorMotor.setInverted(true);
@@ -232,10 +234,8 @@ public class RobotMap {
 			true); // Override safety checks for reed switches
 		// Component.elevatorPID.setAbsoluteTolerance(PID.Elevator.tolerance);
 		// Component.elevatorPID.setDerivativeTolerance(PID.Elevator.dTolerance);
-		Input.elevatorSwitchBottom = new
-			DigitalInput(Port.Digital.elevatorSwitchBottomPort);
-		Input.elevatorSwitchTop = new
-			DigitalInput(Port.Digital.elevatorSwitchTopPort);
+		Input.elevatorSwitchBottom = new DigitalInput(Port.Digital.elevatorSwitchBottomPort);
+		Input.elevatorSwitchTop = new DigitalInput(Port.Digital.elevatorSwitchTopPort);
 		// Input.elevatorSwitchBottom.whenPressed(new KittenCommand("Bottom switch activated", KittenLevel.WTF));
 		// Input.elevatorSwitchTop.whenPressed(new KittenCommand("Top switch activated", KittenLevel.WTF));
 		/* Human Input */
@@ -244,7 +244,8 @@ public class RobotMap {
 		HumanInput.Operator.joystick = new CustomJoystick(Port.HumanInput.joystick);
 		HumanInput.Operator.joystick.setDeadzone(HumanInterfaceConfig.JOYSTICK_DEADZONE);
 		/* Main Subsystems */
-		Component.mainSubsystems = new Subsystem[] {Component.fourBar.lever, Component.manipulator.hatchExtender, Component.manipulator.hatchGrabber, Component.manipulator.claws, Component.manipulator.wrist};
+		Component.mainSubsystems = new Subsystem[] {Component.fourBar.lever, Component.manipulator.hatchExtender,
+				Component.manipulator.hatchGrabber, Component.manipulator.claws, Component.manipulator.wrist};
 		// Component.mainSubsystems = new Subsystem[] { Component.chassis,
 		// Component.fourBar.lever,
 		// Component.fourBar.elevator, Component.floorio.hatchOuttakePiston,
