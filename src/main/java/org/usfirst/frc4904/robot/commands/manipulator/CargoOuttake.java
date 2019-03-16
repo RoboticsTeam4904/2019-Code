@@ -23,7 +23,7 @@ public class CargoOuttake extends RollerOut {
 
 		public FinishCargoOuttake() {
 			// Interruptable by other roller commands (due to requires)
-			requires(RobotMap.Component.manipulator.roller);
+			// requires(RobotMap.Component.manipulator.roller);
 			addSequential(new WaitCommand(CLAW_WAIT_TIME));
 			addSequential(new ClawsUp());
 		}
