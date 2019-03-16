@@ -29,7 +29,7 @@ public class Manipulator implements Overridable {
 
 	public Manipulator(SolenoidSubsystem wrist, SolenoidSubsystem claws, SolenoidSubsystem hatchExtender,
 		SolenoidSubsystem hatchGrabber, Motor roller) {
-		this(wrist, claws, hatchExtender, hatchGrabber, roller, true);
+		this(wrist, claws, hatchExtender, hatchGrabber, roller, false);
 	}
 
 	public void setOverridden(boolean override) { // TODO: add to standard by default, but can override optionally (like in OverridableSubsystem)
