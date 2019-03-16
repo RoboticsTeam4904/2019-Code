@@ -52,7 +52,7 @@ public class CargoIntake extends RunIfElse {
 			addParallel(new RollerKeepBall());
 			addParallel(new ClawsDown());
 			addSequential(new WaitCommand(WRIST_UP_WAIT_TIME));
-			addParallel(new WristUp());
+			// addParallel(new WristUp());
 			// addParallel(new HatchExtenderIn());
 		}
 	}
