@@ -99,7 +99,7 @@ public class Robot extends CommandRobotBase {
 
 	@Override
 	public void alwaysExecute() {
-		LogKitten.wtf(RobotMap.Component.fourBar.elevator.get());
+		// LogKitten.wtf(RobotMap.Component.fourBar.elevator.get());
 		// Just for testing encoder
 		// SmartDashboard.putNumber("ElevatorPID/e",
 		// RobotMap.Component.elevatorPID.getError());
