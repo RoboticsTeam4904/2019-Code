@@ -9,9 +9,9 @@ public class RollerIn extends RollerSet {
 		super("RollerIn", Manipulator.INTAKE_SPEED);
 	}
 
-	// @Override
-	// protected void interrupted() {
-	// 	Command command = new RollerKeepBall();
-	// 	command.start();
-	// }
+	@Override
+	protected void interrupted() {
+		Command command = new RollerKeepBall();
+		command.start();
+	}
 }
