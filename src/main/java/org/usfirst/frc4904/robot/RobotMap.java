@@ -267,6 +267,7 @@ public class RobotMap {
 		// Component.floorio.cargoRoller };
 		NetworkTables.inst = NetworkTableInstance.getDefault();
 		NetworkTables.Pistons.table = NetworkTables.inst.getTable("Pistons");
+		NetworkTables.SafetyChecks.table = NetworkTables.inst.getTable("SafetyChecks");
 		NetworkTables.Pistons.hatchExtender = NetworkTables.Pistons.table.getEntry("HatchExtenderExtended(Out)");
         NetworkTables.Pistons.hatchGrabber = NetworkTables.Pistons.table.getEntry("HatchGrabberExtended(Out)");
         NetworkTables.Pistons.claws = NetworkTables.Pistons.table.getEntry("ClawsExtended(Down)");
