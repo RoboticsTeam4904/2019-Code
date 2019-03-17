@@ -49,7 +49,7 @@ public class CargoIntake extends RunIfElse {
 	 */
 	public static class FinishGroundIntake extends CommandGroup {
 		public FinishGroundIntake() {
-			addParallel(new RollerKeepBall());
+			// addParallel(new RollerKeepBall());
 			addParallel(new ClawsDown());
 			addSequential(new WaitCommand(WRIST_UP_WAIT_TIME));
 			// addParallel(new WristUp());

@@ -1,7 +1,7 @@
 package org.usfirst.frc4904.robot.humaninterface.drivers;
 
-
 import org.usfirst.frc4904.robot.RobotMap;
+import org.usfirst.frc4904.robot.commands.manipulator.HatchExpel;
 import org.usfirst.frc4904.robot.commands.manipulator.HatchGrabberIn;
 import org.usfirst.frc4904.robot.commands.manipulator.HatchGrabberOut;
 import org.usfirst.frc4904.standard.LogKitten;
@@ -40,6 +40,7 @@ public class NathanGain extends Driver {
 		// 	() -> RobotMap.Component.manipulator.hatchGrabber.getState() != SolenoidState.EXTEND));
 		RobotMap.HumanInput.Driver.xbox.x.whenPressed(new HatchGrabberOut());
 		RobotMap.HumanInput.Driver.xbox.b.whenPressed(new HatchGrabberIn());
+		// RobotMap.HumanInput.Driver.xbox.a.whenPressed(new HatchExpel()); // Needs to be tested / checked with Nikhil. This is supposed to expedite the process of releasing hatches
 	}
 
 	@Override

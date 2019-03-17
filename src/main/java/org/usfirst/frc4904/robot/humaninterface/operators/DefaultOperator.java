@@ -21,6 +21,8 @@ import org.usfirst.frc4904.robot.commands.manipulator.WristDown;
 import org.usfirst.frc4904.robot.commands.manipulator.WristUp;
 import org.usfirst.frc4904.robot.commands.manipulator.CargoIntake;
 import org.usfirst.frc4904.robot.commands.manipulator.CargoOuttake;
+import org.usfirst.frc4904.robot.commands.manipulator.LevelOneHatch;
+import org.usfirst.frc4904.robot.commands.manipulator.ReadyGroundCargoIntake;
 import org.usfirst.frc4904.standard.commands.OverrideEnable;
 import org.usfirst.frc4904.standard.commands.solenoid.SolenoidRetract;
 import org.usfirst.frc4904.standard.custom.controllers.CustomJoystick;
@@ -46,7 +48,7 @@ public class DefaultOperator extends Operator {
 		// RobotMap.HumanInput.Operator.joystick.button2.whenPressed(
 		// new RunIfElse(new WristUp(), new WristDown(),
 		// RobotMap.Component.floorio.wrist::isExtended));
-		RobotMap.HumanInput.Operator.joystick.button6.onlyWhileHeld(new RollerOut());
+		RobotMap.HumanInput.Operator.joystick.button4.onlyWhileHeld(new RollerOut());
 		RobotMap.HumanInput.Operator.joystick.button2.onlyWhileHeld(new RollerIn());
 
 		// RobotMap.HumanInput.Operator.joystick.button3.whenPressed(new HatchGrabberIn());//new HatchIntake());
@@ -54,15 +56,15 @@ public class DefaultOperator extends Operator {
 
 
 		// RobotMap.HumanInput.Operator.joystick.button5.whenPressed(new HatchOuttake());
-		RobotMap.HumanInput.Operator.joystick.button4.onlyWhileHeld(new CargoIntake());
+		RobotMap.HumanInput.Operator.joystick.button6.onlyWhileHeld(new ReadyGroundCargoIntake());
 		// RobotMap.HumanInput.Operator.joystick.button6.onlyWhileHeld(new CargoOuttake()); 
 
-		RobotMap.HumanInput.Operator.joystick.button11.whenPressed(new WristDown());
-		RobotMap.HumanInput.Operator.joystick.button12.whenPressed(new WristUp());
+		RobotMap.HumanInput.Operator.joystick.button12.whenPressed(new WristDown());
+		RobotMap.HumanInput.Operator.joystick.button11.whenPressed(new WristUp());
 
 		RobotMap.HumanInput.Operator.joystick.button7.whenPressed(new HatchExtenderOut());
 		RobotMap.HumanInput.Operator.joystick.button8.whenPressed(new HatchExtenderIn());
-		RobotMap.HumanInput.Operator.joystick.button5.whenPressed(new ClawsUp());
+		RobotMap.HumanInput.Operator.joystick.button5.whenPressed(new LevelOneHatch());
 		RobotMap.HumanInput.Operator.joystick.button3.whenPressed(new ClawsDown());
 
 
