@@ -38,7 +38,7 @@ public class DefaultOperator extends Operator {
 
 	@Override
 	public void bindCommands() {
-		RobotMap.HumanInput.Operator.joystick.button6.onlyWhileHeld(new
+		RobotMap.HumanInput.Operator.joystick.button1.onlyWhileHeld(new
 		ElevatorControl(() -> {
 		return RobotMap.HumanInput.Operator.joystick.getAxis(CustomJoystick.Y_AXIS) >
 		0;
@@ -46,7 +46,7 @@ public class DefaultOperator extends Operator {
 		// RobotMap.HumanInput.Operator.joystick.button2.whenPressed(
 		// new RunIfElse(new WristUp(), new WristDown(),
 		// RobotMap.Component.floorio.wrist::isExtended));
-		RobotMap.HumanInput.Operator.joystick.button1.onlyWhileHeld(new RollerOut());
+		RobotMap.HumanInput.Operator.joystick.button6.onlyWhileHeld(new RollerOut());
 		RobotMap.HumanInput.Operator.joystick.button2.onlyWhileHeld(new RollerIn());
 
 		// RobotMap.HumanInput.Operator.joystick.button3.whenPressed(new HatchGrabberIn());//new HatchIntake());
@@ -57,8 +57,8 @@ public class DefaultOperator extends Operator {
 		RobotMap.HumanInput.Operator.joystick.button4.onlyWhileHeld(new CargoIntake());
 		// RobotMap.HumanInput.Operator.joystick.button6.onlyWhileHeld(new CargoOuttake()); 
 
-		RobotMap.HumanInput.Operator.joystick.button12.whenPressed(new WristDown());
-		RobotMap.HumanInput.Operator.joystick.button11.whenPressed(new WristUp());
+		RobotMap.HumanInput.Operator.joystick.button11.whenPressed(new WristDown());
+		RobotMap.HumanInput.Operator.joystick.button12.whenPressed(new WristUp());
 
 		RobotMap.HumanInput.Operator.joystick.button7.whenPressed(new HatchExtenderOut());
 		RobotMap.HumanInput.Operator.joystick.button8.whenPressed(new HatchExtenderIn());
