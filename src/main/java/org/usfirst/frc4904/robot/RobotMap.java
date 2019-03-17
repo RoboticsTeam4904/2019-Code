@@ -269,8 +269,8 @@ public class RobotMap {
 		NetworkTables.Pistons.table = NetworkTables.inst.getTable("Pistons");
 		NetworkTables.SafetyChecks.table = NetworkTables.inst.getTable("SafetyChecks");
 		NetworkTables.Pistons.hatchExtender = NetworkTables.Pistons.table.getEntry("HatchExtenderExtended(Out)");
-        NetworkTables.Pistons.hatchGrabber = NetworkTables.Pistons.table.getEntry("HatchGrabberExtended(Out)");
-        NetworkTables.Pistons.claws = NetworkTables.Pistons.table.getEntry("ClawsExtended(Down)");
+		NetworkTables.Pistons.hatchGrabber = NetworkTables.Pistons.table.getEntry("HatchGrabberExtended(Out)");
+		NetworkTables.Pistons.claws = NetworkTables.Pistons.table.getEntry("ClawsExtended(Down)");
 		NetworkTables.Pistons.wrist = NetworkTables.Pistons.table.getEntry("WristExtended(Down)");
 		NetworkTables.Pistons.roller = NetworkTables.Pistons.table.getEntry("RollerSpeed");
 	}
