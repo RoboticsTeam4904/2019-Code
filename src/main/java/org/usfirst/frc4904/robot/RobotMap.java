@@ -201,7 +201,9 @@ public class RobotMap {
 		// Component.chassisTurnPID.setDerivativeTolerance(PID.Turn.dTolerance);
 		/* Manipulator */
 		Component.manipulatorRoller = new CANTalonSRX(Port.CANMotor.manipulatorRoller);
-		Component.manipulatorRoller.setNeutralMode(NeutralMode.Brake);
+		Component.manipulatorRoller.setInverted(true);
+
+		// Component.manipulatorRoller.setNeutralMode(NeutralMode.Brake);
 		Component.manipulator = new Manipulator(
 			new SolenoidSubsystem("Manipulator Wrist", // SolenoidState.RETRACT,
 				Port.Pneumatics.wrist.buildDoubleSolenoid()),
@@ -211,9 +213,8 @@ public class RobotMap {
 				Port.Pneumatics.hatchExtender.buildDoubleSolenoid()),
 			new SolenoidSubsystem("Manipulator Hatch Grabber", // SolenoidState.EXTEND,
 				Port.Pneumatics.hatchGrabber.buildDoubleSolenoid()),
-			new Motor("Manipulator Roller", new CANTalonSRX(Port.CANMotor.manipulatorRoller)),
+			new Motor("Manipulator Roller", Component.manipulatorRoller),
 			true); // Override safety checks for pistons
-		Component.manipulator.roller.setInverted(true);
 		/* Elevator + FourBar */
 		Component.rightElevatorMotor = new CANTalonSRX(Port.CANMotor.rightElevatorMotor);
 		Component.rightElevatorMotor.setInverted(true);
