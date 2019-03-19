@@ -198,13 +198,13 @@ public class RobotMap {
 		// Component.chassisTurnPID.setDerivativeTolerance(PID.Turn.dTolerance);
 		/* Manipulator */
 		Component.manipulator = new Manipulator(
-			new SolenoidSubsystem("Manipulator Wrist", SolenoidState.RETRACT,
+			new SolenoidSubsystem("Manipulator Wrist", SolenoidState.RETRACT, SolenoidSubsystem.defaultDelay,
 				Port.Pneumatics.wrist.buildDoubleSolenoid()),
-			new SolenoidSubsystem("Manipulator Claws",
+			new SolenoidSubsystem("Manipulator Claws", SolenoidSubsystem.defaultDelay, 
 				Port.Pneumatics.claws.buildDoubleSolenoid()),
-			new SolenoidSubsystem("Manipulator Hatch Extender",// SolenoidState.RETRACT,
+			new SolenoidSubsystem("Manipulator Hatch Extender",SolenoidSubsystem.defaultDelay, // SolenoidState.RETRACT, 
 				Port.Pneumatics.hatchExtender.buildDoubleSolenoid()),
-			new SolenoidSubsystem("Manipulator Hatch Grabber",// SolenoidState.EXTEND,
+			new SolenoidSubsystem("Manipulator Hatch Grabber", SolenoidSubsystem.defaultDelay, // SolenoidState.EXTEND,
 				Port.Pneumatics.hatchGrabber.buildDoubleSolenoid()),
 			new Motor("Manipulator Roller", new CANTalonSRX(Port.CANMotor.manipulatorRoller)));
 		/* Elevator + FourBar */
@@ -219,7 +219,7 @@ public class RobotMap {
 		Component.leftElevatorMotor.setNeutralMode(NeutralMode.Brake);
 		Component.rightElevatorMotor.setNeutralMode(NeutralMode.Brake);
 		Component.fourBar = new FourBarElevator(
-			new SolenoidSubsystem("FourBarLever", SolenoidState.RETRACT,
+			new SolenoidSubsystem("FourBarLever", SolenoidState.RETRACT, SolenoidSubsystem.defaultDelay, 
 				Port.Pneumatics.fourBarLever.buildDoubleSolenoid()),
 			new PositionSensorMotor("Elevator", Component.elevatorPID,
 				Component.leftElevatorMotor,
