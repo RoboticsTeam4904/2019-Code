@@ -15,6 +15,7 @@ import org.usfirst.frc4904.robot.commands.manipulator.HatchGrabberIn;
 import org.usfirst.frc4904.robot.commands.manipulator.HatchGrabberOut;
 import org.usfirst.frc4904.robot.commands.manipulator.RollerIn;
 import org.usfirst.frc4904.robot.commands.manipulator.RollerOut;
+import org.usfirst.frc4904.robot.commands.manipulator.RollerSetNeutral;
 import org.usfirst.frc4904.robot.commands.manipulator.HatchIntake;
 import org.usfirst.frc4904.robot.commands.manipulator.HatchOuttake;
 import org.usfirst.frc4904.robot.commands.manipulator.WristDown;
@@ -62,7 +63,9 @@ public class DefaultOperator extends Operator {
 		RobotMap.HumanInput.Operator.joystick.button12.whenPressed(new WristDown());
 		RobotMap.HumanInput.Operator.joystick.button11.whenPressed(new WristUp());
 
-		RobotMap.HumanInput.Operator.joystick.button7.whenPressed(new HatchExtenderOut());
+		// RobotMap.HumanInput.Operator.joystick.button7.whenPressed(new HatchExtenderOut());
+		// TODO: re-bind this button to HatchExtenderOut
+		RobotMap.HumanInput.Operator.joystick.button7.whenPressed(new RollerSetNeutral());
 		RobotMap.HumanInput.Operator.joystick.button8.whenPressed(new HatchExtenderIn());
 		RobotMap.HumanInput.Operator.joystick.button5.whenPressed(new LevelOneHatch());
 		RobotMap.HumanInput.Operator.joystick.button3.whenPressed(new ClawsDown());
