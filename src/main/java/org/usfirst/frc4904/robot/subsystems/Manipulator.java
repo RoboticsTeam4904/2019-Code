@@ -8,7 +8,11 @@ import org.usfirst.frc4904.standard.custom.Overridable;
 
 public class Manipulator implements Overridable {
 	public static final double INTAKE_SPEED = 0.6;
+<<<<<<< HEAD
 	public static final double OUTTAKE_SPEED = -0.6;
+=======
+	public static final double OUTTAKE_SPEED = -0.6
+>>>>>>> 62e19fcebb75021f5873ea62e3925e1b2b5b1ba8
 	public static final double KEEP_BALL_SPEED = 0.15;
 	public final SolenoidSubsystem wrist; // flipper for whole manipulator
 	public final SolenoidSubsystem claws; // cargo claws
