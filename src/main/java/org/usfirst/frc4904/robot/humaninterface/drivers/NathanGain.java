@@ -39,8 +39,8 @@ public class NathanGain extends Driver {
 		// 	new HatchGrabberOut(), new HatchGrabberIn(),
 		// 	() -> RobotMap.Component.manipulator.hatchGrabber.getState() != SolenoidState.EXTEND));
 		RobotMap.HumanInput.Driver.xbox.x.whenPressed(new HatchGrabberOut());
-		RobotMap.HumanInput.Driver.xbox.b.whenPressed(new HatchGrabberIn());
-		// RobotMap.HumanInput.Driver.xbox.a.whenPressed(new HatchExpel()); // Needs to be tested / checked with Nikhil. This is supposed to expedite the process of releasing hatches
+		RobotMap.HumanInput.Driver.xbox.a.whenPressed(new HatchGrabberIn());
+		RobotMap.HumanInput.Driver.xbox.b.whenPressed(new HatchExpel()); // Needs to be tested / checked with Nikhil. This is supposed to expedite the process of releasing hatches
 	}
 
 	@Override

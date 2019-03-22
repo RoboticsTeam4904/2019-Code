@@ -7,9 +7,9 @@ import org.usfirst.frc4904.standard.subsystems.motor.Motor;
 import org.usfirst.frc4904.standard.custom.Overridable;
 
 public class Manipulator implements Overridable {
-	public static final double INTAKE_SPEED = -0.6;
-	public static final double OUTTAKE_SPEED = 0.6;
-	public static final double KEEP_BALL_SPEED = -0.15;
+	public static final double INTAKE_SPEED = 0.6;
+	public static final double OUTTAKE_SPEED = -0.6;
+	public static final double KEEP_BALL_SPEED = 0.15;
 	public final SolenoidSubsystem wrist; // flipper for whole manipulator
 	public final SolenoidSubsystem claws; // cargo claws
 	public final SolenoidSubsystem hatchExtender; // extend hatch grabber out of frame
