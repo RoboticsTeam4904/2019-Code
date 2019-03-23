@@ -201,7 +201,7 @@ public class RobotMap {
 		// Component.chassisTurnPID.setDerivativeTolerance(PID.Turn.dTolerance);
 		/* Manipulator */
 		Component.manipulatorRoller = new CANTalonSRX(Port.CANMotor.manipulatorRoller);
-		Component.manipulatorRoller.setInverted(true);
+		Component.manipulatorRoller.setInverted(false);
 
 		// Component.manipulatorRoller.setNeutralMode(NeutralMode.Brake);
 		Component.manipulator = new Manipulator(

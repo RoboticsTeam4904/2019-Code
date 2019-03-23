@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
 
 public class HatchExpel extends CommandGroup {
-	public static double WAIT_TIME_BEFORE_CLAWS_UP = 1; // seconds
+	public static double WAIT_TIME_BEFORE_CLAWS_UP = 1.5; // seconds
 	public static double WAIT_TIME_BEFORE_GRABBER_IN = 0.1; // seconds
 
 	public HatchExpel() {
