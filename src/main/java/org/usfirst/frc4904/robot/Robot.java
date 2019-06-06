@@ -17,6 +17,8 @@ import org.usfirst.frc4904.robot.commands.elevator.NeutralElevator;
 import org.usfirst.frc4904.robot.subsystems.FourBarElevator;
 import org.usfirst.frc4904.standard.LogKitten;
 import org.usfirst.frc4904.standard.commands.SingleOp;
+import org.usfirst.frc4904.motioncontrol.pathing.SplineGenerator;
+import org.usfirst.frc4904.robot.autonly.SplineFollower;
 import org.usfirst.frc4904.robot.commands.CameraStream;
 import org.usfirst.frc4904.standard.commands.chassis.ChassisMove;
 import org.usfirst.frc4904.standard.commands.solenoid.SolenoidRetract;
@@ -78,7 +80,6 @@ public class Robot extends CommandRobotBase {
 	public void teleopInitialize() {
 		teleopCommand = new ChassisMove(RobotMap.Component.chassis, driverChooser.getSelected());
 		teleopCommand.start();
-
 		// Command command = new SolenoidRetract(RobotMap.Component.manipulator.wrist);
 		// command.start(); // RobotMap.initCommands
 	}
