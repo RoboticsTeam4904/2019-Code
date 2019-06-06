@@ -17,6 +17,8 @@ import org.usfirst.frc4904.robot.commands.elevator.NeutralElevator;
 import org.usfirst.frc4904.robot.subsystems.FourBarElevator;
 import org.usfirst.frc4904.standard.LogKitten;
 import org.usfirst.frc4904.standard.commands.SingleOp;
+import org.usfirst.frc4904.motioncontrol.pathing.SplineGenerator;
+import org.usfirst.frc4904.robot.autonly.SplineFollower;
 import org.usfirst.frc4904.robot.commands.CameraStream;
 import org.usfirst.frc4904.standard.commands.chassis.ChassisMove;
 import org.usfirst.frc4904.standard.commands.solenoid.SolenoidRetract;
@@ -29,6 +31,15 @@ public class Robot extends CommandRobotBase {
 	public void initialize() {
 		driverChooser.addDefault(new NathanGain());
 		operatorChooser.addDefault(new DefaultOperator());
+		autoChooser.addDefault(new SplineFollower(SplineGenerator.fitQuintic(
+			0, 0, 10, 20,
+			20, 0, 0, 20,
+			1, 0, 0, -1), 1, 0, 0, .2, 0)); // TODO: Tune these PIDVA values
+		/*
+		 * works in shuffleboard with Logitech C270
+		 * any amount of compression, 30 FPS, 160 x 120
+		 * < 4 Mbps, often < 1
+		 */
 		CameraStream streamCommand = new CameraStream(1);
 		streamCommand.start();
 		// RobotMap.Component.leftWheelEncoder.reset();
@@ -69,7 +80,6 @@ public class Robot extends CommandRobotBase {
 	public void teleopInitialize() {
 		teleopCommand = new ChassisMove(RobotMap.Component.chassis, driverChooser.getSelected());
 		teleopCommand.start();
-
 		// Command command = new SolenoidRetract(RobotMap.Component.manipulator.wrist);
 		// command.start(); // RobotMap.initCommands
 	}

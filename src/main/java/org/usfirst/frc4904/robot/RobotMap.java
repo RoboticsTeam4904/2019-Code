@@ -79,6 +79,8 @@ public class RobotMap {
 			public static final double INCHES_PER_TICK = Metrics.Chassis.CIRCUMFERENCE_INCHES
 				/ Metrics.Chassis.TICKS_PER_REVOLUTION;
 		}
+		public static final double ROBOT_WIDTH_INCHES = -1; // TODO: set
+		public static final double ROBOT_WIDTH_METERS = ROBOT_WIDTH_INCHES * 0.0254; // TODO: set
 	}
 
 	public static class PID {
