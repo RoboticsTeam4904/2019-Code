@@ -21,6 +21,7 @@ import org.usfirst.frc4904.standard.commands.SingleOp;
 import org.usfirst.frc4904.robot.commands.CameraStream;
 import org.usfirst.frc4904.standard.commands.chassis.ChassisMove;
 import org.usfirst.frc4904.standard.commands.solenoid.SolenoidRetract;
+import org.usfirst.frc4904.standard.custom.controllers.XboxController.HAND;
 import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem.SolenoidState;
 
 public class Robot extends CommandRobotBase {
@@ -72,6 +73,9 @@ public class Robot extends CommandRobotBase {
 
 	@Override
 	public void teleopExecute() {
+		// double intensity = Math.abs(RobotMap.HumanInput.Driver.xbox.rt.getX() - RobotMap.HumanInput.Driver.xbox.lt.getX());
+		// RobotMap.HumanInput.Driver.xbox.setRumble(HAND.RIGHT, intensity);
+		// RobotMap.HumanInput.Driver.xbox.setRumble(HAND.LEFT, intensity);
 	}
 
 	@Override
@@ -110,6 +114,7 @@ public class Robot extends CommandRobotBase {
 
 	@Override
 	public void alwaysExecute() {
+		LogKitten.wtf("Encoder: " + RobotMap.Component.leftWheelEncoder.getDistance());
 		// LogKitten.wtf(RobotMap.Component.fourBar.elevator.get());
 		// Just for testing encoder
 		// SmartDashboard.putNumber("ElevatorPID/e",

@@ -165,9 +165,9 @@ public class RobotMap {
 		// Component.navx = new NavX(SerialPort.Port.kMXP);
 		/* Drive Train */
 		// Wheel Encoders
-		// Component.leftWheelEncoder = new CANEncoder("LeftEncoder",
-		// Port.CAN.leftWheelEncoder,
-		// Metrics.Chassis.INCHES_PER_TICK);
+		Component.leftWheelEncoder = new CANEncoder("LeftEncoder",
+		Port.CAN.leftWheelEncoder,
+		Metrics.Chassis.INCHES_PER_TICK);
 		// Component.rightWheelEncoder = new CANEncoder("RightEncoder",
 		// Port.CAN.rightWheelEncoder,
 		// Metrics.Chassis.INCHES_PER_TICK);
