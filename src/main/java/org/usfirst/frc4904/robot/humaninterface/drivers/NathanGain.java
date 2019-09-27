@@ -12,9 +12,9 @@ import org.usfirst.frc4904.standard.subsystems.SolenoidSubsystem.SolenoidState;
 import org.usfirst.frc4904.standard.subsystems.chassis.SolenoidShifters;
 
 public class NathanGain extends Driver {
-	public static final double SPEED_GAIN = .5; // 1
+	public static final double SPEED_GAIN = 1; // 1
 	public static final double SPEED_EXP = 2;
-	public static final double TURN_GAIN = 0.5; // .7
+	public static final double TURN_GAIN = 0.7; // .7
 	public static final double TURN_EXP = 1;
 	public static final double Y_SPEED_SCALE = 1;
 	public static final double TURN_SPEED_SCALE = 1;
